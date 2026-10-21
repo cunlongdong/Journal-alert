@@ -93,7 +93,7 @@ class SafetyTests(unittest.TestCase):
                 "tiers": {"min_score": 3}, "output": {},
             }
             args = SimpleNamespace(
-                days=None, sources=None, date="2026-10-21",
+                config=None, days=None, sources=None, date="2026-10-21",
                 test_push=False, doctor=False, rerender=False,
                 cards=False, check=False, strict_check=False,
             )
