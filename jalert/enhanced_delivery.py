@@ -333,8 +333,11 @@ class Delivery:
                     self.log.warning("ServerChan HTTP %s", response.status)
                     return False
                 data = json.loads(response.read(131072).decode("utf-8"))
-                if data.get("code") in (0, "0"):
-                    return True
+             if not isinstance(data, dict):
+                 raise ValueError("Notification response must be a JSON object")
+             code = data.get("code")
+             if type(code) in (int, str) and code in (0, "0"):
+                 return True
                 self.log.warning("ServerChan non-success code=%s", str(data.get("code"))[:30])
                 return False
         except urllib.error.HTTPError as ex:
