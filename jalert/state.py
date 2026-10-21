@@ -131,7 +131,7 @@ class Store:
 
     def recent_counts(self, days: int = 30) -> dict:
         row = self.conn.execute(
-            "SELECT COUNT(*) AS total FROM articles WHERE first_seen >= datetime('now', ?)",
+            "SELECT COUNT(*) AS total FROM articles WHERE datetime(first_seen) >= datetime('now', ?, 'localtime')",
             (f"-{int(days)} days",),
         ).fetchone()
         return {"articles_total": self.conn.execute("SELECT COUNT(*) c FROM articles").fetchone()["c"],
