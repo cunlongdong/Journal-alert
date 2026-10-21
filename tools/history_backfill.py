@@ -401,6 +401,7 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
             raise ValueError("Malformed full English abstract store; refusing overwrite")
     else:
         english_store = {"version": 1, "abstracts": {}}
+    doi_outcomes = {}
     remaining = []
     for paper in articles:
         doi = doi_key(paper.get("doi", ""))
@@ -409,6 +410,11 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
         title_hash = hashlib.sha256(str(paper.get("title") or "").strip().encode("utf-8")).hexdigest()
         title_done = bool((delivery.cache.get("titles") or {}).get(title_hash, {}).get("zh_title"))
         english_done = bool(record and record.get("english_abstract") and record.get("summary"))
+        if doi:
+            doi_outcomes[doi] = {"status": "already_complete" if english_done else "pending",
+                                 "english_source": "translation cache" if english_done else "",
+                                 "chinese_abstract": bool(english_done),
+                                 "chinese_title": title_done}
         if title_done and english_done:
             continue
         remaining.append(paper)
@@ -427,6 +433,7 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
     ordered = remaining[start:] + remaining[:start]
     for paper in ordered[:max_papers]:
         attempted += 1
+        outcome = doi_outcomes.get(doi_key(paper.get("doi", "")))
         if dry_run:
             continue
         # Persist progress *before* network I/O so an unavailable DOI cannot
@@ -440,7 +447,11 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
                    "title": str(paper.get("title") or ""), "abstract": ""}
         try:
             delivery._translate_title(preview, day)
+            if outcome is not None:
+                outcome["chinese_title"] = True
         except (ValueError, RuntimeError, OSError, KeyError) as title_exc:
+            if outcome is not None:
+                outcome["title_error"] = str(title_exc)[:130]
             log.warning("Historical title translation pending for %s (%s)",
                         preview["title"][:60], type(title_exc).__name__)
         record = by_doi.get(doi_key(paper.get("doi",""))) if paper.get("doi") else by_title.get(title_key(paper.get("title","")))
@@ -458,6 +469,9 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
                 english, source = lookup(paper["doi"])
             except (OSError, ValueError, RuntimeError, KeyError, TypeError) as exc:
                 failed += 1
+                if outcome is not None:
+                    outcome["status"] = "lookup_error"
+                    outcome["reason"] = type(exc).__name__
                 log.warning("Historical source lookup deferred for %s: %s",
                             paper["doi"][:60], type(exc).__name__)
                 continue
@@ -472,17 +486,35 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
                 _atomic_json(english_path, english_store)
         if not english or len(english) > DEFAULTS["max_input_chars"]:
             missing += 1
+            if outcome is not None:
+                outcome["status"] = "source_unavailable" if not english else "source_too_long"
             continue
+        if outcome is not None:
+            outcome["status"] = "source_found_translation_pending"
+            outcome["english_source"] = source
+            outcome["english_chars"] = len(english)
         item = {"uid": "history:" + doi_key(paper["doi"]), "doi": doi_key(paper["doi"]),
                 "title": paper["title"], "abstract": english}
         try:
             _ = delivery._get_translation(item, day)
             translated += 1
+            if outcome is not None:
+                outcome["status"] = "complete"
+                outcome["chinese_abstract"] = True
             log.info("Historical paper translated: %s (%s)", paper["title"][:72], source)
         except (ValueError, RuntimeError, OSError, KeyError) as e:
             failed += 1
+            if outcome is not None:
+                outcome["status"] = "translation_failed"
+                outcome["reason"] = str(e)[:140]
             log.warning("Historical DOI translation deferred: %s: %s", paper["doi"][:60], str(e)[:120])
+    for target in targets - doi_outcomes.keys():
+        doi_outcomes[target] = {"status": "not_found_in_reports", "chinese_abstract": False,
+                                "chinese_title": False, "english_source": ""}
     result = {"cards": len(articles), "target_dois": sorted(targets),
+              "doi_outcomes": doi_outcomes if targets else {},
+              "target_complete": bool(targets) and all(
+                  v["status"] in ("complete", "already_complete") for v in doi_outcomes.values()),
               "full_english_cached": len(english_store["abstracts"]),
               "untranslated_visible_papers": len(remaining),
               "attempted": attempted, "translated": translated, "missing_source_abstract": missing,
@@ -506,9 +538,27 @@ def main(argv=None) -> int:
     result = backfill(ROOT, ns.max, ns.dry_run, target_dois=requested)
     if requested:
         print(json.dumps(result, ensure_ascii=False, indent=2))
-        if result["cards"] < len(requested):
-            LOG.warning("%d requested DOI(s) not present in local reports",
-                        len(requested) - result["cards"])
+        header = ["### 指定 DOI 摘要补全报告",
+                  "| DOI | 状态 | 英文来源 | 中文标题 | 中文摘要 |",
+                  "|---|---|---|---|---|"]
+        incomplete = []
+        for doi, info in sorted(result["doi_outcomes"].items()):
+            state = info["status"]
+            source = str(info.get("english_source") or "—").replace("|", "/")
+            header.append(f"| \`{doi}\` | {state} | {source} | " +
+                          ("有" if info.get("chinese_title") else "缺") + " | " +
+                          ("有" if info.get("chinese_abstract") else "缺") + " |")
+            if state not in ("complete", "already_complete"):
+                incomplete.append(doi)
+                print(f"::warning title=Abstract pending::{doi}: {state} " +
+                      str(info.get("reason") or "")[:90])
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+        if summary_path:
+            with open(summary_path, "a", encoding="utf-8") as out:
+                out.write("\\n".join(header) + "\\n")
+        if incomplete:
+            LOG.warning("%d/%d selected DOI(s) remain incomplete (see run summary)",
+                        len(incomplete), len(requested))
     return 0
 
 
