@@ -33,6 +33,12 @@ def main(argv=None):
         print('Bark test accepted by API' if accepted else 'Bark rejected test message')
         return 0 if accepted else 1
     if ns.flush:
+        import os
+        if os.getenv("JALERT_BARK_REQUIRED", "false").lower() in ("true", "1", "yes"):
+            enabled = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
+            if not enabled or not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
+                logging.error("Bark delivery required: enable Bark and configure BARK_DEVICE_KEY")
+                return 2
         # JALERT_RECOVER_PENDING_V1: restore actual source abstracts, not invented text.
         from tools.recover_pending_abstracts import recover_pending_abstracts
         recovery = recover_pending_abstracts(delivery)
@@ -47,6 +53,9 @@ def main(argv=None):
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if report['pending_without_english']:
         logging.warning('%d pending papers have no original English Abstract; retry is scheduled with a 7-day cooldown', report['pending_without_english'])
+    if ns.flush and report.get('bark_articles_waiting', 0):
+        logging.error("%d Bark papers remain undelivered; queue persisted for retry", report['bark_articles_waiting'])
+        return 1
     return 0
 
 
