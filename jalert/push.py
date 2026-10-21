@@ -61,7 +61,9 @@ def push_pushplus(token: str, title: str, body: str) -> dict:
     try:
         payload = json.loads(text)
     except json.JSONDecodeError:
-        return _result("pushplus", True, text[:160])
+        return _result("pushplus", False, "Invalid JSON response")
+    if not isinstance(payload, dict):
+        return _result("pushplus", False, "Response must be a JSON object")
     code = payload.get("code")
     ok = code in (200, "200")
     return _result("pushplus", bool(ok), f"code={code} {payload.get('msg', '')}")
