@@ -115,7 +115,7 @@ def http_request(
             last_error = f"{type(exc).__name__}: {exc}"
         if attempt < retries:
             time.sleep(backoff * (attempt + 1))
-    raise FetchError(f"{url} -> {last_error}")
+     raise FetchError(f"Request failed ({effective_method}): {last_error}")
 
 
 def _decode(raw: bytes) -> str:
