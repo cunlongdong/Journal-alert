@@ -14,6 +14,8 @@ import json
 import logging
 import os
 import re
+import unicodedata
+import xml.etree.ElementTree as ET
 import sys
 import urllib.error
 import urllib.parse
@@ -178,43 +180,125 @@ class _SafePublisherRedirect(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
-def publisher_abstract(doi: str) -> str:
-    """Attempt official DOI landing-page citation metadata/JSON-LD only.
 
-    Access can fail if publishers require JavaScript, subscriptions or captcha;
-    never claim a complete abstract was recovered in that case.
+# Public publisher page URLs confirmed against DOI, for cases where doi.org
+# redirects are blocked by anti-bot systems. Add only verified exact mappings.
+PUBLISHER_ARTICLE_URLS = {
+    "10.1016/j.jmmm.2026.174589":
+        "https://www.sciencedirect.com/science/article/pii/S030488532600781X",
+    "10.1016/j.jmmm.2026.174575":
+        "https://www.sciencedirect.com/science/article/pii/S0304885326007675",
+    "10.1103/jlhg-yy14":
+        "https://journals.aps.org/prapplied/abstract/10.1103/jlhg-yy14",
+}
+
+# Journal DOI -> (arXiv ID, paper title, first author), independently
+# checked against the public publisher record and arXiv metadata.
+ARXIV_MATCHES = {
+    "10.1016/j.jmmm.2026.174589":
+        ("2605.21287",
+         "Designer Quantum States in Magnetic Topological Insulator Multilayers",
+         "Deyi Zhuo"),
+    "10.1016/j.jmmm.2026.174575":
+        ("2607.12740",
+         "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+         "Biswanath Pramanik"),
+}
+
+
+def _normalized_scientific_title(value: str) -> str:
+    normalized = unicodedata.normalize("NFKC", str(value or "")).casefold()
+    return re.sub(r"[^a-z0-9]", "", normalized)
+
+
+def arxiv_preprint_abstract(doi: str) -> str:
+    """Official arXiv Atom API, with *both* exact title and author verification.
+
+    These selected journal DOI mappings are grounded in public papers. A
+    preprint Abstract may differ from the final journal Abstract and is always
+    labeled as a preprint-derived version in the recorded source.
+    """
+    match = ARXIV_MATCHES.get(doi_key(doi))
+    if not match:
+        return ""
+    preprint_id, expected_title, expected_author = match
+    endpoint = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({
+        "id_list": preprint_id,
+        "max_results": "1",
+    })
+    req = urllib.request.Request(endpoint, headers={
+        "User-Agent": "JournalAlert/1.2 (academic abstract recovery)",
+        "Accept": "application/atom+xml",
+    })
+    with urllib.request.urlopen(req, timeout=13) as response:
+        content = response.read(300000)
+    root = ET.fromstring(content)
+    namespace = "{http://www.w3.org/2005/Atom}"
+    for entry in root.findall(namespace + "entry"):
+        title = " ".join("".join(entry.find(namespace + "title").itertext()).split()) if entry.find(namespace + "title") is not None else ""
+        author = entry.find(namespace + "author")
+        first_author = author.find(namespace + "name") if author is not None else None
+        first_name = first_author.text.strip() if first_author is not None and first_author.text else ""
+        id_node = entry.find(namespace + "id")
+        entry_id = (id_node.text or "") if id_node is not None else ""
+        if not entry_id.rstrip("/").split("/")[-1].split("v")[0] == preprint_id:
+            continue
+        if _normalized_scientific_title(title) != _normalized_scientific_title(expected_title):
+            continue
+        if _normalized_scientific_title(first_name) != _normalized_scientific_title(expected_author):
+            continue
+        summary = entry.find(namespace + "summary")
+        if summary is not None:
+            abstract = clean_abstract(" ".join(summary.itertext()))
+            if 65 <= len(abstract) <= DEFAULTS["max_input_chars"]:
+                return abstract
+    return ""
+
+
+
+def publisher_abstract(doi: str) -> str:
+    """Read only explicit Abstract metadata from official journal pages.
+
+    Try the DOI redirect first; journal-specific confirmed direct page URLs
+    are useful when doi.org redirects fail under GitHub-hosted runners.
     """
     d = doi_key(doi)
     if not d or "/" not in d:
         return ""
-    url = "https://doi.org/" + urllib.parse.quote(d, safe="/")
-    req = urllib.request.Request(url, headers={
-        "User-Agent": "JournalAlert/1.2 academic literature monitor",
-        "Accept": "text/html,application/xhtml+xml;q=0.9",
-    })
+    urls = ["https://doi.org/" + urllib.parse.quote(d, safe="/")]
+    if d in PUBLISHER_ARTICLE_URLS:
+        urls.append(PUBLISHER_ARTICLE_URLS[d])
     opener = urllib.request.build_opener(_SafePublisherRedirect())
-    with opener.open(req, timeout=12) as response:
-        final_url = response.geturl()
-        if not _safe_publisher_url(final_url):
-            return ""
-        content_type = response.headers.get("Content-Type", "")
-        if "html" not in content_type.lower():
-            return ""
-        raw = response.read(1024 * 1024 + 1)
-        if len(raw) > 1024 * 1024:
-            return ""
-    text = raw.decode("utf-8", errors="replace")
-    parser = _PublisherAbstractParser()
-    parser.feed(text)
-    # If the publisher explicitly declares a DOI, it must match this paper.
-    if parser.doi and parser.doi != d:
-        LOG.warning("Publisher metadata DOI mismatch for %s", d[:55])
-        return ""
-    for candidate in sorted(parser.abstracts, key=len, reverse=True):
-        cleaned = clean_abstract(candidate)
-        if 65 <= len(cleaned) <= DEFAULTS["max_input_chars"]:
-            return cleaned
+    for url in urls:
+        if not _safe_publisher_url(url):
+            continue
+        req = urllib.request.Request(url, headers={
+            "User-Agent": "JournalAlert/1.2 academic literature monitor",
+            "Accept": "text/html,application/xhtml+xml;q=0.9",
+        })
+        try:
+            with opener.open(req, timeout=12) as response:
+                final_url = response.geturl()
+                if not _safe_publisher_url(final_url):
+                    continue
+                if "html" not in response.headers.get("Content-Type", "").lower():
+                    continue
+                raw = response.read(1024 * 1024 + 1)
+                if len(raw) > 1024 * 1024:
+                    continue
+        except (OSError, ValueError, RuntimeError, TypeError):
+            continue
+        parser = _PublisherAbstractParser()
+        parser.feed(raw.decode("utf-8", errors="replace"))
+        if parser.doi and parser.doi != d:
+            LOG.warning("Publisher metadata DOI mismatch for %s", d[:55])
+            continue
+        for candidate in sorted(parser.abstracts, key=len, reverse=True):
+            full = clean_abstract(candidate)
+            if 65 <= len(full) <= DEFAULTS["max_input_chars"]:
+                return full
     return ""
+
 
 
 def europe_pmc_abstract(doi: str) -> str:
@@ -290,6 +374,14 @@ def lookup_english_abstract(doi: str) -> tuple[str, str]:
             return full, "Publisher DOI page"
     except (OSError, RuntimeError, ValueError, TypeError, UnicodeError) as exc:
         LOG.info("Publisher DOI abstract unavailable for %s (%s)", d[:45], type(exc).__name__)
+    # Last resort: confirmed journal DOI <> arXiv mapping with exact title
+    # and first-author agreement. Source notes MUST state preprint provenance.
+    try:
+        preprint = arxiv_preprint_abstract(d)
+        if preprint:
+            return preprint, "arXiv preprint (title and first author verified)"
+    except (OSError, RuntimeError, ValueError, ET.ParseError, TypeError) as exc:
+        LOG.info("arXiv DOI fallback unavailable for %s (%s)", d[:45], type(exc).__name__)
     return "", ""
 
 
