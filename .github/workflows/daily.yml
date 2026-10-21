@@ -1,28 +1,38 @@
 name: journal-alert daily
 
-# 07:30 Asia/Shanghai == 23:30 UTC (previous day).
+# 07:30 Asia/Shanghai = 23:30 UTC on the preceding day.
 on:
   schedule:
     - cron: "30 23 * * *"
   workflow_dispatch:
     inputs:
       days:
-        description: "覆盖时间窗（天）；留空使用自适应窗口"
+        description: "回溯天数（空=自适应）；不会重新发送历史已见论文"
         required: false
         default: ""
       sources:
-        description: "指定数据源（例如 openalex,crossref）；留空使用配置"
+        description: "数据源，例如 openalex,crossref（空=配置文件）"
         required: false
         default: ""
       no_push:
-        description: "可选：不发微信；注意仍会把新论文记为已见"
+        description: "只采集并加入待发送队列，本次不发微信"
         type: boolean
-        required: false
         default: false
       cards_only:
-        description: "只更新网页卡片，不检索论文、不发微信（清理旧日报后使用）"
+        description: "仅更新卡片墙，不采集和发送"
         type: boolean
-        required: false
+        default: false
+      test_api:
+        description: "测试自部署模型的API连通性，不抓取论文也不发微信"
+        type: boolean
+        default: false
+      flush_only:
+        description: "仅发送待推送队列，不重新抓取；计入 Server酱每日额度"
+        type: boolean
+        default: false
+      delivery_status:
+        description: "仅查看待推送数量，不抓取、不推送"
+        type: boolean
         default: false
 
 permissions:
@@ -37,18 +47,26 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 50
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     env:
       TZ: Asia/Shanghai
       JALERT_SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
-      JALERT_PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
-      JALERT_BARK_KEY: ${{ secrets.BARK_KEY }}
+      # Self-hosted OpenAI-compatible model only; no DeepSeek key needed.
+      CUSTOM_AI_API_KEY: ${{ secrets.CUSTOM_AI_API_KEY }}
+      CUSTOM_AI_BASE_URL: ${{ vars.CUSTOM_AI_BASE_URL }}
+      CUSTOM_AI_MODEL: ${{ vars.CUSTOM_AI_MODEL }}
+      JALERT_AI_PRIMARY: custom
+      JALERT_AI_FALLBACK: none
+      JALERT_AI_MAX_CALLS_DAY: ${{ vars.JALERT_AI_MAX_CALLS_DAY || '25' }}
+      JALERT_AI_MAX_TOKENS: ${{ vars.JALERT_AI_MAX_TOKENS || '350' }}
+      # Default 4 leaves 1 free-tier slot for other ServerChan uses (absolute cap 5).
+      JALERT_WECHAT_MAX_MESSAGES_DAY: ${{ vars.JALERT_WECHAT_MAX_MESSAGES_DAY || '4' }}
+      JALERT_WECHAT_MAX_CHARS: ${{ vars.JALERT_WECHAT_MAX_CHARS || '3500' }}
+      JALERT_REPORT_SITE_URL: https://cunlongdong.github.io/Journal-alert/
       JALERT_MAILTO: ${{ vars.JALERT_MAILTO }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -58,45 +76,57 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Run local tests before production
+        run: python -m unittest discover -s tests -p 'test_enhanced_delivery.py' -v
+
       - name: Environment self-check
-        if: ${{ !inputs.cards_only }}
+        if: ${{ !inputs.cards_only && !inputs.flush_only && !inputs.delivery_status && !inputs.test_api }}
         continue-on-error: true
         run: python run.py --doctor
 
-      - name: Run literature pipeline or rebuild cards
+      - name: Run enhanced literature pipeline
         env:
           EXTRA_DAYS: ${{ inputs.days }}
           EXTRA_SOURCES: ${{ inputs.sources }}
           EXTRA_NO_PUSH: ${{ inputs.no_push }}
           EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
+          EXTRA_FLUSH_ONLY: ${{ inputs.flush_only }}
+          EXTRA_DELIVERY_STATUS: ${{ inputs.delivery_status }}
+          EXTRA_TEST_API: ${{ inputs.test_api }}
         run: |
           set -eu
-          if [ "${EXTRA_CARDS_ONLY}" = "true" ]; then
+          if [ "$EXTRA_CARDS_ONLY" = "true" ]; then
             python run.py --cards
+          elif [ "$EXTRA_TEST_API" = "true" ]; then
+            python tools/enhanced_run.py --test-api
+          elif [ "$EXTRA_DELIVERY_STATUS" = "true" ]; then
+            python tools/enhanced_run.py --delivery-status
+          elif [ "$EXTRA_FLUSH_ONLY" = "true" ]; then
+            python tools/enhanced_run.py --flush-only
           else
-            ARGS="--once"
-            if [ -n "${EXTRA_DAYS}" ]; then ARGS="$ARGS --days ${EXTRA_DAYS}"; fi
-            if [ -n "${EXTRA_SOURCES}" ]; then ARGS="$ARGS --sources ${EXTRA_SOURCES}"; fi
-            if [ "${EXTRA_NO_PUSH}" = "true" ]; then ARGS="$ARGS --no-push"; fi
-            echo "python run.py ${ARGS}"
-            python run.py ${ARGS}
+            set -- --once
+            if [ -n "$EXTRA_DAYS" ]; then set -- "$@" --days "$EXTRA_DAYS"; fi
+            if [ -n "$EXTRA_SOURCES" ]; then set -- "$@" --sources "$EXTRA_SOURCES"; fi
+            if [ "$EXTRA_NO_PUSH" = "true" ]; then set -- "$@" --no-push; fi
+            python tools/enhanced_run.py "$@"
           fi
 
-      - name: Commit state and report back
+      # Outbox/cache are tracked in state/; no change to state/seen.sqlite schema.
+      - name: Commit reports, queue and cache
         if: always()
         run: |
           set -eu
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           if git diff --cached --quiet; then
-            echo "nothing changed"
+            echo 'nothing changed'
           else
-            git commit -m "chore(state): $(date +%F) daily run"
+            git commit -m "chore(state): $(date +%F) journal alerts + delivery state"
             git push
           fi
 
-      - name: Upload logs
+      - name: Upload diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -105,26 +135,29 @@ jobs:
             logs/
             state/daily/
           if-no-files-found: ignore
-          retention-days: 90
+          retention-days: 30
 
-      - name: Job summary
+      - name: Report summary
         if: always()
         run: |
           report="reports/$(date +%F).md"
           if [ -f "$report" ]; then
             cat "$report" >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "本次没有生成当天的新报告（仅重建卡片墙时属于正常情况）。" >> "$GITHUB_STEP_SUMMARY"
+            echo '本次未生成新日报（仅检查/推送/卡片墙模式可以正常出现）。' >> "$GITHUB_STEP_SUMMARY"
           fi
 
       - name: Configure GitHub Pages
+        if: success()
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: success()
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
 
       - name: Deploy to GitHub Pages
+        if: success()
         id: deployment
         uses: actions/deploy-pages@v4
