@@ -42,7 +42,7 @@ def _title_numbers(text: str) -> set[str]:
     subscripts and fraction denominators after Unicode NFKC normalization.
     """
     normalized = unicodedata.normalize("NFKC", str(text or "")).replace("−", "-")
-    return set(re.findall(r"\\d+(?:\\.\\d+)?", normalized))
+    return set(re.findall(r"\d+(?:\.\d+)?", normalized))
 
 
 def quality_report(english: str, chinese: str) -> dict:
@@ -199,9 +199,9 @@ class ReliableDelivery(Delivery):
                     raise ValueError("title translation contains no meaningful Chinese")
                 missing_title_numbers = _title_numbers(title) - _title_numbers(zh)
                 # 2D → 二维 and 3D → 三维 are normal, meaningful translations.
-                if re.search(r"(?<!\\w)2\\s*[-–]?D(?!\\w)", title, re.I) and "二维" in zh:
+                if re.search(r"(?<!\w)2\s*[-–]?D(?!\w)", title, re.I) and "二维" in zh:
                     missing_title_numbers.discard("2")
-                if re.search(r"(?<!\\w)3\\s*[-–]?D(?!\\w)", title, re.I) and "三维" in zh:
+                if re.search(r"(?<!\w)3\s*[-–]?D(?!\w)", title, re.I) and "三维" in zh:
                     missing_title_numbers.discard("3")
                 if missing_title_numbers:
                     raise ValueError("title omitted chemical/fraction digits: " +
