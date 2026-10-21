@@ -385,10 +385,14 @@ def lookup_english_abstract(doi: str) -> tuple[str, str]:
     return "", ""
 
 
-def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=lookup_english_abstract, log=LOG) -> dict:
+def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
+             target_dois: set[str] | None = None, lookup=lookup_english_abstract, log=LOG) -> dict:
     root = Path(root)
     delivery = ReliableDelivery(root, log)
     articles, _reports, _topics = collect(root / "reports")
+    targets = {doi_key(x) for x in (target_dois or set())}
+    if targets:
+        articles = [a for a in articles if doi_key(a.get("doi", "")) in targets]
     by_doi, by_title = cache_index(delivery.cache)
     english_path = root / "state" / "full_english_abstracts.json"
     if english_path.exists():
@@ -418,7 +422,8 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         cursor = json.loads(cursor_path.read_text(encoding="utf-8"))
         if cursor.get("version") != 1 or not isinstance(cursor.get("next_index"), int):
             raise ValueError("Malformed historical backfill cursor; refusing to replace")
-    start = cursor["next_index"] % len(remaining) if remaining else 0
+    # A targeted one-off lookup must not disturb the rotating history cursor.
+    start = 0 if targets else (cursor["next_index"] % len(remaining) if remaining else 0)
     ordered = remaining[start:] + remaining[:start]
     for paper in ordered[:max_papers]:
         attempted += 1
@@ -426,8 +431,9 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
             continue
         # Persist progress *before* network I/O so an unavailable DOI cannot
         # repeatedly starve the rest after a job error or timeout.
-        cursor["next_index"] = (start + attempted) % len(remaining)
-        _atomic_json(cursor_path, cursor)
+        if not targets:
+            cursor["next_index"] = (start + attempted) % len(remaining)
+            _atomic_json(cursor_path, cursor)
         # A verified title can be translated even when no abstract exists.
         preview = {"uid": "history:" + doi_key(paper.get("doi", "")),
                    "doi": doi_key(paper.get("doi", "")),
@@ -476,7 +482,8 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         except (ValueError, RuntimeError, OSError, KeyError) as e:
             failed += 1
             log.warning("Historical DOI translation deferred: %s: %s", paper["doi"][:60], str(e)[:120])
-    result = {"cards": len(articles), "full_english_cached": len(english_store["abstracts"]),
+    result = {"cards": len(articles), "target_dois": sorted(targets),
+              "full_english_cached": len(english_store["abstracts"]),
               "untranslated_visible_papers": len(remaining),
               "attempted": attempted, "translated": translated, "missing_source_abstract": missing,
               "failed_quality_or_api": failed, "dry_run": dry_run}
@@ -488,11 +495,20 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--max", type=int, default=3, help="Max historical papers to attempt in this run")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--dois", default="", help="Comma-separated exact DOIs to backfill only")
     ns = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
     if ns.max < 0 or ns.max > 15:
         parser.error("--max must be 0..15 to bound AI usage")
-    backfill(ROOT, ns.max, ns.dry_run)
+    requested = {doi_key(x) for x in ns.dois.split(",") if x.strip()}
+    if requested and (len(requested) > 15 or any("/" not in x for x in requested)):
+        parser.error("Supply up to 15 valid exact DOIs, comma separated")
+    result = backfill(ROOT, ns.max, ns.dry_run, target_dois=requested)
+    if requested:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        if result["cards"] < len(requested):
+            LOG.warning("%d requested DOI(s) not present in local reports",
+                        len(requested) - result["cards"])
     return 0
 
 
