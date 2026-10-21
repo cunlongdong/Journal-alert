@@ -198,6 +198,24 @@ class PublisherAbstractTests(unittest.TestCase):
 
 
 class TargetedBackfillTests(unittest.TestCase):
+    def test_targeted_doi_report_marks_missing_sources_and_absent_reports(self):
+        from tools import history_backfill
+        with tempfile.TemporaryDirectory() as root:
+            articles = [{"doi": "10.2000/no-abstract", "title": "Paper with no public abstract"}]
+            with patch.object(history_backfill, "collect", return_value=(articles, [], [])), \
+                 patch.object(history_backfill.ReliableDelivery, "_translate_title",
+                              return_value="原始摘要暂缺的论文"):
+                report = history_backfill.backfill(
+                    Path(root), max_papers=15,
+                    target_dois={"10.2000/no-abstract", "10.2000/not-in-report"},
+                    lookup=lambda doi: ("", ""))
+        self.assertFalse(report["target_complete"])
+        self.assertEqual(report["doi_outcomes"]["10.2000/no-abstract"]["status"],
+                         "source_unavailable")
+        self.assertEqual(report["doi_outcomes"]["10.2000/not-in-report"]["status"],
+                         "not_found_in_reports")
+        self.assertEqual(report["doi_outcomes"]["10.2000/no-abstract"]["chinese_title"], True)
+
     def test_only_specified_doi_is_recovered_without_push_or_cursor_changes(self):
         from tools import history_backfill
         papers = [

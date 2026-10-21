@@ -2,6 +2,16 @@
 
 Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集文献，按自旋电子学关键词筛选并去重，生成 Markdown 日报与 GitHub Pages 中英文卡片。**唯一通知渠道为 Bark**。
 
+## 发布状态与 Bark 发送安全保护（2026-10-21）
+
+2026-10-21 的 [日常工作流 #47](https://github.com/cunlongdong/Journal-alert/actions/runs/39617398380) **已经通过 Bark API 接受 33 篇论文通知，但在 git push 时因非快进冲突而失败**。这些发送确认无法从 GitHub 当前的历史队列准确恢复。为避免重复通知，仓库保留 `state/bark_recovery_required.json`，默认**暂停 Bark 论文实际发送**：
+
+- 普通日报仍可继续抓取、补译、生成卡片和部署 Pages；被暂停的论文保留为待发，Summary 会显示 `recovery_required`。
+- 手动 `flush_only` 会被阻止，避免误重发。请先对照 Bark 手机上的已收通知及其 DOI，再决定如何处理队列。
+- 确认处理方式后，才由仓库所有者有意识地删除 `state/bark_recovery_required.json` 并提交到 `main`。**不要在未核对收到的论文时简单删除保护文件**，否则可能收到重复论文。
+- 新版本在文献处理开始前检查当前分支版本；处理失败会上传 `recoverable-state-<run id>` 工件（包括 state、reports、docs），供人工恢复，避免以后发生类似无法重建确认状态的情况。日志和恢复工件需要谨慎保存。
+- 一旦查清此前的已接收 DOI，建议按 DOI 在通知队列中逐条补记 `bark_done` / `status: sent`，再解除保护。不要直接清库。
+
 ## 自动运行和推送
 
 - GitHub Actions 工作流 `journal-alert daily` 每天北京时间 07:30 运行，或在 Actions 页面手动运行。
@@ -37,7 +47,7 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 - `flush_only`：只尝试补发待处理的论文（同时恢复缺失英文摘要）；不再次抓取期刊。
 - `cards_only`：只重建文献网页；不发 Bark。
 - `titles_only`：只为已有卡片中尚无中文标题的论文调用翻译，并更新双语网页；**不会抓取新论文，也不会发送 Bark**。翻译额度不足时继续保留待补标题。
-- `abstracts_only`：仅按 `abstract_dois` 指定的 DOI 补齐真实英文摘要、尝试中文翻译并重建网页；**不发送 Bark，不触及去重库**。DOI 以英文逗号分隔（最多 15 个）。例如：
+- `abstracts_only`：仅按 `abstract_dois` 指定的 DOI 补齐真实英文摘要、尝试中文翻译并重建网页；**不发送 Bark，不触及去重库**。每篇 DOI 的来源、是否存在完整摘要、翻译状态及失败原因均写入 GitHub Actions Summary，仍未解决时显示 warning 而不会假装已补齐。DOI 以英文逗号分隔（最多 15 个）。例如：
   `10.1016/j.jmmm.2026.174589,10.1103/jlhg-yy14,10.1016/j.jmmm.2026.174575`。
 - `backfill_only`：历史论文补摘要和中文标题，最多处理 `history_max` 指定的论文（上限 15）；**不会向 Bark 补发旧通知**。
 - `rebuild_only`：不进入待发队列，但会将新论文标记为已见；谨慎使用。
