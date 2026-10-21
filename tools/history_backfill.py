@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from jalert.cards import collect
 from jalert.reliable_delivery import ReliableDelivery
-from jalert.enhanced_delivery import DEFAULTS
+from jalert.enhanced_delivery import DEFAULTS, _atomic_json
 from tools.enrich_bilingual_cards import cache_index, doi_key, title_key
 
 LOG = logging.getLogger("journal-alert-backfill")
@@ -102,12 +102,24 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         remaining.append(paper)
     attempted = translated = missing = failed = 0
     day = datetime.now(ZoneInfo("Asia/Shanghai")).date().isoformat()
-    for paper in remaining:
-        if attempted >= max_papers:
-            break
+    # A missing DOI must not monopolize the first slots on every daily run.
+    # The tiny cursor is committed with other state/ files by GitHub Actions.
+    cursor_path = root / "state" / "history_backfill_cursor.json"
+    cursor = {"version": 1, "next_index": 0}
+    if cursor_path.is_file():
+        cursor = json.loads(cursor_path.read_text(encoding="utf-8"))
+        if cursor.get("version") != 1 or not isinstance(cursor.get("next_index"), int):
+            raise ValueError("Malformed historical backfill cursor; refusing to replace")
+    start = cursor["next_index"] % len(remaining) if remaining else 0
+    ordered = remaining[start:] + remaining[:start]
+    for paper in ordered[:max_papers]:
         attempted += 1
         if dry_run:
             continue
+        # Persist progress *before* network I/O so an unavailable DOI cannot
+        # repeatedly starve the rest after a job error or timeout.
+        cursor["next_index"] = (start + attempted) % len(remaining)
+        _atomic_json(cursor_path, cursor)
         english, source = lookup(paper["doi"])
         if not english or len(english) > DEFAULTS["max_input_chars"]:
             missing += 1
