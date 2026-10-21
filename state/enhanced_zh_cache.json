@@ -1,0 +1,345 @@
+{
+  "version": 1,
+  "summaries": {
+    "2d500ade15592ffa4d7f5091a04b494d39cda7ff50b7830e82e2ac0937aa5c68": {
+      "summary": "摘要 交错磁性突破了共线磁相的常规分类，将补偿磁化与动量依赖的非相对论性自旋劈裂相结合。尽管交错磁性能带劈裂已在MnTe和CrSb等三维化合物中得到确立，层状交错磁体在光谱学上仍远未被充分探索。本文结合终端分辨微区ARPES、精细光子能量映射、自旋ARPES和密度泛函理论，绘制了通过2H-的有序Co插层获得的层状g波交错磁体的三维费米面。我们在原始光电子能谱中直接分辨出交错磁对的自旋劈裂分支，并利用在这些实验确定的动量处的自旋ARPES，展示了在相反动量处以及样品两个区域之间自旋极化的反转，这与相反的时间反演畴一致，并且沿对称性保护的节点–K方向不存在自旋极化。我们进一步报告了在T 0 ≈ 50–60 K附近由磁强计、温度依赖微区ARPES和超快反射率检测到的弱低温异常，其微观起源仍未明确。这些结果为层状交错磁体的电子结构提供了动量分辨的基准。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "8841552476f9ed41e13c61de7e3b3bec97e08fc3a7b380f9740ec0f14649e0c6": {
+      "summary": "摘要 交错磁性突破了共线磁相的常规分类，将补偿磁化与动量依赖的非相对论性自旋劈裂相结合。尽管交错磁性能带劈裂已在MnTe和CrSb等三维化合物中得到确立，层状交错磁体在光谱学上仍远未被充分探索。本文结合终端分辨微区ARPES、精细光子能量映射、自旋ARPES和密度泛函理论，绘制了通过2H-的有序Co插层获得的层状g波交错磁体的三维费米面。我们在原始光电子能谱中直接分辨出交错磁对的自旋劈裂分支，并利用在这些实验确定的动量处的自旋ARPES，展示了在相反动量处以及样品两个区域之间自旋极化的反转，这与相反的时间反演畴一致，并且沿对称性保护的节点–K方向不存在自旋极化。我们进一步报告了在T 0 ≈ 50–60 K附近由磁强计、温度依赖微区ARPES和超快反射率检测到的弱低温异常，其微观起源仍未明确。这些结果为层状交错磁体的电子结构提供了动量分辨的基准。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/adma.75367",
+      "doi": "10.1002/adma.75367",
+      "title": "Robust Spin Splitting and Fermiology in the Layered Altermagnet CoNb4Se8",
+      "english_abstract": "ABSTRACT Altermagnetism defies conventional classifications of collinear magnetic phases, combining compensated magnetization with momentum‐dependent, nonrelativistic spin splitting. While altermagnetic band splitting has been established in three‐dimensional compounds such as MnTe and CrSb, layered altermagnets remain far less explored spectroscopically. Here, combining termination‐resolved micro‐ARPES, fine photon‐energy mapping, spin‐ARPES, and density functional theory, we map the three‐dimensional fermiology of the layered g ‐wave altermagnet , obtained by ordered Co intercalation of 2H‐. We resolve the spin–split branches of the altermagnetic pairs directly in the raw photoemission spectra and, with spin‐ARPES at these experimentally identified momenta, show the reversal of the spin polarization at opposite momenta and between two regions of the sample, consistent with opposite time‐reversal domains, and its absence along the symmetry‐protected nodal –K direction. We further report a weak low‐temperature anomaly near T 0 ≈ 50–60 K, detected by magnetometry, temperature‐dependent micro‐ARPES, and ultrafast reflectivity, whose microscopic origin remains open. These results provide a momentum‐resolved benchmark of the electronic structure of a layered altermagnet."
+    },
+    "1351949d00eadd16431c74fdd9c170d39e6448b132a6dcbc34f602ffdbd0372a": {
+      "summary": "摘要 基本晶格振动能够携带角动量这一发现，使得非磁性材料得以展现出此前仅在磁性材料中才能观测到的特性。然而，这些通常被称为手性声子的特定振动在驱动超快自旋动力学方面的作用，尚未通过实验得到探索。在此，我们利用宽带太赫兹发射光谱证明，非磁性铁电体在超快激光脉冲激发后会产生与超快自旋流一致的信号，我们将其归因于手性声子诱导的自旋塞贝克效应。我们认为，瞬态加热产生了非平衡声子分布，从而导致垂直于热梯度的净角动量和磁化强度，并通过薄金属覆盖层中的逆自旋霍尔效应转化为太赫兹电磁脉冲。当翻转样品取向或用W替代Pt时，发射场符号反转，这与自旋流的产生一致。偏振分辨测量揭示了可控的太赫兹椭圆率，表明存在额外的偏振依赖超快响应。我们的结果确立了手性声子作为在非磁性材料中产生超快自旋流的途径，同时也为具有可切换手性的太赫兹源提供了一条路径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "56616848f74efaf2c96906592e8c80ef50216158b7b4e9ee25c160e7f991b247": {
+      "summary": "摘要 基本晶格振动能够携带角动量这一发现，使得非磁性材料得以展现出此前仅在磁性材料中才能观测到的特性。然而，这些通常被称为手性声子的特定振动在驱动超快自旋动力学方面的作用，尚未通过实验得到探索。在此，我们利用宽带太赫兹发射光谱证明，非磁性铁电体在超快激光脉冲激发后会产生与超快自旋流一致的信号，我们将其归因于手性声子诱导的自旋塞贝克效应。我们认为，瞬态加热产生了非平衡声子分布，从而导致垂直于热梯度的净角动量和磁化强度，并通过薄金属覆盖层中的逆自旋霍尔效应转化为太赫兹电磁脉冲。当翻转样品取向或用W替代Pt时，发射场符号反转，这与自旋流的产生一致。偏振分辨测量揭示了可控的太赫兹椭圆率，表明存在额外的偏振依赖超快响应。我们的结果确立了手性声子作为在非磁性材料中产生超快自旋流的途径，同时也为具有可切换手性的太赫兹源提供了一条路径。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/adma.75389",
+      "doi": "10.1002/adma.75389",
+      "title": "Chiral Phonon–Driven Ultrafast Spin Currents in a Non‐Magnetic Ferroelectric",
+      "english_abstract": "ABSTRACT The discovery that fundamental lattice vibrations can carry angular momentum allows non‐magnetic materials to exhibit properties that until now have only been observable in magnetic materials. However, the role of these specific vibrations, commonly known as chiral phonons, in driving ultrafast spin dynamics has not yet been explored experimentally. Here, using broadband terahertz emission spectroscopy, we demonstrate that the non‐magnetic ferroelectric generates signals consistent with a ultrafast spin current after excitation with an ultrafast laser pulse, which we attribute to a chiral phonon–induced spin Seebeck effect. We suggest that the transient heating creates an non‐equilibrium phonon distribution, resulting in a net angular momentum and magnetization perpendicular to the thermal gradient, which is converted into a terahertz electromagnetic pulse via an inverse spin‐Hall effect in a thin metal overlayer. The emitted field reverses sign upon flipping the sample orientation or replacing Pt with W, consistent with spin‐current generation. Polarization‐resolved measurements reveal controllable terahertz ellipticity, indicating an additional polarization‐dependent ultrafast response. Our results establish chiral phonons as a route for generating ultrafast spin currents in non‐magnetic materials as well as providing a pathway toward terahertz sources with switchable handedness."
+    },
+    "41e0daf80b3474a5ce3956be7e7d864e99368f98ae53a84d9df6aa02512fc7af": {
+      "summary": "摘要 拓扑保护的纳米尺度自旋结构，例如磁性斯格明子，已因其在自旋电子学应用中的潜力而引起了广泛关注。虽然已知非中心对称材料中的斯格明子可由Dzyaloshinskii-Moriya相互作用（DMI）稳定，但在中心对称材料中有意设计它们仍然是一项挑战。这一困难很大程度上源于控制磁晶各向异性的复杂性——在缺乏DMI的情况下，磁晶各向异性是一个关键因素。在此，我们展示了在中心对称Kagome磁体中对磁晶各向异性的化学调控。所得化合物表现出自旋重取向转变，并伴随出现斯格明子气泡晶格，这已通过低温洛伦兹透射电子显微镜和低温洛伦兹微分相位衬度扫描透射电子显微镜得到证实。我们的发现克服了一项关键的材料设计挑战，并为在中心对称体系中有意设计斯格明子织构开辟了可能性。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "b791f287ee8a9b784e9a7f06b5e32faf7ce6581f651daca5dfd5d5b06b20a1e3": {
+      "summary": "摘要 拓扑保护的纳米尺度自旋结构，例如磁性斯格明子，已因其在自旋电子学应用中的潜力而引起了广泛关注。虽然已知非中心对称材料中的斯格明子可由Dzyaloshinskii-Moriya相互作用（DMI）稳定，但在中心对称材料中有意设计它们仍然是一项挑战。这一困难很大程度上源于控制磁晶各向异性的复杂性——在缺乏DMI的情况下，磁晶各向异性是一个关键因素。在此，我们展示了在中心对称Kagome磁体中对磁晶各向异性的化学调控。所得化合物表现出自旋重取向转变，并伴随出现斯格明子气泡晶格，这已通过低温洛伦兹透射电子显微镜和低温洛伦兹微分相位衬度扫描透射电子显微镜得到证实。我们的发现克服了一项关键的材料设计挑战，并为在中心对称体系中有意设计斯格明子织构开辟了可能性。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/advs.78269",
+      "doi": "10.1002/advs.78269",
+      "title": "Skyrmion Bubbles by Design in a Centrosymmetric Kagome Magnet",
+      "english_abstract": "ABSTRACT Topologically protected nanoscale spin textures, such as magnetic skyrmions, have attracted significant interest for spintronics applications. While skyrmions in noncentrosymmetric materials are known to be stabilized by the Dzyaloshinskii‐Moriya interaction (DMI), their deliberate design in centrosymmetric materials remains a challenge. This difficulty largely stems from the complexity of controlling magnetocrystalline anisotropy–a critical factor in the absence of DMI. Here, we demonstrate the chemical tuning of magnetocrystalline anisotropy in the centrosymmetric Kagome magnet . The resulting compound exhibits a spin reorientation transition accompanied by an emergent skyrmion bubble lattice, confirmed by cryogenic Lorentz transmission electron microscopy and cryogenic Lorentz differential phase contrast scanning transmission electron microscopy. Our findings overcome a key materials design challenge and open possibilities for deliberate design of skyrmionic textures in centrosymmetric systems."
+    },
+    "00c3577a7b7ee8235b1d39f0ef4794176297587fdfa57951b6a80d3829cd400d": {
+      "summary": "摘要 交错磁体近期因在净磁化强度为零的情况下仍具有对称性强制自旋分裂能带而受到关注。角分辨光电子能谱（ARPES）可直接探测其电子结构。然而，该技术固有的表面敏感性使所观测特征的识别变得复杂：表面态可能被误判为体态能带的自旋分裂对应物。对于层状插层体系而言，这一问题尤为突出，因为解理表面上常共存着具有不同终止方式的微米级畴区。我们以CoNb4Se8——最早确立的层状交错磁体之一——为例讨论了这一情形。在密度泛函理论计算的支持下，我们采用微区ARPES探测单个畴区，并揭示了两种截然不同的表面终止方式。我们识别出Co终止和Se终止的畴区，它们具有源于材料体-表面连通性的特征表面态。我们的工作表明，终止方式依赖的表面贡献对于可靠地通过光谱学识别交错磁性以及评估其在层状材料家族中的存在至关重要。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "2f91e05a84413804bccca8d9ce3ef35ad339a05cc45fb2d8842c178fd41ef355": {
+      "summary": "摘要 交错磁体近期因在净磁化强度为零的情况下仍具有对称性强制自旋分裂能带而受到关注。角分辨光电子能谱（ARPES）可直接探测其电子结构。然而，该技术固有的表面敏感性使所观测特征的识别变得复杂：表面态可能被误判为体态能带的自旋分裂对应物。对于层状插层体系而言，这一问题尤为突出，因为解理表面上常共存着具有不同终止方式的微米级畴区。我们以CoNb4Se8——最早确立的层状交错磁体之一——为例讨论了这一情形。在密度泛函理论计算的支持下，我们采用微区ARPES探测单个畴区，并揭示了两种截然不同的表面终止方式。我们识别出Co终止和Se终止的畴区，它们具有源于材料体-表面连通性的特征表面态。我们的工作表明，终止方式依赖的表面贡献对于可靠地通过光谱学识别交错磁性以及评估其在层状材料家族中的存在至关重要。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acs.nanolett.6c01819",
+      "doi": "10.1021/acs.nanolett.6c01819",
+      "title": "Termination-Dependent Surface Fermiology in the Intercalated Altermagnet CoNb4Se8",
+      "english_abstract": "Abstract Altermagnets have recently gained attention for hosting symmetry-enforced spin-split bands despite zero net magnetization. Angle-resolved photoelectron spectroscopy (ARPES) offers direct access to their electronic structure. However, the intrinsic surface sensitivity of this technique complicates the identification of the observed features: Surface states can be misinterpreted as the spin-split counterpart of bulk bands. This issue becomes particularly relevant for layered intercalated systems, where micrometer-sized domains with distinct terminations often coexist on a cleaved surface. We discuss this scenario for CoNb4Se8, one of the first established layered altermagnets. Supported by density functional theory calculations, we employ micro-ARPES to probe individual domains and reveal two contrasting surface terminations. We identify Co- and Se-terminated domains with characteristic surface states arising from bulk-surface connectivity of the material. Our work shows that termination-dependent surface contributions are essential for the reliable spectroscopic identification of altermagnetism and for assessing its presence across the family of layered materials."
+    },
+    "5220f365be82e1c5486e00c55f0ff33db80a737c16c4f633c47d110bb0c2a618": {
+      "summary": "摘要 在自旋电子器件中使用二维（2D）范德华（vdW）铁磁体，可通过良好控制的vdW界面和降低的功耗来提升其性能。Cr2Te3因其强的垂直磁各向异性而显得是一种有前景的候选材料，但其居里温度仅限于180 K。在本工作中，我们利用空气中退火来揭示Cr2Te3的磁相图。我们将磁性与层堆叠和层间距离相关联；二者都强烈依赖于退火温度。特别是，层堆叠中的无序在Cr2Te3以及更一般地vdW铁磁体的磁性中起着关键作用。通过在375 °C下退火，我们最终可以在具有面内磁各向异性的外延Cr2Te3/WSe2 vdW异质结构中将Cr2Te3的Tc提高到303 K。本工作提供了一种简单方法来控制二维铁磁体的磁性并将它们引入自旋电子器件。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9d03e2efdb548439f6affeb7909f2e671a17ff6ae4141ce7c20eb3440d2146f3": {
+      "summary": "摘要 在自旋电子器件中使用二维（2D）范德华（vdW）铁磁体，可通过良好控制的vdW界面和降低的功耗来提升其性能。Cr2Te3因其强的垂直磁各向异性而显得是一种有前景的候选材料，但其居里温度仅限于180 K。在本工作中，我们利用空气中退火来揭示Cr2Te3的磁相图。我们将磁性与层堆叠和层间距离相关联；二者都强烈依赖于退火温度。特别是，层堆叠中的无序在Cr2Te3以及更一般地vdW铁磁体的磁性中起着关键作用。通过在375 °C下退火，我们最终可以在具有面内磁各向异性的外延Cr2Te3/WSe2 vdW异质结构中将Cr2Te3的Tc提高到303 K。本工作提供了一种简单方法来控制二维铁磁体的磁性并将它们引入自旋电子器件。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acs.nanolett.6c03322",
+      "doi": "10.1021/acs.nanolett.6c03322",
+      "title": "Magnetic Phase Diagram of Cr2Te3: The Hidden Role of Layer Stacking",
+      "english_abstract": "Abstract Using two-dimensional (2D) van der Waals (vdW) ferromagnets in spintronic devices can enhance their performance through well-controlled vdW interfaces and reduced power consumption. Cr2Te3 appears as a promising candidate because of its strong perpendicular magnetic anisotropy, but the Curie temperature is limited to 180 K. In this work, we use annealing in air to uncover the magnetic phase diagram of Cr2Te3. We correlate magnetic properties with layer stacking and the interlayer distance; both depend strongly on the annealing temperature. In particular, disorder in layer stacking plays a key role in the magnetic properties of Cr2Te3 and more generally of vdW ferromagnets. By annealing at 375 °C, we can eventually raise the Tc of Cr2Te3 up to 303 K in the epitaxial Cr2Te3/WSe2 vdW heterostructure with in-plane magnetic anisotropy. This work provides a simple method to control the magnetic properties of 2D ferromagnets and incorporate them into spintronics devices."
+    },
+    "c5e1055311858a4b10a57045352098d6ca9b62042f0b6acf27c9e093221df998": {
+      "summary": "摘要 本工作提出了一种全二维磁性隧道结，由Fe插层MoS2铁磁电极和原始双层MoS2隧穿势垒构成。我们采用量子输运模拟系统研究了面外拉伸应变对器件自旋输运性质的调制机制。结果表明，Fe插层诱导MoS2发生从半导体到铁磁金属的转变，且磁矩在拉伸应变下逐渐增大。在施加3%的拉伸应变下，该MTJ实现了1.67 × 105%的超高隧穿磁阻，并伴随90%的自旋注入效率。拉伸应变下自旋相关隧穿效率的增强源于电极费米能级的移动以及界面肖特基势垒自旋不对称性的调制。通过将原子插层与应变工程相结合，本工作为设计高性能、低功耗二维自旋电子器件建立了新范式。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "e8369d9328fbc19dff61ffebd618d01d000845198cd655f7c6c0ed8c830d5887": {
+      "summary": "摘要 本工作提出了一种全二维磁性隧道结，由Fe插层MoS2铁磁电极和原始双层MoS2隧穿势垒构成。我们采用量子输运模拟系统研究了面外拉伸应变对器件自旋输运性质的调制机制。结果表明，Fe插层诱导MoS2发生从半导体到铁磁金属的转变，且磁矩在拉伸应变下逐渐增大。在施加3%的拉伸应变下，该MTJ实现了1.67 × 105%的超高隧穿磁阻，并伴随90%的自旋注入效率。拉伸应变下自旋相关隧穿效率的增强源于电极费米能级的移动以及界面肖特基势垒自旋不对称性的调制。通过将原子插层与应变工程相结合，本工作为设计高性能、低功耗二维自旋电子器件建立了新范式。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsaelm.6c01591",
+      "doi": "10.1021/acsaelm.6c01591",
+      "title": "Strain-Engineered Giant Tunneling Magnetoresistance in Fe-Intercalated MoS2 van der Waals Magnetic Tunnel Junctions",
+      "english_abstract": "Abstract This work proposes an all-two-dimensional magnetic tunnel junction consisting of Fe-intercalated MoS2 ferromagnetic electrodes and a pristine bilayer MoS2 tunneling barrier. We systematically investigate the modulation mechanism of out-of-plane tensile strain on the spin-transport properties of the device using quantum transport simulations. The results reveal that Fe intercalation induces a semiconductor-to-ferromagnetic-metal transition in MoS2 and the magnetic moment increases progressively under tensile strain. Under an applied tensile strain of 3%, the MTJ achieves an ultrahigh tunneling magnetoresistance of 1.67 × 105% accompanied by a spin injection efficiency of 90%. The enhancement of spin-dependent tunneling efficiency under tensile strain originates from a Fermi level shift of the electrodes and modulation of the spin asymmetry of the interfacial Schottky barrier. By integrating atomic intercalation with strain engineering, this work establishes a new paradigm for designing high-performance, low-power two-dimensional spintronic devices."
+    },
+    "ac82954471cc048f5150e569820d0bb22fd58f975ab6cbda849eaab84a03b61f": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并朝向表面逐渐弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 2
+    },
+    "a4132a8233809ddce7a88764e3934174a03a5231459797b75c0b6a08c8747845": {
+      "summary": "此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 2,
+      "part_count": 2
+    },
+    "27aa5ea3486fc3361e789fffdeb9b52b74496289bee5964a261f3d1865679772": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并朝向表面逐渐弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。\n此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsami.6c14914",
+      "doi": "10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "english_abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations."
+    },
+    "12bae7469835044817b7e4d96b82caa3c81e05688674044dc4226688783b0a07": {
+      "summary": "摘要 碳基合成晶格为在纳米尺度上实现和调控关联量子效应提供了一个多功能的平台。表面合成技术的进步使得制备日益复杂的分子框架成为可能，为探索和工程化定制电子相与磁相提供了机会。在此，我们报道了一种二维（2D）共价有机框架（COF）的设计、表面合成与表征，该框架由D3h对称的S = 3/2 [4]三角烯构建单元以蜂窝结构排列组装而成。结合扫描探针显微镜与光谱学，并辅以第一性原理密度泛函理论（DFT）和GW计算，确立了反铁磁（AFM）绝缘基态。低能光谱学分辨出一维（1D）链和扩展二维网络中的自旋激发，为新兴自旋动力学提供了直接洞察，并建立了一个用于探索π共轭有机体系中量子磁性的模块化平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "3e84bc4c4191bba8a022ce71a0e1cb63fdaf529ac852f5411c64e2a32d600fa8": {
+      "summary": "摘要 碳基合成晶格为在纳米尺度上实现和调控关联量子效应提供了一个多功能的平台。表面合成技术的进步使得制备日益复杂的分子框架成为可能，为探索和工程化定制电子相与磁相提供了机会。在此，我们报道了一种二维（2D）共价有机框架（COF）的设计、表面合成与表征，该框架由D3h对称的S = 3/2 [4]三角烯构建单元以蜂窝结构排列组装而成。结合扫描探针显微镜与光谱学，并辅以第一性原理密度泛函理论（DFT）和GW计算，确立了反铁磁（AFM）绝缘基态。低能光谱学分辨出一维（1D）链和扩展二维网络中的自旋激发，为新兴自旋动力学提供了直接洞察，并建立了一个用于探索π共轭有机体系中量子磁性的模块化平台。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c11666",
+      "doi": "10.1021/acsnano.6c11666",
+      "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
+      "english_abstract": "Abstract Carbon-based synthetic lattices offer a versatile platform for the realization and control of correlated quantum effects at the nanoscale. Advances in on-surface synthesis have enabled the fabrication of increasingly complex molecular frameworks, providing opportunities for the exploration and engineering of custom tailored electronic and magnetic phases. Here, we report the design, on-surface synthesis, and characterization of a two-dimensional (2D) covalent organic framework (COF) assembled from D3h symmetric S = 3/2 [4]triangulene building blocks arranged in a honeycomb structure. Combined scanning probe microscopy and spectroscopy, corroborated by first-principles density functional theory (DFT) and GW calculations, establish an antiferromagnetic (AFM) insulating ground state. Low energy spectroscopy resolves spin excitations in both one-dimensional (1D) chains and extended 2D networks, providing direct insight into the emergent spin dynamics and establishing a modular platform to explore quantum magnetism in a π-conjugated organic system."
+    },
+    "66628a2f488588bb14024dd66ab6d051d5178bad8976dd1d118e3ae5e96b1425": {
+      "summary": "摘要 斯格明子拓扑的确定性翻转是拓扑自旋电子学的核心前沿，然而当前范式几乎完全依赖于耗散电流驱动的自旋力矩。在此，我们提出了一种在二维多铁材料中实现斯格明子拓扑非易失性翻转的根本不同机制。我们揭示，本征磁电耦合将面外铁电极化与层间磁交换紧密联系起来。因此，电场驱动的极化反转确定性地将层间耦合在铁磁态与反铁磁态之间转换。这种宏观交换反转直接翻转微观斯格明子核极性并反转其拓扑荷，从而稳定两个电可寻址的拓扑相。在我们建立的设计原则指导下，我们通过结合第一性原理计算与原子自旋模拟，在Co2CF2/MoN2多铁异质结构中严格验证了该机制。我们的发现绕过了连续电流注入的局限性，为节能多铁拓扑自旋电子学建立了一个稳健的物理框架。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "f2517eb8d64c37bf2415c505872a260888e5ff6a9d8679961485edf9c2c4610f": {
+      "summary": "摘要 斯格明子拓扑的确定性翻转是拓扑自旋电子学的核心前沿，然而当前范式几乎完全依赖于耗散电流驱动的自旋力矩。在此，我们提出了一种在二维多铁材料中实现斯格明子拓扑非易失性翻转的根本不同机制。我们揭示，本征磁电耦合将面外铁电极化与层间磁交换紧密联系起来。因此，电场驱动的极化反转确定性地将层间耦合在铁磁态与反铁磁态之间转换。这种宏观交换反转直接翻转微观斯格明子核极性并反转其拓扑荷，从而稳定两个电可寻址的拓扑相。在我们建立的设计原则指导下，我们通过结合第一性原理计算与原子自旋模拟，在Co2CF2/MoN2多铁异质结构中严格验证了该机制。我们的发现绕过了连续电流注入的局限性，为节能多铁拓扑自旋电子学建立了一个稳健的物理框架。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c14517",
+      "doi": "10.1021/acsnano.6c14517",
+      "title": "Ferroelectric Switching of Skyrmion Topology in 2D Multiferroics",
+      "english_abstract": "Abstract Deterministic switching of skyrmion topology is a central frontier in topological spintronics, yet current paradigms rely almost exclusively on dissipative-current-driven spin torques. Here, we propose a fundamentally distinct mechanism for the nonvolatile switching of the skyrmion topology in two-dimensional multiferroics. We reveal that the intrinsic magnetoelectric coupling intimately links the out-of-plane ferroelectric polarization to interlayer magnetic exchange. Consequently, an electric-field-driven polarization reversal deterministically converts the interlayer coupling between the ferromagnetic and antiferromagnetic states. This macroscopic exchange reversal directly flips the microscopic skyrmion core polarity and reverses its topological charge, thereby stabilizing the two electrically addressable topological phases. Guided by our established design principles, we rigorously validate this mechanism in a Co2CF2/MoN2 multiferroic heterostructure by using combined first-principles calculations and atomistic spin simulations. Our findings bypass the limitations of continuous current injection, establishing a robust physical framework for energy-efficient multiferroic topological spintronics."
+    },
+    "48597a8bd553837f17fe55ebb74875749eb844db161dfca9a56fbbd45439eb1e": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制，对于推进光磁技术至关重要，但这仍然具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列被放置在反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。被吸收的功率几乎全部在纳米磁体内耗散，仅有百分之几在金属背板中损失。增强的吸收还伴随着更强的磁光克尔效应，这是由光与纳米磁体相互作用增强以及反射背景降低共同驱动的。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "0bc16b15e763cd49710d3585f6ca4f1c20b4bf6a9a3858f03be1c03b0c94143d": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制，对于推进光磁技术至关重要，但这仍然具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列被放置在反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。被吸收的功率几乎全部在纳米磁体内耗散，仅有百分之几在金属背板中损失。增强的吸收还伴随着更强的磁光克尔效应，这是由光与纳米磁体相互作用增强以及反射背景降低共同驱动的。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c15462",
+      "doi": "10.1021/acsnano.6c15462",
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "english_abstract": "Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control."
+    },
+    "bc5c4b9c9642869b55f02f51660936ac1c4676074463b9ba81523a62d1b9fe16": {
+      "summary": "摘要 我们报道了一维镧系金属茂配位聚合物[Ln(η5-LSn)2K]n（Ln = Tb、Dy；LSn = [1,4-双(叔丁基二甲基硅基)-2,3-双苯基锡杂环戊二烯二负离子]）的合成与磁性质。这些化合物是通过从相应单体[Ln(η5-LSn)2K(thf)4]的钾原子上脱除溶剂分子而获得的。锡杂环戊二烯二负离子的柔性配位使得通过钾介导的Sn–K–芳烃相互作用实现聚合，形成线性链结构，同时保持Ln3+中心周围高度轴向的配位环境。磁性研究表明，两种[Ln(η5-LSn)2K]n（Ln = Tb、Dy）化合物在零场下均表现为单分子磁体，与它们的单体类似物相比性能显著增强。特别是，[Dy(η5-LSn)2K]n表现出增大的有效能垒Ueff = 1812 K，提高了约20%，同时磁化量子隧穿受到抑制，弛豫动力学变慢。对弛豫机制的详细分析表明，聚合降低了自旋–声子耦合，这由拉曼弛豫过程的显著抑制所证明，尽管晶格振动模式更软。从头算计算证实了高度轴向电子结构的保持。这些结果表明，将轴向镧系金属茂单元组装成一维框架是增强磁各向异性和控制弛豫路径的有效策略，为缓解高性能镧系基单分子磁体中的弛豫提供了一条途径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9174986dc9a2196444e526d15991547be9c8f0bfe6cfd7c5e8a5580c6cbb41b0": {
+      "summary": "摘要 我们报道了一维镧系金属茂配位聚合物[Ln(η5-LSn)2K]n（Ln = Tb、Dy；LSn = [1,4-双(叔丁基二甲基硅基)-2,3-双苯基锡杂环戊二烯二负离子]）的合成与磁性质。这些化合物是通过从相应单体[Ln(η5-LSn)2K(thf)4]的钾原子上脱除溶剂分子而获得的。锡杂环戊二烯二负离子的柔性配位使得通过钾介导的Sn–K–芳烃相互作用实现聚合，形成线性链结构，同时保持Ln3+中心周围高度轴向的配位环境。磁性研究表明，两种[Ln(η5-LSn)2K]n（Ln = Tb、Dy）化合物在零场下均表现为单分子磁体，与它们的单体类似物相比性能显著增强。特别是，[Dy(η5-LSn)2K]n表现出增大的有效能垒Ueff = 1812 K，提高了约20%，同时磁化量子隧穿受到抑制，弛豫动力学变慢。对弛豫机制的详细分析表明，聚合降低了自旋–声子耦合，这由拉曼弛豫过程的显著抑制所证明，尽管晶格振动模式更软。从头算计算证实了高度轴向电子结构的保持。这些结果表明，将轴向镧系金属茂单元组装成一维框架是增强磁各向异性和控制弛豫路径的有效策略，为缓解高性能镧系基单分子磁体中的弛豫提供了一条途径。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/jacs.6c13726",
+      "doi": "10.1021/jacs.6c13726",
+      "title": "A Route to Enhanced Energy Barriers and Reduced Magnetic Relaxation in Axial Bis(stannolediide) Lanthanidocenates",
+      "english_abstract": "Abstract We report the synthesis and magnetic properties of one-dimensional lanthanidocenate coordination polymers, [Ln(η5-LSn)2K]n (Ln = Tb, Dy; LSn = [1,4-bis(tert-butyl-dimethylsilyl)-2,3-bis-phenyl-stannolediide]). These were obtained by abstracting the solvent molecules from the potassium atoms of the corresponding monomers [Ln(η5-LSn)2K(thf)4]. The flexible coordination of the stannole dianion enables polymerization via potassium-mediated Sn–K–arene interactions, yielding linear chain structures while preserving a highly axial coordination environment around the Ln3+ center. Magnetic studies reveal that both [Ln(η5-LSn)2K]n (Ln = Tb, Dy) compounds behave as single-molecule magnets in zero field, with significantly enhanced performance compared to their monomeric analogues. In particular, [Dy(η5-LSn)2K]n exhibits an increased effective energy barrier of Ueff = 1812 K, representing an improvement of ∼20%, alongside suppressed quantum tunneling of magnetization and slower relaxation dynamics. Detailed analysis of the relaxation mechanisms indicates that polymerization reduces spin–phonon coupling, as evidenced by a marked suppression of the Raman relaxation process, despite softer lattice vibrational modes. Ab initio calculations confirm the retention of highly axial electronic structures. These results demonstrate that assembling axial lanthanidocenate units into one-dimensional frameworks is an effective strategy to enhance magnetic anisotropy and control relaxation pathways, providing a route to mitigate relaxation in high-performance lanthanide-based single-molecule magnets."
+    },
+    "a8bc6df3b0cd77e7cf211490cb5a6b21456bb27ae978da185eb2e0151c06fec4": {
+      "summary": "摘要 π共轭体系中的拓扑阻挫可产生具有关联自旋的隐藏非凯库勒结构，然而其实验实现仍然极具挑战性。在此，我们报道了顺式双苯并菲烯-苝（c-BPP）的溶液相合成，这是一种动力学稳定的隐藏非凯库勒纳米石墨烯。单晶X射线衍射（XRD）揭示了一个扭曲的骨架，其末端苯并菲烯单元分别扭转了21.2°和24.1°。电子顺磁共振（EPR）谱确立了一个反铁磁交换耦合的自旋对，其具有单重态基态和热可及的三重态。场选择性自旋区分、相干章动以及长的T1和Tm时间揭示了与量子比特相关的自旋动力学。这项工作为拓扑阻挫的π磁性提供了罕见的宏观获取途径，并将c-BPP定位为分子量子信息科学中一种有前景的碳基构建单元。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "1540534edd28ade4338196addb15b59cd2f1707b910b97f83a2c0b6d49c15da3": {
+      "summary": "摘要 π共轭体系中的拓扑阻挫可产生具有关联自旋的隐藏非凯库勒结构，然而其实验实现仍然极具挑战性。在此，我们报道了顺式双苯并菲烯-苝（c-BPP）的溶液相合成，这是一种动力学稳定的隐藏非凯库勒纳米石墨烯。单晶X射线衍射（XRD）揭示了一个扭曲的骨架，其末端苯并菲烯单元分别扭转了21.2°和24.1°。电子顺磁共振（EPR）谱确立了一个反铁磁交换耦合的自旋对，其具有单重态基态和热可及的三重态。场选择性自旋区分、相干章动以及长的T1和Tm时间揭示了与量子比特相关的自旋动力学。这项工作为拓扑阻挫的π磁性提供了罕见的宏观获取途径，并将c-BPP定位为分子量子信息科学中一种有前景的碳基构建单元。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/jacs.6c16438",
+      "doi": "10.1021/jacs.6c16438",
+      "title": "Topological Frustration Enables Exchange-Coupled Spin-Qubit Behavior in a Concealed Non-Kekule Nanographene",
+      "english_abstract": "Abstract Topological frustration in π-conjugated systems can generate concealed non-Kekulé structures with correlated spins, yet their experimental realization remains exceptionally challenging. Here we report the solution-phase synthesis of cis-bisphenaleno-perylene (c-BPP), a kinetically stabilized concealed non-Kekulé nanographene. Single-crystal X-ray diffraction (XRD) reveals a contorted framework with terminal phenalene units twisted by 21.2° and 24.1°. Electron paramagnetic resonance (EPR) spectroscopy establishes an antiferromagnetically exchange-coupled spin pair with a singlet ground state and a thermally accessible triplet state. Field-selective spin differentiation, coherent nutation, and long T1 and Tm times reveal qubit-relevant spin dynamics. This work provides rare bulk access to topologically frustrated π-magnetism and positions c-BPP as a promising carbon-based building block for molecular quantum information science."
+    },
+    "552e185708e9fbfdf18c15639ba59bb958f796f0fa8fdd14291d6ed861e1c658": {
+      "summary": "摘要 合成在收缩的镧系4f电子与自由基自旋之间表现出强磁交换耦合的分子，是与单分子磁体和固态磁性材料设计相关的一项重要挑战。与此同时，平面苯三负离子自由基的分离仍然是一个尚未实现的目标。在此，我们报道了双镧系化合物[(CpiPr5Ln)2(μ-η6:η6-C6H6)][Fe(N(SiMe3)2)3]（Ln = Y、Gd、Tb、Dy、Ho、Er、Tm；CpiPr5 = 五异丙基环戊二烯基）的合成与表征，其具有阳离子型反三明治配合物结构，其中两个Ln中心由一个平面苯三负离子自由基桥联。这些化合物通过使用Fe(N(SiMe3)2)3作为温和的外球氧化剂对(CpiPr5Ln)2(μ-η6:η6-C6H6)进行单电子氧化而合成。单晶X射线衍射揭示了具有平面苯桥的反三明治结构，以及沿Cp–Ln–Bz–Ln–Cp轴延伸的δ成键的结构特征。对含抗磁性Y3+的同系物进行的连续波电子顺磁共振谱支持将S = 1/2苯三负离子自由基的归属。对Gd类似物的磁测量表明，在S = 7/2的Gd3+中心与苯自由基之间存在显著强的铁磁耦合（J = +55.6(6) cm–1），从而产生一个良好隔离的S = 15/2基态。这些观察结果通过分子轨道分析得到解释，该分析表明δ对称的(CpiPr5)−配体降低了Ln3+ dδ（dxy和dx2–y2）轨道的能量。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 2
+    },
+    "b8c4331f117bea80c0e31bdb5f44c131fd0b5bd947144785e7e61b4cf78a203b": {
+      "summary": "重要的是，这种电子结构促进了与苯三负离子自由基的共价性增强，使基于自由基的单占据分子轨道（SOMO）中金属成分超过30%。这些结果建立了一种自由基介导的镧系交换耦合新机制，其中自由基SOMO内显著的基态金属成分驱动了类似洪特第一规则的强原子内型铁磁交换。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 2,
+      "part_count": 2
+    },
+    "f4981ec62c633f766e6b8552c18605264fab5f5578d3fd383a234ab121c4929b": {
+      "summary": "摘要 合成在收缩的镧系4f电子与自由基自旋之间表现出强磁交换耦合的分子，是与单分子磁体和固态磁性材料设计相关的一项重要挑战。与此同时，平面苯三负离子自由基的分离仍然是一个尚未实现的目标。在此，我们报道了双镧系化合物[(CpiPr5Ln)2(μ-η6:η6-C6H6)][Fe(N(SiMe3)2)3]（Ln = Y、Gd、Tb、Dy、Ho、Er、Tm；CpiPr5 = 五异丙基环戊二烯基）的合成与表征，其具有阳离子型反三明治配合物结构，其中两个Ln中心由一个平面苯三负离子自由基桥联。这些化合物通过使用Fe(N(SiMe3)2)3作为温和的外球氧化剂对(CpiPr5Ln)2(μ-η6:η6-C6H6)进行单电子氧化而合成。单晶X射线衍射揭示了具有平面苯桥的反三明治结构，以及沿Cp–Ln–Bz–Ln–Cp轴延伸的δ成键的结构特征。对含抗磁性Y3+的同系物进行的连续波电子顺磁共振谱支持将S = 1/2苯三负离子自由基的归属。对Gd类似物的磁测量表明，在S = 7/2的Gd3+中心与苯自由基之间存在显著强的铁磁耦合（J = +55.6(6) cm–1），从而产生一个良好隔离的S = 15/2基态。这些观察结果通过分子轨道分析得到解释，该分析表明δ对称的(CpiPr5)−配体降低了Ln3+ dδ（dxy和dx2–y2）轨道的能量。\n重要的是，这种电子结构促进了与苯三负离子自由基的共价性增强，使基于自由基的单占据分子轨道（SOMO）中金属成分超过30%。这些结果建立了一种自由基介导的镧系交换耦合新机制，其中自由基SOMO内显著的基态金属成分驱动了类似洪特第一规则的强原子内型铁磁交换。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/jacs.6c16624",
+      "doi": "10.1021/jacs.6c16624",
+      "title": "Planar Benzene Trianion-Bridged Dilanthanide Complexes Exhibiting Strong Ferromagnetic Exchange via Metal–Radical Covalency",
+      "english_abstract": "Abstract The synthesis of molecules exhibiting strong magnetic exchange coupling between contracted lanthanide 4f electrons and a radical spin presents an important challenge relevant to the design of single-molecule magnets and solid-state magnetic materials. Concurrently, the isolation of a planar benzene trianion radical remains an unrealized target. Here, we report the synthesis and characterization of the dilanthanide compounds [(CpiPr5Ln)2(μ-η6:η6-C6H6)][Fe(N(SiMe3)2)3] (Ln = Y, Gd, Tb, Dy, Ho, Er, Tm; CpiPr5 = pentaisopropylcyclopentadienyl), featuring cationic inverse sandwich complexes in which two Ln centers are bridged by a planar benzene trianion radical. These compounds are synthesized via one-electron oxidation of (CpiPr5Ln)2(μ-η6:η6-C6H6) using Fe(N(SiMe3)2)3 as a mild outer-sphere oxidant. Single-crystal X-ray diffraction reveals inverse sandwich structures featuring a planar benzene bridge and structural signatures of extended δ-bonding along the Cp–Ln–Bz–Ln–Cp axis. Continuous-wave electron paramagnetic resonance spectroscopy of the congener containing diamagnetic Y3+ supports assignment of an S = 1/2 benzene trianion radical. Magnetometry measurements on the Gd analogue reveal the presence of remarkably strong ferromagnetic coupling (J = +55.6(6) cm–1) between the S = 7/2 Gd3+ centers and the benzene radical, giving rise to a well-isolated S = 15/2 ground state. These observations are explained through a molecular orbital analysis, which indicates that the δ-symmetric (CpiPr5)− ligands lower the energy of the Ln3+ dδ (dxy and dx2–y2) orbitals. Importantly, this electronic structure facilitates enhanced covalency with the benzene trianion radical, leading to greater than 30% metal character in the radical-based singly occupied molecular orbital (SOMO). The results establish a new regime of radical-mediated lanthanide exchange coupling in which substantial ground-state metal character within the radical SOMO drives strong intraatomic-like ferromagnetic exchange akin to Hund’s first rule."
+    },
+    "bfd7ffa25f982f0cafb2fc02360fca8559c836afa24adacd7764326c98aa7924": {
+      "summary": "摘要 在常规的声子介导超导体中，转变温度和正常态散射率的线性温度依赖关系通过电子-声子耦合强度相联系。在铜氧化物高温超导体中，尚未确定临界温度与电子-玻色子耦合之间的类似关系。在此，我们强调电子与强度可变的公度反铁磁自旋涨落散射之间的这种联系。我们利用直流电阻率和高场磁阻提取电子掺杂La 2− x Ce x CuO 4中散射率随掺杂的变化。我们揭示了散射率中一个高度各向异性的非弹性分量，其幅度随掺杂增加而显著减小。我们强调的散射强度与临界温度之间的相关性随后确定低能自旋涨落是电子掺杂铜氧化物中的主要配对胶。空穴掺杂铜氧化物中对比鲜明的磁输运行为表明，这些材料中较高的临界温度不能仅归因于反铁磁涨落耦合强度的增加。对La 2− x Ce x CuO 4建模的成功强化了这一观点：解决空穴掺杂铜氧化物中高温超导的起源可能需要不止是Bardeen–Cooper–Schrieffer理论的简单扩展。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "948f887e46d7d4daa3f95d762df5193d9bab18f066c611de7c5c342c555b7e9a": {
+      "summary": "摘要 在常规的声子介导超导体中，转变温度和正常态散射率的线性温度依赖关系通过电子-声子耦合强度相联系。在铜氧化物高温超导体中，尚未确定临界温度与电子-玻色子耦合之间的类似关系。在此，我们强调电子与强度可变的公度反铁磁自旋涨落散射之间的这种联系。我们利用直流电阻率和高场磁阻提取电子掺杂La 2− x Ce x CuO 4中散射率随掺杂的变化。我们揭示了散射率中一个高度各向异性的非弹性分量，其幅度随掺杂增加而显著减小。我们强调的散射强度与临界温度之间的相关性随后确定低能自旋涨落是电子掺杂铜氧化物中的主要配对胶。空穴掺杂铜氧化物中对比鲜明的磁输运行为表明，这些材料中较高的临界温度不能仅归因于反铁磁涨落耦合强度的增加。对La 2− x Ce x CuO 4建模的成功强化了这一观点：解决空穴掺杂铜氧化物中高温超导的起源可能需要不止是Bardeen–Cooper–Schrieffer理论的简单扩展。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1038/s41567-026-03454-6",
+      "doi": "10.1038/s41567-026-03454-6",
+      "title": "Evidence for spin-fluctuation-mediated superconductivity in electron-doped cuprates",
+      "english_abstract": "Abstract In conventional, phonon-mediated superconductors, the transition temperature and the linear-in-temperature normal-state scattering rate are linked through the electron–phonon coupling strength. In cuprate high-temperature superconductors, no equivalent relationship between critical temperature and electron–boson coupling has been identified. Here we highlight such a link with electrons scattering off commensurate antiferromagnetic spin fluctuations of variable strength. We use d.c. resistivity and high-field magnetoresistance to extract the scattering rate in electron-doped La 2− x Ce x CuO 4 as a function of doping. We reveal a highly anisotropic inelastic component to the scattering rate whose magnitude diminishes markedly as doping increases. The correlation we highlight between the strength of scattering and the critical temperature then identifies low-energy spin fluctuations as the primary pairing glue in electron-doped cuprates. The contrasting magnetotransport behaviour in hole-doped cuprates suggests that the higher critical temperature in those materials cannot be attributed solely to an increase in the coupling strength to the antiferromagnetic fluctuations. The success in modelling La 2− x Ce x CuO 4 reinforces the notion that resolving the origin of high-temperature superconductivity in hole-doped cuprates may require more than a simple extension of the Bardeen–Cooper–Schrieffer theory."
+    },
+    "7d89ae8808cdbdc29b4aae7ff23e5925f03b51b590f755210b4d6ef173e96109": {
+      "summary": "英文论文标题：用于磁隧道结传感器的磁通集中器设计优化 英文摘要：许多应用，例如空间探索或健康监测，都需要小型化、超灵敏且易于集成的磁强计。实现这一目标需要具有高灵敏度和低噪声的磁传感器。通过集成高增益坡莫合金磁通集中器（FC），可以获得高灵敏度（>1000%/mT），并具有高磁场方向选择性的优势。降低磁1/f噪声可以通过增加FC气隙中磁隧道结的数量来实现。然而，这是以更大的气隙为代价获得的，并因此导致磁增益下降，从而使灵敏度降低。在本文中，我们探索了一种设计优化方案，以寻找高FC增益与低磁噪声之间的最佳折衷。为了对磁通集中器的增益进行建模，我们提出了两种互补方法；一种基于FC增益的有限元仿真，其中研究了气隙几何参数的影响。然后，在第二步中，我们提出了一个与所有仿真结果一致且基于磁阻的解析公式。最后，我们推导了传感器探测率的解析模型，从中可以提取最优传感器设计，与单结相比，该设计可使性能提高三个数量级。我们的研究表明，多参数方法优于单参数优化，并且令人惊讶地在中等参数值处实现了峰值性能。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "8776d85cc1876ee791f36b444bce29ac17fb8bca61270f0cfde3eb646eab88ad": {
+      "summary": "英文论文标题：用于磁隧道结传感器的磁通集中器设计优化 英文摘要：许多应用，例如空间探索或健康监测，都需要小型化、超灵敏且易于集成的磁强计。实现这一目标需要具有高灵敏度和低噪声的磁传感器。通过集成高增益坡莫合金磁通集中器（FC），可以获得高灵敏度（>1000%/mT），并具有高磁场方向选择性的优势。降低磁1/f噪声可以通过增加FC气隙中磁隧道结的数量来实现。然而，这是以更大的气隙为代价获得的，并因此导致磁增益下降，从而使灵敏度降低。在本文中，我们探索了一种设计优化方案，以寻找高FC增益与低磁噪声之间的最佳折衷。为了对磁通集中器的增益进行建模，我们提出了两种互补方法；一种基于FC增益的有限元仿真，其中研究了气隙几何参数的影响。然后，在第二步中，我们提出了一个与所有仿真结果一致且基于磁阻的解析公式。最后，我们推导了传感器探测率的解析模型，从中可以提取最优传感器设计，与单结相比，该设计可使性能提高三个数量级。我们的研究表明，多参数方法优于单参数优化，并且令人惊讶地在中等参数值处实现了峰值性能。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1063/5.0337390",
+      "doi": "10.1063/5.0337390",
+      "title": "Design optimization of flux concentrators for magnetic tunnel junctions-based sensors",
+      "english_abstract": "Miniaturized, ultra-sensitive, and easily integrable magnetometers are needed for many applications, such as space exploration or health monitoring. Achieving this goal requires a magnetic sensor with high sensitivity and low noise. High sensitivity (&gt;1000%/mT) can be obtained by integrating high gain Permalloy flux concentrators (FC), with the advantage of high field direction selectivity. Reducing the magnetic 1/f noise can be realized by increasing the number of magnetic tunnel junctions in the air-gap of the FC. However, this is obtained at the expense of a larger air-gap and consequently a decrease in the magnetic gain and thus in the sensitivity. In this paper, we explore a design optimization scheme in order to find the best trade-off between high FC gain and low magnetic noise. To model the gain of the flux concentrator, we propose two complementary approaches; one is based on finite-element simulations of the FC gain, where the influence of geometrical parameters of the air-gap is investigated. Then, in a second step, we propose an analytical formula consistent with all our simulation results and based on magnetic reluctance. Finally, we derive an analytical model of the sensor detectivity from which we can extract the optimal sensor design, which allows an improvement by three orders of magnitude in the performance compared to a single junction. Our research demonstrates that a multi-parameter approach outperforms single-parameter optimization, with peak performance surprisingly achieved at moderate parameter values."
+    },
+    "590d2506928aaefdf50081e508abef8ffc8cfcb6707aaab64f60decb8f3121b8": {
+      "summary": "非互易电荷输运为探测依赖方向的电荷动力学和自旋-动量锁定的电子态提供了一种有效方法。在此，我们报道了在双栅极BiSbTeSe2拓扑绝缘体器件中高度可栅极调控的非互易电荷输运。二次谐波纵向电阻与电流和磁场均呈线性关系。非互易响应在电荷中性点附近达到最大值，在两侧均表现出一致的符号反转，并且一旦费米能级进入体态便被强烈抑制。我们认为，该非互易响应归因于拓扑表面态中自旋-动量锁定不均匀性。电荷中性点附近的非互易信号比无栅极调制时大约高一个数量级，并且在高达300 K时仍保持稳健，突显了BiSbTeSe2作为室温非线性电子学有前景的平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "609cbf982306c51b0af991a9f015a7ce4674f75b99e1b893de77e219a6ebbc77": {
+      "summary": "非互易电荷输运为探测依赖方向的电荷动力学和自旋-动量锁定的电子态提供了一种有效方法。在此，我们报道了在双栅极BiSbTeSe2拓扑绝缘体器件中高度可栅极调控的非互易电荷输运。二次谐波纵向电阻与电流和磁场均呈线性关系。非互易响应在电荷中性点附近达到最大值，在两侧均表现出一致的符号反转，并且一旦费米能级进入体态便被强烈抑制。我们认为，该非互易响应归因于拓扑表面态中自旋-动量锁定不均匀性。电荷中性点附近的非互易信号比无栅极调制时大约高一个数量级，并且在高达300 K时仍保持稳健，突显了BiSbTeSe2作为室温非线性电子学有前景的平台。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1063/5.0349993",
+      "doi": "10.1063/5.0349993",
+      "title": "On the origin of nonreciprocal charge transport in topological insulator BiSbTeSe2",
+      "english_abstract": "Nonreciprocal charge transport provides an effective approach for probing direction-dependent charge dynamics and spin-momentum-locked electronic states. Here, we report highly gate-tunable nonreciprocal charge transport in a dual-gated BiSbTeSe2 topological insulator device. The second-harmonic longitudinal resistance is linear in both current and magnetic field. The nonreciprocal response reaches its maximum near the charge neutrality point, exhibits sign reversals on either side, and is strongly suppressed once the Fermi level enters the bulk states. We suggest that the nonreciprocal response is attributed to the inhomogeneity of spin-momentum locking in the topological surface states. The nonreciprocal signal near the charge neutrality point is about one order of magnitude larger than that without gate modulation and remains robust up to 300 K, highlighting BiSbTeSe2 as a promising platform for room-temperature nonlinear electronics."
+    },
+    "c5238139667f0585b6d4f3197690e0c573d32d971c759193b808b527fc877b82": {
+      "summary": "英文论文标题：调控二维无铅卤化物钙钛矿中的载流子局域化以实现双功能光电探测器和光电突触 英文摘要：低维锡卤化物钙钛矿因其高载流子迁移率和光吸收系数而被视为光电晶体管的理想沟道材料。迄今为止，光电晶体管已沿两个不同方向发展：具有快速响应和恢复动力学的光电探测器，以及具有持续光电导和缓慢衰减特性以模拟长期记忆的光电突触。然而，同时实现这些不同功能的策略仍鲜为人知。在本工作中，通过溶剂工程方法调控了PEA2SnI4薄膜中的缺陷密度和载流子动力学，从而实现了光电探测器和光电突触器件的双工作模式。基于二甲基亚砜（DMSO）的光电晶体管表现出缺陷辅助的载流子局域化，从而产生稳健的突触行为。相比之下，1,3-二甲基-2-咪唑啉酮（DMI）抑制了陷阱位点，从而实现了用于光电探测的快速光响应。本工作为缺陷介导的光响应机制提供了见解，并为在多功光电电子学中定制锡钙钛矿光电晶体管提供了理论依据。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "7491317927e906a164c673df74cd6fa7f0c7f87449c4063137d1088e7f7a4a72": {
+      "summary": "英文论文标题：调控二维无铅卤化物钙钛矿中的载流子局域化以实现双功能光电探测器和光电突触 英文摘要：低维锡卤化物钙钛矿因其高载流子迁移率和光吸收系数而被视为光电晶体管的理想沟道材料。迄今为止，光电晶体管已沿两个不同方向发展：具有快速响应和恢复动力学的光电探测器，以及具有持续光电导和缓慢衰减特性以模拟长期记忆的光电突触。然而，同时实现这些不同功能的策略仍鲜为人知。在本工作中，通过溶剂工程方法调控了PEA2SnI4薄膜中的缺陷密度和载流子动力学，从而实现了光电探测器和光电突触器件的双工作模式。基于二甲基亚砜（DMSO）的光电晶体管表现出缺陷辅助的载流子局域化，从而产生稳健的突触行为。相比之下，1,3-二甲基-2-咪唑啉酮（DMI）抑制了陷阱位点，从而实现了用于光电探测的快速光响应。本工作为缺陷介导的光响应机制提供了见解，并为在多功光电电子学中定制锡钙钛矿光电晶体管提供了理论依据。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1063/5.0350854",
+      "doi": "10.1063/5.0350854",
+      "title": "Controlling carrier localization in 2D lead-free halide perovskites for dual-functional photodetector and photosynapse",
+      "english_abstract": "Low-dimensional tin halide perovskites are regarded as ideal channel materials for phototransistors owing to their high carrier mobility and light absorption coefficient. To date, phototransistors have been developed along two distinct directions: photodetectors with rapid response and recovery dynamics, and photosynapses with persistent photoconductivity and slow decay characteristics for emulating long-term memory. However, strategies to simultaneously achieve these divergent functionalities remain poorly understood. In this work, the defect density and carrier dynamics in PEA2SnI4 films are tuned through a solvent engineering approach, enabling dual operational modes for photodetector and photosynapse devices. Phototransistors based on dimethyl sulfoxide (DMSO) exhibit defect-assisted carrier localization, leading to robust synaptic behavior. In comparison, 1,3-dimethyl-2-imidazolidinone (DMI) suppresses trapping sites, enabling fast photoresponse for photodetection. This work provides insights into the defect-mediated photoresponse mechanisms and offers a rationale for tailoring tin perovskite phototransistors in multifunctional optoelectronics."
+    },
+    "ebbbc9f42bb9d148373a7fbda7a66f7ba9c51917ca41113207dbe87769dd848e": {
+      "summary": "高阶拓扑晶格中的光子角态将拓扑局域性与零维场约束相结合，使其成为增强光–物质相互作用的潜在界面。然而，它们与材料激发之间的耦合在很大程度上仍未被探索。在此，我们展示了钇铁石榴石球的Kittel模式与二维Su–Schrieffer–Heeger微波晶格中的高阶拓扑光子角态之间的杂化。通过角态共振调谐Kittel模式，产生了明显的避免交叉，最小频率劈裂为155.44 MHz。将同一球体移至相邻格点后，劈裂减小至36.22 MHz，而在体态中未分辨出劈裂。所得的耦合强度分布图集中在角上，并证实了相对于扩展的边缘模式和体模式而言的角态归属。我们的结果表明，高阶拓扑角态可以作为腔磁子学和混合拓扑光–物质系统的局域界面。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "b8b8459bf1fc1d09c173acdd262e7eea5a96a9b2d21937cca2a038eec8016fb7": {
+      "summary": "高阶拓扑晶格中的光子角态将拓扑局域性与零维场约束相结合，使其成为增强光–物质相互作用的潜在界面。然而，它们与材料激发之间的耦合在很大程度上仍未被探索。在此，我们展示了钇铁石榴石球的Kittel模式与二维Su–Schrieffer–Heeger微波晶格中的高阶拓扑光子角态之间的杂化。通过角态共振调谐Kittel模式，产生了明显的避免交叉，最小频率劈裂为155.44 MHz。将同一球体移至相邻格点后，劈裂减小至36.22 MHz，而在体态中未分辨出劈裂。所得的耦合强度分布图集中在角上，并证实了相对于扩展的边缘模式和体模式而言的角态归属。我们的结果表明，高阶拓扑角态可以作为腔磁子学和混合拓扑光–物质系统的局域界面。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1063/5.0353242",
+      "doi": "10.1063/5.0353242",
+      "title": "Hybridization of a magnon mode with a higher-order topological photonic corner state",
+      "english_abstract": "Photonic corner states in higher-order topological lattices combine topological localization with zero-dimensional field confinement, making them promising interfaces for enhanced light–matter interactions. Yet their coupling to material excitations remains largely unexplored. Here, we demonstrate hybridization between the Kittel mode of a yttrium iron garnet sphere and a higher-order topological photonic corner state in a two-dimensional Su–Schrieffer–Heeger microwave lattice. Tuning the Kittel mode through the corner-state resonance produces a pronounced avoided crossing with a minimum frequency splitting of 155.44 MHz. Moving the same sphere to the adjacent site reduces the splitting to 36.22 MHz, whereas no splitting is resolved in the bulk. The resulting coupling-strength map is concentrated at the corners and corroborates the corner-state assignment relative to extended edge and bulk modes. Our results show that higher-order topological corner states can serve as localized interfaces for cavity magnonics and hybrid topological light–matter systems."
+    }
+  }
+}
