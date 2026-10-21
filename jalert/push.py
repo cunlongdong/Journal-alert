@@ -85,11 +85,9 @@ def push_bark(server: str, key: str, title: str, body: str, sound: str = "bird")
         return _result("bark", False, f"HTTP {status}: {text[:160]}")
     try:
         payload = json.loads(text)
-        ok = payload.get("code") in (200, "200")
+        ok = isinstance(payload, dict) and payload.get("code") in (200, "200")
     except json.JSONDecodeError:
-        ok = True
-    return _result("bark", bool(ok), text[:160])
-
+        ok = False
 
 def dispatch(cfg: dict, title: str, body: str, log) -> list[dict]:
     """Send the digest to every enabled-and-configured channel.
