@@ -30,6 +30,12 @@
       "source": "OpenAlex",
       "title": "Spin-dependent electron transfer through a ring-wire coupled junction: role of in-plane electric field",
       "retrieved_at": "2026-10-21"
+    },
+    "10.1016/j.jmmm.2026.174589": {
+      "abstract": "Magnetic topological insulators (TIs) provide a highly tunable platform for engineering quantum states that emerge from the interplay between topology and magnetism. In this review article, we summarize experimental progress over the past decade in designing magnetic TI multilayers by molecular beam epitaxy (MBE). By treating magnetically doped and undoped TI layers as topological Legos, we discuss how layer thickness, magnetic doping, heterostructure architecture, and stacking sequence can be used to control magnetic exchange gaps, interlayer coupling, and the Chern number C with atomic-layer precision. We first briefly review the realization of the C = 1 quantum anomalous Hall (QAH) effect in uniformly Cr-doped (Bi,Sb)2Te3 films in 2013 and uniformly V-doped (Bi,Sb)2Te3 films in 2015. We then discuss how Cr-doped and undoped (Bi,Sb)2Te3 layers can be combined to realize the C = 1 QAH effect in magnetically modulation-doped trilayers, including its extension into the three-dimensional (3D) regime. Next, we review the development of high-C QAH states, engineered plateau phase transitions, mesoscopic QAH devices, and electrical switching of chiral edge-current chirality. Finally, we discuss the realizations of axion insulator and C = 1/2 parity anomaly states in asymmetric magnetic TI trilayers. These advances establish magnetic TI multilayers as a versatile materials platform for creating new designer quantum states, including synthetic Weyl semimetal and QAH metal phases, and for probing the topological magnetoelectric effect in thick axion insulators and 3D QAH insulators.",
+      "source": "Semantic Scholar",
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "retrieved_at": "2026-10-21"
     }
   }
 }
