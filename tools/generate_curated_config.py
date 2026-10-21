@@ -105,8 +105,9 @@ KEYWORDS = [
 def modified_config(original: dict) -> dict:
     import copy
     cfg = copy.deepcopy(original)
-    cfg['keywords'] = KEYWORDS
-    cfg['window']['max_items_per_journal'] = 200  # bounded, 2 pages of 100 per source
+    # Do not overwrite user-curated research groups when this optional tool runs.
+    cfg['keywords'] = copy.deepcopy(original.get('keywords') or KEYWORDS)
+    cfg['window']['max_items_per_journal'] = max(200, int(cfg['window'].get('max_items_per_journal', 100)))
     return cfg
 
 

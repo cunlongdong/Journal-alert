@@ -92,7 +92,11 @@
         "orbital torque",
         "field-free switching",
         "current-induced switching",
-        "spin-torque efficiency"
+        "spin-torque efficiency",
+        "orbital-to-spin conversion",
+        "charge-orbital-spin conversion",
+        "spin source engineering",
+        "field-free spin-orbit torque switching"
       ]
     },
     {
@@ -108,7 +112,12 @@
         "MRAM",
         "spintronic memory",
         "spin torque oscillator",
-        "spin-torque oscillator"
+        "spin-torque oscillator",
+        "spin-torque memristor",
+        "spintronic memristor",
+        "wafer-scale SOT-MRAM",
+        "SOT-MRAM write error rate",
+        "SOT-MRAM back-hopping"
       ]
     },
     {
@@ -126,7 +135,13 @@
         "spin valve",
         "spin filtering",
         "spin-filter tunnel junction",
-        "perpendicular magnetic tunnel junction"
+        "perpendicular magnetic tunnel junction",
+        "CoFeB/MgO",
+        "double-barrier magnetic tunnel junction",
+        "quantum-well resonant tunneling",
+        "resonant tunneling magnetoresistance",
+        "spin-dependent tunneling",
+        "magnetic tunnel junction reliability"
       ]
     },
     {
@@ -219,7 +234,76 @@
         "p-bit",
         "stochastic magnetic tunnel junction",
         "magnetic sensor",
-        "magnetic sensing"
+        "magnetic sensing",
+        "SOT-MTJ stochastic sampler",
+        "spintronic true random number generator",
+        "magnetic-tunnel-junction random-number generator",
+        "magnetic in-memory computing"
+      ]
+    },
+    {
+      "label": "磁振子量子器件与自旋波逻辑",
+      "weight": 4,
+      "terms": [
+        "voltage-controlled magnon transistor",
+        "magnon transistor",
+        "magnon valve",
+        "magnon junction",
+        "magnonic crystal",
+        "antiferromagnetic magnonic crystal",
+        "coherent magnon transistor",
+        "magnon-based logic",
+        "spin-wave logic",
+        "spin-wave device",
+        "coherent harmonic generation of magnons"
+      ]
+    },
+    {
+      "label": "轨道力矩磁存储与晶圆级集成",
+      "weight": 4,
+      "terms": [
+        "orbital torque magnetic memory",
+        "orbital-torque MRAM",
+        "orbital-torque magnetic random access memory",
+        "300-mm SOT-MRAM",
+        "300 mm SOT-MRAM",
+        "300-mm wafer SOT-MTJ",
+        "300 mm wafer SOT-MTJ",
+        "wafer-scale magnetic tunnel junction",
+        "retention-tunable MRAM",
+        "SOT-MTJ write reliability",
+        "magnetic immunity of perpendicular STT-MRAM",
+        "orbital Hall current"
+      ]
+    },
+    {
+      "label": "概率计算与自旋忆阻器",
+      "weight": 4,
+      "terms": [
+        "spin-orbit torque restricted Boltzmann machine",
+        "magnetic tunnel junction Boltzmann machine",
+        "SOT-MTJ-sampled RBM",
+        "spintronic probabilistic computing",
+        "magnetic random number generator",
+        "stochastic spintronic computing",
+        "spintronic in-memory computing",
+        "spin-torque memristor for neuromorphic computing",
+        "MTJ-based random number generator",
+        "probabilistic bit based on magnetic tunnel junction"
+      ]
+    },
+    {
+      "label": "二维磁体与交替磁隧穿器件",
+      "weight": 4,
+      "terms": [
+        "spin-filter magnetic tunnel junction",
+        "CrSBr magnetic tunnel junction",
+        "van der Waals magnetic tunnel junction",
+        "altermagnetic tunnel junction",
+        "altermagnetic tunnel magnetoresistance",
+        "altermagnetic spin filter",
+        "Néel order electrical switching",
+        "antiferromagnetic tunnel magnetoresistance"
       ]
     }
   ],
