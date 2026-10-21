@@ -69,7 +69,7 @@ jobs:
       JALERT_BARK_ENABLED: ${{ vars.JALERT_BARK_ENABLED || 'false' }}
       JALERT_BARK_SERVER: ${{ vars.JALERT_BARK_SERVER || 'https://api.day.app' }}
       JALERT_BARK_BODY_BYTES: ${{ vars.JALERT_BARK_BODY_BYTES || '2400' }}
-      JALERT_BARK_MAX_MESSAGES_DAY: ${{ vars.JALERT_BARK_MAX_MESSAGES_DAY || '12' }}
+      JALERT_BARK_MAX_MESSAGES_RUN: ${{ vars.JALERT_BARK_MAX_MESSAGES_RUN || '5000' }}
       CUSTOM_AI_API_KEY: ${{ secrets.CUSTOM_AI_API_KEY }}
       CUSTOM_AI_BASE_URL: ${{ vars.CUSTOM_AI_BASE_URL }}
       CUSTOM_AI_MODEL: ${{ vars.CUSTOM_AI_MODEL }}
@@ -208,7 +208,7 @@ jobs:
         if: always()
         shell: bash
         run: |
-          echo '### 微信 + Bark 同文推送 / 积压状态' >> "$GITHUB_STEP_SUMMARY"
+          echo '### Bark 逐篇推送 + 微信分页 / 积压状态' >> "$GITHUB_STEP_SUMMARY"
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
           python tools/reliable_push.py --status >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"

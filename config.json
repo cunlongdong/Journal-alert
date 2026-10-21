@@ -6,7 +6,7 @@
   "window": {
     "days": 3,
     "max_catchup_days": 30,
-    "max_items_per_journal": 200,
+    "max_items_per_journal": 1000,
     "workers": 5,
     "rss_timeout_seconds": 25,
     "api_timeout_seconds": 45,

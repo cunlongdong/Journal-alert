@@ -1,4 +1,4 @@
-"""Reliable synchronized WeChat + Bark delivery for journal-alert.
+"""Reliable independent per-article Bark and paginated WeChat delivery.
 
 Independent from the original seen.sqlite schema. Uses the original Delivery
 translator and persistent cache, and stores immutable pages and channel-specific
@@ -142,7 +142,7 @@ class ReliableDelivery(Delivery):
         return "".join(chars)
 
     def _make_page(self, channels: tuple[str, ...], day: str) -> dict | None:
-        candidates = sorted((x for x in self.queue["items"].values() if x.get("status") == "pending"), key=lambda x: (x.get("enqueued_at", ""), -int(x.get("score", 0)), x["uid"]))
+        candidates = sorted((x for x in self.queue["items"].values() if x.get("status") == "pending" and not x.get("wechat_done")), key=lambda x: (x.get("enqueued_at", ""), -int(x.get("score", 0)), x["uid"]))
         if not candidates:
             return None
         seq = self.dual["next_id"]
@@ -250,7 +250,7 @@ class ReliableDelivery(Delivery):
         day = _now_date()
         active = self.dual.get("active")
         bark_on = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
-        return {"pending_papers": self.pending_count(), "active_message": active["id"] if active else None,
+        return {"pending_papers": self.pending_count(), "bark_papers_acknowledged": sum(bool(x.get("bark_done")) for x in self.queue["items"].values()), "active_message": active["id"] if active else None,
                 "channel_acks": active["acked"] if active else {},
                 "channels_configured": {
                     "wechat": bool(os.getenv("JALERT_SERVERCHAN_SENDKEY", "").strip()),
@@ -262,14 +262,113 @@ class ReliableDelivery(Delivery):
                 "recent_errors": [{"uid": x["uid"], "error": x.get("last_ai_error")}
                                   for x in self.queue["items"].values() if x.get("status") == "pending" and x.get("last_ai_error")][:8]}
 
-    def flush_both(self, *, send_func=None, max_pages: int = 10) -> dict:
+
+    def _bark_article(self, item: dict, day: str) -> tuple[str, str]:
+        """Exactly one Bark notification for this paper, with an explicit overflow link.
+
+        Do not split a single paper across notifications. Apple APNs limits
+        payloads to 4096 bytes including metadata, so excess text must be
+        accessible via the report site / DOI, never silently discarded.
+        """
+        title = "论文｜" + str(item.get("title") or "未命名论文")[:85]
+        link = self._url(item)
+        english = str(item.get("abstract") or "").strip()
+        try:
+            chinese = self._get_translation(item, day) if english else ""
+        except (ValueError, RuntimeError, OSError) as exc:
+            item["last_ai_error"] = str(exc)[:190]
+            item["last_ai_error_at"] = day
+            chinese = ""
+        language = "中文摘要（全文直译）" if chinese else "英文原文摘要（中文待补译）"
+        abstract = chinese or english or "数据源未提供可核实的论文摘要。"
+        prefix = (f"期刊：{item.get('journal', '')}\n"
+                  f"标题：{item.get('title', '')}\n"
+                  f"{language}：\n")
+        footer = f"\n论文链接：{link}\n双语日报：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}"
+        body = prefix + abstract + footer
+        limit = self._cap(("bark",))
+        if _utf8size(body) > limit:
+            note = "\n【摘要超出系统通知上限；请打开双语日报或原文阅读完整内容】"
+            remaining = limit - _utf8size(prefix + note + footer)
+            if remaining < 0:
+                # Very long titles still get one bounded, traceable message.
+                prefix = "标题：" + self._slice_bytes(str(item.get("title") or ""), 160) + "\n"
+                remaining = limit - _utf8size(prefix + note + footer)
+            if remaining <= 0:
+                raise ValueError("Bark notification capacity too small for article links")
+            body = prefix + self._slice_bytes(abstract, remaining) + note + footer
+        return title, body
+
+    def _flush_separate(self, *, max_pages: int = 10) -> dict:
+        """Independent per-article Bark delivery and quota-aware WeChat pages.
+
+        Bark is not blocked by WeChat daily quota, AI translation failures, or
+        other papers. Each acknowledged Bark paper is persisted separately.
+        """
+        channels = self._channels()
+        day = _now_date()
+        bark_sent = 0
+        bark_failed = 0
+
+        # Bark first: a full WeChat quota never delays the individual notices.
+        if "bark" in channels:
+            max_per_run = max(1, int(os.getenv("JALERT_BARK_MAX_MESSAGES_RUN", "5000")))
+            for item in sorted(self.queue["items"].values(),
+                               key=lambda x: (x.get("enqueued_at", ""), x.get("uid", ""))):
+                if item.get("status") != "pending" or item.get("bark_done"):
+                    continue
+                if bark_sent + bark_failed >= max_per_run:
+                    self.log.error("Bark safety cap reached: %d; remaining papers stay queued", max_per_run)
+                    break
+                try:
+                    title, body = self._bark_article(item, day)
+                except (ValueError, RuntimeError, OSError) as exc:
+                    self.log.warning("Bark article formatting failed for %s: %s", item.get("uid"), type(exc).__name__)
+                    bark_failed += 1
+                    self._persist()
+                    continue
+                self._charge("bark", day)
+                try:
+                    accepted = self._bark(title, body)
+                except (OSError, RuntimeError, ValueError, urllib.error.URLError,
+                        urllib.error.HTTPError, KeyError) as exc:
+                    self.log.warning("Bark article failed for %s: %s", item.get("uid"), type(exc).__name__)
+                    accepted = False
+                if accepted:
+                    item["bark_done"] = True
+                    if "wechat" not in channels or item.get("wechat_done"):
+                        item["status"] = "sent"
+                        item.pop("abstract", None)
+                    bark_sent += 1
+                else:
+                    bark_failed += 1
+                self._persist()
+
+        if "wechat" in channels:
+            # Reuse immutable page snapshots and acknowledgements only for WeChat.
+            self.flush_both(send_func=self._send, max_pages=max_pages,
+                            channels_override=("wechat",))
+
+        result = self.status()
+        result["bark_articles_sent_this_run"] = bark_sent
+        result["bark_articles_failed_this_run"] = bark_failed
+        result["bark_articles_waiting"] = sum(
+            1 for item in self.queue["items"].values()
+            if item.get("status") == "pending" and not item.get("bark_done")
+        ) if "bark" in channels else 0
+        self.log.info("Independent Bark + WeChat delivery: %s", json.dumps(result, ensure_ascii=False))
+        return result
+
+    def flush_both(self, *, send_func=None, max_pages: int = 10, channels_override=None) -> dict:
         """Send exactly the same immutable body to both channels, independently acked.
 
         Inject send_func(channel,title,body) for offline tests. If one channel
         fails/uses daily quota, no later page overtakes it.
         """
+        if send_func is None:
+            return self._flush_separate(max_pages=max_pages)
         day = _now_date()
-        channels = self._channels() if send_func is None else ("wechat", "bark")
+        channels = channels_override or ("wechat", "bark")
         completed = 0
         for _ in range(max_pages):
             active = self.dual.get("active")
@@ -305,10 +404,18 @@ class ReliableDelivery(Delivery):
                 if snapshot_length is None:
                     snapshot_length = len(self._block(item, self._get_translation(item, day)))
                 if offset >= snapshot_length:
-                    item["status"] = "sent"
-                    item.pop("abstract", None)
+                    if channels_override == ("wechat",):
+                        item["wechat_done"] = True
+                        bark_required = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
+                        if not bark_required or item.get("bark_done"):
+                            item["status"] = "sent"
+                            item.pop("abstract", None)
+                            completed += 1
+                    else:
+                        item["status"] = "sent"
+                        item.pop("abstract", None)
+                        completed += 1
                     self.dual["progress"].pop(uid, None)
-                    completed += 1
                 else:
                     self.dual["progress"][uid] = offset
             self.dual["active"] = None
