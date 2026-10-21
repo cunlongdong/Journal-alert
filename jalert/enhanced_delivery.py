@@ -229,6 +229,20 @@ class Delivery:
             segments.append(remainder)
         return segments
 
+    @staticmethod
+    def _public_translation_meta(item: dict, abstract: str) -> dict:
+        """Only PUBLIC paper metadata. Never persist the model API key.
+
+        This repository is public: full translations/abstracts become public via
+        cache and the GitHub Pages page. Review publisher terms if relevant.
+        """
+        return {
+            "uid": str(item.get("uid") or ""),
+            "doi": str(item.get("doi") or ""),
+            "title": str(item.get("title") or ""),
+            "english_abstract": abstract,
+        }
+
     def _summary(self, item: dict, day: str) -> str:
         """Exact-scope translation, no summarization. Cache full and per-chunk results."""
         abstract = str(item.get("abstract", "")).strip()
@@ -239,6 +253,11 @@ class Delivery:
         signature = hashlib.sha256((PROMPT_VERSION + "\n" + item["title"] + "\n" + abstract).encode("utf-8")).hexdigest()
         cached = self.cache["summaries"].get(signature)
         if cached:
+            # Older cache entries are still usable. Attach public article metadata
+            # so the card wall can find the corresponding full translation.
+            if not cached.get("title") and cached.get("mode") == "literal-full-translation":
+                cached.update(self._public_translation_meta(item, abstract))
+                self._save_cache()
             return cached["summary"]
         chunks = self._split_abstract(abstract)
         result_parts = []
@@ -279,7 +298,10 @@ class Delivery:
             else:
                 raise RuntimeError("; ".join(failures))
         whole = "\n".join(result_parts)
-        self.cache["summaries"][signature] = {"summary": whole, "provider": "custom", "date": day, "mode": "literal-full-translation"}
+        self.cache["summaries"][signature] = {
+            "summary": whole, "provider": endpoints[0][0], "date": day,
+            "mode": "literal-full-translation", **self._public_translation_meta(item, abstract),
+        }
         self._save_cache()
         return whole
 
