@@ -169,6 +169,14 @@ jobs:
       - name: Enrich bilingual card wall
         if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         run: python tools/enrich_bilingual_cards.py
+      - name: Bilingual completeness audit
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+        shell: bash
+        run: |
+          echo '### 中英文标题与摘要完整性（实际日报）' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          python tools/audit_site_fullness.py >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
       - name: Commit reports and safe resumable state
         if: always()
         shell: bash

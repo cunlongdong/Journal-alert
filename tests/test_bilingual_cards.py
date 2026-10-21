@@ -49,6 +49,18 @@ class BilingualTests(unittest.TestCase):
         self.assertNotIn('zhAbstract', d['articles'][1])
         self.assertNotIn('<safety>', m.group(2))  # XSS-safe embedded JSON
 
+    def test_chinese_title_is_exposed_with_full_english_title(self):
+        import hashlib
+        english = "Exchange bias study"
+        signature = hashlib.sha256(english.encode("utf-8")).hexdigest()
+        data = cache()
+        data["titles"] = {signature: {"title": english, "zh_title": "交换偏置研究"}}
+        rendered, _ = mod.build_bilingual_html(example_html(), data)
+        payload = json.loads(mod.DATA_PATTERN.search(rendered).group(2))
+        self.assertEqual(payload["articles"][0]["zhTitle"], "交换偏置研究")
+        self.assertEqual(payload["articles"][0]["title"], english)
+        self.assertNotIn("zhTitle", payload["articles"][1])
+
     def test_idempotence(self):
         once, _ = mod.build_bilingual_html(example_html(), cache())
         twice, _ = mod.build_bilingual_html(once, cache())

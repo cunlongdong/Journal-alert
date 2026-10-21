@@ -21,6 +21,8 @@ def inspect(path: Path) -> dict:
     both = sum(bool(p.get('enAbstract')) and bool(p.get('zhAbstract')) for p in papers)
     return {
         'card_count': len(papers),
+        'chinese_title_present': sum(bool(p.get('zhTitle')) for p in papers),
+        'chinese_title_pending': sum(not p.get('zhTitle') for p in papers),
         'full_english_source_present': en,
         'full_chinese_translation_present': zh,
         'both_full': both,
