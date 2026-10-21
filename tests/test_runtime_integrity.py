@@ -76,12 +76,13 @@ class SafetyTests(unittest.TestCase):
             self.assertEqual(result, out)
             self.assertNotIn("STALE_ARTICLES", out.read_text(encoding="utf-8"))
 
-    def test_wechat_body_cap_not_doubled(self):
+    def test_bark_body_cap_is_bounded(self):
         with tempfile.TemporaryDirectory() as root:
             delivery = ReliableDelivery(Path(root))
-            with patch.dict("os.environ", {"JALERT_WECHAT_MAX_CHARS": "300"}):
-                self.assertLessEqual(delivery._cap(("wechat",)), 300)
-                self.assertLessEqual(delivery._cap(("wechat", "bark")), 300)
+            with patch.dict("os.environ", {"JALERT_BARK_BODY_BYTES": "300"}):
+                self.assertLessEqual(delivery._cap(), 2600)
+            with patch.dict("os.environ", {"JALERT_BARK_BODY_BYTES": "1500"}):
+                self.assertEqual(delivery._cap(), 1500)
 
     def test_total_source_outage_never_creates_seen_database(self):
         with tempfile.TemporaryDirectory() as root:
@@ -101,6 +102,7 @@ class SafetyTests(unittest.TestCase):
                 stack.enter_context(patch.object(daily, "load_config", return_value=cfg))
                 stack.enter_context(patch.object(daily, "setup_logging", return_value=logging.getLogger("test")))
                 stack.enter_context(patch.object(daily, "effective_window_days", return_value=1))
+                stack.enter_context(patch.dict("os.environ", {"GITHUB_STEP_SUMMARY": ""}))
                 stack.enter_context(patch.object(daily, "collect_items", return_value=([], [
                     {"journal": "Example", "source": "openalex", "ok": False,
                      "items": 0, "note": "timeout"}

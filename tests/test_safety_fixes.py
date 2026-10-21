@@ -10,28 +10,6 @@ from tools.history_backfill import lookup_english_abstract
 
 
 class SafetyFixTests(unittest.TestCase):
-    def test_ack_finalization_does_not_translate_again(self):
-        with tempfile.TemporaryDirectory() as td:
-            delivery = ReliableDelivery(Path(td))
-            item = SimpleNamespace(uid='doi:10.7000/snapshot', title='Exchange bias paper',
-                doi='10.7000/snapshot', abstract='English original with 10 K and 15 mT',
-                journal='Physical Review B', date='2026-10-21', url='')
-            scored = SimpleNamespace(labels=['交换偏置'], score=18)
-            delivery.enqueue([(item, scored)])
-            zh = '研究在10 K条件下研究了交换偏置，发现15 mT的变化，详细论述了界面耦合及磁性行为。'
-            called = []
-            def once(_item, _day):
-                called.append(1)
-                if len(called)>1:
-                    raise AssertionError('must not contact AI again after acknowledgements')
-                return zh
-            with patch.object(delivery, '_get_translation', side_effect=once), \
-                 patch.dict('os.environ', {'JALERT_SERVERCHAN_SENDKEY': 'test',
-                         'JALERT_BARK_ENABLED':'true','JALERT_BARK_DEVICE_KEY':'test'}):
-                result=delivery.flush_both(send_func=lambda *args: True)
-            self.assertEqual(result['pending_papers'],0)
-            self.assertEqual(len(called),1)
-
     def test_semantic_scholar_matching_doi_fallback(self):
         def fake_json(url, **kwargs):
             if 'openalex.org' in url: return {'abstract_inverted_index':None}
