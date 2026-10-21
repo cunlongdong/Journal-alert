@@ -7,6 +7,7 @@ translation pipeline. Never re-adds them to WeChat/Bark queues or seen.sqlite.
 from __future__ import annotations
 
 import argparse
+import ipaddress
 import hashlib
 import html
 import json
@@ -70,6 +71,126 @@ def _get_json(url: str, *, headers: dict | None = None) -> dict:
         return json.loads(response.read(5 * 1024 * 1024).decode("utf-8"))
 
 
+
+class _PublisherAbstractParser(HTMLParser):
+    """Use publisher-supplied paper metadata; do not mistake SEO snippets for abstracts."""
+    def __init__(self):
+        super().__init__()
+        self.abstracts = []
+        self.doi = ""
+        self._jsonld = False
+        self._jsonld_parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "meta":
+            props = dict((k.lower(), v) for k, v in attrs if k)
+            name = (props.get("name") or props.get("property") or "").lower()
+            value = (props.get("content") or "").strip()
+            if name in ("citation_abstract", "dc.description", "dc:description",
+                        "prism.abstract", "article:abstract", "description.abstract") and value:
+                self.abstracts.append(value)
+            if name in ("citation_doi", "dc.identifier") and value.startswith("10."):
+                self.doi = doi_key(value)
+        if tag == "script":
+            props = dict((k.lower(), v) for k, v in attrs if k)
+            self._jsonld = props.get("type", "").lower() == "application/ld+json"
+            if self._jsonld:
+                self._jsonld_parts = []
+
+    def handle_data(self, data):
+        if self._jsonld:
+            self._jsonld_parts.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "script" and self._jsonld:
+            self._jsonld = False
+            raw = "".join(self._jsonld_parts)
+            try:
+                payload = json.loads(raw)
+            except (ValueError, TypeError):
+                return
+            def walk(node):
+                if isinstance(node, list):
+                    for item in node:
+                        walk(item)
+                elif isinstance(node, dict):
+                    node_type = node.get("@type") or ""
+                    if isinstance(node_type, list):
+                        paper = any(str(t).lower() in ("scholarlyarticle", "article") for t in node_type)
+                    else:
+                        paper = str(node_type).lower() in ("scholarlyarticle", "article")
+                    if paper and isinstance(node.get("abstract"), str):
+                        self.abstracts.append(node["abstract"])
+                    for k in ("@graph", "mainEntity"):
+                        if k in node:
+                            walk(node[k])
+            walk(payload)
+
+
+def _safe_publisher_url(url: str) -> bool:
+    """Reject non-public URLs on both initial request and HTTP redirects."""
+    parsed = urllib.parse.urlsplit(url)
+    host = (parsed.hostname or "").lower().rstrip(".")
+    if parsed.scheme != "https" or not host or parsed.username or parsed.password:
+        return False
+    if parsed.port not in (None, 443):
+        return False
+    if host == "localhost" or host.endswith((".localhost", ".local", ".internal")):
+        return False
+    try:
+        if not ipaddress.ip_address(host).is_global:
+            return False
+    except ValueError:
+        pass
+    return True
+
+
+class _SafePublisherRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        if not _safe_publisher_url(newurl):
+            raise ValueError("Publisher redirect rejected: non-public HTTPS destination")
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def publisher_abstract(doi: str) -> str:
+    """Attempt official DOI landing-page citation metadata/JSON-LD only.
+
+    Access can fail if publishers require JavaScript, subscriptions or captcha;
+    never claim a complete abstract was recovered in that case.
+    """
+    d = doi_key(doi)
+    if not d or "/" not in d:
+        return ""
+    url = "https://doi.org/" + urllib.parse.quote(d, safe="/")
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "JournalAlert/1.2 academic literature monitor",
+        "Accept": "text/html,application/xhtml+xml;q=0.9",
+    })
+    opener = urllib.request.build_opener(_SafePublisherRedirect())
+    with opener.open(req, timeout=12) as response:
+        final_url = response.geturl()
+        if not _safe_publisher_url(final_url):
+            return ""
+        content_type = response.headers.get("Content-Type", "")
+        if "html" not in content_type.lower():
+            return ""
+        raw = response.read(1024 * 1024 + 1)
+        if len(raw) > 1024 * 1024:
+            return ""
+    text = raw.decode("utf-8", errors="replace")
+    parser = _PublisherAbstractParser()
+    parser.feed(text)
+    # If the publisher explicitly declares a DOI, it must match this paper.
+    if parser.doi and parser.doi != d:
+        LOG.warning("Publisher metadata DOI mismatch for %s", d[:55])
+        return ""
+    for candidate in sorted(parser.abstracts, key=len, reverse=True):
+        cleaned = clean_abstract(candidate)
+        if 65 <= len(cleaned) <= DEFAULTS["max_input_chars"]:
+            return cleaned
+    return ""
+
+
 def lookup_english_abstract(doi: str) -> tuple[str, str]:
     d = doi_key(doi)
     if not d or "/" not in d:
@@ -107,6 +228,13 @@ def lookup_english_abstract(doi: str) -> tuple[str, str]:
             LOG.info("Semantic Scholar result without matching DOI/abstract: %s", d[:40])
         except (OSError, ValueError, KeyError, RuntimeError, TypeError) as e:
             LOG.info("Semantic Scholar abstract unavailable for %s (%s)", d[:40], type(e).__name__)
+    # Official publisher landing pages can expose abstracts omitted by APIs.
+    try:
+        full = publisher_abstract(d)
+        if full:
+            return full, "Publisher DOI page"
+    except (OSError, RuntimeError, ValueError, TypeError, UnicodeError) as exc:
+        LOG.info("Publisher DOI abstract unavailable for %s (%s)", d[:45], type(exc).__name__)
     return "", ""
 
 
