@@ -48,24 +48,33 @@ class BarkTests(unittest.TestCase):
         self.assertEqual(result["pending_papers"], 0)
         self.assertEqual(result["bark_articles_sent_this_run"], 23)
         self.assertTrue(all("中文标题：" in body and "英文标题：" in body and "中文摘要" in body for _,body in sent))
-        self.assertTrue(all("中文摘要（全文直译）：" in body for _,body in sent))
+        self.assertTrue(all("中文摘要（忠实翻译）：" in body for _,body in sent))
         self.assertTrue(all(len(body.encode("utf-8")) <= 1500 for _,body in sent))
         restarted = ReliableDelivery(self.root)
         with patch.object(restarted, "_bark", side_effect=AssertionError("duplicate Bark")):
             self.assertEqual(restarted.flush_both()["bark_articles_sent_this_run"], 0)
 
-    def test_missing_english_never_sends_fake_summary(self):
+    def test_no_abstract_still_sends_chinese_title_and_author_information(self):
         self.delivery.enqueue([makeitem(0, "")])
-        with patch.object(self.delivery, "_bark", side_effect=AssertionError("must not push")), \
-             patch.object(self.delivery, "_translate_title", side_effect=AssertionError("must not translate a missing source")):
+        self.delivery.queue["items"][makeitem(0)[0].uid]["authors"] = ["Alice Chen", "Bob Li"]
+        sent = []
+        with patch.object(self.delivery, "_translate_title", return_value=CHINESE_TITLE), \
+             patch.object(self.delivery, "_get_translation", side_effect=AssertionError("no source")), \
+             patch.object(self.delivery, "_bark", side_effect=lambda title,body: sent.append(body) or True):
             result = self.delivery.flush_both()
-        self.assertEqual(result["pending_papers"], 1)
-        self.assertEqual(result["pending_without_english"], 1)
-        self.assertEqual(result["bark_articles_sent_this_run"], 0)
+        self.assertEqual(result["pending_papers"], 0)
+        self.assertEqual(result["sent_without_abstract"], 1)
+        self.assertEqual(result["bark_articles_sent_this_run"], 1)
+        self.assertEqual(len(sent), 1)
+        self.assertIn("中文标题：", sent[0])
+        self.assertIn("作者：Alice Chen、Bob Li", sent[0])
+        self.assertIn("暂未提供可核实的摘要", sent[0])
+        self.assertIn("论文链接：", sent[0])
 
     def test_ai_failure_keeps_original_pending(self):
         self.delivery.enqueue([makeitem(0)])
-        with patch.object(self.delivery, "_get_translation", side_effect=RuntimeError("AI daily request budget exhausted")), \
+        with patch.object(self.delivery, "_translate_title", return_value=CHINESE_TITLE), \
+             patch.object(self.delivery, "_get_translation", side_effect=RuntimeError("AI daily request budget exhausted")), \
              patch.object(self.delivery, "_bark", side_effect=AssertionError("must not push")):
             result = self.delivery.flush_both()
         self.assertEqual(result["pending_papers"], 1)
@@ -98,8 +107,8 @@ class BarkTests(unittest.TestCase):
              patch.object(self.delivery, "_bark", side_effect=lambda t,b: sent.append(b) or True):
             self.delivery.flush_both()
         self.assertEqual(len(sent), 1)
-        self.assertIn("摘要较长", sent[0])
-        self.assertIn("完整中英文摘要：", sent[0])
+        self.assertIn("正文较长", sent[0])
+        self.assertIn("双语网页：", sent[0])
         self.assertLessEqual(len(sent[0].encode("utf-8")), 1500)
 
     def test_legacy_bark_ack_not_resend_after_removing_wechat(self):
