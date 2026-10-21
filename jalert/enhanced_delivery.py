@@ -172,6 +172,10 @@ class Delivery:
         # abstract translations should use the non-thinking endpoint behavior.
         if name == "deepseek":
             payload["thinking"] = {"type": "disabled"}
+            
+        if name == "custom" and model.lower().startswith("deepseek-v4.1-flash"):
+            payload["reasoning_effort"] = "none"
+
         headers = {"Content-Type": "application/json", "Accept": "application/json"}
         if key:
             headers["Authorization"] = "Bearer " + key
