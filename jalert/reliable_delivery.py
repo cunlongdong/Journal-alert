@@ -210,8 +210,17 @@ class ReliableDelivery(Delivery):
         A title-only notification is explicit about missing publisher metadata,
         never a hallucinated abstract or an English-only "completed translation".
         """
-        zh_title = self._translate_title(item, day)
         english = str(item.get("abstract") or "").strip()
+        try:
+            zh_title = self._translate_title(item, day)
+            item.pop("title_translation_error", None)
+        except (ValueError, RuntimeError, OSError) as exc:
+            if english:
+                # The user needs a real translated title when the Abstract exists.
+                raise
+            # A title-only paper must still be notified, even during AI outages.
+            zh_title = "中文标题暂不可用（请查看英文原标题）"
+            item["title_translation_error"] = str(exc)[:160]
         chinese = self._get_translation(item, day) if english else ""
         item.pop("last_ai_error", None)
         item.pop("last_ai_error_at", None)
@@ -280,6 +289,7 @@ class ReliableDelivery(Delivery):
             "bark_articles_waiting": len(pending),
             "pending_without_english": sum(not str(x.get("abstract") or "").strip() for x in pending),
             "sent_without_abstract": sum(bool(x.get("notification_without_abstract")) and x.get("status") == "sent" for x in self.queue["items"].values()),
+            "sent_without_chinese_title": sum(bool(x.get("title_translation_error")) and x.get("status") == "sent" for x in self.queue["items"].values()),
             "channels_configured": {
                 "bark_enabled": os.getenv("JALERT_BARK_ENABLED", "true").lower() in ("true", "1", "yes"),
                 "bark_key_present": bool(os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()),
