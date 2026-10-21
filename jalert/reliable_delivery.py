@@ -333,6 +333,8 @@ class ReliableDelivery(Delivery):
         max_pages does not constrain individual paper count; each run uses a
         separate bounded safety cap.
         """
+        if (self.root / "state" / "rebuild_review_hold.json").exists():
+            raise RuntimeError("Bark is paused until the rebuilt literature database is approved")
         if os.getenv("JALERT_BARK_ENABLED", "true").lower() not in ("true", "1", "yes"):
             raise ValueError("Bark must be enabled")
         if send_func is None and not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():

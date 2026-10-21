@@ -27,6 +27,13 @@ def main(argv=None):
     # Never replay these possible deliveries without an explicit reconciliation.
     hold_path = ROOT / "state" / "bark_recovery_required.json"
     recovery_hold = json.loads(hold_path.read_text("utf-8")) if hold_path.is_file() else None
+    review_path = ROOT / "state" / "rebuild_review_hold.json"
+    review_hold = json.loads(review_path.read_text("utf-8")) if review_path.exists() else None
+    if ns.flush and review_hold is not None:
+        logging.warning("Bark paused until reconstructed database has been reviewed")
+        print(json.dumps({"rebuild_review_required": review_hold,
+                          "pending_papers": delivery.pending_count()}, ensure_ascii=False, indent=2))
+        return 0 if ns.defer_if_held else 3
     if ns.flush and recovery_hold is not None:
         logging.warning("Bark paused: review %s before replaying uncommitted notifications", hold_path)
         print(json.dumps({"recovery_required": recovery_hold,
@@ -62,6 +69,8 @@ def main(argv=None):
         report = delivery.flush_both()
     else:
         report = delivery.status()
+    if review_hold is not None:
+        report["rebuild_review_required"] = review_hold
     if recovery_hold is not None:
         report['recovery_required'] = recovery_hold
     report['pending_without_english'] = sum(
