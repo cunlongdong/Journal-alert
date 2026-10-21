@@ -35,9 +35,11 @@ def push_serverchan(sendkey: str, title: str, body: str) -> dict:
     try:
         payload = json.loads(text)
     except json.JSONDecodeError:
-        return _result("serverchan", True, text[:160])
+        return _result("serverchan", False, "Invalid JSON response")
+    if not isinstance(payload, dict):
+        return _result("serverchan", False, "Response must be a JSON object")
     code = payload.get("code")
-    ok = code in (0, "0", None)
+    ok = type(code) in (int, str) and code in (0, "0")
     return _result("serverchan", bool(ok), f"code={code} {payload.get('message', '')}")
 
 
