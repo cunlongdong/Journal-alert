@@ -160,6 +160,14 @@ class Delivery:
             "保留否定、比较、误差、条件和不确定性表达。"
             "只输出这段英文文本对应的中文译文，不写解释、标题、摘要点评或 Markdown。"
         )
+        if item.get("_translation_retry_warning"):
+            numbers = re.findall(r"\d+(?:\.\d+)?", str(abstract))
+            system += (
+                " 上次译文未通过数字或长度忠实性检查；请重新翻译全文。"
+                "特别检查所有数字、化学式下标、参考编号、测量单位和百分比，"
+                "不可用'若干'或'全部'代替实验数值。"
+                "英文中的数值包括：" + "、".join(dict.fromkeys(numbers[:40])) + "。"
+            )
         payload = {
             "model": model,
             "messages": [
@@ -271,6 +279,7 @@ class Delivery:
             failures = []
             chunk_item = dict(item)
             chunk_item["abstract"] = chunk
+            accepted = False
             for name, base, model, key in endpoints:
                 if name == "deepseek" and not key:
                     failures.append("deepseek: missing DEEPSEEK_API_KEY")
@@ -278,24 +287,43 @@ class Delivery:
                 if not base or not model:
                     failures.append(f"{name}: missing API base URL or model")
                     continue
-                if self._usage(day)["ai_attempts"] >= max_calls:
-                    raise RuntimeError(f"daily AI request budget exhausted ({max_calls}); translation queued")
-                self._usage(day)["ai_attempts"] += 1
-                self._save_queue()
-                try:
-                    translated = self._call_model(name, base, model, key, chunk_item)
-                    self.cache["summaries"][part_signature] = {
-                        "summary": translated, "provider": name, "model": model, "date": day,
-                        "part": number + 1, "part_count": len(chunks)
-                    }
-                    self._save_cache()
-                    result_parts.append(translated)
+                # Reserve daily budget per HTTP call; allow just one quality-
+                # targeted retry, never two blind network retries.
+                for retry_index in range(2):
+                    if self._usage(day)["ai_attempts"] >= max_calls:
+                        raise RuntimeError(f"daily AI request budget exhausted ({max_calls}); translation queued")
+                    self._usage(day)["ai_attempts"] += 1
+                    self._save_queue()
+                    attempt_item = dict(chunk_item)
+                    if retry_index:
+                        attempt_item["_translation_retry_warning"] = True
+                    try:
+                        translated = self._call_model(name, base, model, key, attempt_item)
+                        self.cache["summaries"][part_signature] = {
+                            "summary": translated, "provider": name, "model": model, "date": day,
+                            "part": number + 1, "part_count": len(chunks)
+                        }
+                        self._save_cache()
+                        result_parts.append(translated)
+                        accepted = True
+                        break
+                    except (ValueError, RuntimeError, OSError, json.JSONDecodeError) as ex:
+                        message = f"{name}: {type(ex).__name__} ({str(ex)[:100]})"
+                        failures.append(message)
+                        self.log.warning("AI translation failed for %s part %d/%d: %s",
+                                         _short(item["title"], 48), number + 1, len(chunks), message)
+                        quality_issue = isinstance(ex, ValueError) and (
+                            "translation quality check failed" in str(ex)
+                            or "translation suspiciously short" in str(ex)
+                            or "model output truncated" in str(ex))
+                        if retry_index == 0 and quality_issue:
+                            continue
+                        break
+                if accepted:
                     break
-                except (ValueError, RuntimeError, OSError, json.JSONDecodeError) as ex:
-                    failures.append(f"{name}: {type(ex).__name__} ({str(ex)[:100]})")
-                    self.log.warning("AI translation failed for %s part %d/%d: %s", _short(item["title"], 48), number + 1, len(chunks), failures[-1])
-            else:
+            if not accepted:
                 raise RuntimeError("; ".join(failures))
+
         whole = "\n".join(result_parts)
         self.cache["summaries"][signature] = {
             "summary": whole, "provider": endpoints[0][0], "date": day,
