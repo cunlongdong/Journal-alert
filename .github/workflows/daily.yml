@@ -1,68 +1,78 @@
 name: journal-alert daily
-
-# 07:30 Asia/Shanghai = 23:30 UTC on the preceding day.
 on:
   schedule:
-    - cron: "30 23 * * *"
+    - cron: "30 23 * * *" # 北京时间每日 07:30
   workflow_dispatch:
     inputs:
       days:
-        description: "回溯天数（空=自适应）；不会重新发送历史已见论文"
+        description: "回溯天数（空=自动）"
         required: false
         default: ""
       sources:
-        description: "数据源，例如 openalex,crossref（空=配置文件）"
+        description: "数据源（空=原配置）"
         required: false
         default: ""
       no_push:
-        description: "只采集并加入待发送队列，本次不发微信"
+        description: "抓取并入队，但本次不推送"
         type: boolean
         default: false
       cards_only:
-        description: "仅更新卡片墙，不采集和发送"
+        description: "仅重建双语网页，不检索、不推送"
         type: boolean
         default: false
       test_api:
-        description: "测试自部署模型的API连通性，不抓取论文也不发微信"
+        description: "只测试自部署模型"
         type: boolean
         default: false
       flush_only:
-        description: "仅发送待推送队列，不重新抓取；计入 Server酱每日额度"
+        description: "只推送待发队列到微信+Bark，不检索"
+        type: boolean
+        default: false
+      test_bark:
+        description: "只向 Bark 发一条连接测试（不发微信）"
         type: boolean
         default: false
       delivery_status:
-        description: "仅查看待推送数量，不抓取、不推送"
+        description: "只显示队列、渠道送达及积压信息"
         type: boolean
         default: false
-
+      backfill_only:
+        description: "历史论文补译（不发送微信/Bark）"
+        type: boolean
+        default: false
+      history_max:
+        description: "本次历史补译最多处理几篇（默认3，最大15）"
+        default: "3"
+        required: false
 permissions:
   contents: write
   pages: write
   id-token: write
-
 concurrency:
   group: journal-alert
   cancel-in-progress: false
-
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       TZ: Asia/Shanghai
       JALERT_SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
-      # Self-hosted OpenAI-compatible model only; no DeepSeek key needed.
+      JALERT_BARK_DEVICE_KEY: ${{ secrets.BARK_DEVICE_KEY }}
+      JALERT_BARK_ENABLED: ${{ vars.JALERT_BARK_ENABLED || 'false' }}
+      JALERT_BARK_SERVER: ${{ vars.JALERT_BARK_SERVER || 'https://api.day.app' }}
+      JALERT_BARK_BODY_BYTES: ${{ vars.JALERT_BARK_BODY_BYTES || '2400' }}
+      JALERT_BARK_MAX_MESSAGES_DAY: ${{ vars.JALERT_BARK_MAX_MESSAGES_DAY || '12' }}
       CUSTOM_AI_API_KEY: ${{ secrets.CUSTOM_AI_API_KEY }}
       CUSTOM_AI_BASE_URL: ${{ vars.CUSTOM_AI_BASE_URL }}
       CUSTOM_AI_MODEL: ${{ vars.CUSTOM_AI_MODEL }}
       JALERT_AI_PRIMARY: custom
       JALERT_AI_FALLBACK: none
       JALERT_AI_MAX_CALLS_DAY: ${{ vars.JALERT_AI_MAX_CALLS_DAY || '25' }}
-      JALERT_AI_MAX_TOKENS: ${{ vars.JALERT_AI_MAX_TOKENS || '350' }}
-      # Default 4 leaves 1 free-tier slot for other ServerChan uses (absolute cap 5).
+      JALERT_AI_MAX_TOKENS: ${{ vars.JALERT_AI_MAX_TOKENS || '2200' }}
       JALERT_WECHAT_MAX_MESSAGES_DAY: ${{ vars.JALERT_WECHAT_MAX_MESSAGES_DAY || '4' }}
       JALERT_WECHAT_MAX_CHARS: ${{ vars.JALERT_WECHAT_MAX_CHARS || '3500' }}
       JALERT_REPORT_SITE_URL: https://cunlongdong.github.io/Journal-alert/
@@ -70,71 +80,72 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Run local tests before production
+      - name: Run offline tests
         run: |
           python -m unittest discover -s tests -p 'test_enhanced_delivery.py' -v
           python -m unittest discover -s tests -p 'test_bilingual_cards.py' -v
-
-      - name: Environment self-check
-        if: ${{ !inputs.cards_only && !inputs.flush_only && !inputs.delivery_status && !inputs.test_api }}
-        continue-on-error: true
-        run: python run.py --doctor
-
-      - name: Run enhanced literature pipeline
+          python -m unittest discover -s tests -p 'test_reliable_delivery.py' -v
+      - name: Run literature, Bark, WeChat and history tasks
         env:
           EXTRA_DAYS: ${{ inputs.days }}
           EXTRA_SOURCES: ${{ inputs.sources }}
           EXTRA_NO_PUSH: ${{ inputs.no_push }}
           EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
+          EXTRA_TEST_API: ${{ inputs.test_api }}
           EXTRA_FLUSH_ONLY: ${{ inputs.flush_only }}
           EXTRA_DELIVERY_STATUS: ${{ inputs.delivery_status }}
-          EXTRA_TEST_API: ${{ inputs.test_api }}
+          EXTRA_TEST_BARK: ${{ inputs.test_bark }}
+          EXTRA_BACKFILL_ONLY: ${{ inputs.backfill_only }}
+          EXTRA_HISTORY_MAX: ${{ inputs.history_max }}
+        shell: bash
         run: |
-          set -eu
-          if [ "$EXTRA_CARDS_ONLY" = "true" ]; then
-            python run.py --cards
-          elif [ "$EXTRA_TEST_API" = "true" ]; then
+          set -euo pipefail
+          if [[ "$EXTRA_TEST_API" == "true" ]]; then
             python tools/enhanced_run.py --test-api
-          elif [ "$EXTRA_DELIVERY_STATUS" = "true" ]; then
-            python tools/enhanced_run.py --delivery-status
-          elif [ "$EXTRA_FLUSH_ONLY" = "true" ]; then
-            python tools/enhanced_run.py --flush-only
+          elif [[ "$EXTRA_TEST_BARK" == "true" ]]; then
+            python tools/reliable_push.py --test-bark
+          elif [[ "$EXTRA_DELIVERY_STATUS" == "true" ]]; then
+            python tools/reliable_push.py --status
+          elif [[ "$EXTRA_CARDS_ONLY" == "true" ]]; then
+            python run.py --cards
+          elif [[ "$EXTRA_BACKFILL_ONLY" == "true" ]]; then
+            python tools/history_backfill.py --max "${EXTRA_HISTORY_MAX:-3}"
+            python run.py --cards
+          elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
+            python tools/reliable_push.py --flush
           else
-            set -- --once
-            if [ -n "$EXTRA_DAYS" ]; then set -- "$@" --days "$EXTRA_DAYS"; fi
-            if [ -n "$EXTRA_SOURCES" ]; then set -- "$@" --sources "$EXTRA_SOURCES"; fi
-            if [ "$EXTRA_NO_PUSH" = "true" ]; then set -- "$@" --no-push; fi
-            python tools/enhanced_run.py "$@"
+            args=(--once --no-push)
+            if [[ -n "$EXTRA_DAYS" ]]; then args+=(--days "$EXTRA_DAYS"); fi
+            if [[ -n "$EXTRA_SOURCES" ]]; then args+=(--sources "$EXTRA_SOURCES"); fi
+            python tools/enhanced_run.py "${args[@]}"
+            if [[ "$EXTRA_NO_PUSH" != "true" ]]; then
+              python tools/reliable_push.py --flush
+              # Historical backfill runs AFTER today's notifications; never re-pushes history.
+              python tools/history_backfill.py --max 2
+            fi
           fi
-
-      # Always refresh bilingual abstracts after generating/updating reports,
-      # including cards_only and flush_only. Never call the AI here.
       - name: Enrich bilingual card wall
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         run: python tools/enrich_bilingual_cards.py
-
-      # Outbox/cache are tracked in state/; no change to state/seen.sqlite schema.
-      - name: Commit reports, queue and cache
+      - name: Commit reports and safe resumable state
         if: always()
+        shell: bash
         run: |
-          set -eu
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           if git diff --cached --quiet; then
-            echo 'nothing changed'
+            echo 'Nothing changed'
           else
-            git commit -m "chore(state): $(date +%F) journal alerts + delivery state"
+            git commit -m "chore(state): $(date +%F) dual-channel alerts and bilingual history"
             git push
           fi
-
-      - name: Upload diagnostics
+      - name: Upload diagnostic logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -144,33 +155,22 @@ jobs:
             state/daily/
           if-no-files-found: ignore
           retention-days: 30
-
-      - name: Report summary
+      - name: Push backlog summary
         if: always()
+        shell: bash
         run: |
-          report="reports/$(date +%F).md"
-          if [ -f "$report" ]; then
-            cat "$report" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo '本次未生成新日报（仅检查/推送/卡片墙模式可以正常出现）。' >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Summarize pending Chinese WeChat articles
-        if: always()
-        run: |
-          echo '### 中文微信推送队列' >> "$GITHUB_STEP_SUMMARY"
-          python tools/enhanced_run.py --delivery-status >> "$GITHUB_STEP_SUMMARY"
-
+          echo '### 微信 + Bark 同文推送 / 积压状态' >> "$GITHUB_STEP_SUMMARY"
+          echo '```json' >> "$GITHUB_STEP_SUMMARY"
+          python tools/reliable_push.py --status >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
       - name: Configure GitHub Pages
         if: success()
         uses: actions/configure-pages@v5
-
       - name: Upload Pages artifact
         if: success()
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
-
       - name: Deploy to GitHub Pages
         if: success()
         id: deployment
