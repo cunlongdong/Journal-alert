@@ -132,6 +132,15 @@ jobs:
           fi
           echo "本次操作：${selected[0]:-normal_daily_pipeline}"
 
+      - name: Verify branch freshness before side effects
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --quiet origin main
+          if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+            echo "::error::This workflow uses a stale commit; cancel it and trigger main again."
+            exit 1
+          fi
       - name: Run offline tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Run literature and Chinese Bark history tasks
@@ -235,7 +244,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'Nothing changed'
           else
-            git commit -m "chore(state): $(date +%F) dual-channel alerts and bilingual history"
+            git commit -m "chore(state): $(date +%F) Bark alerts and bilingual history"
             git push
           fi
       - name: Upload diagnostic logs

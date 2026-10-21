@@ -6,6 +6,7 @@ on:
       - '**/*.py'
       - 'config.json'
       - '.github/workflows/tests.yml'
+      - '.github/workflows/daily.yml'
   workflow_dispatch:
 permissions:
   contents: read

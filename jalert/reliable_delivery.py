@@ -1,4 +1,4 @@
-"""Reliable independent per-article Bark and paginated WeChat delivery.
+"""Bark-only paper notifications with durable acknowledgments.
 
 Independent of seen.sqlite; uses durable original Abstract and Chinese title
 and translation caches. Confirms accepted Bark notifications individually.
@@ -51,7 +51,18 @@ def quality_report(english: str, chinese: str) -> dict:
     zh = str(chinese or "").strip()
     source_nums = _critical_tokens(en)
     target_nums = _critical_tokens(zh)
-    missing = sorted(source_nums - target_nums)
+    missing_numbers = source_nums - target_nums
+    # Numeric subscripts in a translated formula such as Mn₂PtSn become
+    # embedded digits after NFKC normalization. The previous standalone-number
+    # regexp missed them and repeatedly rejected correct scientific abstracts.
+    all_zh_numbers = _title_numbers(zh)
+    missing_numbers.difference_update(all_zh_numbers)
+    # The following natural Chinese equivalents are unambiguous geometry
+    # terminology, not a blanket exemption for missing scientific measurements.
+    for digit, keyword in (("2", "二维"), ("3", "三维")):
+        if keyword in zh and re.search(r"(?<![A-Za-z0-9])" + digit + r"\\s*[-–‑]?D(?![A-Za-z0-9])", en, re.I):
+            missing_numbers.discard(digit)
+    missing = sorted(missing_numbers)
     letters = len(re.findall(r"[A-Za-z]+", en))
     han = len(re.findall(r"[\u4e00-\u9fff]", zh))
     too_short = letters >= 65 and han < max(30, int(letters * 0.45))

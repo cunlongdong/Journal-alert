@@ -156,6 +156,27 @@ class BarkTests(unittest.TestCase):
         self.assertNotIn("2", quality_report("2D material with 10 mT.", "二维材料表现出10 mT磁化。")["missing_numbers"])
         self.assertFalse(quality_report("At 10 K and 50 mT.", "在10 K下观测到磁性。")["ok"])
 
+    def test_embedded_chemical_subscripts_do_not_block_valid_abstract(self):
+        cases = [
+            ("The Mn2PtSn phase showed 2 mT anisotropy.",
+             "Mn₂PtSn 相表现出 2 mT 的各向异性，测量结果表明界面效应显著。"),
+            ("Irradiation of He+ at 0.1 to 14 ions per nm2.",
+             "在每 nm² 有 0.1 至 14 个离子的 He+ 辐照后，观察到有序磁畴变化。"),
+            ("The Fe3GeTe2 layer exhibits strong spin-orbit coupling.",
+             "Fe₃GeTe₂ 层表现出较强的自旋轨道耦合，这一效应在实验中得到了观察。"),
+        ]
+        for source, target in cases:
+            with self.subTest(source=source):
+                self.assertEqual(quality_report(source, target)["missing_numbers"], [])
+
+    def test_missing_actual_measurement_remains_blocking(self):
+        report = quality_report(
+            "Magnetization switching at 10 K requires a magnetic field of 50 mT.",
+            "磁化在 10 K 下发生翻转，实验显示磁化状态发生了变化。"
+        )
+        self.assertIn("50", report["missing_numbers"])
+        self.assertFalse(report["ok"])
+
     def test_real_title_translation_api_is_cached_without_second_call(self):
         import json
         title = "Exchange bias at 10 mT"
