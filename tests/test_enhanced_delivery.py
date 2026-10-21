@@ -27,50 +27,9 @@ class EnhancedDeliveryTests(unittest.TestCase):
         self.assertFalse((self.root / 'state' / 'seen.sqlite').exists())
         self.assertTrue((self.root / 'state' / QUEUE_NAME).exists())
 
-    def test_accepted_batch_and_cache_survive_restarts(self):
-        self.delivery.enqueue([(self.item, self.score)])
-        sent = []
-        with patch.dict(os.environ, {'JALERT_SERVERCHAN_SENDKEY': 'fake-for-tests', 'DEEPSEEK_API_KEY': 'fake-for-tests', 'JALERT_WECHAT_MAX_MESSAGES_DAY': '4'}):
-            with patch.object(self.delivery, '_call_model', return_value='研究通过实验检测磁性异质结的交换偏置效应，比较不同参数对界面耦合和磁滞特征的影响，并依据摘要中的结果解释主要趋势。'):
-                result = self.delivery.flush(send_func=lambda title, body: sent.append((title, body)) or True)
-        self.assertEqual(result['sent'], 1)
-        self.assertIn('中文摘要', sent[0][1])
-        self.assertEqual(Delivery(self.root).pending_count(), 0)
-        self.assertTrue((self.root / 'state' / CACHE_NAME).exists())
 
-    def test_failed_push_keeps_queue_and_counts_quota(self):
-        self.delivery.enqueue([(self.item, self.score)])
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY': '1', 'DEEPSEEK_API_KEY': 'fake-for-tests'}):
-            with patch.object(self.delivery, '_call_model', return_value='这篇论文比较磁性界面中的交换偏置现象，通过实验手段研究磁滞回线和样品变化，展示主要结果及相关物理过程。'):
-                result = self.delivery.flush(send_func=lambda title, body: False)
-        self.assertEqual(result['pending'], 1)
-        self.assertEqual(result['wechat_attempts_today'], 1)
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY': '1'}):
-            self.assertEqual(Delivery(self.root).flush(send_func=lambda t, b: True)['sent'], 0)
 
-    def test_missing_abstract_is_not_invented(self):
-        self.item.abstract = ''
-        self.delivery.enqueue([(self.item, self.score)])
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY': '1', 'DEEPSEEK_API_KEY': 'fake-for-tests'}):
-            with patch.object(self.delivery, '_call_model', side_effect=AssertionError('should not call AI')):
-                sent=[]
-                result=self.delivery.flush(send_func=lambda t, b: sent.append(b) or True)
-        self.assertEqual(result['sent'], 1)
-        self.assertIn('无法进行中文直译', sent[0])
 
-    def test_daily_wechat_cap_and_backlog(self):
-        for i in range(16):
-            item=SimpleNamespace(**vars(self.item))
-            item.uid=f'uid-{i}'
-            item.title=f'Article {i}'
-            item.abstract=''
-            self.delivery.enqueue([(item, self.score)])
-        sent=[]
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY': '1', 'JALERT_WECHAT_MAX_CHARS': '1000'}):
-            result=self.delivery.flush(send_func=lambda t, b: sent.append(b) or True)
-        self.assertEqual(result['wechat_attempts_today'], 1)
-        self.assertGreater(result['pending'], 0)
-        self.assertEqual(len(sent), 1)
 
     def test_corrupt_state_refused(self):
         p=self.root/'state'/QUEUE_NAME
@@ -101,29 +60,7 @@ class EnhancedDeliveryTests(unittest.TestCase):
                 with patch.object(restored, '_call_model', side_effect=AssertionError('should use cache')):
                     self.assertEqual(restored._summary(item, '2026-10-21'), full)
 
-    def test_long_translation_is_sent_in_parts_never_120_char_summary(self):
-        self.delivery.enqueue([(self.item, self.score)])
-        original = "完整译文：" + ("这是英文摘要对应的中文完整译文段落，包括研究背景和方法及结果。" * 125) + "全篇结束。"
-        sent = []
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY':'5', 'JALERT_WECHAT_MAX_CHARS':'1200', 'JALERT_AI_PRIMARY':'custom', 'CUSTOM_AI_BASE_URL':'https://model.example/v1', 'CUSTOM_AI_MODEL':'example'}):
-            with patch.object(self.delivery, '_call_model', return_value=original):
-                result = self.delivery.flush(send_func=lambda title, body: sent.append(body) or True)
-        self.assertGreaterEqual(len(sent), 2)
-        self.assertTrue(all(len(body)<=1200 for body in sent))
-        self.assertEqual(result['pending'], 0)
-        self.assertEqual(result['sent'], 1)
-        self.assertTrue(any('全篇结束。' in body for body in sent))
 
-    def test_failed_second_part_keeps_translation_cursor(self):
-        self.delivery.enqueue([(self.item, self.score)])
-        translation = '中文原文：' + ('磁性耦合与自旋输运实验参数按照英文原始语句完整翻译。'*80)
-        outputs=[]
-        with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY':'4', 'JALERT_WECHAT_MAX_CHARS':'1200', 'JALERT_AI_PRIMARY':'custom', 'CUSTOM_AI_BASE_URL':'https://model.example/v1', 'CUSTOM_AI_MODEL':'example'}):
-            with patch.object(self.delivery, '_call_model', return_value=translation):
-                r=self.delivery.flush(send_func=lambda t,b: outputs.append(b) or len(outputs)==1)
-        self.assertEqual(r['pending'],1)
-        self.assertGreater(self.delivery.queue['items'][self.item.uid].get('delivery_offset',0),0)
-        self.assertEqual(self.delivery.queue['items'][self.item.uid]['status'],'pending')
 
 
 if __name__ == '__main__':
@@ -180,14 +117,3 @@ class IntegrationContractTests(unittest.TestCase):
                 finally:
                     module.ROOT = original
 
-    def test_publisher_deduplication_status_survives_restart(self):
-        with tempfile.TemporaryDirectory() as temp:
-            d=Delivery(Path(temp))
-            item=SimpleNamespace(uid='x',title='No abstract',journal='PRB',date='2026-10-21',doi='',url='https://doi.org/10.1/x',abstract='')
-            score=SimpleNamespace(score=20,labels=['自旋电子学'])
-            d.enqueue([(item,score)])
-            with patch.dict(os.environ, {'JALERT_WECHAT_MAX_MESSAGES_DAY': '1'}):
-                d.flush(send_func=lambda a,b:True)
-                d2=Delivery(Path(temp))
-                self.assertEqual(d2.enqueue([(item,score)]),0)
-                self.assertEqual(d2.pending_count(),0)

@@ -179,6 +179,13 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
                 "title": paper["title"], "abstract": english}
         try:
             _ = delivery._get_translation(item, day)
+            # Populate Chinese titles for previously published English cards.
+            # An unavailable title translation must never erase the verified abstract.
+            try:
+                delivery._translate_title(item, day)
+            except (ValueError, RuntimeError, OSError, KeyError) as title_exc:
+                log.warning("Historical title translation deferred for %s (%s)",
+                            paper["doi"][:60], type(title_exc).__name__)
             translated += 1
             log.info("Historical paper translated: %s (%s)", paper["title"][:72], source)
         except (ValueError, RuntimeError, OSError, KeyError) as e:

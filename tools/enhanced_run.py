@@ -1,7 +1,7 @@
 """Safe wrapper: preserve upstream run.py and existing state/seen.sqlite.
 
 Normal runs execute upstream run.py with --no-push, intercept only the
-upstream Store.save(new_items) call, then drain the persistent WeChat outbox.
+upstream Store.save(new_items) call to enqueue items for Bark.
 """
 from __future__ import annotations
 
@@ -20,8 +20,6 @@ import run as upstream  # noqa: E402
 def main(args: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if args is None else args)
     parser = argparse.ArgumentParser(add_help=False)
-    parser.add_argument("--flush-only", action="store_true")
-    parser.add_argument("--delivery-status", action="store_true")
     parser.add_argument("--test-api", action="store_true")
     own, forwarded = parser.parse_known_args(argv)
     log = logging.getLogger("journal-alert-enhanced")
@@ -52,16 +50,9 @@ def main(args: list[str] | None = None) -> int:
         except (OSError, ValueError, RuntimeError, KeyError) as exc:
             print(f"Custom model probe FAILED: {type(exc).__name__}: {exc}")
             return 1
-        print("Custom model probe OK (synthetic example, no WeChat send):")
+        print("Custom model probe OK (synthetic example, no Bark send):")
         print(result[:400])
         return 0
-    if own.delivery_status:
-        print(f"Pending Chinese WeChat articles: {delivery.pending_count()}")
-        return 0
-    if own.flush_only:
-        delivery.flush()
-        return 0
-
     # Non-delivery diagnostic tasks preserve upstream behavior.
     passthrough = {"--doctor", "--check", "--cards", "--rerender", "--test-push", "--dry-run", "--help"}
     if any(flag in forwarded for flag in passthrough):
@@ -90,12 +81,12 @@ def main(args: list[str] | None = None) -> int:
     if no_push_requested:
         log.info("--no-push requested: new articles queued without delivery")
         return 0
-    if not upstream.load_config(None).get("push", {}).get("enabled", False):
-        log.info("push.enabled=false in existing configuration: queue retained")
-        return 0
-    delivery.flush()
+    # Normal direct usage sends Bark through the same single-purpose sender.
+    from jalert.reliable_delivery import ReliableDelivery
+    report = ReliableDelivery(ROOT, log).flush_both()
+    if report.get("bark_articles_failed_this_run"):
+        return 1
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
