@@ -52,6 +52,10 @@ on:
         description: "只显示队列、渠道送达及积压信息"
         type: boolean
         default: false
+      approve_rebuild:
+        description: "重建文献已检查：解锁 Bark 推送（本次不发送）"
+        type: boolean
+        default: false
       backfill_only:
         description: "历史论文补译（不发送 Bark）"
         type: boolean
@@ -106,6 +110,7 @@ jobs:
           MODE_API: ${{ inputs.test_api }}
           MODE_FLUSH: ${{ inputs.flush_only }}
           MODE_STATUS: ${{ inputs.delivery_status }}
+          MODE_APPROVE: ${{ inputs.approve_rebuild }}
           MODE_BARK: ${{ inputs.test_bark }}
           MODE_BACKFILL: ${{ inputs.backfill_only }}
           MODE_NO_PUSH: ${{ inputs.no_push }}
@@ -120,6 +125,7 @@ jobs:
           [[ "$MODE_API" == "true" ]] && selected+=(test_api) || true
           [[ "$MODE_FLUSH" == "true" ]] && selected+=(flush_only) || true
           [[ "$MODE_STATUS" == "true" ]] && selected+=(delivery_status) || true
+          [[ "$MODE_APPROVE" == "true" ]] && selected+=(approve_rebuild) || true
           [[ "$MODE_BARK" == "true" ]] && selected+=(test_bark) || true
           [[ "$MODE_BACKFILL" == "true" ]] && selected+=(backfill_only) || true
           if (( ${#selected[@]} > 1 )); then
@@ -156,6 +162,7 @@ jobs:
           EXTRA_TEST_API: ${{ inputs.test_api }}
           EXTRA_FLUSH_ONLY: ${{ inputs.flush_only }}
           EXTRA_DELIVERY_STATUS: ${{ inputs.delivery_status }}
+          EXTRA_APPROVE: ${{ inputs.approve_rebuild }}
           EXTRA_TEST_BARK: ${{ inputs.test_bark }}
           EXTRA_BACKFILL_ONLY: ${{ inputs.backfill_only }}
           EXTRA_HISTORY_MAX: ${{ inputs.history_max }}
@@ -168,6 +175,8 @@ jobs:
             python tools/reliable_push.py --test-bark
           elif [[ "$EXTRA_DELIVERY_STATUS" == "true" ]]; then
             python tools/reliable_push.py --status
+          elif [[ "$EXTRA_APPROVE" == "true" ]]; then
+            python tools/review_rebuild.py --approve
           elif [[ "$EXTRA_CARDS_ONLY" == "true" ]]; then
             python run.py --cards
           elif [[ "$EXTRA_TITLES_ONLY" == "true" ]]; then
@@ -215,13 +224,13 @@ jobs:
             python tools/history_backfill.py --max 10
           fi
       - name: Fill missing Chinese card titles
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.cards_only && !inputs.rebuild_only }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild && !inputs.cards_only && !inputs.rebuild_only }}
         run: python tools/backfill_titles.py --max 80
       - name: Enrich bilingual card wall
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild }}
         run: python tools/enrich_bilingual_cards.py
       - name: Bilingual completeness audit
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild }}
         shell: bash
         run: |
           echo '### 中英文标题与摘要完整性（实际日报）' >> "$GITHUB_STEP_SUMMARY"
@@ -248,6 +257,7 @@ jobs:
             state/dual_channel_delivery.json \
             state/full_english_abstracts.json \
             state/article_metadata.json \
+            state/rebuild_review_hold.json \
             state/history_backfill_cursor.json; do
             if [[ -f "$path" ]]; then
               git add -- "$path"
@@ -291,17 +301,17 @@ jobs:
           python tools/reliable_push.py --status >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
       - name: Configure GitHub Pages
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild }}
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild }}
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
   deploy_pages:
     name: Deploy literature cards to GitHub Pages
     needs: run
-    if: ${{ needs.run.result == 'success' && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+    if: ${{ needs.run.result == 'success' && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.approve_rebuild }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:
