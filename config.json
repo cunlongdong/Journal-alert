@@ -1,18 +1,18 @@
 {
   "project": {
-    "name": "大气环境文献日报",
+    "name": "自旋电子学文献日报",
     "timezone": "Asia/Shanghai"
   },
   "window": {
     "days": 3,
     "max_catchup_days": 30,
     "max_items_per_journal": 60,
-    "workers": 6,
+    "workers": 5,
     "rss_timeout_seconds": 25,
     "api_timeout_seconds": 45,
     "retries": 2,
     "sources": {
-      "rss": true,
+      "rss": false,
       "openalex": true,
       "crossref": true
     }
@@ -20,7 +20,7 @@
   "output": {
     "dir": "reports",
     "keep_days": 365,
-    "max_entries": 10,
+    "max_entries": 30,
     "open_after_run": false,
     "write_json_snapshot": true,
     "source_status": "summary",
@@ -30,339 +30,99 @@
   },
   "keywords": [
     {
-      "label": "空气污染",
+      "label": "交换偏置与界面交换耦合",
+      "main": true,
+      "weight": 4,
+      "terms": [
+        "exchange bias",
+        "exchange-bias",
+        "exchange anisotropy",
+        "exchange coupling",
+        "interfacial exchange coupling",
+        "exchange spring",
+        "exchange-spring",
+        "unidirectional anisotropy",
+        "training effect",
+        "exchange bias field",
+        "field cooling",
+        "exchange-biased",
+        "spin-flop coupling",
+        "uncompensated spins",
+        "antiferromagnetic coupling",
+        "interlayer exchange coupling"
+      ]
+    },
+    {
+      "label": "反铁磁与补偿磁体",
+      "main": true,
+      "weight": 4,
+      "terms": [
+        "antiferromagnet",
+        "antiferromagnetic",
+        "antiferromagnetism",
+        "antiferromagnetic spintronics",
+        "Néel vector",
+        "Neel vector",
+        "Néel order",
+        "antiferromagnetic order",
+        "synthetic antiferromagnet",
+        "synthetic antiferromagnetic",
+        "compensated ferrimagnet",
+        "ferrimagnetic",
+        "altermagnet",
+        "altermagnetism",
+        "antiferromagnetic domain",
+        "Néel temperature",
+        "Neel temperature"
+      ]
+    },
+    {
+      "label": "自旋轨道力矩SOT",
       "main": true,
       "weight": 3,
       "terms": [
-        "air pollution",
-        "air pollutant",
-        "air quality",
-        "particulate matter",
-        "pm2.5",
-        "pm10",
-        "ultrafine particle",
-        "aerosol",
-        "ozone",
-        "no2",
-        "so2",
-        "haze",
-        "smog",
-        "emission inventory",
-        "anthropogenic emission",
-        "exposure assessment"
+        "spin-orbit torque",
+        "spin orbit torque",
+        "spin orbital torque",
+        "spin-orbit torque switching",
+        "SOT-MRAM",
+        "spin Hall effect",
+        "spin-hall effect",
+        "orbital Hall effect",
+        "orbital torque",
+        "field-free switching",
+        "current-induced switching",
+        "spin-torque efficiency"
       ]
     },
     {
-      "label": "遥感",
+      "label": "自旋转移力矩与自旋电子存储",
       "main": true,
       "weight": 3,
       "terms": [
-        "remote sensing",
-        "satellite",
-        "satellite observation",
-        "modis",
-        "viirs",
-        "tropomi",
-        "omi",
-        "landsat",
-        "sentinel-5p",
-        "hyperspectral",
-        "lidar",
-        "retrieval algorithm",
-        "geostationary",
-        "aerosol optical depth",
-        "aod"
+        "spin-transfer torque",
+        "spin transfer torque",
+        "spin-transfer switching",
+        "STT-MRAM",
+        "magnetoresistive random access memory",
+        "MRAM",
+        "spintronic memory",
+        "spin torque oscillator",
+        "spin-torque oscillator"
       ]
     },
     {
-      "label": "大气化学",
+      "label": "磁隧道结与磁电阻",
       "main": true,
       "weight": 3,
       "terms": [
-        "atmospheric chemistry",
-        "atmospheric oxidation",
-        "photochemistry",
-        "photochemical",
-        "secondary organic aerosol",
-        "soa",
-        "nox",
-        "voc",
-        "volatile organic",
-        "chemical transport model",
-        "heterogeneous chemistry",
-        "atmospheric lifetime",
-        "radical chemistry",
-        "oh radical"
-      ]
-    },
-    {
-      "label": "生物地球化学",
-      "main": true,
-      "weight": 3,
-      "terms": [
-        "biogeochemistry",
-        "biogeochemical",
-        "carbon cycle",
-        "nitrogen cycle",
-        "nutrient cycling",
-        "methane",
-        "ch4 flux",
-        "co2 flux",
-        "carbon flux",
-        "terrestrial carbon",
-        "soil carbon",
-        "nitrous oxide",
-        "n2o"
-      ]
-    },
-    {
-      "label": "城市地理信息系统",
-      "weight": 3,
-      "terms": [
-        "gis",
-        "geographic information system",
-        "geographic information systems",
-        "geographic information science",
-        "geospatial",
-        "geospatial data",
-        "spatial analysis",
-        "spatial data infrastructure",
-        "urban morphology",
-        "urban form",
-        "urban structure",
-        "urban fabric",
-        "land use",
-        "land cover",
-        "land-use",
-        "land use and land cover",
-        "lulc",
-        "urban expansion",
-        "urban growth",
-        "urban sprawl",
-        "urbanization",
-        "urbanisation",
-        "impervious surface",
-        "built-up area",
-        "urban extent",
-        "building height",
-        "building footprint",
-        "building footprints",
-        "building density",
-        "building morphology",
-        "street view",
-        "street network",
-        "street canyon",
-        "openstreetmap",
-        "points of interest",
-        "urban functional zone",
-        "urban land",
-        "urban planning",
-        "urban design",
-        "urban development",
-        "3d city model",
-        "city model",
-        "citygml",
-        "digital twin",
-        "local climate zone",
-        "local climate zones",
-        "urban agglomeration",
-        "geocoding",
-        "spatial autocorrelation"
-      ]
-    }
-  ],
-  "exclude_terms": [
-    "retraction",
-    "retracted",
-    "correction",
-    "corrigendum",
-    "erratum",
-    "author correction",
-    "publisher correction",
-    "editorial board",
-    "in this issue",
-    "issue information",
-    "table of contents",
-    "call for papers"
-  ],
-  "exclude_doi_prefixes": [
-    "10.1038/d41586"
-  ],
-  "tiers": {
-    "must_read": 12,
-    "worth_reading": 6,
-    "min_score": 3
-  },
-  "journals": [
-    {
-      "name": "Nature",
-      "issn": "0028-0836",
-      "rss": "https://www.nature.com/nature.rss",
-      "enabled": true
-    },
-    {
-      "name": "Science",
-      "issn": "0036-8075",
-      "rss": "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=science",
-      "enabled": true
-    },
-    {
-      "name": "Nature Climate Change",
-      "issn": "1758-6798",
-      "rss": "https://www.nature.com/nclimate.rss",
-      "enabled": true
-    },
-    {
-      "name": "Nature Geoscience",
-      "issn": "1752-0908",
-      "rss": "https://www.nature.com/ngeo.rss",
-      "enabled": true
-    },
-    {
-      "name": "Nature Sustainability",
-      "issn": "2398-9629",
-      "rss": "https://www.nature.com/natsustain.rss",
-      "enabled": true
-    },
-    {
-      "name": "Nature Cities",
-      "issn": "2731-9997",
-      "rss": "https://www.nature.com/natcities.rss",
-      "enabled": true
-    },
-    {
-      "name": "Nature Communications",
-      "issn": "2041-1723",
-      "rss": "https://www.nature.com/ncomms.rss",
-      "enabled": true
-    },
-    {
-      "name": "Science Advances",
-      "issn": "2375-2548",
-      "rss": "https://www.science.org/action/showFeed?type=etoc&feed=rss&jc=sciadv",
-      "enabled": true
-    },
-    {
-      "name": "Earth's Future",
-      "issn": "2328-4277",
-      "rss": "https://agupubs.onlinelibrary.wiley.com/feed/23284277/most-recent",
-      "enabled": true
-    },
-    {
-      "name": "Atmospheric Chemistry and Physics",
-      "issn": "1680-7324",
-      "rss": "https://acp.copernicus.org/xml/rss2_0.xml",
-      "enabled": true
-    },
-    {
-      "name": "Environmental Science & Technology",
-      "issn": "0013-936X",
-      "rss": "",
-      "enabled": true
-    },
-    {
-      "name": "Environmental Research Letters",
-      "issn": "1748-9326",
-      "rss": "https://iopscience.iop.org/journal/rss/1748-9326",
-      "enabled": true
-    },
-    {
-      "name": "Geophysical Research Letters",
-      "issn": "1944-8007",
-      "rss": "https://agupubs.onlinelibrary.wiley.com/feed/19448007/most-recent",
-      "enabled": true
-    },
-    {
-      "name": "Journal of Geophysical Research: Atmospheres",
-      "issn": "2169-8996",
-      "rss": "https://agupubs.onlinelibrary.wiley.com/feed/21698996/most-recent",
-      "enabled": true
-    },
-    {
-      "name": "Atmospheric Environment",
-      "issn": "1352-2310",
-      "rss": "https://rss.sciencedirect.com/publication/science/13522310",
-      "enabled": true
-    },
-    {
-      "name": "Remote Sensing of Environment",
-      "issn": "0034-4257",
-      "rss": "https://rss.sciencedirect.com/publication/science/00344257",
-      "enabled": true
-    },
-    {
-      "name": "Computers, Environment and Urban Systems",
-      "issn": "0198-9715",
-      "rss": "https://rss.sciencedirect.com/publication/science/01989715",
-      "enabled": true
-    },
-    {
-      "name": "Landscape and Urban Planning",
-      "issn": "0169-2046",
-      "rss": "https://rss.sciencedirect.com/publication/science/01692046",
-      "enabled": true
-    },
-    {
-      "name": "Urban Climate",
-      "issn": "2212-0955",
-      "rss": "https://rss.sciencedirect.com/publication/science/22120955",
-      "enabled": true
-    },
-    {
-      "name": "Cities",
-      "issn": "0264-2751",
-      "rss": "https://rss.sciencedirect.com/publication/science/02642751",
-      "enabled": true
-    },
-    {
-      "name": "ISPRS Journal of Photogrammetry and Remote Sensing",
-      "issn": "0924-2716",
-      "rss": "https://rss.sciencedirect.com/publication/science/09242716",
-      "enabled": true
-    },
-    {
-      "name": "International Journal of Geographical Information Science",
-      "issn": "1365-8816",
-      "rss": "",
-      "enabled": true
-    },
-    {
-      "name": "Transactions in GIS",
-      "issn": "1361-1682",
-      "rss": "",
-      "enabled": true
-    },
-    {
-      "name": "Environment and Planning B: Urban Analytics and City Science",
-      "issn": "2399-8083",
-      "rss": "",
-      "enabled": true
-    }
-  ],
-  "push": {
-    "enabled": true,
-    "skip_when_empty": true,
-    "max_items": 6,
-    "max_chars": 1800,
-    "channels": {
-      "serverchan": {
-        "enabled": true,
-        "sendkey": ""
-      },
-      "pushplus": {
-        "enabled": true,
-        "token": ""
-      },
-      "bark": {
-        "enabled": false,
-        "key": "",
-        "server": "https://api.day.app",
-        "sound": "bird"
-      }
-    }
-  },
-  "log": {
-    "dir": "logs",
-    "level": "INFO"
-  }
-}
+        "magnetic tunnel junction",
+        "magnetic tunnel junctions",
+        "tunnel magnetoresistance",
+        "tunneling magnetoresistance",
+        "TMR",
+        "giant magnetoresistance",
+        "GMR",
+        "spin valve",
+        "spin filtering",
+        "spin-filter tunnel junction",
