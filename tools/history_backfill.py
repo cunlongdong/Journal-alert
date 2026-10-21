@@ -73,17 +73,20 @@ def _get_json(url: str, *, headers: dict | None = None) -> dict:
 
 
 class _PublisherAbstractParser(HTMLParser):
-    """Use publisher-supplied paper metadata; do not mistake SEO snippets for abstracts."""
+    """Read publisher Abstract metadata, ScholarlyArticle JSON-LD and article body."""
     def __init__(self):
         super().__init__()
         self.abstracts = []
         self.doi = ""
         self._jsonld = False
         self._jsonld_parts = []
+        self._abstract_depth = 0
+        self._abstract_parts = []
+        self._skip_depth = 0
 
     def handle_starttag(self, tag, attrs):
+        props = dict((k.lower(), v) for k, v in attrs if k)
         if tag == "meta":
-            props = dict((k.lower(), v) for k, v in attrs if k)
             name = (props.get("name") or props.get("property") or "").lower()
             value = (props.get("content") or "").strip()
             if name in ("citation_abstract", "dc.description", "dc:description",
@@ -92,14 +95,30 @@ class _PublisherAbstractParser(HTMLParser):
             if name in ("citation_doi", "dc.identifier") and value.startswith("10."):
                 self.doi = doi_key(value)
         if tag == "script":
-            props = dict((k.lower(), v) for k, v in attrs if k)
             self._jsonld = props.get("type", "").lower() == "application/ld+json"
             if self._jsonld:
                 self._jsonld_parts = []
+            return
+        if self._abstract_depth:
+            self._abstract_depth += 1
+            if tag in ("p", "div", "br"):
+                self._abstract_parts.append(" ")
+            if tag in ("script", "style"):
+                self._skip_depth += 1
+        elif tag in ("section", "div", "article"):
+            classes = (props.get("class") or "").lower().split()
+            element_id = (props.get("id") or "").lower()
+            if ("abstract" in classes or "abstract-content" in classes or
+                    "abstract-section" in classes or "abstract-text" in classes or
+                    element_id in ("abstract", "abstract-section", "abstract-content")):
+                self._abstract_depth = 1
+                self._abstract_parts = []
 
     def handle_data(self, data):
         if self._jsonld:
             self._jsonld_parts.append(data)
+        elif self._abstract_depth and not self._skip_depth:
+            self._abstract_parts.append(data)
 
     def handle_endtag(self, tag):
         if tag == "script" and self._jsonld:
@@ -125,6 +144,13 @@ class _PublisherAbstractParser(HTMLParser):
                         if k in node:
                             walk(node[k])
             walk(payload)
+        if self._abstract_depth and tag != "script":
+            if self._skip_depth and tag in ("script", "style"):
+                self._skip_depth -= 1
+            self._abstract_depth -= 1
+            if not self._abstract_depth:
+                self.abstracts.append(" ".join(self._abstract_parts))
+                self._abstract_parts = []
 
 
 def _safe_publisher_url(url: str) -> bool:
