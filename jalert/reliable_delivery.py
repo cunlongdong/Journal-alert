@@ -126,7 +126,8 @@ class ReliableDelivery(Delivery):
         # requests must leave generous room for APS headers and app metadata.
         bark_cap = min(2600, int(os.getenv("JALERT_BARK_BODY_BYTES", "2400")))
         wechat_cap = int(os.getenv("JALERT_WECHAT_MAX_CHARS", "3500"))
-        return min((bark_cap if "bark" in channels else 6400), wechat_cap * 2)
+        # Bytes never exceed the WeChat character budget (conservative for CJK).
+        return min((bark_cap if "bark" in channels else wechat_cap), wechat_cap)
 
     @staticmethod
     def _slice_bytes(source: str, budget: int) -> str:

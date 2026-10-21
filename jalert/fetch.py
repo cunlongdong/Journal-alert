@@ -291,48 +291,53 @@ def _inverted_abstract(index: dict | None) -> str:
 
 
 def fetch_openalex(journal: dict, since: str, per_page: int, log, timeout: int = 45, retries: int = 1) -> list[Item]:
+    """JALERT_PAGINATION_V1: fetch every bounded page, not just page one."""
     issn = journal.get("issn", "")
     if not issn:
         return []
-    params = {
-        "filter": f"primary_location.source.issn:{issn},from_publication_date:{since},type:article",
-        "per-page": str(per_page),
-        "sort": "publication_date:desc",
-        "mailto": MAILTO,
-    }
-    url = "https://api.openalex.org/works?" + urllib.parse.urlencode(params)
-    status, raw = http_request(url, timeout=timeout, retries=retries)
-    if status != 200:
-        raise FetchError(f"OpenAlex HTTP {status}")
-    payload = json.loads(_decode(raw))
+    limit = max(1, int(per_page))
     items: list[Item] = []
-    for work in payload.get("results", []):
-        title = _clean(work.get("title") or work.get("display_name") or "")
-        if not title:
-            continue
-        doi = (work.get("doi") or "").replace("https://doi.org/", "").strip().lower()
-        location = work.get("primary_location") or {}
-        landing = location.get("landing_page_url") or (work.get("doi") or "")
-        authors = [
-            _clean((a.get("author") or {}).get("display_name"))
-            for a in (work.get("authorships") or [])[:12]
-        ]
-        items.append(
-            Item(
-                uid=make_uid(doi, landing, title),
-                title=title,
-                url=landing or "",
-                doi=doi,
-                journal=journal["name"],
-                issn=issn,
+    page = 1
+    max_pages = min(50, (limit + 99) // 100)
+    while len(items) < limit and page <= max_pages:
+        take = min(100, limit - len(items))
+        params = {
+            "filter": f"primary_location.source.issn:{issn},from_publication_date:{since},type:article",
+            "per-page": str(take),
+            "page": str(page),
+            "sort": "publication_date:desc",
+            "mailto": MAILTO,
+        }
+        url = "https://api.openalex.org/works?" + urllib.parse.urlencode(params)
+        status, raw = http_request(url, timeout=timeout, retries=retries)
+        if status != 200:
+            raise FetchError(f"OpenAlex HTTP {status} (page {page})")
+        payload = json.loads(_decode(raw))
+        works = payload.get("results", [])
+        if not isinstance(works, list):
+            raise FetchError("OpenAlex results has invalid format")
+        for work in works:
+            title = _clean(work.get("title") or work.get("display_name") or "")
+            if not title:
+                continue
+            doi = (work.get("doi") or "").replace("https://doi.org/", "").strip().lower()
+            location = work.get("primary_location") or {}
+            landing = location.get("landing_page_url") or (work.get("doi") or "")
+            authors = [
+                _clean((a.get("author") or {}).get("display_name"))
+                for a in (work.get("authorships") or [])[:12]
+            ]
+            items.append(Item(
+                uid=make_uid(doi, landing, title), title=title, url=landing or "",
+                doi=doi, journal=journal["name"], issn=issn,
                 date=_parse_date(work.get("publication_date")),
                 abstract=_clean(_inverted_abstract(work.get("abstract_inverted_index"))),
-                authors=[a for a in authors if a],
-                source="openalex",
-            )
-        )
-    return items
-
+                authors=[a for a in authors if a], source="openalex",
+            ))
+        if not works or len(works) < take:
+            break
+        page += 1
+    return items[:limit]
 
 # --------------------------------------------------------------------------
 # Crossref
@@ -340,67 +345,65 @@ def fetch_openalex(journal: dict, since: str, per_page: int, log, timeout: int =
 
 
 def fetch_crossref(journal: dict, since: str, rows: int, log, timeout: int = 30, retries: int = 1) -> list[Item]:
+    """JALERT_PAGINATION_V1: request bounded Crossref pages with offset."""
     issn = journal.get("issn", "")
     if not issn:
         return []
-    params = {
-        "filter": f"from-pub-date:{since},type:journal-article",
-        "rows": str(rows),
-        "sort": "published",
-        "order": "desc",
-        "mailto": MAILTO,
-    }
-    url = f"https://api.crossref.org/journals/{issn}/works?" + urllib.parse.urlencode(params)
-    status, raw = http_request(url, timeout=timeout, retries=retries)
-    if status != 200:
-        raise FetchError(f"Crossref HTTP {status}")
-    payload = json.loads(_decode(raw))
+    limit = max(1, int(rows))
     items: list[Item] = []
-    for work in payload.get("message", {}).get("items", []):
-        titles = work.get("title") or []
-        title = _clean(titles[0]) if titles else ""
-        if not title:
-            continue
-        doi = (work.get("DOI") or "").lower()
-        url_value = work.get("URL") or (f"https://doi.org/{doi}" if doi else "")
-        published = (
-            work.get("published-online")
-            or work.get("published")
-            or work.get("published-print")
-            or work.get("issued")
-            or {}
-        )
-        parts = list((published.get("date-parts") or [[None]])[0] or [])
-        date_value = ""
-        if parts and parts[0]:
-            year = int(parts[0])
-            month = int(parts[1]) if len(parts) > 1 and parts[1] else 1
-            day = int(parts[2]) if len(parts) > 2 and parts[2] else 1
-            try:
-                date_value = date(year, month, day).isoformat()
-            except ValueError:
-                date_value = ""
-        authors = []
-        for author in (work.get("author") or [])[:12]:
-            name = " ".join(x for x in (author.get("given"), author.get("family")) if x)
-            if name:
-                authors.append(_clean(name))
-        items.append(
-            Item(
-                uid=make_uid(doi, url_value, title),
-                title=title,
-                url=url_value,
-                doi=doi,
-                journal=journal["name"],
-                issn=issn,
-                date=date_value,
-                abstract=_clean(work.get("abstract")),
-                authors=authors,
-                source="crossref",
+    offset = 0
+    page_count = 0
+    max_pages = min(50, (limit + 99) // 100)
+    while len(items) < limit and page_count < max_pages:
+        page_count += 1
+        take = min(100, limit - len(items))
+        params = {
+            "filter": f"from-pub-date:{since},type:journal-article",
+            "rows": str(take), "offset": str(offset),
+            "sort": "published", "order": "desc", "mailto": MAILTO,
+        }
+        url = f"https://api.crossref.org/journals/{issn}/works?" + urllib.parse.urlencode(params)
+        status, raw = http_request(url, timeout=timeout, retries=retries)
+        if status != 200:
+            raise FetchError(f"Crossref HTTP {status} (offset {offset})")
+        payload = json.loads(_decode(raw))
+        works = payload.get("message", {}).get("items", [])
+        if not isinstance(works, list):
+            raise FetchError("Crossref items has invalid format")
+        for work in works:
+            titles = work.get("title") or []
+            title = _clean(titles[0]) if titles else ""
+            if not title:
+                continue
+            doi = (work.get("DOI") or "").lower()
+            url_value = work.get("URL") or (f"https://doi.org/{doi}" if doi else "")
+            published = (
+                work.get("published-online") or work.get("published") or
+                work.get("published-print") or work.get("issued") or {}
             )
-        )
-    return items
-
+            parts = list((published.get("date-parts") or [[None]])[0] or [])
+            date_value = ""
+            if parts and parts[0]:
+                year = int(parts[0]); month = int(parts[1]) if len(parts) > 1 and parts[1] else 1
+                day = int(parts[2]) if len(parts) > 2 and parts[2] else 1
+                try:
+                    date_value = date(year, month, day).isoformat()
+                except ValueError:
+                    date_value = ""
+            authors = []
+            for author in (work.get("author") or [])[:12]:
+                name = " ".join(x for x in (author.get("given"), author.get("family")) if x)
+                if name:
+                    authors.append(_clean(name))
+            items.append(Item(
+                uid=make_uid(doi, url_value, title), title=title, url=url_value,
+                doi=doi, journal=journal["name"], issn=issn, date=date_value,
+                abstract=_clean(work.get("abstract")), authors=authors, source="crossref",
+            ))
+        if not works or len(works) < take:
+            break
+        offset += len(works)
+    return items[:limit]
 
 # --------------------------------------------------------------------------
 # Orchestration
@@ -435,9 +438,14 @@ def _fetch_journal(journal: dict, since: str, limit: int, sources: dict, log,
             else:
                 fetched = fetch_crossref(journal, since, limit, log, timeout=timeouts["api"], retries=retries)
             items.extend(fetched)
+            limit_reached = source != "rss" and len(fetched) >= limit
+            note = (f"Source cap ({limit}) reached; there may be more records" if limit_reached else "")
+            if limit_reached:
+                log.warning("%s %s: %s", name, source, note)
             statuses.append(
                 {"journal": name, "source": source, "ok": True, "items": len(fetched),
-                 "seconds": round(time.time() - started, 2), "note": ""}
+                 "seconds": round(time.time() - started, 2),
+                 "limit_reached": limit_reached, "note": note}
             )
             log.info("%-44s %-9s %4d items  (%.1fs)", name, source, len(fetched), time.time() - started)
         except Exception as exc:  # noqa: BLE001 - a dead source must not stop the run

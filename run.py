@@ -588,15 +588,31 @@ def run(args: argparse.Namespace) -> int:
     items, statuses = collect_items(cfg, log, since_days=window_days)
     failures = [s for s in statuses if not s["ok"]]
     log.info("fetched %d unique items (%d source calls failed)", len(items), len(failures))
+    # A total API outage must not mark papers seen or publish an empty success.
+    tried = [s for s in statuses if s.get("source") in ("rss", "openalex", "crossref")]
+    succeeded = sum(s.get("ok") is True for s in tried)
+    capped = [s for s in statuses if s.get("limit_reached")]
+    if failures or capped:
+        log.warning("source health: %d succeeded, %d failed, %d capped",
+                    succeeded, len(failures), len(capped))
+        summary_file = os.environ.get("GITHUB_STEP_SUMMARY")
+        if summary_file:
+            with open(summary_file, "a", encoding="utf-8") as out:
+                out.write(f"\n### 文献采集状况\n成功 {succeeded}，失败 {len(failures)}，可能截断 {len(capped)}。\n")
+
 
     if args.check or args.strict_check:
         print_status_table(statuses)
         if args.strict_check:
             failures = [status for status in statuses if not status["ok"]]
-            if failures or not statuses:
-                log.error("strict check failed: %d failed source(s), %d source status(es)", len(failures), len(statuses))
+            if failures or capped or not tried:
+                log.error("strict check failed: %d failed, %d capped, %d checked",
+                          len(failures), len(capped), len(tried))
                 return 1
         return 0
+
+    if not succeeded:
+        raise RuntimeError("All journal data-source requests failed or no sources enabled; aborting before dedupe and push")
 
     scorer = Scorer(
         cfg.get("keywords", []),

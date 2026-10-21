@@ -20,6 +20,10 @@ on:
         description: "仅重建双语网页，不检索、不推送"
         type: boolean
         default: false
+      rebuild_only:
+        description: "重建文献和日报，不入队、不发送通知"
+        type: boolean
+        default: false
       test_api:
         description: "只测试自部署模型"
         type: boolean
@@ -89,6 +93,7 @@ jobs:
         if: ${{ github.event_name == 'workflow_dispatch' }}
         env:
           MODE_CARDS: ${{ inputs.cards_only }}
+          MODE_REBUILD: ${{ inputs.rebuild_only }}
           MODE_API: ${{ inputs.test_api }}
           MODE_FLUSH: ${{ inputs.flush_only }}
           MODE_STATUS: ${{ inputs.delivery_status }}
@@ -100,6 +105,7 @@ jobs:
           set -eo pipefail
           selected=()
           [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
+          [[ "$MODE_REBUILD" == "true" ]] && selected+=(rebuild_only) || true
           [[ "$MODE_API" == "true" ]] && selected+=(test_api) || true
           [[ "$MODE_FLUSH" == "true" ]] && selected+=(flush_only) || true
           [[ "$MODE_STATUS" == "true" ]] && selected+=(delivery_status) || true
@@ -123,6 +129,7 @@ jobs:
           EXTRA_SOURCES: ${{ inputs.sources }}
           EXTRA_NO_PUSH: ${{ inputs.no_push }}
           EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
+          EXTRA_REBUILD_ONLY: ${{ inputs.rebuild_only }}
           EXTRA_TEST_API: ${{ inputs.test_api }}
           EXTRA_FLUSH_ONLY: ${{ inputs.flush_only }}
           EXTRA_DELIVERY_STATUS: ${{ inputs.delivery_status }}
@@ -143,6 +150,12 @@ jobs:
           elif [[ "$EXTRA_BACKFILL_ONLY" == "true" ]]; then
             python tools/history_backfill.py --max "${EXTRA_HISTORY_MAX:-3}"
             python run.py --cards
+          elif [[ "$EXTRA_REBUILD_ONLY" == "true" ]]; then
+            # Rebuild from upstream without entering the notification queue.
+            rebuild_args=(--once --no-push)
+            if [[ -n "$EXTRA_DAYS" ]]; then rebuild_args+=(--days "$EXTRA_DAYS"); fi
+            if [[ -n "$EXTRA_SOURCES" ]]; then rebuild_args+=(--sources "$EXTRA_SOURCES"); fi
+            python run.py "${rebuild_args[@]}"
           elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
             python tools/reliable_push.py --flush
           else

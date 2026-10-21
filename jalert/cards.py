@@ -273,13 +273,11 @@ def write_cards(reports_dir: Path, out_path: Path, *, project: str = "文献日�
                 topic_labels: list[str] | None = None, log=None) -> Path | None:
     """Build the page from ``reports_dir`` into ``out_path``.
 
-    Returns the written path, or ``None`` when there is nothing to publish.
+    Returns the written path, including when there are no reports.
     """
     articles, reports, topics = collect(Path(reports_dir), topic_labels)
-    if not articles:
-        if log:
-            log.info("cards page skipped: no reports found in %s", reports_dir)
-        return None
+    if not articles and log:
+        log.info("cards page rebuilt empty: no reports found in %s", reports_dir)
 
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
