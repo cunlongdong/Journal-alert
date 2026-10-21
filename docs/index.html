@@ -1,11 +1,542 @@
-<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Journal-alert · 等待重建</title><style>
-body{background:#f6f8fb;color:#253349;font:16px/1.75 system-ui,-apple-system,sans-serif;min-height:100vh;margin:0;padding:20px;box-sizing:border-box;display:grid;place-items:center}
-main{background:#fff;border:1px solid #dce4ed;border-radius:18px;max-width:620px;padding:32px;box-shadow:0 14px 34px #2039540d}
-a{color:#1760c2}p{color:#4c5d70}</style></head><body><main>
-<h1>文献数据库正在等待重新生成</h1>
-<p>旧历史文献、Bark 发送状态以及翻译缓存已经按仓库所有者要求清空。</p>
-<p>前往 <a href="https://github.com/cunlongdong/Journal-alert/actions/workflows/daily.yml">GitHub Actions</a>，手动运行 <strong>journal-alert daily</strong>，选择 <strong>main</strong> 并勾选 <strong>no_push</strong>，重建完成后这里会显示新的卡片墙。</p>
-<p>重建后 Bark 默认暂停；检查通过后运行 <strong>approve_rebuild</strong> 解锁，再由你决定是否运行 <strong>flush_only</strong>。首次重建不会向手机发送论文。</p>
-</main></body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>自旋电子学文献日报 · 文献卡片墙</title>
+<style>
+:root{
+  --bg:#f1f2f4; --card:#fff; --ink:#1c1c1e; --ink2:#63636d; --ink3:#9d9da8;
+  --line:#eeeef2; --red:#ff2442; --radius:16px;
+  --sh:0 1px 2px rgba(16,16,24,.05), 0 6px 20px rgba(16,16,24,.06);
+  --sh-hover:0 2px 6px rgba(16,16,24,.07), 0 14px 34px rgba(16,16,24,.12);
+  --air-a:#ffb27a; --air-b:#ff5f7e;
+  --rs-a:#63b3ff;  --rs-b:#3a5ce0;
+  --chem-a:#c3a0ff; --chem-b:#7048e8;
+  --bgc-a:#6ee0a8;  --bgc-b:#0b9e73;
+  --gis-a:#5ed6c4;  --gis-b:#0d8f9e;
+  --other-a:#c9ccd4; --other-b:#8b90a0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; padding-bottom:56px;
+}
+a{color:inherit;text-decoration:none}
+svg.ic{display:block;flex:none}
+
+.topbar{
+  position:sticky; top:0; z-index:60; background:rgba(241,242,244,.84);
+  backdrop-filter:saturate(180%) blur(16px); -webkit-backdrop-filter:saturate(180%) blur(16px);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+.topbar-in{max-width:1560px;margin:0 auto;padding:14px 22px 0}
+.brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.logo{
+  width:30px;height:30px;border-radius:9px;flex:none;
+  background:linear-gradient(135deg,var(--red),#ff7a59);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;
+  box-shadow:0 3px 10px rgba(255,36,66,.32);
+}
+.brand h1{font-size:17px;margin:0;font-weight:800;letter-spacing:.2px}
+.brand .sub{font-size:12.5px;color:var(--ink3);margin-left:2px}
+.brand .spacer{flex:1}
+.kpi{display:flex;gap:6px;flex-wrap:wrap}
+.kpi span{font-size:12px;color:var(--ink2);background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:999px;white-space:nowrap}
+.kpi b{color:var(--red);font-weight:700}
+
+.controls{max-width:1560px;margin:0 auto;padding:12px 22px;display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  border:1px solid var(--line);background:#fff;color:var(--ink2);
+  font-size:13.5px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer;
+  white-space:nowrap;transition:.16s;display:flex;align-items:center;gap:7px;font-family:inherit;
+}
+.tab svg{width:15px;height:15px;stroke-width:1.9}
+.tab:hover{border-color:#dcdce4;transform:translateY(-1px)}
+.tab .n{font-size:11.5px;color:var(--ink3);font-weight:600}
+.tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tab.on .n{color:rgba(255,255,255,.66)}
+.tab.on svg{stroke-width:2}
+.search{
+  flex:1;min-width:180px;max-width:340px;border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:8px 15px;font-size:13.5px;outline:none;font-family:inherit;color:var(--ink);transition:.16s;
+}
+.search:focus{border-color:#ffc2cc;box-shadow:0 0 0 3px rgba(255,36,66,.09)}
+.search::placeholder{color:var(--ink3)}
+.seg{display:flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:2px}
+.seg button{border:0;background:transparent;font-size:12.5px;padding:5px 12px;border-radius:999px;cursor:pointer;color:var(--ink2);font-family:inherit;transition:.16s}
+.seg button.on{background:var(--ink);color:#fff;font-weight:600}
+.count{font-size:12.5px;color:var(--ink3);margin-left:auto;white-space:nowrap}
+
+.grouphead{max-width:1560px;margin:24px auto 0;padding:0 22px;display:flex;align-items:center;gap:10px}
+.grouphead h2{font-size:15.5px;margin:0;font-weight:800;display:flex;align-items:center;gap:8px}
+.grouphead h2 svg{width:18px;height:18px;stroke-width:1.9}
+.grouphead .bar{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.grouphead .gn{font-size:12.5px;color:var(--ink3);font-weight:600}
+.g-air h2{color:#e8455f} .g-rs h2{color:#3a5ce0} .g-chem h2{color:#7048e8} .g-bgc h2{color:#0b9e73} .g-gis h2{color:#0d8f9e}
+
+.wall{max-width:1560px;margin:0 auto;padding:14px 22px 0;columns:4;column-gap:16px}
+@media(max-width:1380px){.wall{columns:3}}
+@media(max-width:1000px){.wall{columns:2}}
+@media(max-width:620px){
+  .wall{columns:1}
+  .topbar-in,.controls,.wall,.grouphead{padding-left:14px;padding-right:14px}
+  .kpi{display:none}
+}
+.card{
+  break-inside:avoid; -webkit-column-break-inside:avoid; page-break-inside:avoid;
+  background:var(--card);border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--sh);margin:0 0 16px;cursor:pointer;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s;
+  display:inline-block;width:100%;vertical-align:top;
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--sh-hover)}
+
+.cover{position:relative;height:108px;overflow:hidden}
+.cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.3) 1px,transparent 1px);
+  background-size:14px 14px;opacity:.45;
+}
+.t-air .cover{background:linear-gradient(135deg,var(--air-a),var(--air-b))}
+.t-rs  .cover{background:linear-gradient(135deg,var(--rs-a),var(--rs-b))}
+.t-chem .cover{background:linear-gradient(135deg,var(--chem-a),var(--chem-b))}
+.t-bgc .cover{background:linear-gradient(135deg,var(--bgc-a),var(--bgc-b))}
+.t-gis .cover{background:linear-gradient(135deg,var(--gis-a),var(--gis-b))}
+.t-other .cover{background:linear-gradient(135deg,var(--other-a),var(--other-b))}
+.cover .icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#fff;opacity:.28;width:76px;height:76px;z-index:1}
+.cover .icon svg{width:100%;height:100%;stroke-width:1.25}
+.cover .jr{
+  position:absolute;left:12px;bottom:11px;right:60px;color:#fff;font-size:13px;font-weight:800;
+  letter-spacing:.3px;text-shadow:0 1px 6px rgba(0,0,0,.25);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;z-index:2;
+}
+.cover .tp{
+  position:absolute;left:12px;top:10px;background:rgba(255,255,255,.95);color:#2a2a30;
+  font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;z-index:2;
+  box-shadow:0 1px 4px rgba(0,0,0,.1);
+}
+.cover .sc{
+  position:absolute;right:12px;top:10px;background:rgba(0,0,0,.28);color:#fff;font-size:11px;
+  font-weight:700;padding:3px 9px;border-radius:999px;z-index:2;backdrop-filter:blur(4px);
+  font-variant-numeric:tabular-nums;
+}
+.tier{position:absolute;left:0;bottom:0;height:3px;width:100%;z-index:2}
+.tier.must_read{background:#ff2442}
+.tier.worth_reading{background:#ffab2e}
+.tier.other{background:rgba(255,255,255,.6)}
+
+.body{padding:12px 14px 11px}
+.title{font-size:14.5px;font-weight:700;line-height:1.42;margin:0 0 7px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.excerpt{font-size:12.5px;line-height:1.62;color:var(--ink2);margin:0;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.excerpt.none{color:var(--ink3);font-style:italic;font-size:12px;-webkit-line-clamp:2}
+.tagrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.tag{font-size:11px;padding:2px 8px;border-radius:6px;background:#f4f5f7;color:var(--ink2);font-weight:600;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tag.must_read{background:#ffe9ed;color:#e01b39}
+.tag.worth_reading{background:#fff4e3;color:#c67a00}
+.tag.other{background:#f0f1f4;color:#7c8090}
+.tag.match{background:#eef4ff;color:#3a5ce0}
+.tag.cross{background:#e6f7f5;color:#0d8f9e}
+
+.foot{display:flex;align-items:center;gap:8px;padding:9px 14px;border-top:1px solid var(--line);background:#fcfcfd}
+.av{width:22px;height:22px;border-radius:50%;flex:none;color:#fff;display:grid;place-items:center;font-size:11px;font-weight:800}
+.t-air .av{background:linear-gradient(135deg,var(--air-a),var(--air-b))}
+.t-rs .av{background:linear-gradient(135deg,var(--rs-a),var(--rs-b))}
+.t-chem .av{background:linear-gradient(135deg,var(--chem-a),var(--chem-b))}
+.t-bgc .av{background:linear-gradient(135deg,var(--bgc-a),var(--bgc-b))}
+.t-gis .av{background:linear-gradient(135deg,var(--gis-a),var(--gis-b))}
+.t-other .av{background:linear-gradient(135deg,var(--other-a),var(--other-b))}
+.au{font-size:12px;color:var(--ink2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0}
+.dt{font-size:11.5px;color:var(--ink3);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.empty{max-width:1560px;margin:70px auto;text-align:center;color:var(--ink3);font-size:14px}
+.empty svg{width:44px;height:44px;margin:0 auto 12px;stroke-width:1.5;opacity:.5;display:block}
+
+.mask{position:fixed;inset:0;background:rgba(20,20,26,.5);z-index:100;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.mask.on{display:flex;animation:fade .16s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:20px;max-width:760px;width:100%;max-height:86vh;overflow:auto;box-shadow:0 24px 70px rgba(0,0,0,.3);animation:pop .2s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.mhead{position:relative;padding:18px 22px 16px;color:#fff;overflow:hidden}
+.mhead::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.26) 1px,transparent 1px);background-size:16px 16px;opacity:.4}
+.mhead .mj{font-size:12.5px;font-weight:700;opacity:.95;position:relative;z-index:2;letter-spacing:.3px}
+.mhead h3{font-size:18px;line-height:1.42;margin:8px 0 0;position:relative;z-index:2;font-weight:800;text-shadow:0 1px 8px rgba(0,0,0,.18);padding-right:26px}
+.mmeta{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:2;margin-top:11px}
+.mmeta span{background:rgba(255,255,255,.95);color:#2a2a30;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:999px}
+.mclose{position:absolute;right:14px;top:14px;z-index:3;border:0;cursor:pointer;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.22);color:#fff;font-size:16px;line-height:1;display:grid;place-items:center;font-family:inherit}
+.mclose:hover{background:rgba(0,0,0,.36)}
+.mbody{padding:18px 22px 22px}
+.sec-t{font-size:11.5px;font-weight:800;color:var(--ink3);letter-spacing:.8px;margin:0 0 8px}
+.abs{font-size:14px;line-height:1.78;color:#33333a;margin:0 0 20px;white-space:pre-wrap}
+.authors{font-size:13.5px;line-height:1.7;color:var(--ink2);margin:0 0 18px}
+.kv{font-size:12.5px;color:var(--ink2);line-height:1.9;margin:0 0 18px}
+.kv code{background:#f4f5f7;padding:2px 7px;border-radius:5px;font-size:12px;color:#3a3a44}
+.linkrow{display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;padding:9px 17px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;font-family:inherit;transition:.16s}
+.btn:hover{border-color:#d8d8e0;transform:translateY(-1px)}
+.btn.pri{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 3px 12px rgba(255,36,66,.28)}
+.btn.pri:hover{background:#f01a38}
+/* Journal-alert uniform card grid · paste before the closing CSS tag in jalert/cards.py */
+.wall {
+  display: grid;
+  columns: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 392px;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 1380px) {
+  .wall { columns: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 1000px) {
+  .wall { columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .wall { columns: auto; grid-template-columns: minmax(0, 1fr); }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-width: 0;
+  break-inside: auto;
+}
+.cover { flex: 0 0 108px; }
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.title { flex: 0 0 auto; }
+.excerpt { flex: 0 0 auto; }
+.tagrow {
+  flex: 0 0 auto;
+  max-height: 48px;
+  overflow: hidden;
+  margin-top: auto;
+}
+.foot {
+  flex: 0 0 42px;
+  min-height: 42px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+/* JALERT_BILINGUAL_V1: English / Chinese bilingual paper previews */
+.bilingual-preview { margin-top: 6px; min-width: 0; }
+.bilingual-preview .language { display:block; color:#667085; font-size:10.5px;
+  font-weight:750; letter-spacing:.15px; margin-bottom:2px; }
+.bilingual-preview .excerpt { display:-webkit-box; -webkit-line-clamp:2;
+  -webkit-box-orient:vertical; overflow:hidden; margin:0;
+  font-size:11.5px; line-height:1.45; color:var(--ink2); }
+.bilingual-preview.absent .excerpt { color:var(--ink3); font-style:italic; }
+.bilingual-section .sec-t { margin-top:15px; }
+.bilingual-section .abs { overflow-wrap:anywhere; }
+.english-title { display:block; font-size:0.76em; font-weight:500; color:var(--ink3); padding-top:3px; }
+
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <div class="logo">J</div>
+      <h1>自旋电子学文献日报 · 文献卡片墙</h1>
+      <span class="sub">journal-alert · 日报可视化</span>
+      <div class="spacer"></div>
+      <div class="kpi">
+        <span>总文献 <b>35</b></span>
+        <span>数据源 <b id="kpi-days">—</b> 天日报</span>
+        <span>更新 <b>2026-10-22 00:01</b></span>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="tabs" id="tabs"></div>
+    <div class="row">
+      <input class="search" id="q" type="search" placeholder="搜索标题 / 摘要 / 作者 / 期刊…">
+      <div class="seg" id="seg">
+        <button data-t="all" class="on" type="button">全部等级</button>
+        <button data-t="must_read" type="button">必读</button>
+        <button data-t="worth_reading" type="button">值得一读</button>
+        <button data-t="other" type="button">其他相关</button>
+      </div>
+      <div class="seg" id="sortseg">
+        <button data-s="score" class="on" type="button">按得分</button>
+        <button data-s="date" type="button">按日期</button>
+        <button data-s="journal" type="button">按期刊</button>
+      </div>
+      <div class="count" id="count"></div>
+    </div>
+  </div>
+</div>
+
+<div id="wall-wrap"></div>
+
+<div class="mask" id="mask">
+  <div class="modal" id="modal" onclick="event.stopPropagation()"></div>
+</div>
+
+<script type="application/json" id="DATA">{"articles":[{"title":"Bias-field-free conversion of domain wall pair to skyrmion under spin transfer torque in synthetic antiferromagnet-based racetrack","url":"https://doi.org/10.1016/j.jmmm.2026.174590","doi":"10.1016/j.jmmm.2026.174590","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体","自旋转移力矩与自旋电子存储","手性磁结构与自旋动力学"],"matchTerm":"antiferromagnet","matchWhere":"标题：antiferromagnet、标题：spin-transfer torque、标题：skyrmion","score":30,"authors":["Mani Bharathi Manickavasagam","T. Perarasan","Priyanka Babu","Jaivardhan Sinha"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":0,"zhTitle":"无偏置场下合成反铁磁赛道中自旋转移矩驱动的畴壁对向斯格明子的转换"},{"title":"Spin hall magnetoresistance in an antiferromagnetic magnetoelectric Sr2IrO4/heavy-metal Pt heterostructure","url":"https://doi.org/10.1016/j.jmmm.2026.174651","doi":"10.1016/j.jmmm.2026.174651","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体","自旋流与自旋输运"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic、标题：spin Hall magnetoresistance","score":21,"authors":["Shizhe Wu","Yingxin Shao","Zedong Xu","Yong Wu","Yong Jiang"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":1,"zhTitle":"反铁磁磁电Sr2IrO4/重金属Pt异质结构中的自旋霍尔磁电阻"},{"title":"The magnetic immunity of perpendicular STT-MRAM","url":"https://doi.org/10.1016/j.jmmm.2026.174570","doi":"10.1016/j.jmmm.2026.174570","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"自旋转移力矩与自旋电子存储","topics":["自旋转移力矩与自旋电子存储","轨道力矩磁存储与晶圆级集成"],"matchTerm":"STT-MRAM","matchWhere":"标题：STT-MRAM、标题：magnetic immunity of perpendicular STT-MRAM","score":21,"authors":["Zhengren Yan","Pengqi Lu","Yuyan Chu","Yizhou Liu","Haifeng Du","Shikun He"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":2,"zhTitle":"垂直STT-MRAM的磁免疫性"},{"title":"Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator","url":"https://doi.org/10.1016/j.jmmm.2026.174673","doi":"10.1016/j.jmmm.2026.174673","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体","自旋流与自旋输运"],"matchTerm":"ferrimagnetic","matchWhere":"标题：ferrimagnetic、标题：spin Hall magnetoresistance","score":21,"authors":["Kaili Li","Zhigang Li","Zixiao Wu","Chenjie Yuan","Hanyuan Ding","Yangyang Xu","Sen Yang","Yu Wang"],"authorMore":true,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":3,"zhTitle":"补偿型亚铁磁绝缘体中自旋霍尔磁电阻的电调制"},{"title":"Unidirectional Magnetoresistance Driven by Nonequilibrium Antiferromagnetic Magnons","url":"https://doi.org/10.1021/acs.nanolett.6c04307","doi":"10.1021/acs.nanolett.6c04307","journal":"Nano Letters","jabbr":"Nano Letters","pubdate":"2026-10-21","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体","自旋流与自旋输运","磁各向异性与界面磁性","手性磁结构与自旋动力学"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic、摘要：spin transport、摘要：magnetization reversal、摘要：magnon","score":21,"authors":["Xue He","Hans Gløckner Giil","Caiqiong Xu","Jicheng Wang","Arne Brataas","Jinbo Yang","Yanglong Hou","Zhaochu Luo","Rui Wu","Shilei Ding"],"authorMore":true,"abstract":"Abstract Magnetoresistive effects are typically symmetric under magnetization reversal. However, nonlinear spin transport can give rise to unidirectional magnetoresistance in systems with strong spin–orbit interaction and broken inversion symmetry. Here, we report a large magnonic unidirectional spin Hall magnetoresistance (USMR) in a van der Waals antiferromagnet CrPS4 in contact with Pt, driven by the nonequilibrium magnon accumulation with a finite magnon chemical potential. In contrast to conventional magnonic USMR driven by magnetization fluctuations, this effect persists under strong magnetic fields and low temperatures. The magnitude of magnonic USMR in CrPS4/Pt exceeds that of YIG/Pt by more than 2 orders of magnitude and surpasses the electrical USMR in metallic Ta/Co bilayers by a factor of 2. Our results highlight magnon chemical potential gradients for nonlinear magnetoresistance in antiferromagnetic van der Waals heterostructures and open a route to magnon-based antiferromagnetic spintronic functionalities in two-terminal device geometries.","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":4,"enAbstractSource":"crossref","enAbstract":"Abstract Magnetoresistive effects are typically symmetric under magnetization reversal. However, nonlinear spin transport can give rise to unidirectional magnetoresistance in systems with strong spin–orbit interaction and broken inversion symmetry. Here, we report a large magnonic unidirectional spin Hall magnetoresistance (USMR) in a van der Waals antiferromagnet CrPS4 in contact with Pt, driven by the nonequilibrium magnon accumulation with a finite magnon chemical potential. In contrast to conventional magnonic USMR driven by magnetization fluctuations, this effect persists under strong magnetic fields and low temperatures. The magnitude of magnonic USMR in CrPS4/Pt exceeds that of YIG/Pt by more than 2 orders of magnitude and surpasses the electrical USMR in metallic Ta/Co bilayers by a factor of 2. Our results highlight magnon chemical potential gradients for nonlinear magnetoresistance in antiferromagnetic van der Waals heterostructures and open a route to magnon-based antiferromagnetic spintronic functionalities in two-terminal device geometries.","zhTitle":"由非平衡反铁磁磁振子驱动的单向磁阻","zhAbstract":"摘要 磁阻效应在磁化反转下通常是对称的。然而，在具有强自旋-轨道相互作用和反演对称性破缺的体系中，非线性自旋输运可以产生单向磁阻。在此，我们报道了在范德华反铁磁体CrPS4与Pt接触的体系中，由具有有限磁子化学势的非平衡磁子积累所驱动的大磁子单向自旋霍尔磁阻（USMR）。与由磁化涨落驱动的传统磁子USMR不同，该效应在强磁场和低温下仍然持续存在。CrPS4/Pt中磁子USMR的幅度超过YIG/Pt的幅度两个数量级以上，并且超过金属Ta/Co双层中电学USMR的幅度2倍。我们的结果突出了反铁磁范德华异质结构中用于非线性磁阻的磁子化学势梯度，并开辟了一条在两端器件几何结构中实现基于磁子的反铁磁自旋电子学功能的途径。"},{"title":"Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions","url":"https://doi.org/10.1016/j.jmmm.2026.174563","doi":"10.1016/j.jmmm.2026.174563","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"磁隧道结与磁电阻","topics":["磁隧道结与磁电阻","自旋流与自旋输运"],"matchTerm":"magnetic tunnel junctions","matchWhere":"标题：magnetic tunnel junctions、标题：spin injection","score":18,"authors":["Yadlapalli Sujatha","Debajit Deb","Pamulapati Soujanya","Nitish Ghosh","S Vamsee Krishna"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":5,"zhTitle":"有机磁性隧道结中通过磁光可调缺陷态自旋注入过程的磁阻符号交叉"},{"title":"Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications","url":"https://doi.org/10.1016/j.jmmm.2026.174602","doi":"10.1016/j.jmmm.2026.174602","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"自旋轨道力矩SOT","topics":["自旋轨道力矩SOT","自旋转移力矩与自旋电子存储"],"matchTerm":"spin-orbit torque","matchWhere":"标题：spin-orbit torque、标题：spintronic memory","score":18,"authors":["H. Vigo-Cotrina","Eduardo Saavedra","S. Urcia-Romero","S. Navarro-Vilca","J. Sifuentes-Rivera","A.P. Guimarães"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":6,"enAbstractSource":"OpenAlex","enAbstract":"k π -skyrmions are topological magnetic textures with promising applications in spintronic devices. In this work, we investigated the stability and current-driven dynamics of k π -skyrmions ( k = 1,2,3 , and 4) in racetrack nanostructures. Stability phase diagrams were constructed as a function of the interfacial Dzyaloshinskii–Moriya interaction strength ( D int ) and the perpendicular magnetic field ( B z ). Our results showed that the stabilization range of each k π -skyrmion strongly depends on D int . In addition, the diameters of all textures increased with increasing D int and decreased with increasing B z . The current-driven dynamics induced by spin–orbit torque were then investigated. Our results showed that the velocity of all k π -skyrmions increased with current density and decreased with perpendicular magnetic field. Although the 3 π -skyrmion exhibited larger longitudinal velocities during the transient regime than the π -skyrmion, both textures reached nearly identical steady-state velocities. A similar behavior was observed for the 2 π - and 4 π -skyrmions. The steady-state dynamics were further analyzed using the Thiele formalism, which reproduced the trends observed in the micromagnetic simulations. These findings provide insight into the stabilization and transport properties of k π -skyrmions and support their potential use in future spintronic applications.","zhTitle":"赛道纳米结构中kπ-斯格明子的自旋轨道矩操控及其在自旋电子存储器中的应用","zhAbstract":"kπ-斯格明子是在自旋电子器件中具有应用前景的拓扑磁结构。在本工作中，我们研究了跑道形纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性与电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋–轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。"},{"title":"Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions","url":"https://doi.org/10.1103/nny3-5mnz","doi":"10.1103/nny3-5mnz","journal":"Physical Review Applied","jabbr":"Physical Review Applied","pubdate":"2026-10-21","topic":"自旋转移力矩与自旋电子存储","topics":["自旋转移力矩与自旋电子存储","磁隧道结与磁电阻","磁各向异性与界面磁性","手性磁结构与自旋动力学"],"matchTerm":"spin-transfer torque","matchWhere":"摘要：spin-transfer torque、标题：magnetic tunnel junctions、摘要：perpendicular magnetic anisotropy、摘要：ferromagnetic resonance","score":18,"authors":["Ryo Tatsumi","Shinji Miwa","Hiroaki Matsueda","Takahiro Chiba"],"authorMore":false,"abstract":"We theoretically investigate the chaotic behavior of spin-torque ferromagnetic resonance in magnetic tunnel junctions (MTJs) with perpendicular magnetic anisotropy under thermal fluctuations. By calculating the Lyapunov exponent based on the Landau–Lifshitz–Gilbert equation, we demonstrate that an MTJ characterized by a double-well potential, composed of uniaxial magnetic anisotropy and an external dc magnetic field, exhibits chaotic magnetization dynamics that can be controlled by means of the dc bias via spin-transfer torque. Furthermore, we find that thermal fluctuations help to induce these chaotic magnetization dynamics, which can be regarded as noise-induced chaos. This research provides a basis for brain-inspired computing using spintronic devices and advances the understanding of the interplay between thermal fluctuations and chaos in magnetization dynamics.","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":7,"enAbstractSource":"crossref","enAbstract":"We theoretically investigate the chaotic behavior of spin-torque ferromagnetic resonance in magnetic tunnel junctions (MTJs) with perpendicular magnetic anisotropy under thermal fluctuations. By calculating the Lyapunov exponent based on the Landau–Lifshitz–Gilbert equation, we demonstrate that an MTJ characterized by a double-well potential, composed of uniaxial magnetic anisotropy and an external dc magnetic field, exhibits chaotic magnetization dynamics that can be controlled by means of the dc bias via spin-transfer torque. Furthermore, we find that thermal fluctuations help to induce these chaotic magnetization dynamics, which can be regarded as noise-induced chaos. This research provides a basis for brain-inspired computing using spintronic devices and advances the understanding of the interplay between thermal fluctuations and chaos in magnetization dynamics.","zhTitle":"磁隧道结中混沌的电流控制及热涨落效应","zhAbstract":"我们从理论上研究了热涨落下具有垂直磁各向异性的磁隧道结（MTJ）中自旋力矩铁磁共振的混沌行为。通过基于Landau–Lifshitz–Gilbert方程计算Lyapunov指数，我们证明：由单轴磁各向异性和外部直流磁场构成的双势阱MTJ表现出混沌磁化动力学，该动力学可通过自旋转移力矩经由直流偏置进行控制。此外，我们发现热涨落有助于诱导这些混沌磁化动力学，其可被视为噪声诱导的混沌。本研究为利用自旋电子器件进行类脑计算提供了基础，并增进了对磁化动力学中热涨落与混沌之间相互作用的理解。"},{"title":"Spin Hall effect in electronic Lévy glasses: Enhanced spin-current generation in the superdiffusive regime","url":"https://doi.org/10.1103/tn92-kx55","doi":"10.1103/tn92-kx55","journal":"Physical Review B","jabbr":"Physical Review B","pubdate":"2026-10-21","topic":"自旋轨道力矩SOT","topics":["自旋轨道力矩SOT","自旋流与自旋输运"],"matchTerm":"spin Hall effect","matchWhere":"标题：spin Hall effect、标题：spin current","score":18,"authors":["Diego B. Fonseca","Luiz Felipe C. Pereira","Anderson L. R. Barbosa"],"authorMore":false,"abstract":"","tier":"must_read","tierLabel":"必读","reportDate":"2026-10-22","tkey":"other","id":8,"zhTitle":"电子Lévy玻璃中的自旋霍尔效应：超扩散区中增强的自旋流产生"},{"title":"Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6","url":"https://doi.org/10.1016/j.jmmm.2026.174675","doi":"10.1016/j.jmmm.2026.174675","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-12-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic","score":12,"authors":["L. Gowsalya","N. Lakshminarasimhan"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":9,"zhTitle":"一维链自旋翻转反铁磁褐钇铌矿型MnV2O6中的磁热效应"},{"title":"Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics","url":"https://doi.org/10.1016/j.jallcom.2026.191741","doi":"10.1016/j.jallcom.2026.191741","journal":"Journal of Alloys and Compounds","jabbr":"Journal of Alloys and Compounds","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic","score":12,"authors":["Subhankar Das","Sriram Kasilingam","Ajoy Dinda","Bilal Jamshed","Biswanath Pramanik","Subrata Biswas","Badsha Sekh","Hasibur Rahaman","Lalit Katariya","Ramu Maddu","Ahin Roy","S.N. Piramanayagam"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":10,"zhTitle":"应变诱导的外延Mn3Sn薄膜中室温磁化增强及其在反铁磁自旋电子学中的应用"},{"title":"Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4","url":"https://doi.org/10.1016/j.jmmm.2026.174575","doi":"10.1016/j.jmmm.2026.174575","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"交换偏置与界面交换耦合","topics":["交换偏置与界面交换耦合"],"matchTerm":"exchange bias","matchWhere":"标题：exchange bias","score":12,"authors":["Biswanath Pramanik","Pushpesh Pathak","Binoy K. Hazra"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":11,"zhTitle":"反相畴界驱动的NiCo2O4大交换偏置与负磁阻"},{"title":"Large coercivity and giant exchange bias in Eu₂NiIrO₆","url":"https://doi.org/10.1016/j.jmmm.2026.174650","doi":"10.1016/j.jmmm.2026.174650","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"交换偏置与界面交换耦合","topics":["交换偏置与界面交换耦合"],"matchTerm":"exchange bias","matchWhere":"标题：exchange bias","score":12,"authors":["T. Durga Rao","Manish K. Niranjan","K. Ramesh Kumar","G. Bhavani","B. Sattibabu","Thao T. Tran","Jyothinagaram Krishnamurthy"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":12,"zhTitle":"Eu₂NiIrO₆中的大矫顽力和巨交换偏置"},{"title":"Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket","url":"https://doi.org/10.1016/j.jmmm.2026.174633","doi":"10.1016/j.jmmm.2026.174633","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnet","matchWhere":"标题：antiferromagnet","score":12,"authors":["J. Ricardo de Sousa","Orion Ciftja"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":13,"zhTitle":"Sierpiński垫上自旋-1/2海森堡反铁磁体的扇区分辨微正则熵"},{"title":"Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy","url":"https://doi.org/10.1016/j.jmmm.2026.174616","doi":"10.1016/j.jmmm.2026.174616","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"ferrimagnetic","matchWhere":"标题：ferrimagnetic","score":12,"authors":["Sadikul Alom","Bhargab Kakati","Munima B. Sahariah"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":14,"zhTitle":"亚铁磁Mn2PtSn Heusler合金中的表面增强反常霍尔电导率"},{"title":"Characterization of ferrimagnetic FeGd coatings formed by a magnetron sputtering","url":"https://doi.org/10.1016/j.jmmm.2026.174566","doi":"10.1016/j.jmmm.2026.174566","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"ferrimagnetic","matchWhere":"标题：ferrimagnetic","score":12,"authors":["V.O. Semin","M.V. Shandrikov","V.R. Utyaganova","M.G. Ostapenko","F.A. D'yachenko","A.A. Cherkasov","S.A. Larionov"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":15,"zhTitle":"由磁控溅射形成的亚铁磁性FeGd涂层的表征"},{"title":"Octupole-driven spin torque switching of antiferromagnetic tunnel junctions","url":"https://doi.org/10.1038/s41586-026-11172-5","doi":"10.1038/s41586-026-11172-5","journal":"Nature","jabbr":"Nature","pubdate":"2026-10-21","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic","score":12,"authors":["Jaimin Kang","Mohammad Hamdi","Shun Kong Cheung","Lin-Ding Yuan","Mohamed Elekhtiar","Eric Matt","William Rogers","Andrea Meo","Peter G. Lim","M. S. Nicholas Tey","Anthony D’Addario","Shiva T. Konakanchi"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":16,"zhTitle":"八极驱动反铁磁隧道结的自旋力矩翻转"},{"title":"Intra-atomic magnetic octupoles and their coupling to cluster magnetic octupoles in chiral antiferromagnetic Mn 3 Sn","url":"https://doi.org/10.1103/lfl8-syfd","doi":"10.1103/lfl8-syfd","journal":"Physical Review B","jabbr":"Physical Review B","pubdate":"2026-10-21","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic","score":12,"authors":["Dohoon Park","Seungyun Han","Hyun-Woo Lee"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":17,"zhTitle":"手性反铁磁体Mn₃Sn中的原子内磁八极子及其与团簇磁八极子的耦合"},{"title":"Magnetic circular dichroism of terahertz modes and selection rules of Raman-active optical phonons in the polar altermagnet candidate Mn 2 Mo 3 O 8","url":"https://doi.org/10.1103/sqws-q32r","doi":"10.1103/sqws-q32r","journal":"Physical Review B","jabbr":"Physical Review B","pubdate":"2026-10-21","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"altermagnet","matchWhere":"标题：altermagnet","score":12,"authors":["F. Schilberth","K. Vasin","M. Knauft","M. Kondákor","M. Vuckovic","N. Herrmann","K. Penc","M. Minola","B. Keimer","V. A. Martinez","K. Panda","A. A. Sirenko"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":18,"zhTitle":"极性交错磁体候选材料Mn2Mo3O8中太赫兹模式的磁圆二色性及拉曼活性光学声子的选择定则"},{"title":"Probing the ground state of the antiferromagnetic Heisenberg model on the kagome lattice using geometrically informed variational quantum eigensolver","url":"https://doi.org/10.1103/82g5-bsvp","doi":"10.1103/82g5-bsvp","journal":"Physical Review Research","jabbr":"Physical Review Research","pubdate":"2026-10-21","topic":"反铁磁与补偿磁体","topics":["反铁磁与补偿磁体"],"matchTerm":"antiferromagnetic","matchWhere":"标题：antiferromagnetic","score":12,"authors":["Abdellah Tounsi","Nacer Eddine Belaloui","Abdelmouheymen Rabah Khamadja","Takei Eddine Fadi Lalaoui","Mohamed Messaoud Louamri","David E. Bernal Neira","Mohamed Taha Rouabah"],"authorMore":true,"abstract":"This work investigates the nature of the ground state of the antiferromagnetic Heisenberg model on fundamental kagome cells, a triangle and a star, using the variational quantum eigensolver algorithm on real quantum hardware. We demonstrate that the ground-state preparation is achievable using a shallow hardware-efficient quantum circuit with a naturally Euclidean parameter space. Our custom ansatz is capable of accurately recovering meaningful properties of the ground state such as the spin-spin correlation terms and static structure factor without explicit error mitigation. These features are found to be resilient to noise. We exploited the Fubini-Study metric in constructing the ansatz, ensuring a singularity-free parameter space. With this ansatz design, the adaptive gradient descent optimizer achieves a faster convergence in terms of the number of iterations compared to simultaneous perturbation stochastic approximation. We further apply error mitigation techniques, including zero-noise extrapolation (ZNE) and qubitwise readout-error mitigation (REM). While ZNE does not obey the Rayleigh-Ritz variational principle, the conditions under which REM preserves it are discussed.","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":19,"enAbstractSource":"crossref","enAbstract":"This work investigates the nature of the ground state of the antiferromagnetic Heisenberg model on fundamental kagome cells, a triangle and a star, using the variational quantum eigensolver algorithm on real quantum hardware. We demonstrate that the ground-state preparation is achievable using a shallow hardware-efficient quantum circuit with a naturally Euclidean parameter space. Our custom ansatz is capable of accurately recovering meaningful properties of the ground state such as the spin-spin correlation terms and static structure factor without explicit error mitigation. These features are found to be resilient to noise. We exploited the Fubini-Study metric in constructing the ansatz, ensuring a singularity-free parameter space. With this ansatz design, the adaptive gradient descent optimizer achieves a faster convergence in terms of the number of iterations compared to simultaneous perturbation stochastic approximation. We further apply error mitigation techniques, including zero-noise extrapolation (ZNE) and qubitwise readout-error mitigation (REM). While ZNE does not obey the Rayleigh-Ritz variational principle, the conditions under which REM preserves it are discussed.","zhTitle":"利用几何信息变分量子本征求解器探究kagome晶格上反铁磁Heisenberg模型的基态"},{"title":"Operating regimes and materials limits of nonlinear magnon dynamics in Co-doped YIG","url":"https://doi.org/10.1016/j.jmmm.2026.174649","doi":"10.1016/j.jmmm.2026.174649","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-12-01（在线预发表）","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"magnon","matchWhere":"标题：magnon","score":9,"authors":["A.M. Tishin"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":20,"zhTitle":"Co掺杂YIG中非线性磁振子动力学的运行区间与材料极限"},{"title":"Modulation of Current-Induced Magnetization Switching by Tb Layer Thickness in Ti/Pt/Co/Tb/Ti Heterostructures","url":"https://doi.org/10.1016/j.jmmm.2026.174674","doi":"10.1016/j.jmmm.2026.174674","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"磁各向异性与界面磁性","topics":["磁各向异性与界面磁性"],"matchTerm":"magnetization switching","matchWhere":"标题：magnetization switching","score":9,"authors":["Shumin Lv","Zhicheng Wang","Mengjia Sun","Wenrui Guo","Liang Liu","Xiangxiang Zhao","Weixiao Hou","Qi Guo","Xue Ren","Yong Jiang","Jifan Hu"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":21,"zhTitle":"Ti/Pt/Co/Tb/Ti异质结构中Tb层厚度对电流诱导磁化翻转的调制"},{"title":"Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic","url":"https://doi.org/10.1016/j.jmmm.2026.174638","doi":"10.1016/j.jmmm.2026.174638","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"skyrmion","matchWhere":"标题：skyrmion","score":9,"authors":["Xue-Feng Zhang","Wenbin Liu","Xiao-Ping Ma","Hongyan Zhang","Mengyao Han","Cunlong Dong","Guoqiang Yu","Hong-Guang Piao"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":22,"zhTitle":"手性势垒斯格明子赛道，具有拓扑保护、霍尔效应抑制和可重构逻辑"},{"title":"Spin-wave behavior and quantum fluctuations in AB-stacked bilayer zigzag nanoribbons","url":"https://doi.org/10.1016/j.jmmm.2026.174605","doi":"10.1016/j.jmmm.2026.174605","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"spin wave","matchWhere":"标题：spin wave","score":9,"authors":["He Liu","Anbang Guo","Ao Tang","Qi Zhi"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":23,"zhTitle":"AB堆叠双层锯齿形纳米带中的自旋波行为与量子涨落"},{"title":"Multi-scale characterization of magnetic anisotropy via magnetic acoustic emission, Barkhausen noise and magnetic domain observation","url":"https://doi.org/10.1016/j.jmmm.2026.174668","doi":"10.1016/j.jmmm.2026.174668","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"磁各向异性与界面磁性","topics":["磁各向异性与界面磁性"],"matchTerm":"magnetic anisotropy","matchWhere":"标题：magnetic anisotropy","score":9,"authors":["YuFan Zeng","Fasheng Qiu","Yao Chen"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":24,"zhTitle":"磁各向异性的多尺度表征：基于磁声发射、巴克豪森噪声和磁畴观察"},{"title":"Impact of He+ ion irradiation on the domain wall dynamics in Pd/Co/Pd trilayers with perpendicular magnetic anisotropy","url":"https://doi.org/10.1016/j.jmmm.2026.174543","doi":"10.1016/j.jmmm.2026.174543","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"磁各向异性与界面磁性","topics":["磁各向异性与界面磁性"],"matchTerm":"perpendicular magnetic anisotropy","matchWhere":"标题：perpendicular magnetic anisotropy","score":9,"authors":["Anurag Keloth","Sakshath Sadashivaiah","Parswajit Kalita","Rakhul Raj","V. Raghavendra Reddy","Bikram Das","Bharti Pandit","Ralf Röhlsberger","P.S. Anil Kumar","Ajay Gupta","Sarathlal Koyiloth Vayalil"],"authorMore":true,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":25,"zhTitle":"He+离子辐照对具有垂直磁各向异性的Pd/Co/Pd三层膜中畴壁动力学的影响"},{"title":"Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways","url":"https://doi.org/10.1016/j.jmmm.2026.174646","doi":"10.1016/j.jmmm.2026.174646","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"skyrmion","matchWhere":"标题：skyrmion","score":9,"authors":["F. Tejo","D. Cortés-Ortuño","J. Escrig"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":26,"zhTitle":"热驱动的随机磁态选择与竞争性斯格明子湮灭路径"},{"title":"Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning","url":"https://doi.org/10.1016/j.jmmm.2026.174629","doi":"10.1016/j.jmmm.2026.174629","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"skyrmion","matchWhere":"标题：skyrmion","score":9,"authors":["Terumitsu Tanaka","Budi Purnama"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":27,"zhTitle":"强晶界钉扎诱导的多个亚稳态斯格明子态的出现"},{"title":"Designer quantum states in magnetic topological insulator multilayers","url":"https://doi.org/10.1016/j.jmmm.2026.174589","doi":"10.1016/j.jmmm.2026.174589","journal":"Journal of Magnetism and Magnetic Materials","jabbr":"Journal of Magnetism and Magnetic Materials","pubdate":"2026-11-01（在线预发表）","topic":"二维磁性与拓扑自旋电子学","topics":["二维磁性与拓扑自旋电子学"],"matchTerm":"magnetic topological insulator","matchWhere":"标题：magnetic topological insulator","score":9,"authors":["Deyi Zhuo","Han Tay","Cui-Zu Chang"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":28,"zhTitle":"磁性拓扑绝缘体多层结构中的设计量子态"},{"title":"Topological magnon frequency combs","url":"https://doi.org/10.1103/8q5b-3xcn","doi":"10.1103/8q5b-3xcn","journal":"Physical Review Applied","jabbr":"Physical Review Applied","pubdate":"2026-10-21","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"magnon","matchWhere":"标题：magnon","score":9,"authors":["Zhixiong Li","Xuejuan Liu","Zhejunyu Jin","Guanghua Guo","Xingen Zheng","Peng Yan"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":29,"zhTitle":"拓扑磁振子频率梳"},{"title":"Magnon-dislon hybridization in magnetic insulators","url":"https://doi.org/10.1103/dbd5-2s48","doi":"10.1103/dbd5-2s48","journal":"Physical Review B","jabbr":"Physical Review B","pubdate":"2026-10-21","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"magnon","matchWhere":"标题：magnon","score":9,"authors":["Carlos Saji","Nicolas Vidal-Silva","Roberto E. Troncoso"],"authorMore":false,"abstract":"","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":30,"zhTitle":"磁绝缘体中的磁振子-位错子杂化"},{"title":"Chiral topological superconductivity from quantum anomalous Hall states in ferromagnetic metals","url":"https://doi.org/10.1103/rvzx-phch","doi":"10.1103/rvzx-phch","journal":"Physical Review B","jabbr":"Physical Review B","pubdate":"2026-10-21","topic":"二维磁性与拓扑自旋电子学","topics":["二维磁性与拓扑自旋电子学"],"matchTerm":"quantum anomalous Hall","matchWhere":"标题：quantum anomalous Hall","score":9,"authors":["Yun-Lei Sun"],"authorMore":false,"abstract":"✅ 数据源：52 本刊、104 条通道全部正常。","tier":"worth_reading","tierLabel":"值得一读","reportDate":"2026-10-22","tkey":"other","id":31,"zhTitle":"铁磁金属中量子反常霍尔态产生的 chiral 拓扑超导性"},{"title":"Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition","url":"https://doi.org/10.1021/acsami.6c14914","doi":"10.1021/acsami.6c14914","journal":"ACS Applied Materials \u0026 Interfaces","jabbr":"ACS Applied Materials \u0026 Interfaces","pubdate":"2026-10-21","topic":"磁各向异性与界面磁性","topics":["磁各向异性与界面磁性"],"matchTerm":"magnetic anisotropy","matchWhere":"摘要：magnetic anisotropy","score":3,"authors":["Mingxuan Chen","Chao Chen","Siqi Jiang","Shuxiang Qiao","Hongyan Lu","Di Zhang","Jiabei Huang","Fuzhuo Lian","Zhaochen Qu","Siqin Wang","Ziyi Wang","Shuai Zhang"],"authorMore":true,"abstract":"Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations.","tier":"other","tierLabel":"其他相关","reportDate":"2026-10-22","tkey":"other","id":32,"enAbstractSource":"crossref","enAbstract":"Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations.","zhTitle":"通过化学气相沉积生长的外延立方D03-Fe3Ge纳米片中的稳健反常霍尔效应"},{"title":"Bulk-Mediated Reflection of Chirality-Protected Surface Spin Waves","url":"https://doi.org/10.1103/hgvh-s6h5","doi":"10.1103/hgvh-s6h5","journal":"Physical Review Letters","jabbr":"Physical Review Letters","pubdate":"2026-10-21","topic":"手性磁结构与自旋动力学","topics":["手性磁结构与自旋动力学"],"matchTerm":"magnon","matchWhere":"摘要：magnon","score":3,"authors":["Vitaliy I. Vasyuchka","Florin Ciubotaru","Andrii V. Chumak","Burkard Hillebrands","Alexander A. Serga"],"authorMore":false,"abstract":"Surface spin waves of the Damon-Eshbach type exhibit intrinsically nonreciprocal transport properties with a chiral dynamical field structure that localizes counterpropagating waves at opposite film surfaces. Such chirality has been predicted to suppress direct backscattering in thin films within frequency ranges free of bulk modes. However, how chirality influences reflection in thicker three-dimensional magnetic media, where a dense spectrum of bulk excitations overlaps with surface waves, remains unclear. Here we demonstrate that, in micrometer-thick yttrium iron garnet films, reflection of the chiral Damon-Eshbach wave from the boundary of the magnetic medium is accompanied by excitation of spatially localized thickness-quantized bulk modes, whereas reciprocal backward-volume waves reflect nearly elastically. Brillouin light scattering spectroscopy, infrared thermography, and micromagnetic simulations reveal standing bulk excitations at the reflecting boundary and quantify the associated magnon energy accumulation and dissipation. These results identify bulk-mode excitations as the physical pathway enabling reversal of chirally localized surface waves in thick films, thereby defining the limits of chirality-based backscattering immunity and providing a general framework for wave transport in nonreciprocal magnetic media. ✅ 数据源：52 本刊、104 条通道全部正常。","tier":"other","tierLabel":"其他相关","reportDate":"2026-10-22","tkey":"other","id":33,"enAbstractSource":"crossref","enAbstract":"Surface spin waves of the Damon-Eshbach type exhibit intrinsically nonreciprocal transport properties with a chiral dynamical field structure that localizes counterpropagating waves at opposite film surfaces. Such chirality has been predicted to suppress direct backscattering in thin films within frequency ranges free of bulk modes. However, how chirality influences reflection in thicker three-dimensional magnetic media, where a dense spectrum of bulk excitations overlaps with surface waves, remains unclear. Here we demonstrate that, in micrometer-thick yttrium iron garnet films, reflection of the chiral Damon-Eshbach wave from the boundary of the magnetic medium is accompanied by excitation of spatially localized thickness-quantized bulk modes, whereas reciprocal backward-volume waves reflect nearly elastically. Brillouin light scattering spectroscopy, infrared thermography, and micromagnetic simulations reveal standing bulk excitations at the reflecting boundary and quantify the associated magnon energy accumulation and dissipation. These results identify bulk-mode excitations as the physical pathway enabling reversal of chirally localized surface waves in thick films, thereby defining the limits of chirality-based backscattering immunity and providing a general framework for wave transport in nonreciprocal magnetic media.","zhTitle":"体介导的手性保护表面自旋波的反射"},{"title":"Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption","url":"https://doi.org/10.1021/acsnano.6c15462","doi":"10.1021/acsnano.6c15462","journal":"ACS Nano","jabbr":"ACS Nano","pubdate":"2026-10-21","topic":"自旋逻辑与神经形态器件","topics":["自旋逻辑与神经形态器件"],"matchTerm":"magnetic sensing","matchWhere":"摘要：magnetic sensing","score":3,"authors":["Xiaofei Xiao","Tingjun Zheng","Alex Vanstone","Daniel S. Bromley","Holly Holder","Kilian D. Stenning","Jack C. Gartside","Will R. Branford","Rupert F. Oulton"],"authorMore":true,"abstract":"Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control. ✅ 数据源：52 本刊、104 条通道全部正常。","tier":"other","tierLabel":"其他相关","reportDate":"2026-10-22","tkey":"other","id":34,"enAbstractSource":"crossref","enAbstract":"Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control.","zhTitle":"近完美相干吸收的纳米磁性超材料中增强的磁光克尔效应"}],"reports":[{"date":"2026-10-22","generated":"2026-10-22 00:01","count":35}],"topics":["交换偏置与界面交换耦合","反铁磁与补偿磁体","自旋轨道力矩SOT","自旋转移力矩与自旋电子存储","磁隧道结与磁电阻","自旋流与自旋输运","磁各向异性与界面磁性","手性磁结构与自旋动力学","二维磁性与拓扑自旋电子学","自旋逻辑与神经形态器件","磁振子量子器件与自旋波逻辑","轨道力矩磁存储与晶圆级集成","概率计算与自旋忆阻器","二维磁体与交替磁隧穿器件"],"themeKeys":["air","rs","chem","bgc","gis"],"topicTheme":{"空气污染":"air","遥感":"rs","大气化学":"chem","生物地球化学":"bgc","城市地理信息系统":"gis"},"generated":"2026-10-22 00:01"}</script>
+<script>
+(function(){
+  var D = JSON.parse(document.getElementById('DATA').textContent);
+  var A = D.articles;
+  var TOPICS = D.topics;
+
+  /* Inline SVG rather than emoji: emoji depend on a colour-emoji font being
+     installed, and the missing-glyph box is worse than no icon at all. */
+  var P = {
+    all:   '<rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/>',
+    air:   '<path d="M3 7.5h9.6a2.6 2.6 0 1 0-2.6-2.6"/><path d="M3 12h13.2a2.6 2.6 0 1 1-2.6 2.6"/><path d="M3 16.5h6.8"/>',
+    rs:    '<circle cx="12" cy="12" r="8.6"/><ellipse cx="12" cy="12" rx="3.7" ry="8.6"/><path d="M3.4 12h17.2"/>',
+    chem:  '<path d="M9.5 2.8h5"/><path d="M10.6 2.8v5.8L6.3 16.9a2 2 0 0 0 1.8 3h7.8a2 2 0 0 0 1.8-3L15.4 8.6V2.8"/><path d="M7.9 13.6h8.2"/>',
+    bgc:   '<path d="M20.6 3.4C20.6 12 15.7 16.1 9.5 16.1H4.1C4.1 7.5 9 3.4 15.2 3.4h5.4z"/><path d="M4.1 20.6c2.2-5.8 6.1-9.1 11.3-10.5"/>',
+    gis:   '<path d="M9 3.4 3.5 5.8v14.8L9 18.2l6 2.4 5.5-2.4V3.4L15 5.8 9 3.4z"/><path d="M9 3.4v14.8"/><path d="M15 5.8v14.8"/>',
+    other: '<path d="M14 3H7.6A2 2 0 0 0 5.6 5v14a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V7.6L14 3z"/><path d="M14 3v4.6h4.6"/>',
+    search:'<circle cx="11" cy="11" r="7"/><path d="M20.2 20.2l-4.3-4.3"/>'
+  };
+  function svg(k, cls){
+    return '<svg class="'+(cls||'ic')+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+         + 'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(P[k]||P.other)+'</svg>';
+  }
+
+  var state = { topic:'all', tier:'all', sort:'score', q:'' };
+
+  /* An article can hit several keyword groups at once. a.topics holds every
+     match (used for filtering); a.topic is the primary one (used for the cover
+     chip and the section grouping, so nothing is listed twice). */
+  var THEME = D.topicTheme || {};
+  function topicsOf(a){ return a.topics && a.topics.length ? a.topics : [a.topic]; }
+
+  var tabs = document.getElementById('tabs');
+  var C = {all:A.length};
+  TOPICS.forEach(function(t){ C[t]=0; });
+  A.forEach(function(a){
+    topicsOf(a).forEach(function(t){ if(C[t]!==undefined) C[t]++; });
+  });
+
+  var tabDefs = [{k:'all',label:'全部',icon:'all'}].concat(
+    TOPICS.map(function(t){ return {k:t,label:t,icon:THEME[t]||'other'}; })
+  );
+  tabDefs.forEach(function(d){
+    var b = document.createElement('button');
+    b.className = 'tab' + (d.k==='all'?' on':'');
+    b.type = 'button';
+    var n = d.k==='all' ? C.all : (C[d.k]||0);
+    b.innerHTML = svg(d.icon) + '<span>'+d.label+'</span><span class="n">'+n+'</span>';
+    b.onclick = function(){
+      state.topic = d.k;
+      [].forEach.call(tabs.children, function(x){ x.classList.toggle('on', x===b); });
+      render();
+    };
+    tabs.appendChild(b);
+  });
+
+  document.getElementById('seg').onclick = function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    state.tier = b.dataset.t;
+    [].forEach.call(this.children, function(x){ x.classList.toggle('on', x===b); });
+    render();
+  };
+  document.getElementById('sortseg').onclick = function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    state.sort = b.dataset.s;
+    [].forEach.call(this.children, function(x){ x.classList.toggle('on', x===b); });
+    render();
+  };
+  var qt;
+  document.getElementById('q').oninput = function(e){
+    clearTimeout(qt);
+    var v = e.target.value.trim().toLowerCase();
+    qt = setTimeout(function(){ state.q = v; render(); }, 130);
+  };
+
+  function esc(s){
+    return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function trunc(s,n){ s=s||''; return s.length>n ? s.slice(0,n)+'…' : s; }
+  function initial(name){
+    if(!name) return '?';
+    var m = /[A-Za-z]/.exec(name);
+    return m ? m[0].toUpperCase() : name.slice(0,1);
+  }
+  function isFuture(d){ return (d||'').indexOf('（在线预发表）') >= 0; }
+  function dateOf(a){ return (a.pubdate||a.reportDate||'').replace('（在线预发表）','').slice(0,10); }
+  document.getElementById('kpi-days').textContent = D.reports.length;
+
+  function select(){
+    var q = state.q;
+    var out = A.filter(function(a){
+      if(state.topic!=='all' && topicsOf(a).indexOf(state.topic)<0) return false;
+      if(state.tier!=='all' && a.tier!==state.tier) return false;
+      if(q){
+        var hay = ((a.zhTitle||'')+' '+a.title+' '+a.abstract+' '+(a.enAbstract||'')+' '+(a.zhAbstract||'')+' '+a.authors.join(' ')+' '+a.journal+' '+a.doi).toLowerCase();
+        if(hay.indexOf(q)<0) return false;
+      }
+      return true;
+    });
+    if(state.sort==='date'){
+      out.sort(function(x,y){ return dateOf(y).localeCompare(dateOf(x)) || ((y.score||0)-(x.score||0)); });
+    } else if(state.sort==='journal'){
+      out.sort(function(x,y){ return x.journal.localeCompare(y.journal) || ((y.score||0)-(x.score||0)); });
+    } else {
+      out.sort(function(x,y){ return ((y.score||0)-(x.score||0)) || dateOf(y).localeCompare(dateOf(x)); });
+    }
+    return out;
+  }
+
+  function cardHTML(a){
+    var tags = '<span class="tag '+a.tier+'">'+esc(a.tierLabel)+'</span>'
+             + '<span class="tag">'+esc(a.jabbr)+'</span>';
+    if(a.score!=null) tags += '<span class="tag">得分 '+a.score+'</span>';
+    if(a.matchTerm) tags += '<span class="tag match" title="命中位置：'+esc(a.matchWhere)+'">命中 '+esc(a.matchTerm)+'</span>';
+    topicsOf(a).filter(function(t){ return t!==a.topic; }).slice(0,2).forEach(function(t){
+      tags += '<span class="tag cross">也属 '+esc(t)+'</span>';
+    });
+
+    var chinese = a.zhAbstract || '';
+    var english = a.enAbstract || a.abstract || '';
+    var ab = chinese
+      ? '<div class="bilingual-preview"><span class="language">中文直译</span><p class="excerpt">'+esc(trunc(chinese,110))+'</p></div>'
+      : '<div class="bilingual-preview absent"><span class="language">中文直译</span><p class="excerpt">译文暂缺；历史文献可后续补译</p></div>';
+    ab += english
+      ? '<div class="bilingual-preview"><span class="language">English Abstract</span><p class="excerpt">'+esc(trunc(english,125))+'</p></div>'
+      : '<div class="bilingual-preview absent"><span class="language">English Abstract</span><p class="excerpt">英文摘要暂缺 · 点击原文</p></div>';
+
+    var au = esc(a.authors[0] || '佚名') + (a.authors.length>1 ? ' 等 '+(a.authors.length-1)+' 位' : '');
+
+    return '<article class="card t-'+a.tkey+'" data-id="'+a.id+'" tabindex="0">'
+      + '<div class="cover">'
+      +   '<div class="tp">'+esc(a.topic)+'</div>'
+      +   (a.score!=null ? '<div class="sc">★ '+a.score+'</div>' : '')
+      +   '<div class="icon">'+svg(a.tkey)+'</div>'
+      +   '<div class="jr">'+esc(a.jabbr)+'</div>'
+      +   '<div class="tier '+a.tier+'"></div>'
+      + '</div>'
+      + '<div class="body">'
+      +   '<h3 class="title">'+(a.zhTitle ? esc(a.zhTitle)+'<span class="english-title">'+esc(a.title)+'</span>' : esc(a.title))+'</h3>'
+      +   ab
+      +   '<div class="tagrow">'+tags+'</div>'
+      + '</div>'
+      + '<div class="foot">'
+      +   '<div class="av">'+esc(initial(a.authors[0]))+'</div>'
+      +   '<div class="au">'+au+'</div>'
+      +   '<div class="dt">'+esc(dateOf(a))+(isFuture(a.pubdate)?' · 预发表':'')+'</div>'
+      + '</div>'
+      + '</article>';
+  }
+
+  var wrap = document.getElementById('wall-wrap');
+  var countEl = document.getElementById('count');
+  var TIER_NAME = {must_read:'必读', worth_reading:'值得一读', other:'其他相关'};
+
+  function render(){
+    var list = select();
+    var scope = (state.topic==='all' ? '全部学科' : state.topic)
+              + (state.tier==='all' ? '' : ' · '+TIER_NAME[state.tier]);
+    countEl.textContent = scope + ' ｜ ' + list.length + ' / ' + A.length + ' 篇';
+
+    if(!list.length){
+      wrap.innerHTML = '<div class="empty">'+svg('search')+'没有匹配的文献，换个关键词或学科试试</div>';
+      return;
+    }
+
+    var html = '';
+    if(state.topic==='all' && state.tier==='all' && !state.q && state.sort==='score'){
+      TOPICS.forEach(function(t){
+        var g = list.filter(function(a){ return a.topic===t; });
+        if(!g.length) return;
+        var key = THEME[t] || 'other';
+        var related = list.filter(function(a){ return topicsOf(a).indexOf(t)>=0; }).length - g.length;
+        html += '<div class="grouphead'+(key!=='other'?' g-'+key:'')+'"><h2>'+svg(key)+t+'</h2>'
+              + '<span class="gn">'+g.length+' 篇'
+              + (related>0 ? ' · 另有 '+related+' 篇跨学科命中' : '')+'</span><div class="bar"></div></div>'
+              + '<div class="wall">'+g.map(cardHTML).join('')+'</div>';
+      });
+      var rest = list.filter(function(a){ return TOPICS.indexOf(a.topic)<0; });
+      if(rest.length){
+        html += '<div class="grouphead"><h2>'+svg('other')+'其他</h2>'
+              + '<span class="gn">'+rest.length+' 篇</span><div class="bar"></div></div>'
+              + '<div class="wall">'+rest.map(cardHTML).join('')+'</div>';
+      }
+    } else {
+      html = '<div class="wall">'+list.map(cardHTML).join('')+'</div>';
+    }
+    wrap.innerHTML = html;
+  }
+
+  var mask = document.getElementById('mask'), modal = document.getElementById('modal');
+  function openModal(id){
+    var a = A[id]; if(!a) return;
+    var authors = a.authors.length ? a.authors.join('、') + (a.authorMore?' 等':'') : '未收录作者信息';
+    modal.innerHTML =
+      '<div class="mhead" style="background:linear-gradient(135deg,var(--'+a.tkey+'-a),var(--'+a.tkey+'-b))">'
+      + '<button class="mclose" id="mclose" type="button">✕</button>'
+      + '<div class="mj">'+esc(topicsOf(a).join(' / '))+' · '+esc(a.journal)+'</div>'
+      + '<h3>'+(a.zhTitle ? esc(a.zhTitle)+'<span class="english-title">'+esc(a.title)+'</span>' : esc(a.title))+'</h3>'
+      + '<div class="mmeta">'
+      +   '<span>'+esc(a.tierLabel)+'</span>'
+      +   (a.score!=null?'<span>得分 '+a.score+'</span>':'')
+      +   (a.pubdate?'<span>'+esc(a.pubdate)+'</span>':'')
+      +   '<span>日报 '+esc(a.reportDate)+'</span>'
+      + '</div></div>'
+      + '<div class="mbody">'
+      +   '<div class="bilingual-section"><div class="sec-t">中文摘要（忠实直译）</div>'
+      +   (a.zhAbstract
+            ? '<p class="abs">'+esc(a.zhAbstract)+'</p>'
+            : '<p class="abs" style="color:#9d9da8">尚未生成中文译文。仅对升级后新发现的论文自动翻译；历史论文可另行补译。</p>')
+      +   '<div class="sec-t">English Abstract '+(a.enAbstract?'（原始全文）':'（日报摘录，可能不完整）')+'</div>'
+      +   ((a.enAbstract || a.abstract)
+            ? '<p class="abs">'+esc(a.enAbstract || a.abstract)+'</p>'
+            : '<p class="abs" style="color:#9d9da8">原数据源未提供英文摘要。</p>')
+      +   '</div>'
+      +   '<div class="sec-t">作者</div><p class="authors">'+esc(authors)+'</p>'
+      +   (a.doi ? '<div class="kv">DOI：<code>'+esc(a.doi)+'</code></div>' : '')
+      +   (a.matchWhere ? '<div class="kv">关键词命中：'+esc(a.matchWhere)+'</div>' : '')
+      +   '<div class="linkrow">'
+      +     '<a class="btn pri" href="'+esc(a.url)+'" target="_blank" rel="noopener">打开原文 ↗</a>'
+      +     (a.doi?'<a class="btn" href="https://doi.org/'+esc(a.doi)+'" target="_blank" rel="noopener">DOI 链接</a>':'')
+      +     '<button class="btn" id="mcopy" type="button">复制 DOI</button>'
+      +   '</div>'
+      + '</div>';
+    mask.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    var cb = document.getElementById('mclose'); if(cb) cb.onclick = closeModal;
+    var cp = document.getElementById('mcopy');
+    if(cp) cp.onclick = function(){
+      var txt = a.doi || a.url;
+      var done = function(){ cp.textContent='已复制 ✓'; setTimeout(function(){ cp.textContent='复制 DOI'; },1400); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done, function(){ cp.textContent = txt; });
+      } else { cp.textContent = txt; }
+    };
+  }
+  function closeModal(){ mask.classList.remove('on'); document.body.style.overflow=''; }
+  mask.onclick = closeModal;
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  wrap.addEventListener('click', function(e){
+    var c = e.target.closest('.card'); if(c) openModal(+c.dataset.id);
+  });
+  wrap.addEventListener('keydown', function(e){
+    if(e.key==='Enter'){ var c = e.target.closest('.card'); if(c) openModal(+c.dataset.id); }
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

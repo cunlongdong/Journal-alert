@@ -1,0 +1,642 @@
+{
+  "version": 1,
+  "articles": {
+    "doi:10.1016/j.jmmm.2026.174649": {
+      "uid": "doi:10.1016/j.jmmm.2026.174649",
+      "doi": "10.1016/j.jmmm.2026.174649",
+      "title": "Operating regimes and materials limits of nonlinear magnon dynamics in Co-doped YIG",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-12-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174649",
+      "authors": [
+        "A.M. Tishin"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174675": {
+      "uid": "doi:10.1016/j.jmmm.2026.174675",
+      "doi": "10.1016/j.jmmm.2026.174675",
+      "title": "Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-12-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174675",
+      "authors": [
+        "L. Gowsalya",
+        "N. Lakshminarasimhan"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174651": {
+      "uid": "doi:10.1016/j.jmmm.2026.174651",
+      "doi": "10.1016/j.jmmm.2026.174651",
+      "title": "Spin hall magnetoresistance in an antiferromagnetic magnetoelectric Sr2IrO4/heavy-metal Pt heterostructure",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174651",
+      "authors": [
+        "Shizhe Wu",
+        "Yingxin Shao",
+        "Zedong Xu",
+        "Yong Wu",
+        "Yong Jiang"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174674": {
+      "uid": "doi:10.1016/j.jmmm.2026.174674",
+      "doi": "10.1016/j.jmmm.2026.174674",
+      "title": "Modulation of Current-Induced Magnetization Switching by Tb Layer Thickness in Ti/Pt/Co/Tb/Ti Heterostructures",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174674",
+      "authors": [
+        "Shumin Lv",
+        "Zhicheng Wang",
+        "Mengjia Sun",
+        "Wenrui Guo",
+        "Liang Liu",
+        "Xiangxiang Zhao",
+        "Weixiao Hou",
+        "Qi Guo",
+        "Xue Ren",
+        "Yong Jiang",
+        "Jifan Hu"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174638": {
+      "uid": "doi:10.1016/j.jmmm.2026.174638",
+      "doi": "10.1016/j.jmmm.2026.174638",
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174638",
+      "authors": [
+        "Xue-Feng Zhang",
+        "Wenbin Liu",
+        "Xiao-Ping Ma",
+        "Hongyan Zhang",
+        "Mengyao Han",
+        "Cunlong Dong",
+        "Guoqiang Yu",
+        "Hong-Guang Piao"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174605": {
+      "uid": "doi:10.1016/j.jmmm.2026.174605",
+      "doi": "10.1016/j.jmmm.2026.174605",
+      "title": "Spin-wave behavior and quantum fluctuations in AB-stacked bilayer zigzag nanoribbons",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174605",
+      "authors": [
+        "He Liu",
+        "Anbang Guo",
+        "Ao Tang",
+        "Qi Zhi"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174575": {
+      "uid": "doi:10.1016/j.jmmm.2026.174575",
+      "doi": "10.1016/j.jmmm.2026.174575",
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174575",
+      "authors": [
+        "Biswanath Pramanik",
+        "Pushpesh Pathak",
+        "Binoy K. Hazra"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174668": {
+      "uid": "doi:10.1016/j.jmmm.2026.174668",
+      "doi": "10.1016/j.jmmm.2026.174668",
+      "title": "Multi-scale characterization of magnetic anisotropy via magnetic acoustic emission, Barkhausen noise and magnetic domain observation",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174668",
+      "authors": [
+        "YuFan Zeng",
+        "Fasheng Qiu",
+        "Yao Chen"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174563": {
+      "uid": "doi:10.1016/j.jmmm.2026.174563",
+      "doi": "10.1016/j.jmmm.2026.174563",
+      "title": "Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174563",
+      "authors": [
+        "Yadlapalli Sujatha",
+        "Debajit Deb",
+        "Pamulapati Soujanya",
+        "Nitish Ghosh",
+        "S Vamsee Krishna"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174602": {
+      "uid": "doi:10.1016/j.jmmm.2026.174602",
+      "doi": "10.1016/j.jmmm.2026.174602",
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174602",
+      "authors": [
+        "H. Vigo-Cotrina",
+        "Eduardo Saavedra",
+        "S. Urcia-Romero",
+        "S. Navarro-Vilca",
+        "J. Sifuentes-Rivera",
+        "A.P. Guimarães"
+      ],
+      "updated_at": "2026-10-21T16:02:07+00:00",
+      "abstract": "k π -skyrmions are topological magnetic textures with promising applications in spintronic devices. In this work, we investigated the stability and current-driven dynamics of k π -skyrmions ( k = 1,2,3 , and 4) in racetrack nanostructures. Stability phase diagrams were constructed as a function of the interfacial Dzyaloshinskii–Moriya interaction strength ( D int ) and the perpendicular magnetic field ( B z ). Our results showed that the stabilization range of each k π -skyrmion strongly depends on D int . In addition, the diameters of all textures increased with increasing D int and decreased with increasing B z . The current-driven dynamics induced by spin–orbit torque were then investigated. Our results showed that the velocity of all k π -skyrmions increased with current density and decreased with perpendicular magnetic field. Although the 3 π -skyrmion exhibited larger longitudinal velocities during the transient regime than the π -skyrmion, both textures reached nearly identical steady-state velocities. A similar behavior was observed for the 2 π - and 4 π -skyrmions. The steady-state dynamics were further analyzed using the Thiele formalism, which reproduced the trends observed in the micromagnetic simulations. These findings provide insight into the stabilization and transport properties of k π -skyrmions and support their potential use in future spintronic applications.",
+      "abstract_source": "OpenAlex"
+    },
+    "doi:10.1016/j.jmmm.2026.174650": {
+      "uid": "doi:10.1016/j.jmmm.2026.174650",
+      "doi": "10.1016/j.jmmm.2026.174650",
+      "title": "Large coercivity and giant exchange bias in Eu₂NiIrO₆",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174650",
+      "authors": [
+        "T. Durga Rao",
+        "Manish K. Niranjan",
+        "K. Ramesh Kumar",
+        "G. Bhavani",
+        "B. Sattibabu",
+        "Thao T. Tran",
+        "Jyothinagaram Krishnamurthy"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174590": {
+      "uid": "doi:10.1016/j.jmmm.2026.174590",
+      "doi": "10.1016/j.jmmm.2026.174590",
+      "title": "Bias-field-free conversion of domain wall pair to skyrmion under spin transfer torque in synthetic antiferromagnet-based racetrack",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174590",
+      "authors": [
+        "Mani Bharathi Manickavasagam",
+        "T. Perarasan",
+        "Priyanka Babu",
+        "Jaivardhan Sinha"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174633": {
+      "uid": "doi:10.1016/j.jmmm.2026.174633",
+      "doi": "10.1016/j.jmmm.2026.174633",
+      "title": "Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174633",
+      "authors": [
+        "J. Ricardo de Sousa",
+        "Orion Ciftja"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174616": {
+      "uid": "doi:10.1016/j.jmmm.2026.174616",
+      "doi": "10.1016/j.jmmm.2026.174616",
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174616",
+      "authors": [
+        "Sadikul Alom",
+        "Bhargab Kakati",
+        "Munima B. Sahariah"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174570": {
+      "uid": "doi:10.1016/j.jmmm.2026.174570",
+      "doi": "10.1016/j.jmmm.2026.174570",
+      "title": "The magnetic immunity of perpendicular STT-MRAM",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174570",
+      "authors": [
+        "Zhengren Yan",
+        "Pengqi Lu",
+        "Yuyan Chu",
+        "Yizhou Liu",
+        "Haifeng Du",
+        "Shikun He"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174566": {
+      "uid": "doi:10.1016/j.jmmm.2026.174566",
+      "doi": "10.1016/j.jmmm.2026.174566",
+      "title": "Characterization of ferrimagnetic FeGd coatings formed by a magnetron sputtering",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174566",
+      "authors": [
+        "V.O. Semin",
+        "M.V. Shandrikov",
+        "V.R. Utyaganova",
+        "M.G. Ostapenko",
+        "F.A. D'yachenko",
+        "A.A. Cherkasov",
+        "S.A. Larionov"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174543": {
+      "uid": "doi:10.1016/j.jmmm.2026.174543",
+      "doi": "10.1016/j.jmmm.2026.174543",
+      "title": "Impact of He+ ion irradiation on the domain wall dynamics in Pd/Co/Pd trilayers with perpendicular magnetic anisotropy",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174543",
+      "authors": [
+        "Anurag Keloth",
+        "Sakshath Sadashivaiah",
+        "Parswajit Kalita",
+        "Rakhul Raj",
+        "V. Raghavendra Reddy",
+        "Bikram Das",
+        "Bharti Pandit",
+        "Ralf Röhlsberger",
+        "P.S. Anil Kumar",
+        "Ajay Gupta",
+        "Sarathlal Koyiloth Vayalil"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174673": {
+      "uid": "doi:10.1016/j.jmmm.2026.174673",
+      "doi": "10.1016/j.jmmm.2026.174673",
+      "title": "Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174673",
+      "authors": [
+        "Kaili Li",
+        "Zhigang Li",
+        "Zixiao Wu",
+        "Chenjie Yuan",
+        "Hanyuan Ding",
+        "Yangyang Xu",
+        "Sen Yang",
+        "Yu Wang"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174646": {
+      "uid": "doi:10.1016/j.jmmm.2026.174646",
+      "doi": "10.1016/j.jmmm.2026.174646",
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174646",
+      "authors": [
+        "F. Tejo",
+        "D. Cortés-Ortuño",
+        "J. Escrig"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174589": {
+      "uid": "doi:10.1016/j.jmmm.2026.174589",
+      "doi": "10.1016/j.jmmm.2026.174589",
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174589",
+      "authors": [
+        "Deyi Zhuo",
+        "Han Tay",
+        "Cui-Zu Chang"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174629": {
+      "uid": "doi:10.1016/j.jmmm.2026.174629",
+      "doi": "10.1016/j.jmmm.2026.174629",
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174629",
+      "authors": [
+        "Terumitsu Tanaka",
+        "Budi Purnama"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1016/j.jallcom.2026.191741": {
+      "uid": "doi:10.1016/j.jallcom.2026.191741",
+      "doi": "10.1016/j.jallcom.2026.191741",
+      "title": "Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics",
+      "journal": "Journal of Alloys and Compounds",
+      "issn": "0925-8388",
+      "date": "2026-11-01",
+      "url": "https://doi.org/10.1016/j.jallcom.2026.191741",
+      "authors": [
+        "Subhankar Das",
+        "Sriram Kasilingam",
+        "Ajoy Dinda",
+        "Bilal Jamshed",
+        "Biswanath Pramanik",
+        "Subrata Biswas",
+        "Badsha Sekh",
+        "Hasibur Rahaman",
+        "Lalit Katariya",
+        "Ramu Maddu",
+        "Ahin Roy",
+        "S.N. Piramanayagam"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/82g5-bsvp": {
+      "uid": "doi:10.1103/82g5-bsvp",
+      "doi": "10.1103/82g5-bsvp",
+      "title": "Probing the ground state of the antiferromagnetic Heisenberg model on the kagome lattice using geometrically informed variational quantum eigensolver",
+      "journal": "Physical Review Research",
+      "issn": "2643-1564",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/82g5-bsvp",
+      "authors": [
+        "Abdellah Tounsi",
+        "Nacer Eddine Belaloui",
+        "Abdelmouheymen Rabah Khamadja",
+        "Takei Eddine Fadi Lalaoui",
+        "Mohamed Messaoud Louamri",
+        "David E. Bernal Neira",
+        "Mohamed Taha Rouabah"
+      ],
+      "abstract": "This work investigates the nature of the ground state of the antiferromagnetic Heisenberg model on fundamental kagome cells, a triangle and a star, using the variational quantum eigensolver algorithm on real quantum hardware. We demonstrate that the ground-state preparation is achievable using a shallow hardware-efficient quantum circuit with a naturally Euclidean parameter space. Our custom ansatz is capable of accurately recovering meaningful properties of the ground state such as the spin-spin correlation terms and static structure factor without explicit error mitigation. These features are found to be resilient to noise. We exploited the Fubini-Study metric in constructing the ansatz, ensuring a singularity-free parameter space. With this ansatz design, the adaptive gradient descent optimizer achieves a faster convergence in terms of the number of iterations compared to simultaneous perturbation stochastic approximation. We further apply error mitigation techniques, including zero-noise extrapolation (ZNE) and qubitwise readout-error mitigation (REM). While ZNE does not obey the Rayleigh-Ritz variational principle, the conditions under which REM preserves it are discussed.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/hgvh-s6h5": {
+      "uid": "doi:10.1103/hgvh-s6h5",
+      "doi": "10.1103/hgvh-s6h5",
+      "title": "Bulk-Mediated Reflection of Chirality-Protected Surface Spin Waves",
+      "journal": "Physical Review Letters",
+      "issn": "1079-7114",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/hgvh-s6h5",
+      "authors": [
+        "Vitaliy I. Vasyuchka",
+        "Florin Ciubotaru",
+        "Andrii V. Chumak",
+        "Burkard Hillebrands",
+        "Alexander A. Serga"
+      ],
+      "abstract": "Surface spin waves of the Damon-Eshbach type exhibit intrinsically nonreciprocal transport properties with a chiral dynamical field structure that localizes counterpropagating waves at opposite film surfaces. Such chirality has been predicted to suppress direct backscattering in thin films within frequency ranges free of bulk modes. However, how chirality influences reflection in thicker three-dimensional magnetic media, where a dense spectrum of bulk excitations overlaps with surface waves, remains unclear. Here we demonstrate that, in micrometer-thick yttrium iron garnet films, reflection of the chiral Damon-Eshbach wave from the boundary of the magnetic medium is accompanied by excitation of spatially localized thickness-quantized bulk modes, whereas reciprocal backward-volume waves reflect nearly elastically. Brillouin light scattering spectroscopy, infrared thermography, and micromagnetic simulations reveal standing bulk excitations at the reflecting boundary and quantify the associated magnon energy accumulation and dissipation. These results identify bulk-mode excitations as the physical pathway enabling reversal of chirally localized surface waves in thick films, thereby defining the limits of chirality-based backscattering immunity and providing a general framework for wave transport in nonreciprocal magnetic media.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/tn92-kx55": {
+      "uid": "doi:10.1103/tn92-kx55",
+      "doi": "10.1103/tn92-kx55",
+      "title": "Spin Hall effect in electronic Lévy glasses: Enhanced spin-current generation in the superdiffusive regime",
+      "journal": "Physical Review B",
+      "issn": "2469-9950",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/tn92-kx55",
+      "authors": [
+        "Diego B. Fonseca",
+        "Luiz Felipe C. Pereira",
+        "Anderson L. R. Barbosa"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/rvzx-phch": {
+      "uid": "doi:10.1103/rvzx-phch",
+      "doi": "10.1103/rvzx-phch",
+      "title": "Chiral topological superconductivity from quantum anomalous Hall states in ferromagnetic metals",
+      "journal": "Physical Review B",
+      "issn": "2469-9950",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/rvzx-phch",
+      "authors": [
+        "Yun-Lei Sun"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/lfl8-syfd": {
+      "uid": "doi:10.1103/lfl8-syfd",
+      "doi": "10.1103/lfl8-syfd",
+      "title": "Intra-atomic magnetic octupoles and their coupling to cluster magnetic octupoles in chiral antiferromagnetic Mn 3 Sn",
+      "journal": "Physical Review B",
+      "issn": "2469-9950",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/lfl8-syfd",
+      "authors": [
+        "Dohoon Park",
+        "Seungyun Han",
+        "Hyun-Woo Lee"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/dbd5-2s48": {
+      "uid": "doi:10.1103/dbd5-2s48",
+      "doi": "10.1103/dbd5-2s48",
+      "title": "Magnon-dislon hybridization in magnetic insulators",
+      "journal": "Physical Review B",
+      "issn": "2469-9950",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/dbd5-2s48",
+      "authors": [
+        "Carlos Saji",
+        "Nicolas Vidal-Silva",
+        "Roberto E. Troncoso"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/sqws-q32r": {
+      "uid": "doi:10.1103/sqws-q32r",
+      "doi": "10.1103/sqws-q32r",
+      "title": "Magnetic circular dichroism of terahertz modes and selection rules of Raman-active optical phonons in the polar altermagnet candidate Mn 2 Mo 3 O 8",
+      "journal": "Physical Review B",
+      "issn": "2469-9950",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/sqws-q32r",
+      "authors": [
+        "F. Schilberth",
+        "K. Vasin",
+        "M. Knauft",
+        "M. Kondákor",
+        "M. Vuckovic",
+        "N. Herrmann",
+        "K. Penc",
+        "M. Minola",
+        "B. Keimer",
+        "V. A. Martinez",
+        "K. Panda",
+        "A. A. Sirenko"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/nny3-5mnz": {
+      "uid": "doi:10.1103/nny3-5mnz",
+      "doi": "10.1103/nny3-5mnz",
+      "title": "Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions",
+      "journal": "Physical Review Applied",
+      "issn": "2331-7019",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/nny3-5mnz",
+      "authors": [
+        "Ryo Tatsumi",
+        "Shinji Miwa",
+        "Hiroaki Matsueda",
+        "Takahiro Chiba"
+      ],
+      "abstract": "We theoretically investigate the chaotic behavior of spin-torque ferromagnetic resonance in magnetic tunnel junctions (MTJs) with perpendicular magnetic anisotropy under thermal fluctuations. By calculating the Lyapunov exponent based on the Landau–Lifshitz–Gilbert equation, we demonstrate that an MTJ characterized by a double-well potential, composed of uniaxial magnetic anisotropy and an external dc magnetic field, exhibits chaotic magnetization dynamics that can be controlled by means of the dc bias via spin-transfer torque. Furthermore, we find that thermal fluctuations help to induce these chaotic magnetization dynamics, which can be regarded as noise-induced chaos. This research provides a basis for brain-inspired computing using spintronic devices and advances the understanding of the interplay between thermal fluctuations and chaos in magnetization dynamics.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1103/8q5b-3xcn": {
+      "uid": "doi:10.1103/8q5b-3xcn",
+      "doi": "10.1103/8q5b-3xcn",
+      "title": "Topological magnon frequency combs",
+      "journal": "Physical Review Applied",
+      "issn": "2331-7019",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1103/8q5b-3xcn",
+      "authors": [
+        "Zhixiong Li",
+        "Xuejuan Liu",
+        "Zhejunyu Jin",
+        "Guanghua Guo",
+        "Xingen Zheng",
+        "Peng Yan"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1038/s41586-026-11172-5": {
+      "uid": "doi:10.1038/s41586-026-11172-5",
+      "doi": "10.1038/s41586-026-11172-5",
+      "title": "Octupole-driven spin torque switching of antiferromagnetic tunnel junctions",
+      "journal": "Nature",
+      "issn": "0028-0836",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1038/s41586-026-11172-5",
+      "authors": [
+        "Jaimin Kang",
+        "Mohammad Hamdi",
+        "Shun Kong Cheung",
+        "Lin-Ding Yuan",
+        "Mohamed Elekhtiar",
+        "Eric Matt",
+        "William Rogers",
+        "Andrea Meo",
+        "Peter G. Lim",
+        "M. S. Nicholas Tey",
+        "Anthony D’Addario",
+        "Shiva T. Konakanchi"
+      ],
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1021/acs.nanolett.6c04307": {
+      "uid": "doi:10.1021/acs.nanolett.6c04307",
+      "doi": "10.1021/acs.nanolett.6c04307",
+      "title": "Unidirectional Magnetoresistance Driven by Nonequilibrium Antiferromagnetic Magnons",
+      "journal": "Nano Letters",
+      "issn": "1530-6992",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c04307",
+      "authors": [
+        "Xue He",
+        "Hans Gløckner Giil",
+        "Caiqiong Xu",
+        "Jicheng Wang",
+        "Arne Brataas",
+        "Jinbo Yang",
+        "Yanglong Hou",
+        "Zhaochu Luo",
+        "Rui Wu",
+        "Shilei Ding"
+      ],
+      "abstract": "Abstract Magnetoresistive effects are typically symmetric under magnetization reversal. However, nonlinear spin transport can give rise to unidirectional magnetoresistance in systems with strong spin–orbit interaction and broken inversion symmetry. Here, we report a large magnonic unidirectional spin Hall magnetoresistance (USMR) in a van der Waals antiferromagnet CrPS4 in contact with Pt, driven by the nonequilibrium magnon accumulation with a finite magnon chemical potential. In contrast to conventional magnonic USMR driven by magnetization fluctuations, this effect persists under strong magnetic fields and low temperatures. The magnitude of magnonic USMR in CrPS4/Pt exceeds that of YIG/Pt by more than 2 orders of magnitude and surpasses the electrical USMR in metallic Ta/Co bilayers by a factor of 2. Our results highlight magnon chemical potential gradients for nonlinear magnetoresistance in antiferromagnetic van der Waals heterostructures and open a route to magnon-based antiferromagnetic spintronic functionalities in two-terminal device geometries.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1021/acsnano.6c15462": {
+      "uid": "doi:10.1021/acsnano.6c15462",
+      "doi": "10.1021/acsnano.6c15462",
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "journal": "ACS Nano",
+      "issn": "1936-086X",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1021/acsnano.6c15462",
+      "authors": [
+        "Xiaofei Xiao",
+        "Tingjun Zheng",
+        "Alex Vanstone",
+        "Daniel S. Bromley",
+        "Holly Holder",
+        "Kilian D. Stenning",
+        "Jack C. Gartside",
+        "Will R. Branford",
+        "Rupert F. Oulton"
+      ],
+      "abstract": "Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    },
+    "doi:10.1021/acsami.6c14914": {
+      "uid": "doi:10.1021/acsami.6c14914",
+      "doi": "10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "journal": "ACS Applied Materials & Interfaces",
+      "issn": "1944-8252",
+      "date": "2026-10-21",
+      "url": "https://doi.org/10.1021/acsami.6c14914",
+      "authors": [
+        "Mingxuan Chen",
+        "Chao Chen",
+        "Siqi Jiang",
+        "Shuxiang Qiao",
+        "Hongyan Lu",
+        "Di Zhang",
+        "Jiabei Huang",
+        "Fuzhuo Lian",
+        "Zhaochen Qu",
+        "Siqin Wang",
+        "Ziyi Wang",
+        "Shuai Zhang"
+      ],
+      "abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-21T16:01:37+00:00"
+    }
+  }
+}

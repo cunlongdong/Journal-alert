@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "summaries": {
+    "b247764c650329c9193d5f7f8574bd5f66cfd786c9490f592204a1fc47f990e2": {
+      "summary": "摘要 磁阻效应在磁化反转下通常是对称的。然而，在具有强自旋-轨道相互作用和反演对称性破缺的体系中，非线性自旋输运可以产生单向磁阻。在此，我们报道了在范德华反铁磁体CrPS4与Pt接触的体系中，由具有有限磁子化学势的非平衡磁子积累所驱动的大磁子单向自旋霍尔磁阻（USMR）。与由磁化涨落驱动的传统磁子USMR不同，该效应在强磁场和低温下仍然持续存在。CrPS4/Pt中磁子USMR的幅度超过YIG/Pt的幅度两个数量级以上，并且超过金属Ta/Co双层中电学USMR的幅度2倍。我们的结果突出了反铁磁范德华异质结构中用于非线性磁阻的磁子化学势梯度，并开辟了一条在两端器件几何结构中实现基于磁子的反铁磁自旋电子学功能的途径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "90d9a2ffe203b1ef9dc42b03fa7290b0d7070122921f8385bc8f5f1d14fda498": {
+      "summary": "摘要 磁阻效应在磁化反转下通常是对称的。然而，在具有强自旋-轨道相互作用和反演对称性破缺的体系中，非线性自旋输运可以产生单向磁阻。在此，我们报道了在范德华反铁磁体CrPS4与Pt接触的体系中，由具有有限磁子化学势的非平衡磁子积累所驱动的大磁子单向自旋霍尔磁阻（USMR）。与由磁化涨落驱动的传统磁子USMR不同，该效应在强磁场和低温下仍然持续存在。CrPS4/Pt中磁子USMR的幅度超过YIG/Pt的幅度两个数量级以上，并且超过金属Ta/Co双层中电学USMR的幅度2倍。我们的结果突出了反铁磁范德华异质结构中用于非线性磁阻的磁子化学势梯度，并开辟了一条在两端器件几何结构中实现基于磁子的反铁磁自旋电子学功能的途径。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1021/acs.nanolett.6c04307",
+      "doi": "10.1021/acs.nanolett.6c04307",
+      "title": "Unidirectional Magnetoresistance Driven by Nonequilibrium Antiferromagnetic Magnons",
+      "english_abstract": "Abstract Magnetoresistive effects are typically symmetric under magnetization reversal. However, nonlinear spin transport can give rise to unidirectional magnetoresistance in systems with strong spin–orbit interaction and broken inversion symmetry. Here, we report a large magnonic unidirectional spin Hall magnetoresistance (USMR) in a van der Waals antiferromagnet CrPS4 in contact with Pt, driven by the nonequilibrium magnon accumulation with a finite magnon chemical potential. In contrast to conventional magnonic USMR driven by magnetization fluctuations, this effect persists under strong magnetic fields and low temperatures. The magnitude of magnonic USMR in CrPS4/Pt exceeds that of YIG/Pt by more than 2 orders of magnitude and surpasses the electrical USMR in metallic Ta/Co bilayers by a factor of 2. Our results highlight magnon chemical potential gradients for nonlinear magnetoresistance in antiferromagnetic van der Waals heterostructures and open a route to magnon-based antiferromagnetic spintronic functionalities in two-terminal device geometries."
+    },
+    "e963038311d09d6b240549f443f8836777a4d65545b9a285acf7f6ce942caaee": {
+      "summary": "kπ-斯格明子是在自旋电子器件中具有应用前景的拓扑磁结构。在本工作中，我们研究了跑道形纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性与电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋–轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "5ae75ddcac5055aab548d0201cabe7fa043009867e9b5c02f645acb5b3b7a831": {
+      "summary": "kπ-斯格明子是在自旋电子器件中具有应用前景的拓扑磁结构。在本工作中，我们研究了跑道形纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性与电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋–轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1016/j.jmmm.2026.174602",
+      "doi": "10.1016/j.jmmm.2026.174602",
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "english_abstract": "k π -skyrmions are topological magnetic textures with promising applications in spintronic devices. In this work, we investigated the stability and current-driven dynamics of k π -skyrmions ( k = 1,2,3 , and 4) in racetrack nanostructures. Stability phase diagrams were constructed as a function of the interfacial Dzyaloshinskii–Moriya interaction strength ( D int ) and the perpendicular magnetic field ( B z ). Our results showed that the stabilization range of each k π -skyrmion strongly depends on D int . In addition, the diameters of all textures increased with increasing D int and decreased with increasing B z . The current-driven dynamics induced by spin–orbit torque were then investigated. Our results showed that the velocity of all k π -skyrmions increased with current density and decreased with perpendicular magnetic field. Although the 3 π -skyrmion exhibited larger longitudinal velocities during the transient regime than the π -skyrmion, both textures reached nearly identical steady-state velocities. A similar behavior was observed for the 2 π - and 4 π -skyrmions. The steady-state dynamics were further analyzed using the Thiele formalism, which reproduced the trends observed in the micromagnetic simulations. These findings provide insight into the stabilization and transport properties of k π -skyrmions and support their potential use in future spintronic applications."
+    },
+    "69c4d829fbda89a7503a712bd75c0e26aa370638e0a214c85848061a312ed1cc": {
+      "summary": "我们从理论上研究了热涨落下具有垂直磁各向异性的磁隧道结（MTJ）中自旋力矩铁磁共振的混沌行为。通过基于Landau–Lifshitz–Gilbert方程计算Lyapunov指数，我们证明：由单轴磁各向异性和外部直流磁场构成的双势阱MTJ表现出混沌磁化动力学，该动力学可通过自旋转移力矩经由直流偏置进行控制。此外，我们发现热涨落有助于诱导这些混沌磁化动力学，其可被视为噪声诱导的混沌。本研究为利用自旋电子器件进行类脑计算提供了基础，并增进了对磁化动力学中热涨落与混沌之间相互作用的理解。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "257078daa11bf67c33b184d7ba677b58c9a2408439c1a76f49596a4fe13c5b03": {
+      "summary": "我们从理论上研究了热涨落下具有垂直磁各向异性的磁隧道结（MTJ）中自旋力矩铁磁共振的混沌行为。通过基于Landau–Lifshitz–Gilbert方程计算Lyapunov指数，我们证明：由单轴磁各向异性和外部直流磁场构成的双势阱MTJ表现出混沌磁化动力学，该动力学可通过自旋转移力矩经由直流偏置进行控制。此外，我们发现热涨落有助于诱导这些混沌磁化动力学，其可被视为噪声诱导的混沌。本研究为利用自旋电子器件进行类脑计算提供了基础，并增进了对磁化动力学中热涨落与混沌之间相互作用的理解。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1103/nny3-5mnz",
+      "doi": "10.1103/nny3-5mnz",
+      "title": "Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions",
+      "english_abstract": "We theoretically investigate the chaotic behavior of spin-torque ferromagnetic resonance in magnetic tunnel junctions (MTJs) with perpendicular magnetic anisotropy under thermal fluctuations. By calculating the Lyapunov exponent based on the Landau–Lifshitz–Gilbert equation, we demonstrate that an MTJ characterized by a double-well potential, composed of uniaxial magnetic anisotropy and an external dc magnetic field, exhibits chaotic magnetization dynamics that can be controlled by means of the dc bias via spin-transfer torque. Furthermore, we find that thermal fluctuations help to induce these chaotic magnetization dynamics, which can be regarded as noise-induced chaos. This research provides a basis for brain-inspired computing using spintronic devices and advances the understanding of the interplay between thermal fluctuations and chaos in magnetization dynamics."
+    }
+  },
+  "titles": {
+    "f32ef9006b6211f035299044cfdff7099a7dc39893e3f6d4ead9f255642a5ed8": {
+      "title": "Bias-field-free conversion of domain wall pair to skyrmion under spin transfer torque in synthetic antiferromagnet-based racetrack",
+      "zh_title": "无偏置场下合成反铁磁赛道中自旋转移矩驱动的畴壁对向斯格明子的转换",
+      "created": "2026-10-22"
+    },
+    "3cf66c58c8be16208cd7d3520a75f7c3022a600b49bde261ba3730aa8e183aca": {
+      "title": "Spin hall magnetoresistance in an antiferromagnetic magnetoelectric Sr2IrO4/heavy-metal Pt heterostructure",
+      "zh_title": "反铁磁磁电Sr2IrO4/重金属Pt异质结构中的自旋霍尔磁电阻",
+      "created": "2026-10-22"
+    },
+    "3154cd14c1a06a1ef1276dfbb8c4c1896156e58781bc58840160ec73f5091e95": {
+      "title": "The magnetic immunity of perpendicular STT-MRAM",
+      "zh_title": "垂直STT-MRAM的磁免疫性",
+      "created": "2026-10-22"
+    },
+    "ae4f9d2114d74ce0e88dde1f8704ad356e993db16c8efb6f0b3f33bf39c115d0": {
+      "title": "Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator",
+      "zh_title": "补偿型亚铁磁绝缘体中自旋霍尔磁电阻的电调制",
+      "created": "2026-10-22"
+    },
+    "60580c86a54f229ac029d8b09c2e0d86dccab9db4b0a48752ab0362e0a185d38": {
+      "title": "Unidirectional Magnetoresistance Driven by Nonequilibrium Antiferromagnetic Magnons",
+      "zh_title": "由非平衡反铁磁磁振子驱动的单向磁阻",
+      "created": "2026-10-22"
+    },
+    "0853678197eb99813e3d03a740716bb0df329b241bc5afcdffea747c0df64b98": {
+      "title": "Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions",
+      "zh_title": "有机磁性隧道结中通过磁光可调缺陷态自旋注入过程的磁阻符号交叉",
+      "created": "2026-10-22"
+    },
+    "12f393c34570822e20195f576959a423dc3ccacbe82f07bd60dd5ab982d59592": {
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "zh_title": "赛道纳米结构中kπ-斯格明子的自旋轨道矩操控及其在自旋电子存储器中的应用",
+      "created": "2026-10-22"
+    },
+    "47bacfaeafdbd8943ca75e23fcebfb40a4c96263e009f349b625cd2a1d725c0c": {
+      "title": "Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions",
+      "zh_title": "磁隧道结中混沌的电流控制及热涨落效应",
+      "created": "2026-10-22"
+    },
+    "3f589a0d7be14ebe19220ad92da498019b0d1ebd2e3aca0a1787fba36e4663d3": {
+      "title": "Spin Hall effect in electronic Lévy glasses: Enhanced spin-current generation in the superdiffusive regime",
+      "zh_title": "电子Lévy玻璃中的自旋霍尔效应：超扩散区中增强的自旋流产生",
+      "created": "2026-10-22"
+    },
+    "27c22fc9cbccadf5966a736102accec57e11e3dbac8751e63db20a7a201301ad": {
+      "title": "Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6",
+      "zh_title": "一维链自旋翻转反铁磁褐钇铌矿型MnV2O6中的磁热效应",
+      "created": "2026-10-22"
+    },
+    "5d34ac960413a781ecc2d36f2a832c5e46b5427e505a2b52b9e5bfcf89a19011": {
+      "title": "Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics",
+      "zh_title": "应变诱导的外延Mn3Sn薄膜中室温磁化增强及其在反铁磁自旋电子学中的应用",
+      "created": "2026-10-22"
+    },
+    "96f757836d6bae13ce44560a899711e78c7e17a8a701c52eafea829280489fac": {
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "zh_title": "反相畴界驱动的NiCo2O4大交换偏置与负磁阻",
+      "created": "2026-10-22"
+    },
+    "8751b6aa696a37e447ab31838a70046ce49cbab3018597b8716f93524611c43d": {
+      "title": "Large coercivity and giant exchange bias in Eu₂NiIrO₆",
+      "zh_title": "Eu₂NiIrO₆中的大矫顽力和巨交换偏置",
+      "created": "2026-10-22"
+    },
+    "e2a807e4beaf135ccac9cd248ad577e264d230e7101e0c9bfb00b662dbb5017b": {
+      "title": "Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket",
+      "zh_title": "Sierpiński垫上自旋-1/2海森堡反铁磁体的扇区分辨微正则熵",
+      "created": "2026-10-22"
+    },
+    "700702db6771c2d566ce62cda8a6745a918af346706abfdb7dafdbbec21cf76d": {
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "zh_title": "亚铁磁Mn2PtSn Heusler合金中的表面增强反常霍尔电导率",
+      "created": "2026-10-22"
+    },
+    "48f4e02f13bfc4924679608f11f42bf56f9deac1dd189408a4dba37188f41908": {
+      "title": "Characterization of ferrimagnetic FeGd coatings formed by a magnetron sputtering",
+      "zh_title": "由磁控溅射形成的亚铁磁性FeGd涂层的表征",
+      "created": "2026-10-22"
+    },
+    "e4cb17d3b1adff1c047ee9cfb2a857535000e60ccb668ca09f172a8fe8b58af8": {
+      "title": "Octupole-driven spin torque switching of antiferromagnetic tunnel junctions",
+      "zh_title": "八极驱动反铁磁隧道结的自旋力矩翻转",
+      "created": "2026-10-22"
+    },
+    "6b9af1c7164b265c890240d180ff2accc107b9c42245cccf034c71a5aa4544eb": {
+      "title": "Intra-atomic magnetic octupoles and their coupling to cluster magnetic octupoles in chiral antiferromagnetic Mn 3 Sn",
+      "zh_title": "手性反铁磁体Mn₃Sn中的原子内磁八极子及其与团簇磁八极子的耦合",
+      "created": "2026-10-22"
+    },
+    "da61fb4a2eb28656550657066d2f9f6423e5f95e1d1aa89de4b4f1e85724bd34": {
+      "title": "Magnetic circular dichroism of terahertz modes and selection rules of Raman-active optical phonons in the polar altermagnet candidate Mn 2 Mo 3 O 8",
+      "zh_title": "极性交错磁体候选材料Mn2Mo3O8中太赫兹模式的磁圆二色性及拉曼活性光学声子的选择定则",
+      "created": "2026-10-22"
+    },
+    "af7eff7c246ba09224a7a125e393e92c0f191eff238c475f31ab805024c38111": {
+      "title": "Probing the ground state of the antiferromagnetic Heisenberg model on the kagome lattice using geometrically informed variational quantum eigensolver",
+      "zh_title": "利用几何信息变分量子本征求解器探究kagome晶格上反铁磁Heisenberg模型的基态",
+      "created": "2026-10-22"
+    },
+    "42b16406837fb34bcdf02193028dfb10d460dcd4add28a7c5a09b9572c44530c": {
+      "title": "Operating regimes and materials limits of nonlinear magnon dynamics in Co-doped YIG",
+      "zh_title": "Co掺杂YIG中非线性磁振子动力学的运行区间与材料极限",
+      "created": "2026-10-22"
+    },
+    "14c0c4f01f8c971fb2387f321b9438b21b7e9e32b806cea146f2fa17b875e4bb": {
+      "title": "Modulation of Current-Induced Magnetization Switching by Tb Layer Thickness in Ti/Pt/Co/Tb/Ti Heterostructures",
+      "zh_title": "Ti/Pt/Co/Tb/Ti异质结构中Tb层厚度对电流诱导磁化翻转的调制",
+      "created": "2026-10-22"
+    },
+    "53464a76d0c57e3d466bee960b66f5da7245c1b5ff17b07203c4e80cae57efb7": {
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "zh_title": "手性势垒斯格明子赛道，具有拓扑保护、霍尔效应抑制和可重构逻辑",
+      "created": "2026-10-22"
+    },
+    "ce14c8dbb79a9d7a08b2a67a767c1e40463715421697fb0cc53f43e08b0ba1cc": {
+      "title": "Spin-wave behavior and quantum fluctuations in AB-stacked bilayer zigzag nanoribbons",
+      "zh_title": "AB堆叠双层锯齿形纳米带中的自旋波行为与量子涨落",
+      "created": "2026-10-22"
+    },
+    "3cd95d2610df9b98aab281ea144971ee71db58959f01db4835232597232ad5d1": {
+      "title": "Multi-scale characterization of magnetic anisotropy via magnetic acoustic emission, Barkhausen noise and magnetic domain observation",
+      "zh_title": "磁各向异性的多尺度表征：基于磁声发射、巴克豪森噪声和磁畴观察",
+      "created": "2026-10-22"
+    },
+    "33b984333061e373ba825c77e46154612e5171ecc9d765ea7bda8457e974c698": {
+      "title": "Impact of He+ ion irradiation on the domain wall dynamics in Pd/Co/Pd trilayers with perpendicular magnetic anisotropy",
+      "zh_title": "He+离子辐照对具有垂直磁各向异性的Pd/Co/Pd三层膜中畴壁动力学的影响",
+      "created": "2026-10-22"
+    },
+    "3257494ac8abe5e9d0c4daa74214f45506e5c14a230f1ffad1915d1b076b113b": {
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "zh_title": "热驱动的随机磁态选择与竞争性斯格明子湮灭路径",
+      "created": "2026-10-22"
+    },
+    "9d6a6a6036b51618b07c5c0cd8ba6e0cc4fffb0a03fd52039c13da50c22e6b22": {
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "zh_title": "强晶界钉扎诱导的多个亚稳态斯格明子态的出现",
+      "created": "2026-10-22"
+    },
+    "64cea502afc2d53bfe4c417ad93673870cf1110b61cf0096d0fdc75896e39c39": {
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "zh_title": "磁性拓扑绝缘体多层结构中的设计量子态",
+      "created": "2026-10-22"
+    },
+    "432d85a293f3e79b21032c53f34fa9f0df07c6284f10d9058fcab89ab3b0f6dd": {
+      "title": "Topological magnon frequency combs",
+      "zh_title": "拓扑磁振子频率梳",
+      "created": "2026-10-22"
+    },
+    "f468e17c003720f08a6c627c8002061aebde2f616469e645c02ccf75b30171b9": {
+      "title": "Magnon-dislon hybridization in magnetic insulators",
+      "zh_title": "磁绝缘体中的磁振子-位错子杂化",
+      "created": "2026-10-22"
+    },
+    "54c9081e4c46f04eef6bd8db70cad706deff62e35821d6454a1e346a5f823ec6": {
+      "title": "Chiral topological superconductivity from quantum anomalous Hall states in ferromagnetic metals",
+      "zh_title": "铁磁金属中量子反常霍尔态产生的 chiral 拓扑超导性",
+      "created": "2026-10-22"
+    },
+    "2fed4d21d5ae82b7fdfe1af8ae600d89d87ab759d433d904dee4d8939e2f1a08": {
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "zh_title": "通过化学气相沉积生长的外延立方D03-Fe3Ge纳米片中的稳健反常霍尔效应",
+      "created": "2026-10-22"
+    },
+    "da56f8326cd81bf55f0f09d59ade0f6247dd16a9fbed3d9e84ea6f794a52a765": {
+      "title": "Bulk-Mediated Reflection of Chirality-Protected Surface Spin Waves",
+      "zh_title": "体介导的手性保护表面自旋波的反射",
+      "created": "2026-10-22"
+    },
+    "1fbacf38432be77a3cc4f64060ebccd414d0e2b5298a5ef4e62dbd2b32ce6a9f": {
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "zh_title": "近完美相干吸收的纳米磁性超材料中增强的磁光克尔效应",
+      "created": "2026-10-22"
+    }
+  }
+}
