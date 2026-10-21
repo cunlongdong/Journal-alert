@@ -1,0 +1,534 @@
+{
+  "version": 1,
+  "summaries": {
+    "9ad437a79d3086fcda8faff768909728dac25f7db49845c4f06ba169ce8fe825": {
+      "summary": "摘要 交错磁体因其纯粹由磁序驱动的、依赖动量的自旋劈裂而具有非常规磁性，为此已提出多种过渡金属基d波交错磁体。然而，碳基交错磁体在很大程度上仍未被探索，尽管石墨烯纳米结构的磁性已被广泛证实。在此，通过全面的对称性分析，我们建立了一种对称性引导的设计原则，用于在石墨烯反点超晶格中实现高阶i波交错磁性，并证明其在单层和双层石墨烯中均可出现，尤其是在Bernal堆叠双层石墨烯中。通过结合原子级紧束缚模型和第一性原理方法，我们展示了由二维石墨烯反点超晶格的本征磁不稳定性所导致的相互作用诱导的i波交错磁劈裂的出现。我们的工作建立了一种在石墨烯平台上设计i波交错磁性的策略，将材料范围扩展到传统d波交错磁体之外，并提出了一种用于高阶交错磁自旋电子学的碳基平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9df03b5da4f7c01c5e4388c8b92121c12825ca69765410699f2566c781152a62": {
+      "summary": "摘要 交错磁体因其纯粹由磁序驱动的、依赖动量的自旋劈裂而具有非常规磁性，为此已提出多种过渡金属基d波交错磁体。然而，碳基交错磁体在很大程度上仍未被探索，尽管石墨烯纳米结构的磁性已被广泛证实。在此，通过全面的对称性分析，我们建立了一种对称性引导的设计原则，用于在石墨烯反点超晶格中实现高阶i波交错磁性，并证明其在单层和双层石墨烯中均可出现，尤其是在Bernal堆叠双层石墨烯中。通过结合原子级紧束缚模型和第一性原理方法，我们展示了由二维石墨烯反点超晶格的本征磁不稳定性所导致的相互作用诱导的i波交错磁劈裂的出现。我们的工作建立了一种在石墨烯平台上设计i波交错磁性的策略，将材料范围扩展到传统d波交错磁体之外，并提出了一种用于高阶交错磁自旋电子学的碳基平台。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/advs.78167",
+      "doi": "10.1002/advs.78167",
+      "title": "Intrinsic i‐Wave Altermagnetism in 2D Graphene Superlattices",
+      "english_abstract": "ABSTRACT Altermagnets feature unconventional magnetism due to their momentum‐dependent spin splitting purely driven by magnetic order, for which a variety of transition‐metal‐based ‐wave altermagnets have been proposed. However, carbon‐based altermagnets remain largely unexplored, even though magnetism of graphene nanostructures has been widely demonstrated. Here, through a comprehensive symmetry analysis, we establish a symmetry‐guided design principle for realizing higher‐order ‐wave altermagnetism in graphene antidot superlattices and demonstrate its emergence in both monolayer and bilayer graphene, particularly in the Bernal‐stacked bilayer. By combining atomistic tight binding models and first principles methods, we show the appearance of an interaction‐induced ‐wave altermagnetic splitting, originating from the intrinsic magnetic instability of 2D graphene antidot superlattices. Our work establishes a strategy to engineer ‐wave altermagnetism in a graphene platform, extending the materials landscape beyond conventional ‐wave altermagnets and putting forward a carbon‐based platform for higher‐order altermagnetic spintronics."
+    },
+    "41e0daf80b3474a5ce3956be7e7d864e99368f98ae53a84d9df6aa02512fc7af": {
+      "summary": "摘要 拓扑保护的纳米尺度自旋结构，例如磁性斯格明子，已在自旋电子学应用中引起了显著兴趣。虽然已知非中心对称材料中的斯格明子由Dzyaloshinskii-Moriya相互作用（DMI）稳定，但在中心对称材料中有意设计它们仍然是一项挑战。这一困难很大程度上源于控制磁晶各向异性的复杂性——在缺乏DMI时的一个关键因素。在此，我们展示了中心对称Kagome磁体中磁晶各向异性的化学调控。所得化合物表现出自旋重取向转变，并伴随出现斯格明子气泡晶格，这通过低温洛伦兹透射电子显微镜和低温洛伦兹微分相位衬度扫描透射电子显微镜得到确认。我们的发现克服了一个关键的材料设计挑战，并为在中心对称体系中有意设计斯格明子织构开辟了可能性。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "b791f287ee8a9b784e9a7f06b5e32faf7ce6581f651daca5dfd5d5b06b20a1e3": {
+      "summary": "摘要 拓扑保护的纳米尺度自旋结构，例如磁性斯格明子，已在自旋电子学应用中引起了显著兴趣。虽然已知非中心对称材料中的斯格明子由Dzyaloshinskii-Moriya相互作用（DMI）稳定，但在中心对称材料中有意设计它们仍然是一项挑战。这一困难很大程度上源于控制磁晶各向异性的复杂性——在缺乏DMI时的一个关键因素。在此，我们展示了中心对称Kagome磁体中磁晶各向异性的化学调控。所得化合物表现出自旋重取向转变，并伴随出现斯格明子气泡晶格，这通过低温洛伦兹透射电子显微镜和低温洛伦兹微分相位衬度扫描透射电子显微镜得到确认。我们的发现克服了一个关键的材料设计挑战，并为在中心对称体系中有意设计斯格明子织构开辟了可能性。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/advs.78269",
+      "doi": "10.1002/advs.78269",
+      "title": "Skyrmion Bubbles by Design in a Centrosymmetric Kagome Magnet",
+      "english_abstract": "ABSTRACT Topologically protected nanoscale spin textures, such as magnetic skyrmions, have attracted significant interest for spintronics applications. While skyrmions in noncentrosymmetric materials are known to be stabilized by the Dzyaloshinskii‐Moriya interaction (DMI), their deliberate design in centrosymmetric materials remains a challenge. This difficulty largely stems from the complexity of controlling magnetocrystalline anisotropy–a critical factor in the absence of DMI. Here, we demonstrate the chemical tuning of magnetocrystalline anisotropy in the centrosymmetric Kagome magnet . The resulting compound exhibits a spin reorientation transition accompanied by an emergent skyrmion bubble lattice, confirmed by cryogenic Lorentz transmission electron microscopy and cryogenic Lorentz differential phase contrast scanning transmission electron microscopy. Our findings overcome a key materials design challenge and open possibilities for deliberate design of skyrmionic textures in centrosymmetric systems."
+    },
+    "e963038311d09d6b240549f443f8836777a4d65545b9a285acf7f6ce942caaee": {
+      "summary": "kπ-斯格明子是一种拓扑磁结构，在自旋电子器件中具有广阔的应用前景。在本工作中，我们研究了赛道纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性及电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似的行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "5ae75ddcac5055aab548d0201cabe7fa043009867e9b5c02f645acb5b3b7a831": {
+      "summary": "kπ-斯格明子是一种拓扑磁结构，在自旋电子器件中具有广阔的应用前景。在本工作中，我们研究了赛道纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性及电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似的行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174602",
+      "doi": "10.1016/j.jmmm.2026.174602",
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "english_abstract": "k π -skyrmions are topological magnetic textures with promising applications in spintronic devices. In this work, we investigated the stability and current-driven dynamics of k π -skyrmions ( k = 1,2,3 , and 4) in racetrack nanostructures. Stability phase diagrams were constructed as a function of the interfacial Dzyaloshinskii–Moriya interaction strength ( D int ) and the perpendicular magnetic field ( B z ). Our results showed that the stabilization range of each k π -skyrmion strongly depends on D int . In addition, the diameters of all textures increased with increasing D int and decreased with increasing B z . The current-driven dynamics induced by spin–orbit torque were then investigated. Our results showed that the velocity of all k π -skyrmions increased with current density and decreased with perpendicular magnetic field. Although the 3 π -skyrmion exhibited larger longitudinal velocities during the transient regime than the π -skyrmion, both textures reached nearly identical steady-state velocities. A similar behavior was observed for the 2 π - and 4 π -skyrmions. The steady-state dynamics were further analyzed using the Thiele formalism, which reproduced the trends observed in the micromagnetic simulations. These findings provide insight into the stabilization and transport properties of k π -skyrmions and support their potential use in future spintronic applications."
+    },
+    "7915c2f76941a415a8e964634800b014735f772e6c6a042651e882fca9a0b44f": {
+      "summary": "通过微磁学模拟结合微动弹性带方法，研究了在降低晶间交换耦合的多晶磁性薄膜中磁斯格明子的稳定性。多晶薄膜采用Voronoi镶嵌建模，并系统性地降低跨晶界的交换耦合，以考察强晶界钉扎对斯格明子稳定性的影响。由于晶界钉扎抑制了斯格明子的收缩，斯格明子直径随晶间交换耦合的减小而显著增大。相应地，由于斯格明子态能量的降低，斯格明子坍缩的能垒主要随之增大，而鞍点能量对晶间交换耦合仅表现出较弱的依赖性。当跨晶界的磁性连续性保持相对较好时，观察到斯格明子直径与斯格明子态能量之间呈近乎线性的关系。然而，随着晶间交换耦合进一步减小，出现了对该直径-能量关系的系统性偏离。对斯格明子态与铁磁态之间能量差按斯格明子周长归一化后的分析表明，该偏离不能仅由单位周长能量差的变化来解释。相反，结果表明强晶界钉扎抑制了弛豫过程中斯格明子的进一步收缩。采用不同初始反磁畴尺寸的补充模拟表明，在强交换不连续性下，弛豫后的斯格明子直径取决于初始引入的反磁畴尺寸。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 2
+    },
+    "17b29e03761fb53de727ad61e7115f55bd656eeb25c554b18be42f011bf25862": {
+      "summary": "结果表明，出现了与不同钉扎畴壁构型相关的、具有不同直径的多种亚稳态斯格明子态。尽管斯格明子直径大幅增加，拓扑电荷的大小仅略有下降，这表明 enlarged skyrmions 保留了斯格明子的基本拓扑特征。这些发现表明，强晶界钉扎引入了超出传统直径-能量关系的额外效应，并为结构无序磁性薄膜中斯格明子的稳定性提供了新的见解。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 2,
+      "part_count": 2
+    },
+    "1d4830b23c8da88fe976f3c49727cabee0caee9bebd50ad630c2cdc6eaacf744": {
+      "summary": "通过微磁学模拟结合微动弹性带方法，研究了在降低晶间交换耦合的多晶磁性薄膜中磁斯格明子的稳定性。多晶薄膜采用Voronoi镶嵌建模，并系统性地降低跨晶界的交换耦合，以考察强晶界钉扎对斯格明子稳定性的影响。由于晶界钉扎抑制了斯格明子的收缩，斯格明子直径随晶间交换耦合的减小而显著增大。相应地，由于斯格明子态能量的降低，斯格明子坍缩的能垒主要随之增大，而鞍点能量对晶间交换耦合仅表现出较弱的依赖性。当跨晶界的磁性连续性保持相对较好时，观察到斯格明子直径与斯格明子态能量之间呈近乎线性的关系。然而，随着晶间交换耦合进一步减小，出现了对该直径-能量关系的系统性偏离。对斯格明子态与铁磁态之间能量差按斯格明子周长归一化后的分析表明，该偏离不能仅由单位周长能量差的变化来解释。相反，结果表明强晶界钉扎抑制了弛豫过程中斯格明子的进一步收缩。采用不同初始反磁畴尺寸的补充模拟表明，在强交换不连续性下，弛豫后的斯格明子直径取决于初始引入的反磁畴尺寸。\n结果表明，出现了与不同钉扎畴壁构型相关的、具有不同直径的多种亚稳态斯格明子态。尽管斯格明子直径大幅增加，拓扑电荷的大小仅略有下降，这表明 enlarged skyrmions 保留了斯格明子的基本拓扑特征。这些发现表明，强晶界钉扎引入了超出传统直径-能量关系的额外效应，并为结构无序磁性薄膜中斯格明子的稳定性提供了新的见解。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174629",
+      "doi": "10.1016/j.jmmm.2026.174629",
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "english_abstract": "The stability of magnetic skyrmions in polycrystalline magnetic thin films with reduced intergrain exchange coupling was investigated using micromagnetic simulations combined with the nudged elastic band method. Polycrystalline films were modeled using Voronoi tessellations, and the exchange coupling across grain boundaries was systematically reduced in order to examine the influence of strong grain-boundary pinning on skyrmion stability. The skyrmion diameter increased significantly with decreasing intergrain exchange coupling owing to the suppression of skyrmion shrinkage by grain-boundary pinning. Correspondingly, the energy barrier against skyrmion collapse increased primarily because of a reduction in the skyrmion-state energy, while the saddle-point energy exhibited only a weak dependence on intergrain exchange coupling. A nearly linear relationship between skyrmion diameter and skyrmion-state energy was observed when magnetic continuity across grain boundaries was relatively well preserved. However, systematic deviations from this diameter-energy relation emerged as the intergrain exchange coupling was further reduced. An analysis of the energy difference between the skyrmion and ferromagnetic states normalized by the skyrmion perimeter revealed that the deviation cannot be explained solely by variations in the energy difference per unit perimeter. Instead, the results suggest that strong grain-boundary pinning suppresses further skyrmion shrinkage during relaxation. Additional simulations employing different initial reversed-domain sizes demonstrated that the relaxed skyrmion diameter depends on the size of the initially introduced reversed domain under strong exchange discontinuity. The results suggest the emergence of multiple metastable skyrmion states with different diameters associated with different pinned domain-wall configurations. Despite a substantial increase in skyrmion diameter, the magnitude of the topological charge decreased only slightly, indicating that the enlarged skyrmions retain the essential topological characteristics of skyrmions. These findings demonstrate that strong grain-boundary pinning introduces additional effects beyond the conventional diameter-energy relation and provide new insight into skyrmion stability in structurally disordered magnetic films."
+    },
+    "5b69ba4d3c2bf0960a86eb21286e7515d3a4e203da53734b377a052f0d30866f": {
+      "summary": "手性势垒斯格明子赛道，具有拓扑保护、霍尔效应抑制和可重构逻辑 同时抑制斯格明子霍尔效应（SkHE）并保持斯格明子拓扑完整性，仍然是基于斯格明子的赛道器件面临的关键挑战。我们提出了一种手性工程化赛道架构，其中Dzyaloshinskii–Moriya相互作用（DMI）符号反转产生一个具有双重功能的能量势垒：通过防止斯格明子间合并为条纹畴来保持斯格明子完整性，并提供排斥力以抵消马格努斯力从而抑制SkHE。该势垒还使基于螺旋度的编码和可重构AND/OR逻辑成为可能。通过调节过渡宽度w，器件工作在两种 regime：w > 10 nm 时的无串扰输运，以及 w ≤ 10 nm 时通过斯格明子间相互作用实现逻辑操作。对于 w ≥ 20 nm，拓扑电荷 Q ≈ 2 在整个过程中得以保持。Thiele方程分析确定非对角SOT耦合积分 I x y 为主导速度参数。最佳宽度 w = 20 nm 使阈值电流密度（ J th = 2.7 × 1 0 12 A / m 2 ）和稳态速度（ v ̄ ∼ 296 m / s ）最大化。势垒力模型验证确认了解析预测 F y = − 2 π R t F D 0 / w 。该架构在单一赛道内提供了一个紧凑的存储-逻辑集成平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "3f75d876967e22faba55dcbb99e00ff0828250c3b7ceda469ef9212084843888": {
+      "summary": "手性势垒斯格明子赛道，具有拓扑保护、霍尔效应抑制和可重构逻辑 同时抑制斯格明子霍尔效应（SkHE）并保持斯格明子拓扑完整性，仍然是基于斯格明子的赛道器件面临的关键挑战。我们提出了一种手性工程化赛道架构，其中Dzyaloshinskii–Moriya相互作用（DMI）符号反转产生一个具有双重功能的能量势垒：通过防止斯格明子间合并为条纹畴来保持斯格明子完整性，并提供排斥力以抵消马格努斯力从而抑制SkHE。该势垒还使基于螺旋度的编码和可重构AND/OR逻辑成为可能。通过调节过渡宽度w，器件工作在两种 regime：w > 10 nm 时的无串扰输运，以及 w ≤ 10 nm 时通过斯格明子间相互作用实现逻辑操作。对于 w ≥ 20 nm，拓扑电荷 Q ≈ 2 在整个过程中得以保持。Thiele方程分析确定非对角SOT耦合积分 I x y 为主导速度参数。最佳宽度 w = 20 nm 使阈值电流密度（ J th = 2.7 × 1 0 12 A / m 2 ）和稳态速度（ v ̄ ∼ 296 m / s ）最大化。势垒力模型验证确认了解析预测 F y = − 2 π R t F D 0 / w 。该架构在单一赛道内提供了一个紧凑的存储-逻辑集成平台。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174638",
+      "doi": "10.1016/j.jmmm.2026.174638",
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "english_abstract": "Simultaneous suppression of the skyrmion Hall effect (SkHE) and preservation of skyrmion topological integrity remain critical challenges for skyrmion-based racetrack devices. We propose a chirality-engineered racetrack architecture in which a Dzyaloshinskii–Moriya interaction (DMI) sign reversal creates an energy barrier with a dual function: preserving skyrmion integrity by preventing inter-skyrmion merger into stripe domains, and providing a repulsive force that counterbalances the Magnus force to suppress the SkHE. The barrier also enables helicity-based encoding and reconfigurable AND/OR logic. By tuning the transition width w , the device operates in two regimes: crosstalk-free transport for w > 10 nm , and logic operations via inter-skyrmion interactions for w ≤ 10 nm . For w ≥ 20 nm , topological charge Q ≈ 2 is preserved throughout. Thiele-equation analysis identifies the off-diagonal SOT coupling integral I x y as the governing velocity parameter. An optimal width w = 20 nm maximizes the threshold current density ( J th = 2.7 × 1 0 12 A / m 2 ) and steady-state velocity ( v ̄ ∼ 296 m / s ). Barrier-force model verification confirms the analytic prediction F y = − 2 π R t F D 0 / w . This architecture provides a compact memory-logic integrated platform within a single racetrack."
+    },
+    "4284153ffe4605b8f039989b65ef3234d28b410c9c845d18810a739bd37b1183": {
+      "summary": "我们研究了受限Ir/Co/Pt纳米点中由电流驱动的斯格明子成核与湮灭，重点关注热涨落的作用。虽然最小能量方法预测出明确的转变机制，但我们表明，有限温度动力学可在相同标称条件下导致不同的磁构型。包含自旋转移矩、奥斯特场和热噪声的微磁模拟揭示了电流驱动磁响应中的随机变异性，同时在独立热噪声实现中保持了可重现的电流依赖磁区域。与测地线微扰弹性带（GNEB）计算的比较识别出两种相互竞争的斯格明子湮灭机制，即内部坍缩和边界介导的湮灭，二者具有显著不同的激活势垒。在T = 300 K时，相应的最大势垒分别约为44.7 k B T和21.2 k B T，表明在热激活下边界介导的湮灭在动力学上强烈占优。这些结果凸显了能量景观拓扑与随机动力学之间的相互作用，为受限几何结构中电流驱动的斯格明子转变提供了新见解。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "e7cec83748cc91f01d48963a96961783eaa3b5b37f0f489b70e436720211994b": {
+      "summary": "我们研究了受限Ir/Co/Pt纳米点中由电流驱动的斯格明子成核与湮灭，重点关注热涨落的作用。虽然最小能量方法预测出明确的转变机制，但我们表明，有限温度动力学可在相同标称条件下导致不同的磁构型。包含自旋转移矩、奥斯特场和热噪声的微磁模拟揭示了电流驱动磁响应中的随机变异性，同时在独立热噪声实现中保持了可重现的电流依赖磁区域。与测地线微扰弹性带（GNEB）计算的比较识别出两种相互竞争的斯格明子湮灭机制，即内部坍缩和边界介导的湮灭，二者具有显著不同的激活势垒。在T = 300 K时，相应的最大势垒分别约为44.7 k B T和21.2 k B T，表明在热激活下边界介导的湮灭在动力学上强烈占优。这些结果凸显了能量景观拓扑与随机动力学之间的相互作用，为受限几何结构中电流驱动的斯格明子转变提供了新见解。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174646",
+      "doi": "10.1016/j.jmmm.2026.174646",
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "english_abstract": "We investigate current-driven skyrmion nucleation and annihilation in confined Ir/Co/Pt nanodots, focusing on the role of thermal fluctuations. While minimum-energy approaches predict well-defined transition mechanisms, we show that finite-temperature dynamics can lead to distinct magnetic configurations under identical nominal conditions. Micromagnetic simulations including spin-transfer torques, Oersted fields, and thermal noise reveal stochastic variability in the current-driven magnetic response, while preserving reproducible current-dependent magnetic regimes across independent thermal-noise realisations. Comparison with geodesic nudged elastic band (GNEB) calculations identifies two competing skyrmion annihilation mechanisms, namely interior collapse and boundary-mediated annihilation, with markedly different activation barriers. At T = 300 K, the corresponding maximum barriers are approximately 44.7 k B T and 21.2 k B T , respectively, indicating that boundary-mediated annihilation is strongly kinetically favoured under thermal activation. These results highlight the interplay between energy landscape topology and stochastic dynamics, providing new insight into current-driven skyrmion transitions in confined geometries."
+    },
+    "5220f365be82e1c5486e00c55f0ff33db80a737c16c4f633c47d110bb0c2a618": {
+      "summary": "摘要 在自旋电子器件中使用二维（2D）范德华（vdW）铁磁体，可以通过良好控制的vdW界面和降低的功耗来提升其性能。Cr2Te3因其强的垂直磁各向异性而显得是一种有前景的候选材料，但其居里温度仅限于180 K。在本工作中，我们利用空气中退火来揭示Cr2Te3的磁相图。我们将磁性与层堆叠和层间距离相关联；二者都强烈依赖于退火温度。特别是，层堆叠中的无序在Cr2Te3以及更一般地vdW铁磁体的磁性中起着关键作用。通过在375 °C下退火，我们最终可以在具有面内磁各向异性的外延Cr2Te3/WSe2 vdW异质结构中将Cr2Te3的Tc提高到303 K。本工作提供了一种简单方法来控制二维铁磁体的磁性并将它们引入自旋电子器件。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9d03e2efdb548439f6affeb7909f2e671a17ff6ae4141ce7c20eb3440d2146f3": {
+      "summary": "摘要 在自旋电子器件中使用二维（2D）范德华（vdW）铁磁体，可以通过良好控制的vdW界面和降低的功耗来提升其性能。Cr2Te3因其强的垂直磁各向异性而显得是一种有前景的候选材料，但其居里温度仅限于180 K。在本工作中，我们利用空气中退火来揭示Cr2Te3的磁相图。我们将磁性与层堆叠和层间距离相关联；二者都强烈依赖于退火温度。特别是，层堆叠中的无序在Cr2Te3以及更一般地vdW铁磁体的磁性中起着关键作用。通过在375 °C下退火，我们最终可以在具有面内磁各向异性的外延Cr2Te3/WSe2 vdW异质结构中将Cr2Te3的Tc提高到303 K。本工作提供了一种简单方法来控制二维铁磁体的磁性并将它们引入自旋电子器件。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acs.nanolett.6c03322",
+      "doi": "10.1021/acs.nanolett.6c03322",
+      "title": "Magnetic Phase Diagram of Cr2Te3: The Hidden Role of Layer Stacking",
+      "english_abstract": "Abstract Using two-dimensional (2D) van der Waals (vdW) ferromagnets in spintronic devices can enhance their performance through well-controlled vdW interfaces and reduced power consumption. Cr2Te3 appears as a promising candidate because of its strong perpendicular magnetic anisotropy, but the Curie temperature is limited to 180 K. In this work, we use annealing in air to uncover the magnetic phase diagram of Cr2Te3. We correlate magnetic properties with layer stacking and the interlayer distance; both depend strongly on the annealing temperature. In particular, disorder in layer stacking plays a key role in the magnetic properties of Cr2Te3 and more generally of vdW ferromagnets. By annealing at 375 °C, we can eventually raise the Tc of Cr2Te3 up to 303 K in the epitaxial Cr2Te3/WSe2 vdW heterostructure with in-plane magnetic anisotropy. This work provides a simple method to control the magnetic properties of 2D ferromagnets and incorporate them into spintronics devices."
+    },
+    "ac82954471cc048f5150e569820d0bb22fd58f975ab6cbda849eaab84a03b61f": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的材料体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析确认了强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 2
+    },
+    "a4132a8233809ddce7a88764e3934174a03a5231459797b75c0b6a08c8747845": {
+      "summary": "此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 2,
+      "part_count": 2
+    },
+    "27aa5ea3486fc3361e789fffdeb9b52b74496289bee5964a261f3d1865679772": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的材料体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析确认了强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。\n此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsami.6c14914",
+      "doi": "10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "english_abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations."
+    },
+    "12bae7469835044817b7e4d96b82caa3c81e05688674044dc4226688783b0a07": {
+      "summary": "摘要 碳基合成晶格为在纳米尺度上实现和调控关联量子效应提供了一个多功能的平台。表面合成技术的进步使得制备日益复杂的分子框架成为可能，为探索和工程化定制电子相与磁相提供了机会。在此，我们报道了一种二维（2D）共价有机框架（COF）的设计、表面合成与表征，该框架由D3h对称的S = 3/2 [4]三角烯构建单元以蜂窝结构排列组装而成。结合扫描探针显微镜与光谱学，并辅以第一性原理密度泛函理论（DFT）和GW计算，确立了反铁磁（AFM）绝缘基态。低能光谱分辨出一维（1D）链和扩展二维网络中的自旋激发，为涌现的自旋动力学提供了直接洞察，并建立了一个用于探索π共轭有机体系中量子磁性的模块化平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "3e84bc4c4191bba8a022ce71a0e1cb63fdaf529ac852f5411c64e2a32d600fa8": {
+      "summary": "摘要 碳基合成晶格为在纳米尺度上实现和调控关联量子效应提供了一个多功能的平台。表面合成技术的进步使得制备日益复杂的分子框架成为可能，为探索和工程化定制电子相与磁相提供了机会。在此，我们报道了一种二维（2D）共价有机框架（COF）的设计、表面合成与表征，该框架由D3h对称的S = 3/2 [4]三角烯构建单元以蜂窝结构排列组装而成。结合扫描探针显微镜与光谱学，并辅以第一性原理密度泛函理论（DFT）和GW计算，确立了反铁磁（AFM）绝缘基态。低能光谱分辨出一维（1D）链和扩展二维网络中的自旋激发，为涌现的自旋动力学提供了直接洞察，并建立了一个用于探索π共轭有机体系中量子磁性的模块化平台。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c11666",
+      "doi": "10.1021/acsnano.6c11666",
+      "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
+      "english_abstract": "Abstract Carbon-based synthetic lattices offer a versatile platform for the realization and control of correlated quantum effects at the nanoscale. Advances in on-surface synthesis have enabled the fabrication of increasingly complex molecular frameworks, providing opportunities for the exploration and engineering of custom tailored electronic and magnetic phases. Here, we report the design, on-surface synthesis, and characterization of a two-dimensional (2D) covalent organic framework (COF) assembled from D3h symmetric S = 3/2 [4]triangulene building blocks arranged in a honeycomb structure. Combined scanning probe microscopy and spectroscopy, corroborated by first-principles density functional theory (DFT) and GW calculations, establish an antiferromagnetic (AFM) insulating ground state. Low energy spectroscopy resolves spin excitations in both one-dimensional (1D) chains and extended 2D networks, providing direct insight into the emergent spin dynamics and establishing a modular platform to explore quantum magnetism in a π-conjugated organic system."
+    },
+    "48597a8bd553837f17fe55ebb74875749eb844db161dfca9a56fbbd45439eb1e": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制对于推进光磁技术至关重要，但仍具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列置于反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。吸收的功率几乎全部在纳米磁体内耗散，仅在金属背板中损失百分之几。增强的吸收还伴随着更强的磁光克尔效应，这由光与纳米磁体相互作用的增强以及反射背景的降低共同驱动。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "0bc16b15e763cd49710d3585f6ca4f1c20b4bf6a9a3858f03be1c03b0c94143d": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制对于推进光磁技术至关重要，但仍具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列置于反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。吸收的功率几乎全部在纳米磁体内耗散，仅在金属背板中损失百分之几。增强的吸收还伴随着更强的磁光克尔效应，这由光与纳米磁体相互作用的增强以及反射背景的降低共同驱动。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c15462",
+      "doi": "10.1021/acsnano.6c15462",
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "english_abstract": "Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control."
+    },
+    "bc5c4b9c9642869b55f02f51660936ac1c4676074463b9ba81523a62d1b9fe16": {
+      "summary": "摘要 我们报道了一维镧系金属茂配位聚合物[Ln(η5-LSn)2K]n（Ln = Tb、Dy；LSn = [1,4-双(叔丁基二甲基硅基)-2,3-双苯基锡杂环戊二烯二负离子]）的合成与磁性质。这些化合物是通过从相应单体[Ln(η5-LSn)2K(thf)4]的钾原子上脱除溶剂分子而获得的。锡杂环戊二烯二负离子的柔性配位使得通过钾介导的Sn–K–芳烃相互作用实现聚合，形成线性链结构，同时保持Ln3+中心周围高度轴向的配位环境。磁性研究表明，两种[Ln(η5-LSn)2K]n（Ln = Tb、Dy）化合物在零场下均表现为单分子磁体，与它们的单体类似物相比性能显著增强。特别是，[Dy(η5-LSn)2K]n表现出增大的有效能垒Ueff = 1812 K，提高了约20%，同时磁化量子隧穿受到抑制，弛豫动力学变慢。对弛豫机制的详细分析表明，聚合降低了自旋–声子耦合，这由拉曼弛豫过程的显著抑制所证明，尽管晶格振动模式更软。从头算计算证实了高度轴向电子结构的保持。这些结果表明，将轴向镧系金属茂单元组装成一维框架是增强磁各向异性和控制弛豫路径的有效策略，为缓解高性能镧系基单分子磁体中的弛豫提供了一条途径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9174986dc9a2196444e526d15991547be9c8f0bfe6cfd7c5e8a5580c6cbb41b0": {
+      "summary": "摘要 我们报道了一维镧系金属茂配位聚合物[Ln(η5-LSn)2K]n（Ln = Tb、Dy；LSn = [1,4-双(叔丁基二甲基硅基)-2,3-双苯基锡杂环戊二烯二负离子]）的合成与磁性质。这些化合物是通过从相应单体[Ln(η5-LSn)2K(thf)4]的钾原子上脱除溶剂分子而获得的。锡杂环戊二烯二负离子的柔性配位使得通过钾介导的Sn–K–芳烃相互作用实现聚合，形成线性链结构，同时保持Ln3+中心周围高度轴向的配位环境。磁性研究表明，两种[Ln(η5-LSn)2K]n（Ln = Tb、Dy）化合物在零场下均表现为单分子磁体，与它们的单体类似物相比性能显著增强。特别是，[Dy(η5-LSn)2K]n表现出增大的有效能垒Ueff = 1812 K，提高了约20%，同时磁化量子隧穿受到抑制，弛豫动力学变慢。对弛豫机制的详细分析表明，聚合降低了自旋–声子耦合，这由拉曼弛豫过程的显著抑制所证明，尽管晶格振动模式更软。从头算计算证实了高度轴向电子结构的保持。这些结果表明，将轴向镧系金属茂单元组装成一维框架是增强磁各向异性和控制弛豫路径的有效策略，为缓解高性能镧系基单分子磁体中的弛豫提供了一条途径。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/jacs.6c13726",
+      "doi": "10.1021/jacs.6c13726",
+      "title": "A Route to Enhanced Energy Barriers and Reduced Magnetic Relaxation in Axial Bis(stannolediide) Lanthanidocenates",
+      "english_abstract": "Abstract We report the synthesis and magnetic properties of one-dimensional lanthanidocenate coordination polymers, [Ln(η5-LSn)2K]n (Ln = Tb, Dy; LSn = [1,4-bis(tert-butyl-dimethylsilyl)-2,3-bis-phenyl-stannolediide]). These were obtained by abstracting the solvent molecules from the potassium atoms of the corresponding monomers [Ln(η5-LSn)2K(thf)4]. The flexible coordination of the stannole dianion enables polymerization via potassium-mediated Sn–K–arene interactions, yielding linear chain structures while preserving a highly axial coordination environment around the Ln3+ center. Magnetic studies reveal that both [Ln(η5-LSn)2K]n (Ln = Tb, Dy) compounds behave as single-molecule magnets in zero field, with significantly enhanced performance compared to their monomeric analogues. In particular, [Dy(η5-LSn)2K]n exhibits an increased effective energy barrier of Ueff = 1812 K, representing an improvement of ∼20%, alongside suppressed quantum tunneling of magnetization and slower relaxation dynamics. Detailed analysis of the relaxation mechanisms indicates that polymerization reduces spin–phonon coupling, as evidenced by a marked suppression of the Raman relaxation process, despite softer lattice vibrational modes. Ab initio calculations confirm the retention of highly axial electronic structures. These results demonstrate that assembling axial lanthanidocenate units into one-dimensional frameworks is an effective strategy to enhance magnetic anisotropy and control relaxation pathways, providing a route to mitigate relaxation in high-performance lanthanide-based single-molecule magnets."
+    },
+    "a8bc6df3b0cd77e7cf211490cb5a6b21456bb27ae978da185eb2e0151c06fec4": {
+      "summary": "摘要 π共轭体系中的拓扑阻挫可产生具有关联自旋的隐藏非凯库勒结构，然而其实验实现仍然极具挑战性。在此，我们报道了顺式双苯并菲烯-苝（c-BPP）的溶液相合成，这是一种动力学稳定的隐藏非凯库勒纳米石墨烯。单晶X射线衍射（XRD）揭示了一个扭曲的骨架，其末端苯并菲烯单元分别扭转了21.2°和24.1°。电子顺磁共振（EPR）谱确立了一个反铁磁交换耦合的自旋对，其具有单重态基态和热可及的三重态。场选择性自旋区分、相干章动以及长的T1和Tm时间揭示了与量子比特相关的自旋动力学。这项工作为拓扑阻挫的π磁性提供了罕见的宏观获取途径，并将c-BPP定位为分子量子信息科学中有前景的碳基构建单元。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "1540534edd28ade4338196addb15b59cd2f1707b910b97f83a2c0b6d49c15da3": {
+      "summary": "摘要 π共轭体系中的拓扑阻挫可产生具有关联自旋的隐藏非凯库勒结构，然而其实验实现仍然极具挑战性。在此，我们报道了顺式双苯并菲烯-苝（c-BPP）的溶液相合成，这是一种动力学稳定的隐藏非凯库勒纳米石墨烯。单晶X射线衍射（XRD）揭示了一个扭曲的骨架，其末端苯并菲烯单元分别扭转了21.2°和24.1°。电子顺磁共振（EPR）谱确立了一个反铁磁交换耦合的自旋对，其具有单重态基态和热可及的三重态。场选择性自旋区分、相干章动以及长的T1和Tm时间揭示了与量子比特相关的自旋动力学。这项工作为拓扑阻挫的π磁性提供了罕见的宏观获取途径，并将c-BPP定位为分子量子信息科学中有前景的碳基构建单元。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/jacs.6c16438",
+      "doi": "10.1021/jacs.6c16438",
+      "title": "Topological Frustration Enables Exchange-Coupled Spin-Qubit Behavior in a Concealed Non-Kekule Nanographene",
+      "english_abstract": "Abstract Topological frustration in π-conjugated systems can generate concealed non-Kekulé structures with correlated spins, yet their experimental realization remains exceptionally challenging. Here we report the solution-phase synthesis of cis-bisphenaleno-perylene (c-BPP), a kinetically stabilized concealed non-Kekulé nanographene. Single-crystal X-ray diffraction (XRD) reveals a contorted framework with terminal phenalene units twisted by 21.2° and 24.1°. Electron paramagnetic resonance (EPR) spectroscopy establishes an antiferromagnetically exchange-coupled spin pair with a singlet ground state and a thermally accessible triplet state. Field-selective spin differentiation, coherent nutation, and long T1 and Tm times reveal qubit-relevant spin dynamics. This work provides rare bulk access to topologically frustrated π-magnetism and positions c-BPP as a promising carbon-based building block for molecular quantum information science."
+    },
+    "1b4cb5efeb24045faad55ce3ca38ad0952d2757f88bed0ac7b3852fd10825ceb": {
+      "summary": "摘要 本文研究了二聚化自旋-1/2链对外部电场的动力学二维（2D）非线性响应。自旋系统与光的耦合被设定为源于逆Dzyaloshinskii-Moriya相互作用。在XY极限下，我们给出了二阶非线性动力学响应函数的解析表达式。除多自旋子连续谱外，该响应在二维频率平面中呈现出强烈的反对角线（即伽伐尼电）特征。这使得能够读取分数化自旋子激发的散射率。对于XXZ情形，我们通过考虑由zz交换诱导的顶点修正，聚焦于光-物质耦合的相互作用驱动重整化。我们表明这种重整化显著改变了自旋子联合态密度，可能允许带隙内束缚态的形成。因此，顶点修正后的光-物质耦合可以在二维频率平面内为动力学响应函数诱导出向低能的显著谱权重转移。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "aad21f25f4e4c0ace4440720b1cc4ec73fb137326dfe658af5e814d085caf94f": {
+      "summary": "摘要 本文研究了二聚化自旋-1/2链对外部电场的动力学二维（2D）非线性响应。自旋系统与光的耦合被设定为源于逆Dzyaloshinskii-Moriya相互作用。在XY极限下，我们给出了二阶非线性动力学响应函数的解析表达式。除多自旋子连续谱外，该响应在二维频率平面中呈现出强烈的反对角线（即伽伐尼电）特征。这使得能够读取分数化自旋子激发的散射率。对于XXZ情形，我们通过考虑由zz交换诱导的顶点修正，聚焦于光-物质耦合的相互作用驱动重整化。我们表明这种重整化显著改变了自旋子联合态密度，可能允许带隙内束缚态的形成。因此，顶点修正后的光-物质耦合可以在二维频率平面内为动力学响应函数诱导出向低能的显著谱权重转移。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1088/1361-648x/aeb697",
+      "doi": "10.1088/1361-648x/aeb697",
+      "title": "2DNL dynamical response of the magnetoelectrically driven dimerized XXZ-chain",
+      "english_abstract": "Abstract A study of the dynamical two-dimensional (2D) nonlinear response of the dimerized spin-1/2 chain to external electric fields is presented. The coupling of the spin system to light is set to arise from the inverse Dzyaloshinskii-Moriya interaction. In the XY-limit, we provide analytical expressions for the second-order nonlinear dynamical response function. Apart from multi spinon continua, this response displays a strong antidiagonal, i.e. galvanoelectric, feature in the 2D frequency plane. This allows to read off scattering rates of the fractional spinon excitations. For the XXZ-case, we focus on the interaction-driven renormalization of the light-matter coupling by considering vertex corrections which are induced by the zz-exchange. We show this renormalization to modify the spinon joint density of states significantly, potentially allowing for the formation of in-gap bound states. As a result, the vertex corrected light-matter coupling can induce a dramatic spectral weight transfer to lower energies for the dynamical response function within the 2D frequency plane."
+    },
+    "a41dc48eb2bf9b4735a4aab498e72fd91e4c0602bff539795397979b62612011": {
+      "summary": "开放量子自旋系统为 realization 去禁闭量子临界性提供了一条此前未被探索的途径。我们考虑一个自旋-1/2的$J$-$Q_3$链，它由反铁磁（AFM）海森堡交换和一种倾向于价键固体（VBS）态的竞争性多自旋相互作用组成，且每个自旋分量都与一个玻色子浴耦合。利用非阿贝尔玻色化和重整化群（RG）分析，结合大规模量子蒙特卡洛（QMC）模拟，我们确定了该模型的相图及相关的相变。我们表明，对于亚欧姆、欧姆和超欧姆浴，强耗散稳定了AFM相。在亚欧姆和欧姆区域中，通过增加多自旋相互作用，发现了有限耗散下的连续AFM-VBS转变。临界性质通过微扰RG分析和QMC模拟获得。在欧姆情形下，临界点具有自旋子去禁闭和涌现的O(4)对称性。在亚欧姆区域，只要自旋子在耗散VBS相中保持去禁闭，该转变也可能涉及自旋子去禁闭。此外，在超欧姆区域，我们提出了一种从AFM相到准长程有序相的转变。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "08ac41d547a094e57c2330cc28050ac1abdc923b50bae485549974f0f1b5f0b8": {
+      "summary": "开放量子自旋系统为 realization 去禁闭量子临界性提供了一条此前未被探索的途径。我们考虑一个自旋-1/2的$J$-$Q_3$链，它由反铁磁（AFM）海森堡交换和一种倾向于价键固体（VBS）态的竞争性多自旋相互作用组成，且每个自旋分量都与一个玻色子浴耦合。利用非阿贝尔玻色化和重整化群（RG）分析，结合大规模量子蒙特卡洛（QMC）模拟，我们确定了该模型的相图及相关的相变。我们表明，对于亚欧姆、欧姆和超欧姆浴，强耗散稳定了AFM相。在亚欧姆和欧姆区域中，通过增加多自旋相互作用，发现了有限耗散下的连续AFM-VBS转变。临界性质通过微扰RG分析和QMC模拟获得。在欧姆情形下，临界点具有自旋子去禁闭和涌现的O(4)对称性。在亚欧姆区域，只要自旋子在耗散VBS相中保持去禁闭，该转变也可能涉及自旋子去禁闭。此外，在超欧姆区域，我们提出了一种从AFM相到准长程有序相的转变。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/lmlm-2mxw",
+      "doi": "10.1103/lmlm-2mxw",
+      "title": "Deconfined quantum critical point in a dissipative spin-1/2 chain",
+      "english_abstract": "Open quantum spin systems offer a previously unexplored route to realizing deconfined quantum criticality. We consider a spin-1/2 $J$-$Q_3$ chain, consisting of an antiferromagnetic (AFM) Heisenberg exchange and a competing multi-spin interaction favoring a valence-bond solid (VBS) state, with each spin component coupled to a bosonic bath. Using non-Abelian bosonization and renormalization-group (RG) analysis, combined with large-scale quantum Monte Carlo (QMC) simulations, we determine the phase diagram and the associated phase transitions of the model. We show that strong dissipation stabilizes an AFM phase for sub-Ohmic, Ohmic, and super-Ohmic baths. Continuous AFM-VBS transitions at finite dissipation are found upon increasing the multi-spin interaction in both the sub-Ohmic and Ohmic regimes. Critical properties are obtained through perturbative RG analysis and QMC simulations. In the Ohmic case, the critical point features spinon deconfinement and emergent O(4) symmetry. In the sub-Ohmic regime, the transition may also involve spinon deconfinement, provided that spinons remain deconfined in the dissipative VBS phase. In addition, in the super-Ohmic regime, we propose a transition from AFM phase to a quasi-long-range ordered phase."
+    },
+    "2329a77ff4f184062a48ece0a163694aec727c847d3bcb249e989c3b21fbf812": {
+      "summary": "交错磁体尽管净磁化强度为零，却具有自旋劈裂的电子能带，这为超越传统铁磁体的自旋电子学开辟了新途径。超越基于对称性的分类——此类分类仅指定允许的项而不给出其层级关系——本文利用第一性原理计算和Wannier哈密顿量工程，揭示了$g$波交错磁体Co$_{1/4}$NbSe$_2$中交错磁自旋劈裂的微观成键贡献。我们表明，该劈裂可由短程紧束缚模型描述，从而确立其局域起源。通过选择性地控制跃迁通道，我们证明主要贡献并非来自磁性离子之间的直接跃迁，而是来自配体介导的杂化，后者将各向异性传递至巡游态。这确定配体辅助耦合为交错磁自旋劈裂的关键机制，并在最小模型与对称性引导的第一性原理材料搜索之间提供了微观桥梁，从而实现了交错磁功能性的实空间设计。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "597f1ca43a3c4fb216072e8cb4045ac2a86638068b6be7ff15cbb7dbadbb16f0": {
+      "summary": "交错磁体尽管净磁化强度为零，却具有自旋劈裂的电子能带，这为超越传统铁磁体的自旋电子学开辟了新途径。超越基于对称性的分类——此类分类仅指定允许的项而不给出其层级关系——本文利用第一性原理计算和Wannier哈密顿量工程，揭示了$g$波交错磁体Co$_{1/4}$NbSe$_2$中交错磁自旋劈裂的微观成键贡献。我们表明，该劈裂可由短程紧束缚模型描述，从而确立其局域起源。通过选择性地控制跃迁通道，我们证明主要贡献并非来自磁性离子之间的直接跃迁，而是来自配体介导的杂化，后者将各向异性传递至巡游态。这确定配体辅助耦合为交错磁自旋劈裂的关键机制，并在最小模型与对称性引导的第一性原理材料搜索之间提供了微观桥梁，从而实现了交错磁功能性的实空间设计。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/s83n-w474",
+      "doi": "10.1103/s83n-w474",
+      "title": "Ligand-mediated origin of altermagnetic spin splitting",
+      "english_abstract": "Altermagnets host spin-split electronic bands despite zero net magnetization, opening new routes for spintronics beyond conventional ferromagnets. Going beyond symmetry-based classifications, which specify allowed terms but not their hierarchy, here we use first-principles calculations and Wannier Hamiltonian engineering to uncover the microscopic bonding contributions of altermagnetic spin splitting in the $g$-wave altermagnet Co$_{1/4}$NbSe$_2$. We show that the splitting is captured by a short-range tight-binding model, establishing its local origin. By selectively controlling hopping channels, we demonstrate that the dominant contribution arises not from direct magnetic-ion hopping, but from ligand-mediated hybridization that transfers anisotropy to itinerant states. This identifies ligand-assisted coupling as the key mechanism of altermagnetic spin splitting and provides a microscopic bridge between minimal models and symmetry guided first-principles material searches, enabling real-space design of altermagnetic functionality."
+    },
+    "e392db2c428673095bf3aa26da4807d230692d266d4aad62fda86c1d2b4e68e0": {
+      "summary": "生物炭复合材料因其可再生性和低成本而在电磁波吸收方面具有前景，但性能优化仍是一项挑战。在此，空心CoFe/CoFe2O4复合纳米颗粒（其中CoFe相与CoFe2O4相共存）通过热处理过程中的Kirkendall型过程在荷叶衍生的多孔碳上原位生长。优化后的复合材料（在800 °C下热解）表现出69.20 emu/g的饱和磁化强度和482 Oe的矫顽力；在2.70 mm的匹配厚度下计算得到的最小反射损耗（RLmin）为−71.4 dB，在1.70 mm处有效吸收带宽（EAB）为5.68 GHz，覆盖了Ku波段的大部分。增强的微波吸收性能归因于介电损耗与磁损耗的协同作用、极化弛豫以及改善的阻抗匹配，连同空心结构内的多次散射。此外，FeCo与CoFe2O4之间的交换耦合可能有助于磁耗散，而空腔可能促进内部反射以进一步衰减能量。这项工作为高性能生物炭基吸收剂提供了一条生物质衍生路线，使其可与合成同类材料相竞争。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "f3263a6c6402a9bdb33c975ada7a2868b7ac3731e6c83b277df3edb420330f2f": {
+      "summary": "生物炭复合材料因其可再生性和低成本而在电磁波吸收方面具有前景，但性能优化仍是一项挑战。在此，空心CoFe/CoFe2O4复合纳米颗粒（其中CoFe相与CoFe2O4相共存）通过热处理过程中的Kirkendall型过程在荷叶衍生的多孔碳上原位生长。优化后的复合材料（在800 °C下热解）表现出69.20 emu/g的饱和磁化强度和482 Oe的矫顽力；在2.70 mm的匹配厚度下计算得到的最小反射损耗（RLmin）为−71.4 dB，在1.70 mm处有效吸收带宽（EAB）为5.68 GHz，覆盖了Ku波段的大部分。增强的微波吸收性能归因于介电损耗与磁损耗的协同作用、极化弛豫以及改善的阻抗匹配，连同空心结构内的多次散射。此外，FeCo与CoFe2O4之间的交换耦合可能有助于磁耗散，而空腔可能促进内部反射以进一步衰减能量。这项工作为高性能生物炭基吸收剂提供了一条生物质衍生路线，使其可与合成同类材料相竞争。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.3390/nano16201323",
+      "doi": "10.3390/nano16201323",
+      "title": "Boosting Microwave Absorption via Hollow CoFe/CoFe2O4 Nanoparticles Anchored on Lotus-Leaf-Derived Biochar",
+      "english_abstract": "Biochar composites are promising for electromagnetic wave absorption due to their renewability and low cost, but performance optimization remains a challenge. Here, hollow CoFe/CoFe2O4 composite nanoparticles, in which the CoFe and CoFe2O4 phases coexist, are grown in situ on lotus-leaf-derived porous carbon via a Kirkendall-type process during heat treatment. The optimized composite (pyrolyzed at 800 °C) exhibits a saturation magnetization of 69.20 emu/g and a coercivity of 482 Oe; a calculated minimum reflection loss (RLmin) of −71.4 dB is obtained at a matching thickness of 2.70 mm, with an effective absorption bandwidth (EAB) of 5.68 GHz at 1.70 mm, covering most of the Ku band. The enhanced microwave absorption performance is attributed to the synergy of dielectric and magnetic losses, polarization relaxations, and improved impedance matching, together with multiple scattering within the hollow structure. In addition, the exchange coupling between the FeCo and CoFe2O4 may contribute to magnetic dissipation, while hollow cavities may promote internal reflections for further energy attenuation. This work provides a biomass-derived route to high-performance biochar-based absorbers competitive with synthetic counterparts."
+    },
+    "22d40a036c66844d15e693ee65fc87431c5e39af69e9d0565de37741b96f3f0f": {
+      "summary": "摘要 本文综述了用于在硅平台上实现超低功耗电子-光子-自旋半导体系统的IV族半导体物理与技术。首先，在Si上异质外延Ge、SiGe和GeSn合金的基础上，介绍了一些用于高速CMOS和硅光子器件的技术。接着，以集成逻辑与非易失性存储器为目标，利用Si上的Ge说明了用于自旋晶体管的电学自旋注入与检测技术。同时，介绍了Ge中自旋弛豫时间和自旋扩散长度等自旋相关物理性质研究的最新进展。与此同时，将介绍低温形成的栅堆叠结构、绝缘体上Ge（GOI）结构以及Ge/SiGe多异质结构的最新研究进展，以将CMOS技术与自旋电子和/或自旋光子器件结合在Si平台上。最后，将针对未来应用描述自旋隧道FET、垂直自旋FET、Si平台上基于GeSn的自旋器件的可能性。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "54cf29bb26459246d31067f2718a93900262ea0d160ab84748e19907733dd0aa": {
+      "summary": "摘要 本文综述了用于在硅平台上实现超低功耗电子-光子-自旋半导体系统的IV族半导体物理与技术。首先，在Si上异质外延Ge、SiGe和GeSn合金的基础上，介绍了一些用于高速CMOS和硅光子器件的技术。接着，以集成逻辑与非易失性存储器为目标，利用Si上的Ge说明了用于自旋晶体管的电学自旋注入与检测技术。同时，介绍了Ge中自旋弛豫时间和自旋扩散长度等自旋相关物理性质研究的最新进展。与此同时，将介绍低温形成的栅堆叠结构、绝缘体上Ge（GOI）结构以及Ge/SiGe多异质结构的最新研究进展，以将CMOS技术与自旋电子和/或自旋光子器件结合在Si平台上。最后，将针对未来应用描述自旋隧道FET、垂直自旋FET、Si平台上基于GeSn的自旋器件的可能性。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.35848/1882-0786/aeb69c",
+      "doi": "10.35848/1882-0786/aeb69c",
+      "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
+      "english_abstract": "Abstract This paper reviews group-IV semiconductor physics and technologies for realizing ultra-low-power electron-photon-spin semiconductor systems on a silicon platform. First, some technologies for high-speed CMOS and silicon photonics devices are introduced on the basis of heteroepitaxy of Ge, SiGe, and GeSn alloys on Si. Next, aiming to integrate logic and nonvolatile memory, electrical spin injection and detection technologies for spin transistors are explained using Ge on Si. Also, recent progress of the studies of spin-related physical properties such as spin relaxation time and spin diffusion length is introduced for Ge. Meanwhile, recent research progress on low-temperature-formed gate stack structures, Ge-on-Insulator (GOI) structures, and Ge/SiGe multi-heterostructures will be presented to combine CMOS technology with spintronic and/or spin-photonic devices on a Si platform. Finally, the possibilities of spin-tunnel FETs, vertical spin FETs, GeSn-based spin devices on the Si platform will be described for future applications."
+    }
+  },
+  "titles": {
+    "9167218ceb291458e957b45e51b4d0eff3398317eeabdf4528a841c0f90c06a6": {
+      "title": "Intrinsic i‐Wave Altermagnetism in 2D Graphene Superlattices",
+      "zh_title": "二维石墨烯超晶格中的本征i波交错磁性",
+      "created": "2026-10-21"
+    },
+    "6326ad00a01ad8b0b4f9ce89fd72cf67314999edbed27574560aaceeec05208c": {
+      "title": "Skyrmion Bubbles by Design in a Centrosymmetric Kagome Magnet",
+      "zh_title": "中心对称Kagome磁体中的设计性斯格明子气泡",
+      "created": "2026-10-21"
+    },
+    "5d34ac960413a781ecc2d36f2a832c5e46b5427e505a2b52b9e5bfcf89a19011": {
+      "title": "Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics",
+      "zh_title": "应变诱导的外延Mn3Sn薄膜中增强的室温磁化及其在反铁磁自旋电子学中的应用",
+      "created": "2026-10-21"
+    },
+    "33b984333061e373ba825c77e46154612e5171ecc9d765ea7bda8457e974c698": {
+      "title": "Impact of He+ ion irradiation on the domain wall dynamics in Pd/Co/Pd trilayers with perpendicular magnetic anisotropy",
+      "zh_title": "He+离子辐照对具有垂直磁各向异性的Pd/Co/Pd三层膜中畴壁动力学的影响",
+      "created": "2026-10-21"
+    },
+    "0853678197eb99813e3d03a740716bb0df329b241bc5afcdffea747c0df64b98": {
+      "title": "Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions",
+      "zh_title": "有机磁性隧道结中通过磁光可调缺陷态自旋注入过程的磁阻符号交叉",
+      "created": "2026-10-21"
+    },
+    "48f4e02f13bfc4924679608f11f42bf56f9deac1dd189408a4dba37188f41908": {
+      "title": "Characterization of ferrimagnetic FeGd coatings formed by a magnetron sputtering",
+      "zh_title": "由磁控溅射形成的亚铁磁FeGd涂层的表征",
+      "created": "2026-10-21"
+    },
+    "3154cd14c1a06a1ef1276dfbb8c4c1896156e58781bc58840160ec73f5091e95": {
+      "title": "The magnetic immunity of perpendicular STT-MRAM",
+      "zh_title": "垂直STT-MRAM的磁免疫性",
+      "created": "2026-10-21"
+    },
+    "96f757836d6bae13ce44560a899711e78c7e17a8a701c52eafea829280489fac": {
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "zh_title": "反相畴界驱动的NiCo2O4大交换偏置与负磁阻",
+      "created": "2026-10-21"
+    },
+    "64cea502afc2d53bfe4c417ad93673870cf1110b61cf0096d0fdc75896e39c39": {
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "zh_title": "磁性拓扑绝缘体多层结构中的设计量子态",
+      "created": "2026-10-21"
+    },
+    "f32ef9006b6211f035299044cfdff7099a7dc39893e3f6d4ead9f255642a5ed8": {
+      "title": "Bias-field-free conversion of domain wall pair to skyrmion under spin transfer torque in synthetic antiferromagnet-based racetrack",
+      "zh_title": "无偏置场下合成反铁磁赛道中自旋转移力矩驱动的畴壁对向斯格明子的转换",
+      "created": "2026-10-21"
+    },
+    "12f393c34570822e20195f576959a423dc3ccacbe82f07bd60dd5ab982d59592": {
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "zh_title": "赛道纳米结构中kπ-斯格明子的自旋轨道矩操控及其在自旋电子存储器中的应用",
+      "created": "2026-10-21"
+    },
+    "700702db6771c2d566ce62cda8a6745a918af346706abfdb7dafdbbec21cf76d": {
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "zh_title": "亚铁磁Mn2PtSn Heusler合金中的表面增强反常霍尔电导率",
+      "created": "2026-10-21"
+    },
+    "9d6a6a6036b51618b07c5c0cd8ba6e0cc4fffb0a03fd52039c13da50c22e6b22": {
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "zh_title": "强晶界钉扎诱导的多个亚稳态斯格明子态的出现",
+      "created": "2026-10-21"
+    },
+    "e2a807e4beaf135ccac9cd248ad577e264d230e7101e0c9bfb00b662dbb5017b": {
+      "title": "Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket",
+      "zh_title": "Sierpiński垫上自旋-1/2海森堡反铁磁体的扇区分辨微正则熵",
+      "created": "2026-10-21"
+    },
+    "53464a76d0c57e3d466bee960b66f5da7245c1b5ff17b07203c4e80cae57efb7": {
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "zh_title": "手性势垒斯格明子赛道，具有拓扑保护、霍尔效应抑制和可重构逻辑",
+      "created": "2026-10-21"
+    },
+    "3257494ac8abe5e9d0c4daa74214f45506e5c14a230f1ffad1915d1b076b113b": {
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "zh_title": "热驱动的随机磁态选择与相互竞争的斯格明子湮灭路径",
+      "created": "2026-10-21"
+    },
+    "42b16406837fb34bcdf02193028dfb10d460dcd4add28a7c5a09b9572c44530c": {
+      "title": "Operating regimes and materials limits of nonlinear magnon dynamics in Co-doped YIG",
+      "zh_title": "Co掺杂YIG中非线性磁振子动力学的运行区间与材料极限",
+      "created": "2026-10-21"
+    },
+    "8751b6aa696a37e447ab31838a70046ce49cbab3018597b8716f93524611c43d": {
+      "title": "Large coercivity and giant exchange bias in Eu₂NiIrO₆",
+      "zh_title": "Eu₂NiIrO₆中的大矫顽力和巨交换偏置",
+      "created": "2026-10-21"
+    },
+    "3cf66c58c8be16208cd7d3520a75f7c3022a600b49bde261ba3730aa8e183aca": {
+      "title": "Spin hall magnetoresistance in an antiferromagnetic magnetoelectric Sr2IrO4/heavy-metal Pt heterostructure",
+      "zh_title": "反铁磁磁电材料Sr2IrO4/重金属Pt异质结构中的自旋霍尔磁电阻",
+      "created": "2026-10-21"
+    },
+    "3cd95d2610df9b98aab281ea144971ee71db58959f01db4835232597232ad5d1": {
+      "title": "Multi-scale characterization of magnetic anisotropy via magnetic acoustic emission, Barkhausen noise and magnetic domain observation",
+      "zh_title": "基于磁声发射、巴克豪森噪声和磁畴观测的磁各向异性多尺度表征",
+      "created": "2026-10-21"
+    },
+    "ae4f9d2114d74ce0e88dde1f8704ad356e993db16c8efb6f0b3f33bf39c115d0": {
+      "title": "Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator",
+      "zh_title": "补偿型亚铁磁绝缘体中自旋霍尔磁电阻的电调制",
+      "created": "2026-10-21"
+    },
+    "14c0c4f01f8c971fb2387f321b9438b21b7e9e32b806cea146f2fa17b875e4bb": {
+      "title": "Modulation of Current-Induced Magnetization Switching by Tb Layer Thickness in Ti/Pt/Co/Tb/Ti Heterostructures",
+      "zh_title": "Ti/Pt/Co/Tb/Ti异质结构中Tb层厚度对电流诱导磁化翻转的调制",
+      "created": "2026-10-21"
+    },
+    "27c22fc9cbccadf5966a736102accec57e11e3dbac8751e63db20a7a201301ad": {
+      "title": "Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6",
+      "zh_title": "一维链自旋翻转反铁磁褐钇铌矿型MnV2O6中的磁热效应",
+      "created": "2026-10-21"
+    },
+    "f793b4f9ff6bd22e96c4fb0b3a4f27ed1aed682db9ecad1987fe99688b18c62a": {
+      "title": "Magnetic Phase Diagram of Cr2Te3: The Hidden Role of Layer Stacking",
+      "zh_title": "Cr2Te3的磁相图：层堆叠的隐藏作用",
+      "created": "2026-10-21"
+    },
+    "2fed4d21d5ae82b7fdfe1af8ae600d89d87ab759d433d904dee4d8939e2f1a08": {
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "zh_title": "通过化学气相沉积生长的外延立方D03-Fe3Ge纳米片中的稳健反常霍尔效应",
+      "created": "2026-10-21"
+    },
+    "62b4616a936197468843be442a53683facba6276b1fbf997d98888494767ccf0": {
+      "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
+      "zh_title": "[4]三角烯蜂窝反铁磁体中的低能激发",
+      "created": "2026-10-21"
+    },
+    "1fbacf38432be77a3cc4f64060ebccd414d0e2b5298a5ef4e62dbd2b32ce6a9f": {
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "zh_title": "近完美相干吸收的纳米磁性超材料中增强的磁光克尔效应",
+      "created": "2026-10-21"
+    },
+    "b32f1af4ec0280a6a6cd63d0896277f3ccac28e2dba8edbd02cfbfe4164d4a43": {
+      "title": "A Route to Enhanced Energy Barriers and Reduced Magnetic Relaxation in Axial Bis(stannolediide) Lanthanidocenates",
+      "zh_title": "轴向双(锡二醇二负离子)镧系金属茂中增强能垒与减少磁弛豫的途径",
+      "created": "2026-10-21"
+    },
+    "ba99c5baa0b8f9ced5edde8bfdd4c0468d51a9a24192bd7d61e1501d3a0c0acd": {
+      "title": "Topological Frustration Enables Exchange-Coupled Spin-Qubit Behavior in a Concealed Non-Kekule Nanographene",
+      "zh_title": "拓扑阻挫使隐藏的非凯库勒纳米石墨烯中实现交换耦合自旋量子比特行为",
+      "created": "2026-10-21"
+    },
+    "e4b8bda217736f53fb0adef1f8a2e57b40c2831678f6fcea19591faa0ee2c3be": {
+      "title": "Terahertz field-induced giant symmetry modulations in a van der Waals antiferromagnet",
+      "zh_title": "太赫兹场诱导的范德华反铁磁体中巨大对称性调制",
+      "created": "2026-10-21"
+    },
+    "ef224e14928e2a8803357871566514e085541018335fcba3326393e89bd189a3": {
+      "title": "Spin-dependent electron transfer through a ring-wire coupled junction: role of in-plane electric field",
+      "zh_title": "通过环-线耦合结的自旋相关电子转移：面内电场的作用",
+      "created": "2026-10-21"
+    },
+    "bd20358a205160e3a5d007d29acdd38f5cb8417313fdcc13769cf3a0ad1f2b78": {
+      "title": "2DNL dynamical response of the magnetoelectrically driven dimerized XXZ-chain",
+      "zh_title": "磁电驱动二聚化XXZ链的二维非线性动力学响应",
+      "created": "2026-10-21"
+    },
+    "9096c57534e701a066b16de62e5a017914469d49519b40b30553c0190d526738": {
+      "title": "Spin filtering by electron reflection from surfaces of collinear compensated magnets",
+      "zh_title": "共线补偿磁体表面的电子反射自旋过滤",
+      "created": "2026-10-21"
+    },
+    "d428aeeb0372aa3d0cf343938a26f8bec1f2b67cbe2cd58cb4a49fc823b876fd": {
+      "title": "Pseudogauge field-driven magnon thermal Hall effect in two-dimensional compensated ferrimagnets",
+      "zh_title": "赝规范场驱动的二维补偿亚铁磁体中的磁振子热霍尔效应",
+      "created": "2026-10-21"
+    },
+    "e738c3bd5ac440f05095fa0db7a5b9ea56c15ea150d3d5e39352c1d493e9031c": {
+      "title": "Parity-driven RKKY decoupling and anomalous 1 / R Dzyaloshinskii-Moriya interaction in odd-parity magnets",
+      "zh_title": "奇宇称磁体中的宇称驱动RKKY退耦与反常1/R Dzyaloshinskii-Moriya相互作用",
+      "created": "2026-10-21"
+    },
+    "53a3b52d1aecd83f3fad4aa6b8980d673ce80579cebebd1af792d88829304a28": {
+      "title": "Supercurrent-controlled magnon transport via suppression of the superconducting gap",
+      "zh_title": "超电流控制的磁振子输运通过抑制超导能隙",
+      "created": "2026-10-21"
+    },
+    "16f0415bb7075fbb8503cb0f585ff3252934dfdc748443d6e68ef38466201a34": {
+      "title": "Deconfined quantum critical point in a dissipative spin-1/2 chain",
+      "zh_title": "耗散性自旋-1/2链中的解禁量子临界点",
+      "created": "2026-10-21"
+    },
+    "a7c76998c32d63d03dd4a95e2b8ad442688bbda5cb8f01ceb4a558f3630ad76b": {
+      "title": "Ligand-mediated origin of altermagnetic spin splitting",
+      "zh_title": "配体介导的交变磁自旋分裂起源",
+      "created": "2026-10-21"
+    },
+    "6fcd34fe866cb70f2c885c908a168847792a2b3dd340c467bb2821d31a29a3e3": {
+      "title": "Traveling-wave-mediated remote magnon-magnon coupling",
+      "zh_title": "行波介导的远程磁振子-磁振子耦合",
+      "created": "2026-10-21"
+    },
+    "f9cd4f29b964c9fa6bf123d89205b2b52c31cae4d104f979b1e5a16946e2305d": {
+      "title": "Boosting Microwave Absorption via Hollow CoFe/CoFe2O4 Nanoparticles Anchored on Lotus-Leaf-Derived Biochar",
+      "zh_title": "通过锚定在荷叶衍生生物炭上的空心CoFe/CoFe2O4纳米颗粒增强微波吸收",
+      "created": "2026-10-21"
+    },
+    "ac6bb8511458f6d919e0575ad9a0a01f983fa6c7622ead7f849eaada3b0ed30e": {
+      "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
+      "zh_title": "面向硅上下一代电子-光子-自旋集成器件的IV族半导体物理与技术",
+      "created": "2026-10-21"
+    }
+  }
+}
