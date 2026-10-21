@@ -22,6 +22,7 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertNotIn("\n    environment:\n", self.parts[0])
         self.assertIn("git fetch --quiet origin main", self.parts[0])
         self.assertIn("stale commit", self.parts[0])
+        self.assertIn("tools/reliable_push.py --flush --defer-if-held", self.parts[0])
 
     def test_pages_separate_dependent_job(self):
         deployment = self.parts[1]
@@ -49,6 +50,7 @@ class WorkflowContractTests(unittest.TestCase):
                 with patch.object(ReliableDelivery, "flush_both",
                                   side_effect=AssertionError("must not send")):
                     self.assertEqual(reliable_push.main(["--flush"]), 3)
+                    self.assertEqual(reliable_push.main(["--flush", "--defer-if-held"]), 0)
                     self.assertEqual(reliable_push.main(["--status"]), 0)
 
 

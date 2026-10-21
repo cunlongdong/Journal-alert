@@ -196,7 +196,7 @@ jobs:
             if [[ -n "$EXTRA_SOURCES" ]]; then args+=(--sources "$EXTRA_SOURCES"); fi
             python tools/enhanced_run.py "${args[@]}"
             if [[ "$EXTRA_NO_PUSH" != "true" ]]; then
-              python tools/reliable_push.py --flush
+              python tools/reliable_push.py --flush --defer-if-held
               # Historical backfill runs AFTER today's notifications; never re-pushes history.
               python tools/history_backfill.py --max 10
             fi
