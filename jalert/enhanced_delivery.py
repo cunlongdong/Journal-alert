@@ -188,8 +188,22 @@ class Delivery:
             value = choice["message"]["content"].strip()
             if choice.get("finish_reason") == "length":
                 raise ValueError("model output truncated")
-        except (KeyError, IndexError, TypeError, AttributeError) as ex:
-            raise RuntimeError(f"{name}: malformed completion response") from ex
+        except (KeyError, IndexError, TypeError, AttributeError):
+            top = sorted(result.keys()) if isinstance(result, dict) else ["non-dict"]
+            choices = result.get("choices") if isinstance(result, dict) else None
+            first = choices[0] if isinstance(choices, list) and choices else None
+            choice_keys = sorted(first.keys()) if isinstance(first, dict) else []
+            msg = first.get("message") if isinstance(first, dict) else None
+            message_keys = sorted(msg.keys()) if isinstance(msg, dict) else []
+            content_type = (
+                type(msg.get("content")).__name__
+                if isinstance(msg, dict) else "missing"
+            )
+            raise RuntimeError(
+                f"{name}: malformed completion response; "
+                f"top={top}; choice={choice_keys}; "
+                f"message={message_keys}; content_type={content_type}"
+            ) from None
         value = re.sub(r"\s+", " ", value).strip(' \n\t"“”')
         if len(value) < 35 or len(value) > 450 or len(re.findall(r"[\u4e00-\u9fff]", value)) < 28:
             raise ValueError(f"{name}: generated summary failed Chinese/length sanity check")
