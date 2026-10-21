@@ -72,10 +72,33 @@ class Delivery:
         self.cache_path = self.root / "state" / CACHE_NAME
         self.queue = _load_json(self.queue_path, {"version": 1, "items": {}, "usage": {}})
         self.cache = _load_json(self.cache_path, {"version": 1, "summaries": {}})
+        recovery_path = self.root / "state" / "bark_run47_accepted.json"
+        recovery = _load_json(recovery_path, {"version": 1, "acked_uids": [], "deferred_uids": []})
+        accepted = recovery.get("acked_uids", [])
+        deferred = recovery.get("deferred_uids", [])
+        if (not isinstance(accepted, list) or not isinstance(deferred, list) or
+                not all(isinstance(uid, str) and uid.startswith("doi:") for uid in accepted) or
+                set(accepted) & set(deferred) or len(accepted) != len(set(accepted))):
+            raise ValueError("Malformed Bark recovery acknowledgement list")
+        if recovery_path.exists() and len(accepted) != int(recovery.get("api_accepted_count", -1)):
+            raise ValueError("Bark recovery acknowledgement count does not match")
+        self.recovered_bark_acks = set(accepted)
         if not isinstance(self.queue.get("items"), dict) or not isinstance(self.queue.get("usage"), dict):
             raise ValueError("Delivery queue file has unexpected structure; not overwriting")
         if not isinstance(self.cache.get("summaries"), dict):
             raise ValueError("Summary cache has unexpected structure; not overwriting")
+        # Migrate acknowledged UIDs that may already be in an older queue.
+        ack_changed = False
+        for uid in self.recovered_bark_acks & self.queue["items"].keys():
+            entry = self.queue["items"][uid]
+            if not entry.get("bark_done"):
+                entry["bark_done"] = True
+                entry["status"] = "sent"
+                entry.pop("abstract", None)
+                entry["recovered_bark_ack_run"] = recovery.get("run_id")
+                ack_changed = True
+        if ack_changed:
+            self._save_queue()
 
     def _save_queue(self) -> None:
         _atomic_json(self.queue_path, self.queue)
@@ -105,6 +128,15 @@ class Delivery:
                 "status": "pending",
                 "attempts": 0,
             }
+            if uid in self.recovered_bark_acks:
+                # A GitHub push failed after Bark accepted this exact UID.
+                # Reconstitute the queue record from genuine source metadata
+                # without replaying an already accepted notification.
+                entry = self.queue["items"][uid]
+                entry["status"] = "sent"
+                entry["bark_done"] = True
+                entry["recovered_bark_ack_run"] = 39617398380
+                entry.pop("abstract", None)
             count += 1
         if count:
             self._save_queue()

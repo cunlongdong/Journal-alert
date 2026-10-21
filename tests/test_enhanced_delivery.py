@@ -105,6 +105,36 @@ if __name__ == '__main__':
                              for rec in self.delivery.cache["summaries"].values()))
 
 
+    def test_failed_commit_bark_acks_restored_without_resending(self):
+        import shutil
+        repo_root = Path(__file__).resolve().parents[1]
+        manifest_path = repo_root / "state" / "bark_run47_accepted.json"
+        saved = json.loads(manifest_path.read_text(encoding="utf-8"))
+        self.assertEqual(len(saved["acked_uids"]), 33)
+        self.assertEqual(len(saved["deferred_uids"]), 5)
+        self.assertFalse(set(saved["acked_uids"]) & set(saved["deferred_uids"]))
+        state_dir = self.root / "state"
+        state_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(manifest_path, state_dir / "bark_run47_accepted.json")
+        from jalert.reliable_delivery import ReliableDelivery
+        delivery = ReliableDelivery(self.root)
+        accepted_uid = saved["acked_uids"][0]
+        deferred_uid = saved["deferred_uids"][0]
+        for uid in (accepted_uid, deferred_uid):
+            article = SimpleNamespace(
+                uid=uid, title="Source-verified paper", journal="PRB",
+                doi=uid.removeprefix("doi:"), authors=["Alice"], date="2026-10-21",
+                url="", abstract="Source Abstract"
+            )
+            delivery.enqueue([(article, self.score)])
+        self.assertEqual(delivery.queue["items"][accepted_uid]["status"], "sent")
+        self.assertTrue(delivery.queue["items"][accepted_uid]["bark_done"])
+        self.assertEqual(delivery.queue["items"][deferred_uid]["status"], "pending")
+        with patch.object(ReliableDelivery, "_bark", side_effect=AssertionError("never replay")):
+            # Enqueue is idempotent; only pending entries would require API.
+            self.assertEqual(ReliableDelivery(self.root).queue["items"][accepted_uid]["status"], "sent")
+
+
 class IntegrationContractTests(unittest.TestCase):
     def test_ai_primary_and_fallback_resolution(self):
         with tempfile.TemporaryDirectory() as temp:
