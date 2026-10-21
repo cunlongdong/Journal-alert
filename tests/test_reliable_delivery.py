@@ -152,6 +152,62 @@ class BarkTests(unittest.TestCase):
                          _title_numbers("Fe₃₋ₓGeTe₂"))
         self.assertEqual(_title_numbers("MnBi2Te4") - _title_numbers("MnBi₂Te"), {"4"})
 
+    def test_he_irradiation_dose_malformed_power_passes_equivalent_translation(self):
+        from jalert.reliable_delivery import _normalize_scientific_notation
+        original = ("At the lowest fluence 1 × 1 0 14 He + / cm 2, "
+                    "the magnetic anisotropy increased by 20%, with domain wall "
+                    "velocities of 1.1 mm/s and 0.38 mm/s.")
+        chinese = ("在最低的 1×10¹⁴ He⁺/cm² 离子注量下，磁各向异性提高了 20%，"
+                   "测得畴壁运动速率分别为 1.1 mm/s 和 0.38 mm/s。"
+                   "这些结果说明低剂量辐照影响界面磁性与磁畴动力学。")
+        normalized = _normalize_scientific_notation(original)
+        self.assertIn("1×10^14 He+/cm²", normalized)
+        self.assertNotIn("1 × 1 0 14", normalized)
+        self.assertEqual(quality_report(original, chinese)["missing_numbers"], [])
+        self.assertTrue(quality_report(original, chinese)["ok"])
+        self.assertIn("1 × 1 0 14", _normalize_scientific_notation(
+            "1 × 1 0 14 in an unrelated table"))
+
+    def test_superscript_braces_and_unit_notation_are_equivalent(self):
+        from jalert.reliable_delivery import _normalize_scientific_notation
+        cases = ("1 × 10¹⁴ He⁺/cm²", "1×10^14 He+/cm²",
+                 "1 × 10^{14} He + / cm 2", "10^14 He+/cm²")
+        for version in cases:
+            with self.subTest(version=version):
+                self.assertIn("1×10^14", _normalize_scientific_notation(version))
+        chinese = "在 1×10¹⁴ He⁺/cm² 下进行了实验，离子辐照引起了明显的磁性变化。"
+        for version in cases:
+            with self.subTest(english=version):
+                self.assertEqual(quality_report(
+                    "Irradiation fluence was " + version + ".", chinese
+                )["missing_numbers"], [])
+
+    def test_wrong_dose_or_missing_measurement_still_blocked(self):
+        original = ("At 1 × 1 0 14 He + / cm 2, magnetization changes by 20%, "
+                    "with wall velocity 1.1 mm/s and 0.38 mm/s.")
+        correct = ("在 1×10¹⁴ He⁺/cm² 下，磁化变化 20%，"
+                   "畴壁速率分别为 1.1 mm/s 和 0.38 mm/s，实验数据符合观测。")
+        for wrong in (correct.replace("10¹⁴", "10¹³"),
+                      correct.replace("20%", "25%"),
+                      correct.replace("0.38", "0.39")):
+            with self.subTest(chinese=wrong):
+                self.assertFalse(quality_report(original, wrong)["ok"])
+
+    def test_model_receives_normalized_dose_without_rewriting_original(self):
+        from jalert.enhanced_delivery import Delivery
+        raw = "The dose is 1 × 1 0 14 He + / cm 2 and anisotropy rises by 20%."
+        chinese = ("辐照离子注量为 1×10¹⁴ He⁺/cm²，磁各向异性提高了 20%。"
+                   "这一变化体现出离子辐照对材料界面磁性的调节作用。")
+        item = {"title": "He-ion domain wall experiment", "abstract": raw}
+        with patch.object(Delivery, "_call_model", return_value=chinese) as translated:
+            output = self.delivery._call_model(
+                "custom", "https://offline.example.org", "offline", "", item)
+        self.assertEqual(output, chinese)
+        self.assertEqual(item["abstract"], raw)
+        sent = translated.call_args.args[-1]
+        self.assertEqual(sent["abstract"].count("1×10^14"), 1)
+        self.assertIn("He+/cm²", sent["abstract"])
+
     def test_critical_numerals_and_2d_notation(self):
         self.assertNotIn("2", quality_report("2D material with 10 mT.", "二维材料表现出10 mT磁化。")["missing_numbers"])
         self.assertFalse(quality_report("At 10 K and 50 mT.", "在10 K下观测到磁性。")["ok"])

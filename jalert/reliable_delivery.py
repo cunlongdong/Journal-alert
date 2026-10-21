@@ -27,9 +27,42 @@ def _utf8size(text: str) -> int:
     return len(text.encode("utf-8"))
 
 
+_SUPERSCRIPT_DIGITS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻", "0123456789+-")
+
+
+def _normalize_scientific_notation(text: str) -> str:
+    """Normalize scientific notation in translation input and numeric checks.
+
+    Publisher APIs sometimes flatten 1 × 10¹⁴ He⁺/cm² into
+    1 × 1 0 14 He + / cm 2. Interpret the latter as an exponent ONLY
+    when followed by a He+ ion-fluence context; don't reinterpret
+    arbitrary separated digits elsewhere in a research abstract.
+    """
+    value = str(text or "")
+    # NFKC would collapse 10¹⁴ into 1014. Preserve the exponent first.
+    value = re.sub(
+        r"(?<=10)[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻]+",
+        lambda m: "^" + m.group().translate(_SUPERSCRIPT_DIGITS), value,
+    )
+    value = unicodedata.normalize("NFKC", value).replace("−", "-").replace("–", "-")
+    value = re.sub(
+        r"(?<![A-Za-z0-9.])(?P<coefficient>\d+(?:\.\d+)?)\s*×\s*1\s+0\s+"
+        r"(?P<exponent>\d{1,2})(?=\s*(?:He\s*\+|ions?\b))",
+        lambda m: m.group("coefficient") + "×10^" + m.group("exponent"),
+        value,
+    )
+    value = re.sub(r"\^\s*\{\s*(\d+)\s*\}", r"^\1", value)
+    value = re.sub(r"(\d+(?:\.\d+)?)\s*[×x]\s*10\s*\^\s*(\d+)",
+                   r"\1×10^\2", value)
+    # 10^14 and 1×10^14 denote the same physical quantity.
+    value = re.sub(r"(?<![A-Za-z0-9×x])10\s*\^\s*(\d+)", r"1×10^\1", value)
+    value = re.sub(r"\bHe\s*\+\s*/\s*cm\s*2\b", "He+/cm²", value)
+    return value
+
+
 def _critical_tokens(text: str) -> set[str]:
     """Numbers, ranges and measurement tokens that must not silently disappear."""
-    text = unicodedata.normalize("NFKC", text).replace("−", "-").replace("–", "-")
+    text = _normalize_scientific_notation(text)
     # Avoid false alarms from single-number citations in brackets when possible.
     text = re.sub(r"\[(?:\d+[\s,;–-]*)+\]", "", text)
     return {t.lower() for t in re.findall(r"(?<![A-Za-z0-9])(?:\d+(?:\.\d+)?)(?:\s*[×x]\s*10\s*\^?\s*[-+]?\d+)?%?(?![A-Za-z0-9])", text)}
@@ -116,7 +149,13 @@ class ReliableDelivery(Delivery):
         self._save_queue()
 
     def _call_model(self, name: str, base: str, model: str, key: str, item: dict) -> str:
-        translated = super()._call_model(name, base, model, key, item)
+        # Normalize only the copy sent to the translator. Keep the
+        # publisher Abstract unchanged in the persistent archive/cache.
+        cleaned_item = dict(item)
+        cleaned_item["abstract"] = _normalize_scientific_notation(
+            str(item.get("abstract") or "")
+        )
+        translated = super()._call_model(name, base, model, key, cleaned_item)
         check = quality_report(str(item.get("abstract") or ""), translated)
         if not check["ok"]:
             raise ValueError("translation quality check failed: " + str(check["missing_numbers"][:8]))
