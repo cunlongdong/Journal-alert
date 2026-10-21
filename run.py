@@ -622,6 +622,11 @@ def run(args: argparse.Namespace) -> int:
         matched.append({"item": item, "scored": scored})
     log.info("keyword matched %d/%d items (min_score=%d)", len(matched), len(items), min_score)
 
+    if not args.dry_run and matched:
+        from jalert.metadata import merge_many
+        state_info = merge_many(Path(cfg["_root"]), [e["item"] for e in matched])
+        log.info("durable article metadata: %s", state_info)
+
     with Store(cfg["state_db"]) as store:
         known = store.known_uids([entry["item"].uid for entry in matched])
         new_entries = [entry for entry in matched if entry["item"].uid not in known]
@@ -632,6 +637,10 @@ def run(args: argparse.Namespace) -> int:
         log.info("new items: %d (已存在 %d)", len(new_entries), len(matched) - len(new_entries))
 
         previous = {} if args.dry_run else load_snapshot(day_snapshot)
+        if not previous and not args.dry_run:
+            # Commit the full daily JSON archive to git, so a new runner never
+            # has to reconstruct the original Abstract from Markdown excerpts.
+            previous = load_snapshot(reports_dir / f"{day}.json")
         merged_records = list(previous.get("entries", []))
         if not merged_records and not args.dry_run:
             # No day snapshot (CI never has one) - fall back to the report already
@@ -640,6 +649,22 @@ def run(args: argparse.Namespace) -> int:
             if merged_records:
                 log.info("recovered %d entries from %s (no day snapshot available)",
                          len(merged_records), report_path.name)
+        # Update existing same-day records from newly available API metadata;
+        # this changes reports only, never the 'new paper' push queue.
+        fresh_items = {entry["item"].uid: entry["item"] for entry in matched}
+        for old_record in merged_records:
+            old_item = old_record.get("item") or {}
+            fresh = fresh_items.get(old_item.get("uid"))
+            if not fresh:
+                continue
+            if len(str(fresh.abstract or "")) > len(str(old_item.get("abstract") or "")):
+                old_item["abstract"] = fresh.abstract
+                old_item["source"] = fresh.source
+            if len(fresh.authors or []) > len(old_item.get("authors") or []):
+                old_item["authors"] = fresh.authors
+            for key in ("url", "doi", "journal"):
+                if not old_item.get(key) and getattr(fresh, key, None):
+                    old_item[key] = getattr(fresh, key)
         added_now = 0
         if args.dry_run:
             merged_records = [entry_to_dict(e) for e in new_entries]

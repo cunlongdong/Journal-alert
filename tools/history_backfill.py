@@ -484,6 +484,9 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
                 }
                 # Even a failed AI translation must not discard retrieved English.
                 _atomic_json(english_path, english_store)
+        if english and not dry_run and len(english) <= DEFAULTS["max_input_chars"]:
+            from jalert.metadata import merge_verified_abstract
+            merge_verified_abstract(root, norm_doi, str(paper.get("title") or ""), english, source)
         if not english or len(english) > DEFAULTS["max_input_chars"]:
             missing += 1
             if outcome is not None:

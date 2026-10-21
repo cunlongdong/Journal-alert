@@ -234,6 +234,7 @@ jobs:
             state/enhanced_zh_cache.json \
             state/dual_channel_delivery.json \
             state/full_english_abstracts.json \
+            state/article_metadata.json \
             state/history_backfill_cursor.json; do
             if [[ -f "$path" ]]; then
               git add -- "$path"

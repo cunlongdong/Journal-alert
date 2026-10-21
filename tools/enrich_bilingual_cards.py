@@ -97,7 +97,8 @@ def _replace_once(page: str, old: str, new: str, label: str) -> str:
     return page.replace(old, new, 1)
 
 
-def build_bilingual_html(page: str, cache: dict, english_store: dict | None = None) -> tuple[str, int]:
+def build_bilingual_html(page: str, cache: dict, english_store: dict | None = None,
+                         metadata_store: dict | None = None) -> tuple[str, int]:
     found = DATA_PATTERN.search(page)
     if not found:
         raise ValueError('Card wall is missing the required DATA script; no file modified')
@@ -110,6 +111,9 @@ def build_bilingual_html(page: str, cache: dict, english_store: dict | None = No
     full_english = (english_store or {}).get("abstracts", {})
     if not isinstance(full_english, dict):
         raise ValueError("Unexpected full English abstract cache format")
+    all_metadata = (metadata_store or {}).get("articles", {})
+    if not isinstance(all_metadata, dict):
+        raise ValueError("Unexpected metadata ledger schema")
     for paper in articles:
         paper_doi = doi_key(paper.get('doi', ''))
         rec = doi_map.get(paper_doi) if paper_doi else None
@@ -122,11 +126,24 @@ def build_bilingual_html(page: str, cache: dict, english_store: dict | None = No
         source_record = full_english.get(paper_doi) if paper_doi else None
         complete_en = (rec.get('english_abstract') if rec else None) or (
             source_record.get('abstract') if isinstance(source_record, dict) else None)
-        # The card excerpt must never be mislabeled as a complete Abstract.
+        # The API metadata ledger is durable and can contain a better source
+        # abstract found during a later run. Do not use report excerpts as full.
+        observed = all_metadata.get("doi:" + paper_doi) if paper_doi else None
+        observed_en = str(observed.get("abstract") or "") if isinstance(observed, dict) else ""
+        if len(observed_en) > len(str(complete_en or "")):
+            complete_en = observed_en
+            paper["enAbstractSource"] = observed.get("abstract_source") or "source API"
+        elif source_record and isinstance(source_record, dict) and complete_en:
+            paper["enAbstractSource"] = source_record.get("source") or "verified DOI"
+        elif rec and complete_en:
+            paper["enAbstractSource"] = rec.get("provider") or "translated source"
         if complete_en:
             paper['enAbstract'] = complete_en
         else:
             paper.pop('enAbstract', None)
+            paper.pop("enAbstractSource", None)
+        if isinstance(observed, dict) and len(observed.get("authors") or []) > len(paper.get("authors") or []):
+            paper["authors"] = observed["authors"]
         # Titles have a separate verified cache, even without an abstract.
         title_hash = hashlib.sha256(str(paper.get("title", "")).strip().encode("utf-8")).hexdigest()
         title_record = (cache.get("titles") or {}).get(title_hash, {})
@@ -135,10 +152,13 @@ def build_bilingual_html(page: str, cache: dict, english_store: dict | None = No
             paper["zhTitle"] = zh_title
         else:
             paper.pop("zhTitle", None)
-        if rec:
+        if rec and (not complete_en or
+                    str(rec.get("english_abstract") or "").strip() == str(complete_en).strip()):
             paper['zhAbstract'] = rec['summary']
             translated_count += 1
         else:
+            # Never display a translation of a different/obsolete Abstract
+            # beside a newly recovered original English source.
             paper.pop('zhAbstract', None)
     content = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     content = content.replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
@@ -156,6 +176,7 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument('--cards', type=Path, default=ROOT / 'docs' / 'index.html')
     p.add_argument('--cache', type=Path, default=ROOT / 'state' / 'enhanced_zh_cache.json')
     p.add_argument('--english-cache', type=Path, default=ROOT / 'state' / 'full_english_abstracts.json')
+    p.add_argument('--metadata', type=Path, default=ROOT / 'state' / 'article_metadata.json')
     args = p.parse_args(argv)
     if not args.cards.is_file():
         print(f'No generated card wall at {args.cards}; nothing to enrich')
@@ -163,7 +184,8 @@ def main(argv: list[str] | None = None) -> int:
     cache = json.loads(args.cache.read_text('utf-8')) if args.cache.is_file() else {'summaries': {}}
     current = args.cards.read_text('utf-8')
     english_store = json.loads(args.english_cache.read_text('utf-8')) if args.english_cache.is_file() else {'abstracts': {}}
-    updated, translated = build_bilingual_html(current, cache, english_store)
+    metadata_store = json.loads(args.metadata.read_text('utf-8')) if args.metadata.is_file() else {'articles': {}}
+    updated, translated = build_bilingual_html(current, cache, english_store, metadata_store)
     if updated != current:
         args.cards.write_text(updated, encoding='utf-8', newline='\n')
     print(f'Bilingual wall ready: {translated} cards with Chinese translations; '
