@@ -1,0 +1,24 @@
+name: journal-alert offline checks
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.py'
+      - 'config.json'
+      - '.github/workflows/tests.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile Python code
+        run: python -m compileall -q run.py jalert tools tests
+      - name: Run offline tests (no push)
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
