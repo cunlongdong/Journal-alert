@@ -1,7 +1,7 @@
 """Recover full English Abstracts for *existing pending* push papers by DOI.
 
 Never enqueues historical reports, never sends any notification, never invents text.
-Each missing source is retried at most once every 7 days, max two DOI lookups/run.
+Each missing source is retried at most once every day, max 20 DOI lookups/run.
 """
 from __future__ import annotations
 
@@ -17,11 +17,11 @@ LOG = logging.getLogger(__name__)
 
 
 def recover_pending_abstracts(
-    delivery: ReliableDelivery, *, limit: int = 2, retry_days: int = 7,
+    delivery: ReliableDelivery, *, limit: int = 20, retry_days: int = 1,
     lookup=lookup_english_abstract,
 ) -> dict:
-    if not 0 <= limit <= 15:
-        raise ValueError('Pending DOI lookup limit must be 0..15')
+    if not 0 <= limit <= 100:
+        raise ValueError('Pending DOI lookup limit must be 0..100')
     today = date.today()
     checked = filled = missing = skipped = 0
     pending = sorted(

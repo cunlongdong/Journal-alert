@@ -33,7 +33,7 @@ def _critical_tokens(text: str) -> set[str]:
     text = unicodedata.normalize("NFKC", text).replace("−", "-").replace("–", "-")
     # Avoid false alarms from single-number citations in brackets when possible.
     text = re.sub(r"\[(?:\d+[\s,;–-]*)+\]", "", text)
-    return {t.lower() for t in re.findall(r"(?<![A-Za-z])(?<!\d)(?:\d+(?:\.\d+)?)(?:\s*[×x]\s*10\s*\^?\s*[-+]?\d+)?%?", text)}
+    return {t.lower() for t in re.findall(r"(?<![A-Za-z0-9])(?:\d+(?:\.\d+)?)(?:\s*[×x]\s*10\s*\^?\s*[-+]?\d+)?%?(?![A-Za-z0-9])", text)}
 
 
 def quality_report(english: str, chinese: str) -> dict:

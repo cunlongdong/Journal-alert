@@ -1,4 +1,4 @@
-"""Reliable dual-channel alerts, with bounded missing-abstract recovery."""
+"""Bark-only Chinese alerts with bounded missing-abstract recovery."""
 from __future__ import annotations
 import argparse
 import json
@@ -26,7 +26,7 @@ def main(argv=None):
             print('Bark is not enabled: set JALERT_BARK_ENABLED=true')
             return 2
         try:
-            accepted = delivery._bark('Journal-alert Bark 连接测试', '这是一条连接测试通知，不包含论文，也不会占用 Server酱额度。')
+            accepted = delivery._bark('Journal-alert Bark 连接测试', '这是一条 Bark 连接测试通知，不包含论文。')
         except (OSError, ValueError, RuntimeError, KeyError) as ex:
             print('Bark test failed:', type(ex).__name__)
             return 1
@@ -34,11 +34,10 @@ def main(argv=None):
         return 0 if accepted else 1
     if ns.flush:
         import os
-        if os.getenv("JALERT_BARK_REQUIRED", "false").lower() in ("true", "1", "yes"):
-            enabled = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
-            if not enabled or not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
-                logging.error("Bark delivery required: enable Bark and configure BARK_DEVICE_KEY")
-                return 2
+        enabled = os.getenv("JALERT_BARK_ENABLED", "true").lower() in ("true", "1", "yes")
+        if not enabled or not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
+            logging.error("Bark required: enable it and configure BARK_DEVICE_KEY")
+            return 2
         # JALERT_RECOVER_PENDING_V1: restore actual source abstracts, not invented text.
         from tools.recover_pending_abstracts import recover_pending_abstracts
         recovery = recover_pending_abstracts(delivery)
@@ -52,9 +51,12 @@ def main(argv=None):
     )
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if report['pending_without_english']:
-        logging.warning('%d pending papers have no original English Abstract; retry is scheduled with a 7-day cooldown', report['pending_without_english'])
+        logging.warning('%d pending papers have no original English Abstract; source recheck follows a one-day cooldown', report['pending_without_english'])
     if ns.flush and report.get('bark_articles_waiting', 0):
-        logging.error("%d Bark papers remain undelivered; queue persisted for retry", report['bark_articles_waiting'])
+        logging.warning("%d articles still await verified sources, translation or Bark retry",
+                        report['bark_articles_waiting'])
+    if ns.flush and report.get('bark_articles_failed_this_run', 0):
+        logging.error("Bark transport rejected %d articles", report['bark_articles_failed_this_run'])
         return 1
     return 0
 
