@@ -197,5 +197,40 @@ class PublisherAbstractTests(unittest.TestCase):
                          ["Alice Chen", "Bob Li"])
 
 
+class TargetedBackfillTests(unittest.TestCase):
+    def test_only_specified_doi_is_recovered_without_push_or_cursor_changes(self):
+        from tools import history_backfill
+        papers = [
+            {"title": "Designer Quantum States in Magnetic Topological Insulator Multilayers",
+             "doi": "10.1016/j.jmmm.2026.174589"},
+            {"title": "Unrelated journal paper", "doi": "10.9999/not-requested"},
+        ]
+        calls = []
+        def lookup(doi):
+            calls.append(doi)
+            return ("Magnetic topological multilayer experiments are demonstrated. " * 4,
+                    "arXiv preprint (title and first author verified)")
+        with tempfile.TemporaryDirectory() as root:
+            base = Path(root)
+            with patch.object(history_backfill, "collect", return_value=(papers, [], [])), \
+                 patch.object(history_backfill.ReliableDelivery, "_translate_title",
+                              return_value="磁性拓扑绝缘体多层结构中的设计量子态"), \
+                 patch.object(history_backfill.ReliableDelivery, "_get_translation",
+                              return_value="经核对的完整中文摘要"):
+                result = history_backfill.backfill(
+                    base, max_papers=15,
+                    target_dois={"10.1016/j.jmmm.2026.174589"}, lookup=lookup)
+            self.assertEqual(result["attempted"], 1)
+            self.assertEqual(result["translated"], 1)
+            self.assertEqual(result["cards"], 1)
+            self.assertEqual(calls, ["10.1016/j.jmmm.2026.174589"])
+            self.assertFalse((base / "state" / "history_backfill_cursor.json").exists())
+            self.assertFalse((base / "state" / "seen.sqlite").exists())
+            self.assertFalse((base / "state" / "enhanced_wechat_outbox.json").is_file() and
+                             bool(__import__("json").loads(
+                                (base / "state" / "enhanced_wechat_outbox.json").read_text())["items"]))
+
+
+
 if __name__ == "__main__":
     unittest.main()
