@@ -228,9 +228,6 @@ class ReliableDelivery(Delivery):
             return max(1, min(5, int(os.getenv("JALERT_WECHAT_MAX_MESSAGES_DAY", "4"))))
         return max(1, min(30, int(os.getenv("JALERT_BARK_MAX_MESSAGES_DAY", "12"))))
 
-    def _usage(self, day: str) -> dict:
-        return super()._usage(day)
-
     def _attempts(self, channel: str, day: str) -> int:
         if channel == "wechat":
             return int(self._usage(day).get("wechat_attempts", 0))
@@ -247,8 +244,14 @@ class ReliableDelivery(Delivery):
     def status(self) -> dict:
         day = _now_date()
         active = self.dual.get("active")
+        bark_on = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
         return {"pending_papers": self.pending_count(), "active_message": active["id"] if active else None,
                 "channel_acks": active["acked"] if active else {},
+                "channels_configured": {
+                    "wechat": bool(os.getenv("JALERT_SERVERCHAN_SENDKEY", "").strip()),
+                    "bark_enabled": bark_on,
+                    "bark_key_present": bool(os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()),
+                },
                 "wechat_attempts_today": self._attempts("wechat", day),
                 "bark_attempts_today": self._attempts("bark", day),
                 "recent_errors": [{"uid": x["uid"], "error": x.get("last_ai_error")}
