@@ -11,7 +11,12 @@ ABSTRACT_MULTIPLIER = 1
 
 def _pattern(term: str) -> re.Pattern:
     """Build a case-insensitive, alphanumeric-boundary matcher for ``term``."""
-    escaped = re.escape(term.strip())
+    # Journal APIs often use assorted hyphens (U+2010/U+2011/U+2013) or
+    # spaces for the same scientific compound: "spin–orbit torque",
+    # "spin-orbit-torque" and "spin orbit torque" must match equally.
+    parts = re.split(r"[\\s\\-\\u2010-\\u2015\\u2212]+", term.strip())
+    pieces = [re.escape(p) for p in parts if p]
+    escaped = r"[\\s\\-\\u2010-\\u2015\\u2212]+".join(pieces)
     return re.compile(r"(?<![a-z0-9])" + escaped + r"(?![a-z0-9])", re.IGNORECASE)
 
 
