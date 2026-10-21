@@ -588,10 +588,13 @@ def run(args: argparse.Namespace) -> int:
     if failures or capped:
         log.warning("source health: %d succeeded, %d failed, %d capped",
                     succeeded, len(failures), len(capped))
-        summary_file = os.environ.get("GITHUB_STEP_SUMMARY")
-        if summary_file:
-            with open(summary_file, "a", encoding="utf-8") as out:
-                out.write(f"\n### 文献采集状况\n成功 {succeeded}，失败 {len(failures)}，可能截断 {len(capped)}。\n")
+    summary_file = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary_file:
+        with open(summary_file, "a", encoding="utf-8") as out:
+            out.write(f"\n### 文献采集状况\n成功 {succeeded}，失败 {len(failures)}，可能截断 {len(capped)}。\n")
+            for status in (failures + capped)[:25]:
+                detail = str(status.get("note") or "")[:120].replace("|", "/").replace("\n", " ")
+                out.write(f"- {status.get('journal','?')} / {status.get('source','?')}: {detail}\n")
 
 
     if args.check or args.strict_check:

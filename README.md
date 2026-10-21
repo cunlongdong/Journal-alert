@@ -2,13 +2,15 @@
 
 Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集文献，按自旋电子学关键词筛选并去重，生成 Markdown 日报与 GitHub Pages 中英文卡片。**唯一通知渠道为 Bark**。
 
-## #47 Git 提交冲突与 Bark 确认恢复（2026-10-21）
+## 2026-10-21 历史重建与安全须知
 
-[日常运行 #47](https://github.com/cunlongdong/Journal-alert/actions/runs/39617398380) 曾在 Bark API 接受 33 篇新文章后，因远程 main 更新导致 git push 失败。通过 [工作流诊断工件 logs-47](https://github.com/cunlongdong/Journal-alert/actions/runs/39617398380/artifacts) 恢复了当时的原始匹配记录与 10 篇待处理 UID，核对出新发现的 38 篇中**33 篇 API 已接受、5 篇需补译**。逐个核对的 33 个 DOI 记录在 [state/bark_run47_accepted.json](state/bark_run47_accepted.json)。
+按仓库所有者要求，**历史去重数据库、以前生成的日报、卡片墙、AI 翻译缓存、Bark 待发队列以及旧 Bark 确认记录将一并清空**，方便从头重建并检查结果。过往版本仍可从 Git 提交历史追溯，且独立的研究关键词和化学式标题修正词表保留。
 
-以后重新抓取这 33 个 UID 时，程序会自动把它们标记为 Bark 已确认，避免重复发送。原有 5 篇待补译不会错误地被标记为已发送。此恢复基于 GitHub Actions 的**API 接受结果**，不等同于手机最终送达保证。
+新版本在每次匹配文章时持续写入 `state/article_metadata.json`，以 DOI 为主键保存来源、作者、原始英文摘要并支持后续升级，不会把旧 DOI 再次推送。当天的 `reports/YYYY-MM-DD.json` 会提交到仓库，保存完整元数据，不再依赖有损 Markdown 抽取。
 
-新工作流会在处理开始前检查分支是否过期；发生失败时将 state、reports、docs 备份到 `recoverable-state-<run id>` 工件。请不要删除恢复清单、去重数据库或通知缓存。
+**历史 Bark 确认也已清零**，因此下一次普通日报可能向手机再次推送以前收到的论文。请第一次仅运行 `no_push`，先验证文章与中文摘要，再决定何时主动执行 `flush_only`。注意：`no_push` 不发送，但会生成待发队列，后续 `flush_only` 可能发送队列里的全部新论文。
+
+后续若某次 Bark 发送后 Git 提交失败，工作流将上传可恢复状态的 artifacts；不要清空状态直接重试，以免重复通知。
 
 ## 自动运行和推送
 

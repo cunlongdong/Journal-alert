@@ -40,7 +40,27 @@ def main(argv=None):
     parser=argparse.ArgumentParser()
     parser.add_argument('--cards',type=Path,default=HERE/'docs/index.html')
     args=parser.parse_args(argv)
-    print(json.dumps(inspect(args.cards),ensure_ascii=False,indent=2))
+    result = inspect(args.cards)
+    # Include the durable originals and Bark backlog, not only rendered cards.
+    metadata_path = HERE / "state" / "article_metadata.json"
+    queue_path = HERE / "state" / "enhanced_wechat_outbox.json"
+    if metadata_path.is_file():
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        originals = metadata.get("articles", {})
+        result["durable_article_count"] = len(originals)
+        result["durable_original_abstracts"] = sum(
+            bool(a.get("abstract")) for a in originals.values() if isinstance(a, dict))
+    if queue_path.is_file():
+        queue = json.loads(queue_path.read_text(encoding="utf-8"))
+        pending = [x for x in queue.get("items", {}).values()
+                   if isinstance(x, dict) and x.get("status") == "pending"]
+        result["bark_pending"] = len(pending)
+        result["bark_pending_with_english"] = sum(bool(x.get("abstract")) for x in pending)
+        result["bark_pending_details"] = [
+            {"doi":x.get("doi",""),"reason":str(x.get("last_ai_error") or
+                  x.get("abstract_lookup_status") or "translation pending")[:125]}
+            for x in pending[:20]]
+    print(json.dumps(result,ensure_ascii=False,indent=2))
     return 0
 
 

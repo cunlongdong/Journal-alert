@@ -189,6 +189,11 @@ jobs:
             if [[ -n "$EXTRA_SOURCES" ]]; then rebuild_args+=(--sources "$EXTRA_SOURCES"); fi
             python run.py "${rebuild_args[@]}"
           elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
+            git fetch --quiet origin main
+            if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+              echo "::error::main moved before Bark flush; retry with latest main."
+              exit 1
+            fi
             python tools/reliable_push.py --flush
           else
             args=(--once --no-push)
@@ -196,10 +201,18 @@ jobs:
             if [[ -n "$EXTRA_SOURCES" ]]; then args+=(--sources "$EXTRA_SOURCES"); fi
             python tools/enhanced_run.py "${args[@]}"
             if [[ "$EXTRA_NO_PUSH" != "true" ]]; then
+              # Refuse to send if a concurrent code/state commit appeared
+              # while the API fetch was running. This lowers non-fast-forward
+              # risks for Bark acknowledgements.
+              git fetch --quiet origin main
+              if [[ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]]; then
+                echo "::error::main moved during collection; Bark not sent. Review state before retry."
+                exit 1
+              fi
               python tools/reliable_push.py --flush --defer-if-held
-              # Historical backfill runs AFTER today's notifications; never re-pushes history.
-              python tools/history_backfill.py --max 10
             fi
+            # DOI abstract recovery never sends Bark; also run on no_push.
+            python tools/history_backfill.py --max 10
           fi
       - name: Fill missing Chinese card titles
         if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark && !inputs.cards_only && !inputs.rebuild_only }}
