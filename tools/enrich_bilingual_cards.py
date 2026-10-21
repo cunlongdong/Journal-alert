@@ -95,7 +95,7 @@ def _replace_once(page: str, old: str, new: str, label: str) -> str:
     return page.replace(old, new, 1)
 
 
-def build_bilingual_html(page: str, cache: dict) -> tuple[str, int]:
+def build_bilingual_html(page: str, cache: dict, english_store: dict | None = None) -> tuple[str, int]:
     found = DATA_PATTERN.search(page)
     if not found:
         raise ValueError('Card wall is missing the required DATA script; no file modified')
@@ -105,6 +105,9 @@ def build_bilingual_html(page: str, cache: dict) -> tuple[str, int]:
         raise ValueError('Unexpected card DATA schema; no file modified')
     doi_map, title_map = cache_index(cache)
     translated_count = 0
+    full_english = (english_store or {}).get("abstracts", {})
+    if not isinstance(full_english, dict):
+        raise ValueError("Unexpected full English abstract cache format")
     for paper in articles:
         paper_doi = doi_key(paper.get('doi', ''))
         rec = doi_map.get(paper_doi) if paper_doi else None
@@ -114,16 +117,19 @@ def build_bilingual_html(page: str, cache: dict) -> tuple[str, int]:
             if candidate and (not paper_doi or not doi_key(candidate.get('doi')) or
                               paper_doi == doi_key(candidate.get('doi'))):
                 rec = candidate
+        source_record = full_english.get(paper_doi) if paper_doi else None
+        complete_en = (rec.get('english_abstract') if rec else None) or (
+            source_record.get('abstract') if isinstance(source_record, dict) else None)
+        # The card excerpt must never be mislabeled as a complete Abstract.
+        if complete_en:
+            paper['enAbstract'] = complete_en
+        else:
+            paper.pop('enAbstract', None)
         if rec:
             paper['zhAbstract'] = rec['summary']
-            if rec.get('english_abstract'):
-                paper['enAbstract'] = rec['english_abstract']
             translated_count += 1
         else:
-            # On a rerun, stale embedded translations must not persist when
-            # their cache entries are removed intentionally.
             paper.pop('zhAbstract', None)
-            paper.pop('enAbstract', None)
     content = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     content = content.replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
     page = page[:found.start(2)] + content + page[found.end(2):]
@@ -139,13 +145,15 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description='Enrich generated journal-alert cards with both languages')
     p.add_argument('--cards', type=Path, default=ROOT / 'docs' / 'index.html')
     p.add_argument('--cache', type=Path, default=ROOT / 'state' / 'enhanced_zh_cache.json')
+    p.add_argument('--english-cache', type=Path, default=ROOT / 'state' / 'full_english_abstracts.json')
     args = p.parse_args(argv)
     if not args.cards.is_file():
         print(f'No generated card wall at {args.cards}; nothing to enrich')
         return 0
     cache = json.loads(args.cache.read_text('utf-8')) if args.cache.is_file() else {'summaries': {}}
     current = args.cards.read_text('utf-8')
-    updated, translated = build_bilingual_html(current, cache)
+    english_store = json.loads(args.english_cache.read_text('utf-8')) if args.english_cache.is_file() else {'abstracts': {}}
+    updated, translated = build_bilingual_html(current, cache, english_store)
     if updated != current:
         args.cards.write_text(updated, encoding='utf-8', newline='\n')
     print(f'Bilingual wall ready: {translated} cards with Chinese translations; '
