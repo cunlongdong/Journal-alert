@@ -35,6 +35,16 @@ def _critical_tokens(text: str) -> set[str]:
     return {t.lower() for t in re.findall(r"(?<![A-Za-z0-9])(?:\d+(?:\.\d+)?)(?:\s*[×x]\s*10\s*\^?\s*[-+]?\d+)?%?(?![A-Za-z0-9])", text)}
 
 
+def _title_numbers(text: str) -> set[str]:
+    """Check digits also inside chemical formulas (Fe3GeTe2, MnBi2Te4).
+
+    Unlike the abstract validator, title comparisons must recognize formula
+    subscripts and fraction denominators after Unicode NFKC normalization.
+    """
+    normalized = unicodedata.normalize("NFKC", str(text or "")).replace("−", "-")
+    return set(re.findall(r"\\d+(?:\\.\\d+)?", normalized))
+
+
 def quality_report(english: str, chinese: str) -> dict:
     """Conservative check, *not* a proof of semantic correctness."""
     en = str(english or "").strip()
@@ -187,11 +197,18 @@ class ReliableDelivery(Delivery):
                 zh = str(choice["message"]["content"]).strip().strip('"“”')
                 if len(re.findall(r"[\u4e00-\u9fff]", zh)) < 2:
                     raise ValueError("title translation contains no meaningful Chinese")
-                if _critical_tokens(title) - _critical_tokens(zh):
-                    raise ValueError("title translation omitted important numerals")
+                missing_title_numbers = _title_numbers(title) - _title_numbers(zh)
+                # 2D → 二维 and 3D → 三维 are normal, meaningful translations.
+                if re.search(r"(?<!\\w)2\\s*[-–]?D(?!\\w)", title, re.I) and "二维" in zh:
+                    missing_title_numbers.discard("2")
+                if re.search(r"(?<!\\w)3\\s*[-–]?D(?!\\w)", title, re.I) and "三维" in zh:
+                    missing_title_numbers.discard("3")
+                if missing_title_numbers:
+                    raise ValueError("title omitted chemical/fraction digits: " +
+                                     ",".join(sorted(missing_title_numbers)))
             except (OSError, RuntimeError, ValueError, KeyError, TypeError, IndexError) as exc:
                 errors.append(f"{name}: {type(exc).__name__}")
-                self.log.warning("Title translation deferred: %s %s", title[:65], type(exc).__name__)
+                self.log.warning("Title translation deferred: %s %s: %s", title[:65], type(exc).__name__, str(exc)[:150])
                 continue
             cache[key] = {"title": title, "zh_title": zh, "created": day}
             # The existing bilingual card enhancer uses complete-summary cache
