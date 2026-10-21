@@ -508,6 +508,55 @@ svg.ic{display:block;flex:none}
 .btn:hover{border-color:#d8d8e0;transform:translateY(-1px)}
 .btn.pri{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 3px 12px rgba(255,36,66,.28)}
 .btn.pri:hover{background:#f01a38}
+/* Journal-alert uniform card grid · paste before the closing CSS tag in jalert/cards.py */
+.wall {
+  display: grid;
+  columns: auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 392px;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 1380px) {
+  .wall { columns: auto; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 1000px) {
+  .wall { columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .wall { columns: auto; grid-template-columns: minmax(0, 1fr); }
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  min-width: 0;
+  break-inside: auto;
+}
+.cover { flex: 0 0 108px; }
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.title { flex: 0 0 auto; }
+.excerpt { flex: 0 0 auto; }
+.tagrow {
+  flex: 0 0 auto;
+  max-height: 48px;
+  overflow: hidden;
+  margin-top: auto;
+}
+.foot {
+  flex: 0 0 42px;
+  min-height: 42px;
+  overflow: hidden;
+  margin-top: auto;
+}
 </style>
 </head>
 <body>
