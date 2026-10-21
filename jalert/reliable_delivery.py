@@ -136,7 +136,6 @@ class ReliableDelivery(Delivery):
 
     def _translate_title(self, item: dict, day: str) -> str:
         import hashlib
-        import time
         from jalert.enhanced_delivery import _int_env, DEFAULTS
 
         title = str(item.get("title") or "").strip()
@@ -205,60 +204,57 @@ class ReliableDelivery(Delivery):
         raise RuntimeError("Title translation unavailable: " + "; ".join(errors))
 
     def _bark_article(self, item: dict, day: str) -> tuple[str, str]:
-        """Prefer Chinese title and real Chinese Abstract; allow absent sources.
+        """English Bark heading; Chinese title, authors, journal and Abstract.
 
-        A title-only notification is explicit about missing publisher metadata,
-        never a hallucinated abstract or an English-only "completed translation".
+        An unavailable original Abstract is explicitly identified. An unavailable
+        Chinese title is deferred, never silently replaced with untranslated text.
         """
+        original_title = str(item.get("title") or "").strip()
+        if not original_title:
+            raise ValueError("Source paper title is missing")
+        zh_title = self._translate_title(item, day)
         english = str(item.get("abstract") or "").strip()
-        try:
-            zh_title = self._translate_title(item, day)
-            item.pop("title_translation_error", None)
-        except (ValueError, RuntimeError, OSError) as exc:
-            if english:
-                # The user needs a real translated title when the Abstract exists.
-                raise
-            # A title-only paper must still be notified, even during AI outages.
-            zh_title = "中文标题暂不可用（请查看英文原标题）"
-            item["title_translation_error"] = str(exc)[:160]
         chinese = self._get_translation(item, day) if english else ""
         item.pop("last_ai_error", None)
         item.pop("last_ai_error_at", None)
+        item.pop("title_translation_error", None)
+
         authors = [str(a).strip() for a in (item.get("authors") or []) if str(a).strip()]
         author_text = "、".join(authors[:12])
         if len(authors) > 12:
             author_text += f" 等（共 {len(authors)} 位）"
         if not author_text:
             author_text = "数据源未提供作者名单"
-        label = "中文摘要（忠实翻译）" if english else "摘要状态"
-        summary = chinese if english else (
-            "原始文献数据源及可访问的出版社网页均暂未提供可核实的摘要；"
-            "不以 AI 编造内容。可点击 DOI 链接在出版社页面查看。"
+
+        abstract = chinese if english else (
+            "原始文献数据源及当前可访问的出版社网页暂未提供可核实的摘要；"
+            "请点击论文链接查阅，不以 AI 编造摘要。"
         )
         item["notification_without_abstract"] = not bool(english)
-        title = "论文｜" + zh_title[:80]
-        prefix = (f"中文标题：{zh_title}\n"
-                  f"英文标题：{item.get('title', '')}\n"
+        # Display the ORIGINAL English title in the Bark notification heading.
+        # Do not waste body space duplicating it.
+        title = original_title[:180]
+        header = (f"中文标题：{zh_title}\n"
                   f"作者：{author_text}\n"
                   f"期刊：{item.get('journal', '')}\n"
-                  f"{label}：\n")
+                  f"中文摘要：\n")
         footer = (f"\n论文链接：{self._url(item)}\n"
                   f"双语网页：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}")
         cap = self._cap()
-        message = prefix + summary + footer
-        if _utf8size(message) > cap:
-            note = "\n【正文较长：请打开 DOI 或双语网页查看详情】"
-            # Retain author names and original English title when possible.
-            limit = cap - _utf8size(prefix + footer + note)
-            if limit < 80:
-                prefix = (f"中文标题：{self._slice_bytes(zh_title, 140)}\n"
+        body = header + abstract + footer
+        if _utf8size(body) > cap:
+            note = "\n【正文较长：请打开 DOI 或双语网页查看全文】"
+            budget = cap - _utf8size(header + footer + note)
+            if budget < 80:
+                header = (f"中文标题：{self._slice_bytes(zh_title, 140)}\n"
                           f"作者：{self._slice_bytes(author_text, 140)}\n"
-                          f"{label}：\n")
-                limit = cap - _utf8size(prefix + footer + note)
-            if limit < 30:
-                raise ValueError("Bark body cannot fit verified DOI and title")
-            message = prefix + self._slice_bytes(summary, limit) + note + footer
-        return title, message
+                          f"期刊：{self._slice_bytes(str(item.get('journal', '')), 90)}\n"
+                          "中文摘要：\n")
+                budget = cap - _utf8size(header + footer + note)
+            if budget < 30:
+                raise ValueError("Bark body cannot fit Chinese metadata and DOI")
+            body = header + self._slice_bytes(abstract, budget) + note + footer
+        return title, body
 
     def _bark(self, title: str, body: str) -> bool:
         server = os.getenv("JALERT_BARK_SERVER", "https://api.day.app").rstrip("/")
