@@ -222,7 +222,7 @@ def parse_feed(raw: bytes, journal: dict) -> list[Item]:
                 elif child.text and child.text.strip():
                     links.append(("alternate", child.text.strip()))
                 continue
-            value = child.text if child.text else "".join(child.itertext())
+         value = "".join(child.itertext())
             if value and value.strip():
                 fields.setdefault(name, []).append(value.strip())
 
