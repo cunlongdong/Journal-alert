@@ -217,6 +217,27 @@ def publisher_abstract(doi: str) -> str:
     return ""
 
 
+def europe_pmc_abstract(doi: str) -> str:
+    """Free Europe PMC DOI search: require an exact returned DOI, no fuzzy title."""
+    d = doi_key(doi)
+    if not d or "/" not in d:
+        return ""
+    params = urllib.parse.urlencode({
+        "query": 'DOI:"' + d.replace('"', '') + '"',
+        "resultType": "core",  # lite/idlist responses do NOT have abstracts
+        "format": "json",
+        "pageSize": "5",
+    })
+    payload = _get_json("https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + params)
+    for entry in payload.get("resultList", {}).get("result", []):
+        if doi_key(entry.get("doi", "")) != d:
+            continue
+        full = clean_abstract(entry.get("abstractText", ""))
+        if 65 <= len(full) <= DEFAULTS["max_input_chars"]:
+            return full
+    return ""
+
+
 def lookup_english_abstract(doi: str) -> tuple[str, str]:
     d = doi_key(doi)
     if not d or "/" not in d:
@@ -254,6 +275,14 @@ def lookup_english_abstract(doi: str) -> tuple[str, str]:
             LOG.info("Semantic Scholar result without matching DOI/abstract: %s", d[:40])
         except (OSError, ValueError, KeyError, RuntimeError, TypeError) as e:
             LOG.info("Semantic Scholar abstract unavailable for %s (%s)", d[:40], type(e).__name__)
+    # An additional free source can provide abstracts for interdisciplinary
+    # material-science papers indexed via PubMed / Europe PMC.
+    try:
+        full = europe_pmc_abstract(d)
+        if full:
+            return full, "Europe PMC"
+    except (OSError, RuntimeError, ValueError, KeyError, TypeError) as exc:
+        LOG.info("Europe PMC abstract unavailable for %s (%s)", d[:45], type(exc).__name__)
     # Official publisher landing pages can expose abstracts omitted by APIs.
     try:
         full = publisher_abstract(d)
