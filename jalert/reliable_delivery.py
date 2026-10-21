@@ -205,29 +205,51 @@ class ReliableDelivery(Delivery):
         raise RuntimeError("Title translation unavailable: " + "; ".join(errors))
 
     def _bark_article(self, item: dict, day: str) -> tuple[str, str]:
-        # Translate before marking any paper as sent. Never silently replace
-        # Chinese with English because an AI limit was exhausted.
-        chinese = self._get_translation(item, day)
+        """Prefer Chinese title and real Chinese Abstract; allow absent sources.
+
+        A title-only notification is explicit about missing publisher metadata,
+        never a hallucinated abstract or an English-only "completed translation".
+        """
         zh_title = self._translate_title(item, day)
+        english = str(item.get("abstract") or "").strip()
+        chinese = self._get_translation(item, day) if english else ""
         item.pop("last_ai_error", None)
         item.pop("last_ai_error_at", None)
+        authors = [str(a).strip() for a in (item.get("authors") or []) if str(a).strip()]
+        author_text = "、".join(authors[:12])
+        if len(authors) > 12:
+            author_text += f" 等（共 {len(authors)} 位）"
+        if not author_text:
+            author_text = "数据源未提供作者名单"
+        label = "中文摘要（忠实翻译）" if english else "摘要状态"
+        summary = chinese if english else (
+            "原始文献数据源及可访问的出版社网页均暂未提供可核实的摘要；"
+            "不以 AI 编造内容。可点击 DOI 链接在出版社页面查看。"
+        )
+        item["notification_without_abstract"] = not bool(english)
         title = "论文｜" + zh_title[:80]
-        header = (f"中文标题：{zh_title}\n英文标题：{item.get('title','')}\n"
-                  f"期刊：{item.get('journal','')}\n中文摘要（全文直译）：\n")
+        prefix = (f"中文标题：{zh_title}\n"
+                  f"英文标题：{item.get('title', '')}\n"
+                  f"作者：{author_text}\n"
+                  f"期刊：{item.get('journal', '')}\n"
+                  f"{label}：\n")
         footer = (f"\n论文链接：{self._url(item)}\n"
-                  f"完整中英文摘要：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}")
+                  f"双语网页：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}")
         cap = self._cap()
-        body = header + chinese + footer
-        if _utf8size(body) > cap:
-            note = "\n【摘要较长：请点击论文链接或双语网页查看完整版本】"
-            room = cap - _utf8size(header + note + footer)
-            if room <= 0:
-                header = "中文标题：" + self._slice_bytes(zh_title, 135) + "\n"
-                room = cap - _utf8size(header + note + footer)
-            if room <= 0:
-                raise ValueError("Bark notification cannot fit links")
-            body = header + self._slice_bytes(chinese, room) + note + footer
-        return title, body
+        message = prefix + summary + footer
+        if _utf8size(message) > cap:
+            note = "\n【正文较长：请打开 DOI 或双语网页查看详情】"
+            # Retain author names and original English title when possible.
+            limit = cap - _utf8size(prefix + footer + note)
+            if limit < 80:
+                prefix = (f"中文标题：{self._slice_bytes(zh_title, 140)}\n"
+                          f"作者：{self._slice_bytes(author_text, 140)}\n"
+                          f"{label}：\n")
+                limit = cap - _utf8size(prefix + footer + note)
+            if limit < 30:
+                raise ValueError("Bark body cannot fit verified DOI and title")
+            message = prefix + self._slice_bytes(summary, limit) + note + footer
+        return title, message
 
     def _bark(self, title: str, body: str) -> bool:
         server = os.getenv("JALERT_BARK_SERVER", "https://api.day.app").rstrip("/")
@@ -257,6 +279,7 @@ class ReliableDelivery(Delivery):
             "bark_papers_acknowledged": sum(bool(x.get("bark_done")) for x in self.queue["items"].values()),
             "bark_articles_waiting": len(pending),
             "pending_without_english": sum(not str(x.get("abstract") or "").strip() for x in pending),
+            "sent_without_abstract": sum(bool(x.get("notification_without_abstract")) and x.get("status") == "sent" for x in self.queue["items"].values()),
             "channels_configured": {
                 "bark_enabled": os.getenv("JALERT_BARK_ENABLED", "true").lower() in ("true", "1", "yes"),
                 "bark_key_present": bool(os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()),
