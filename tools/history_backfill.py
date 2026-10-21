@@ -7,6 +7,7 @@ translation pipeline. Never re-adds them to WeChat/Bark queues or seen.sqlite.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import logging
@@ -126,9 +127,10 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         doi = doi_key(paper.get("doi", ""))
         title = title_key(paper.get("title", ""))
         record = by_doi.get(doi) if doi else by_title.get(title)
-        if record and record.get("english_abstract") and record.get("summary"):
-            continue
-        if not doi:  # Never translate a truncated report excerpt as if full.
+        title_hash = hashlib.sha256(str(paper.get("title") or "").strip().encode("utf-8")).hexdigest()
+        title_done = bool((delivery.cache.get("titles") or {}).get(title_hash, {}).get("zh_title"))
+        english_done = bool(record and record.get("english_abstract") and record.get("summary"))
+        if title_done and english_done:
             continue
         remaining.append(paper)
     attempted = translated = missing = failed = 0
@@ -151,7 +153,22 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         # repeatedly starve the rest after a job error or timeout.
         cursor["next_index"] = (start + attempted) % len(remaining)
         _atomic_json(cursor_path, cursor)
-        norm_doi = doi_key(paper["doi"])
+        # A verified title can be translated even when no abstract exists.
+        preview = {"uid": "history:" + doi_key(paper.get("doi", "")),
+                   "doi": doi_key(paper.get("doi", "")),
+                   "title": str(paper.get("title") or ""), "abstract": ""}
+        try:
+            delivery._translate_title(preview, day)
+        except (ValueError, RuntimeError, OSError, KeyError) as title_exc:
+            log.warning("Historical title translation pending for %s (%s)",
+                        preview["title"][:60], type(title_exc).__name__)
+        record = by_doi.get(doi_key(paper.get("doi",""))) if paper.get("doi") else by_title.get(title_key(paper.get("title","")))
+        if record and record.get("english_abstract") and record.get("summary"):
+            continue  # Older Chinese abstract already exists; update title only.
+        norm_doi = doi_key(paper.get("doi", ""))
+        if not norm_doi:
+            missing += 1
+            continue
         existing = english_store["abstracts"].get(norm_doi)
         if isinstance(existing, dict) and existing.get("abstract"):
             english, source = existing["abstract"], existing.get("source", "stored")
@@ -179,13 +196,6 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
                 "title": paper["title"], "abstract": english}
         try:
             _ = delivery._get_translation(item, day)
-            # Populate Chinese titles for previously published English cards.
-            # An unavailable title translation must never erase the verified abstract.
-            try:
-                delivery._translate_title(item, day)
-            except (ValueError, RuntimeError, OSError, KeyError) as title_exc:
-                log.warning("Historical title translation deferred for %s (%s)",
-                            paper["doi"][:60], type(title_exc).__name__)
             translated += 1
             log.info("Historical paper translated: %s (%s)", paper["title"][:72], source)
         except (ValueError, RuntimeError, OSError, KeyError) as e:
