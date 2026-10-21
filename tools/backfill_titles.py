@@ -41,7 +41,7 @@ def fill_missing_titles(root: Path, *, limit: int = 80, dry_run: bool = False,
         if not isinstance(rec, dict) or rec.get("title") != title:
             continue
         zh_title = str(rec.get("zh_title") or "")
-        if not zh_title or not any("\\u4e00" <= c <= "\\u9fff" for c in zh_title):
+        if not zh_title or not any("一" <= c <= "龥" for c in zh_title):
             continue
         key = hashlib.sha256(title.encode("utf-8")).hexdigest()
         if not titles.get(key, {}).get("zh_title"):
