@@ -8,16 +8,16 @@
       "date": "2026-10-20",
       "doi": "10.1002/advs.78167",
       "url": "https://doi.org/10.1002/advs.78167",
-      "abstract": "ABSTRACT Altermagnets feature unconventional magnetism due to their momentum‐dependent spin splitting purely driven by magnetic order, for which a variety of transition‐metal‐based ‐wave altermagnets have been proposed. However, carbon‐based altermagnets remain largely unexplored, even though magnetism of graphene nanostructures has been widely demonstrated. Here, through a comprehensive symmetry analysis, we establish a symmetry‐guided design principle for realizing higher‐order ‐wave altermagnetism in graphene antidot superlattices and demonstrate its emergence in both monolayer and bilayer graphene, particularly in the Bernal‐stacked bilayer. By combining atomistic tight binding models and first principles methods, we show the appearance of an interaction‐induced ‐wave altermagnetic splitting, originating from the intrinsic magnetic instability of 2D graphene antidot superlattices. Our work establishes a strategy to engineer ‐wave altermagnetism in a graphene platform, extending the materials landscape beyond conventional ‐wave altermagnets and putting forward a carbon‐based platform for higher‐order altermagnetic spintronics.",
       "topics": [
         "反铁磁与补偿磁体"
       ],
       "score": 12,
       "enqueued_at": "2026-10-21T13:33:51+08:00",
-      "status": "pending",
+      "status": "sent",
       "attempts": 0,
       "last_ai_error": "custom: RuntimeError (custom: malformed completion response)",
-      "last_ai_error_at": "2026-10-21"
+      "last_ai_error_at": "2026-10-21",
+      "sent_at": "2026-10-21T13:55:27+08:00"
     },
     "doi:10.1002/advs.78269": {
       "uid": "doi:10.1002/advs.78269",
@@ -26,22 +26,22 @@
       "date": "2026-10-20",
       "doi": "10.1002/advs.78269",
       "url": "https://doi.org/10.1002/advs.78269",
-      "abstract": "ABSTRACT Topologically protected nanoscale spin textures, such as magnetic skyrmions, have attracted significant interest for spintronics applications. While skyrmions in noncentrosymmetric materials are known to be stabilized by the Dzyaloshinskii‐Moriya interaction (DMI), their deliberate design in centrosymmetric materials remains a challenge. This difficulty largely stems from the complexity of controlling magnetocrystalline anisotropy–a critical factor in the absence of DMI. Here, we demonstrate the chemical tuning of magnetocrystalline anisotropy in the centrosymmetric Kagome magnet . The resulting compound exhibits a spin reorientation transition accompanied by an emergent skyrmion bubble lattice, confirmed by cryogenic Lorentz transmission electron microscopy and cryogenic Lorentz differential phase contrast scanning transmission electron microscopy. Our findings overcome a key materials design challenge and open possibilities for deliberate design of skyrmionic textures in centrosymmetric systems.",
       "topics": [
         "手性磁结构与自旋动力学"
       ],
       "score": 9,
       "enqueued_at": "2026-10-21T13:33:51+08:00",
-      "status": "pending",
+      "status": "sent",
       "attempts": 0,
       "last_ai_error": "custom: RuntimeError (custom: malformed completion response)",
-      "last_ai_error_at": "2026-10-21"
+      "last_ai_error_at": "2026-10-21",
+      "sent_at": "2026-10-21T13:55:27+08:00"
     }
   },
   "usage": {
     "2026-10-21": {
-      "wechat_attempts": 0,
-      "ai_attempts": 2
+      "wechat_attempts": 1,
+      "ai_attempts": 4
     }
   }
 }
