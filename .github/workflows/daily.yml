@@ -69,11 +69,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   run:
+    # Literature processing must never wait for the Pages deployment environment.
     runs-on: ubuntu-latest
     timeout-minutes: 55
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     env:
       TZ: Asia/Shanghai
       JALERT_BARK_DEVICE_KEY: ${{ secrets.BARK_DEVICE_KEY }}
@@ -266,7 +264,20 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
+  deploy_pages:
+    name: Deploy literature cards to GitHub Pages
+    needs: run
+    if: ${{ needs.run.result == 'success' && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
-        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         id: deployment
         uses: actions/deploy-pages@v4
