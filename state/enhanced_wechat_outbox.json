@@ -51,7 +51,9 @@
       "score": 3,
       "enqueued_at": "2026-10-21T19:25:10+08:00",
       "status": "pending",
-      "attempts": 0
+      "attempts": 0,
+      "last_ai_error": "daily AI request budget exhausted (25); translation queued",
+      "last_ai_error_at": "2026-10-21"
     },
     "doi:10.1021/acsami.6c14914": {
       "uid": "doi:10.1021/acsami.6c14914",
@@ -60,13 +62,12 @@
       "date": "2026-10-21",
       "doi": "10.1021/acsami.6c14914",
       "url": "https://doi.org/10.1021/acsami.6c14914",
-      "abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations.",
       "topics": [
         "磁各向异性与界面磁性"
       ],
       "score": 3,
       "enqueued_at": "2026-10-21T19:25:10+08:00",
-      "status": "pending",
+      "status": "sent",
       "attempts": 0
     },
     "doi:10.1103/lmlm-2mxw": {
@@ -76,13 +77,12 @@
       "date": "2026-10-20",
       "doi": "10.1103/lmlm-2mxw",
       "url": "https://doi.org/10.1103/lmlm-2mxw",
-      "abstract": "Open quantum spin systems offer a previously unexplored route to realizing deconfined quantum criticality. We consider a spin-1/2 $J$-$Q_3$ chain, consisting of an antiferromagnetic (AFM) Heisenberg exchange and a competing multi-spin interaction favoring a valence-bond solid (VBS) state, with each spin component coupled to a bosonic bath. Using non-Abelian bosonization and renormalization-group (RG) analysis, combined with large-scale quantum Monte Carlo (QMC) simulations, we determine the phase diagram and the associated phase transitions of the model. We show that strong dissipation stabilizes an AFM phase for sub-Ohmic, Ohmic, and super-Ohmic baths. Continuous AFM-VBS transitions at finite dissipation are found upon increasing the multi-spin interaction in both the sub-Ohmic and Ohmic regimes. Critical properties are obtained through perturbative RG analysis and QMC simulations. In the Ohmic case, the critical point features spinon deconfinement and emergent O(4) symmetry. In the sub-Ohmic regime, the transition may also involve spinon deconfinement, provided that spinons remain deconfined in the dissipative VBS phase. In addition, in the super-Ohmic regime, we propose a transition from AFM phase to a quasi-long-range ordered phase.",
       "topics": [
         "反铁磁与补偿磁体"
       ],
       "score": 4,
       "enqueued_at": "2026-10-21T19:25:10+08:00",
-      "status": "pending",
+      "status": "sent",
       "attempts": 0
     },
     "doi:10.1103/s83n-w474": {
@@ -92,20 +92,19 @@
       "date": "2026-10-20",
       "doi": "10.1103/s83n-w474",
       "url": "https://doi.org/10.1103/s83n-w474",
-      "abstract": "Altermagnets host spin-split electronic bands despite zero net magnetization, opening new routes for spintronics beyond conventional ferromagnets. Going beyond symmetry-based classifications, which specify allowed terms but not their hierarchy, here we use first-principles calculations and Wannier Hamiltonian engineering to uncover the microscopic bonding contributions of altermagnetic spin splitting in the $g$-wave altermagnet Co$_{1/4}$NbSe$_2$. We show that the splitting is captured by a short-range tight-binding model, establishing its local origin. By selectively controlling hopping channels, we demonstrate that the dominant contribution arises not from direct magnetic-ion hopping, but from ligand-mediated hybridization that transfers anisotropy to itinerant states. This identifies ligand-assisted coupling as the key mechanism of altermagnetic spin splitting and provides a microscopic bridge between minimal models and symmetry guided first-principles material searches, enabling real-space design of altermagnetic functionality.",
       "topics": [
         "反铁磁与补偿磁体"
       ],
       "score": 4,
       "enqueued_at": "2026-10-21T19:25:10+08:00",
-      "status": "pending",
+      "status": "sent",
       "attempts": 0
     }
   },
   "usage": {
     "2026-10-21": {
-      "wechat_attempts": 1,
-      "ai_attempts": 21
+      "wechat_attempts": 3,
+      "ai_attempts": 25
     }
   }
 }

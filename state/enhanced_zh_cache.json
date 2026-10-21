@@ -264,6 +264,68 @@
       "doi": "10.1021/acs.nanolett.6c04169",
       "title": "Ferroelectric Control of Layer-Resolved Spin and Orbital Transport in a Topological Heterobilayer",
       "english_abstract": "Abstract Ferroelectric switching in van der Waals heterostructures provides a powerful route to reconfiguring quantum states and their associated transport responses. Here, we propose a ferroelectric topological heterobilayer in which the stepwise reversal of polarization in the two monolayers enables selective control of spin and orbital transport with reduced mutual interference. Using first-principles calculations, we identify the In2Te3/In2Se3 heterobilayer as a candidate, where this stepwise polarization switching drives successive topological phase transitions from second-order topological to quantum spin Hall insulators and eventually to a trivial metal. These three phases exhibit distinct transport characteristics, including pure orbital Hall effect (OHE), layer-resolved coexistence of spin Hall effect (SHE) and OHE, and a metallic state with simultaneously enhanced SHE and OHE, accompanied by pronounced changes in the layer distribution of carriers. Our work highlights ferroelectric topological heterobilayers as a promising platform for controlling and characterizing spin–orbitronic transport, with potential for integrated spintronic and orbitronic devices."
+    },
+    "a41dc48eb2bf9b4735a4aab498e72fd91e4c0602bff539795397979b62612011": {
+      "summary": "开放量子自旋系统为 realization 去禁闭量子临界性提供了一条此前未被探索的途径。我们考虑一个自旋-1/2的$J$-$Q_3$链，它由反铁磁（AFM）海森堡交换和一种倾向于价键固体（VBS）态的竞争性多自旋相互作用组成，且每个自旋分量都与一个玻色子浴耦合。利用非阿贝尔玻色化和重整化群（RG）分析，结合大规模量子蒙特卡洛（QMC）模拟，我们确定了该模型的相图及相关的相变。我们表明，对于亚欧姆、欧姆和超欧姆浴，强耗散会稳定一个AFM相。在亚欧姆和欧姆区域中，通过增强多自旋相互作用，我们发现了有限耗散下的连续AFM-VBS转变。临界性质通过微扰RG分析和QMC模拟获得。在欧姆情形下，临界点具有自旋子去禁闭和涌现的O(4)对称性特征。在亚欧姆区域中，只要自旋子在耗散VBS相中保持去禁闭，该转变也可能涉及自旋子去禁闭。此外，在超欧姆区域中，我们提出了一种从AFM相到准长程有序相的转变。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "08ac41d547a094e57c2330cc28050ac1abdc923b50bae485549974f0f1b5f0b8": {
+      "summary": "开放量子自旋系统为 realization 去禁闭量子临界性提供了一条此前未被探索的途径。我们考虑一个自旋-1/2的$J$-$Q_3$链，它由反铁磁（AFM）海森堡交换和一种倾向于价键固体（VBS）态的竞争性多自旋相互作用组成，且每个自旋分量都与一个玻色子浴耦合。利用非阿贝尔玻色化和重整化群（RG）分析，结合大规模量子蒙特卡洛（QMC）模拟，我们确定了该模型的相图及相关的相变。我们表明，对于亚欧姆、欧姆和超欧姆浴，强耗散会稳定一个AFM相。在亚欧姆和欧姆区域中，通过增强多自旋相互作用，我们发现了有限耗散下的连续AFM-VBS转变。临界性质通过微扰RG分析和QMC模拟获得。在欧姆情形下，临界点具有自旋子去禁闭和涌现的O(4)对称性特征。在亚欧姆区域中，只要自旋子在耗散VBS相中保持去禁闭，该转变也可能涉及自旋子去禁闭。此外，在超欧姆区域中，我们提出了一种从AFM相到准长程有序相的转变。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/lmlm-2mxw",
+      "doi": "10.1103/lmlm-2mxw",
+      "title": "Deconfined quantum critical point in a dissipative spin-1/2 chain",
+      "english_abstract": "Open quantum spin systems offer a previously unexplored route to realizing deconfined quantum criticality. We consider a spin-1/2 $J$-$Q_3$ chain, consisting of an antiferromagnetic (AFM) Heisenberg exchange and a competing multi-spin interaction favoring a valence-bond solid (VBS) state, with each spin component coupled to a bosonic bath. Using non-Abelian bosonization and renormalization-group (RG) analysis, combined with large-scale quantum Monte Carlo (QMC) simulations, we determine the phase diagram and the associated phase transitions of the model. We show that strong dissipation stabilizes an AFM phase for sub-Ohmic, Ohmic, and super-Ohmic baths. Continuous AFM-VBS transitions at finite dissipation are found upon increasing the multi-spin interaction in both the sub-Ohmic and Ohmic regimes. Critical properties are obtained through perturbative RG analysis and QMC simulations. In the Ohmic case, the critical point features spinon deconfinement and emergent O(4) symmetry. In the sub-Ohmic regime, the transition may also involve spinon deconfinement, provided that spinons remain deconfined in the dissipative VBS phase. In addition, in the super-Ohmic regime, we propose a transition from AFM phase to a quasi-long-range ordered phase."
+    },
+    "2329a77ff4f184062a48ece0a163694aec727c847d3bcb249e989c3b21fbf812": {
+      "summary": "交错磁体尽管净磁化强度为零，却具有自旋劈裂的电子能带，这为超越传统铁磁体的自旋电子学开辟了新途径。超越基于对称性的分类——此类分类仅指明允许的项而不涉及其层级关系——本文利用第一性原理计算与Wannier哈密顿量工程，揭示了$g$波交错磁体Co$_{1/4}$NbSe$_2$中交错磁自旋劈裂的微观成键贡献。我们表明，该劈裂可由短程紧束缚模型捕获，从而确立其局域起源。通过选择性地控制跃迁通道，我们证明主要贡献并非来自磁性离子间的直接跃迁，而是来自配体介导的杂化，后者将各向异性传递至巡游态。这确立了配体辅助耦合作为交错磁自旋劈裂的关键机制，并在最小模型与对称性引导的第一性原理材料搜索之间提供了微观桥梁，从而实现了交错磁功能性的实空间设计。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "597f1ca43a3c4fb216072e8cb4045ac2a86638068b6be7ff15cbb7dbadbb16f0": {
+      "summary": "交错磁体尽管净磁化强度为零，却具有自旋劈裂的电子能带，这为超越传统铁磁体的自旋电子学开辟了新途径。超越基于对称性的分类——此类分类仅指明允许的项而不涉及其层级关系——本文利用第一性原理计算与Wannier哈密顿量工程，揭示了$g$波交错磁体Co$_{1/4}$NbSe$_2$中交错磁自旋劈裂的微观成键贡献。我们表明，该劈裂可由短程紧束缚模型捕获，从而确立其局域起源。通过选择性地控制跃迁通道，我们证明主要贡献并非来自磁性离子间的直接跃迁，而是来自配体介导的杂化，后者将各向异性传递至巡游态。这确立了配体辅助耦合作为交错磁自旋劈裂的关键机制，并在最小模型与对称性引导的第一性原理材料搜索之间提供了微观桥梁，从而实现了交错磁功能性的实空间设计。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/s83n-w474",
+      "doi": "10.1103/s83n-w474",
+      "title": "Ligand-mediated origin of altermagnetic spin splitting",
+      "english_abstract": "Altermagnets host spin-split electronic bands despite zero net magnetization, opening new routes for spintronics beyond conventional ferromagnets. Going beyond symmetry-based classifications, which specify allowed terms but not their hierarchy, here we use first-principles calculations and Wannier Hamiltonian engineering to uncover the microscopic bonding contributions of altermagnetic spin splitting in the $g$-wave altermagnet Co$_{1/4}$NbSe$_2$. We show that the splitting is captured by a short-range tight-binding model, establishing its local origin. By selectively controlling hopping channels, we demonstrate that the dominant contribution arises not from direct magnetic-ion hopping, but from ligand-mediated hybridization that transfers anisotropy to itinerant states. This identifies ligand-assisted coupling as the key mechanism of altermagnetic spin splitting and provides a microscopic bridge between minimal models and symmetry guided first-principles material searches, enabling real-space design of altermagnetic functionality."
+    },
+    "ac82954471cc048f5150e569820d0bb22fd58f975ab6cbda849eaab84a03b61f": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 2
+    },
+    "a4132a8233809ddce7a88764e3934174a03a5231459797b75c0b6a08c8747845": {
+      "summary": "此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 2,
+      "part_count": 2
+    },
+    "27aa5ea3486fc3361e789fffdeb9b52b74496289bee5964a261f3d1865679772": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。\n此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsami.6c14914",
+      "doi": "10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "english_abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations."
     }
   }
 }
