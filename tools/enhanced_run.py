@@ -73,10 +73,11 @@ def main(args: list[str] | None = None) -> int:
     class OutboxStore(original_store):
         def save(self, entries):
             entries = list(entries)
-            inserted = super().save(entries)
-            # Upstream calls save() only with *new* literature; not historic IDs.
-            # Never alter seen.sqlite schema, rows, or existing scoring behavior.
+            # Write the durable outbox BEFORE marking papers seen in SQLite.
+            # If a DB/save crash occurs, entries may be safely reprocessed later;
+            # enqueue() is idempotent by uid, and seen.sqlite stays untouched.
             delivery.enqueue(entries)
+            inserted = super().save(entries)
             return inserted
 
     upstream.Store = OutboxStore
