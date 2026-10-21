@@ -30,7 +30,7 @@ def prepare_changes(root: Path) -> dict[Path, str]:
         if content.count(before) != 1:
             raise ValueError("Ambiguous cards.py empty-site branch; refuse to edit")
         result[cards] = content.replace(before, after, 1)
-    elif after not in content:
+    elif "cards page rebuilt empty: no reports found" not in content and after not in content:
         raise ValueError("cards.py changed unexpectedly; please review the empty-site branch")
 
     readme = root / "README.md"

@@ -1,3 +1,24 @@
+# 自旋电子学文献日报（Journal-alert）
+
+<!-- JALERT_SPINTRONICS_README_V1 -->
+
+这是面向自旋电子学的期刊监测系统。现行配置包括 **52 本期刊、10 组研究主题**；通过 OpenAlex 与 Crossref 采集论文（RSS 默认关闭），生成每日 Markdown 报告、双语 GitHub Pages，以及微信 Server酱/Bark 通知。
+
+## 当前云端运行方式
+
+- GitHub Actions 每日北京时间 **07:30** 自动执行，也可手动运行。
+- `no_push`：抓取并加入待发队列，但暂时不发送；不是无副作用的历史重建。
+- `rebuild_only`：重新抓取并更新日报和去重库，但不入队、不推送。**新抓到的论文会标记为已见，之后正常运行不会再为它们创建通知。**
+- `cards_only`：只重建网页；`delivery_status`：只查看积压；`backfill_only`：补齐历史摘要与翻译，不推送。
+- `python run.py --strict-check`：任一数据源失败、没有有效来源或达到采集上限时返回非零退出码。
+- 提交 Python 代码后，独立的 `journal-alert offline checks` 工作流会自动运行单元测试，不接触通知密钥，也不采集网络文献。
+- 不要删除 `state/seen.sqlite`、`state/enhanced_wechat_outbox.json`、`state/dual_channel_delivery.json` 等运行状态文件。
+
+[自动化运行记录](https://github.com/cunlongdong/Journal-alert/actions) · [文献卡片网页](https://cunlongdong.github.io/Journal-alert/)
+
+---
+
+## 历史项目说明（下文来自旧模板，可能包含过时的期刊数量和运行方式）
 # 大气环境文献日报（journal-alert）
 
 把「期刊定期推送」变成**按关键词筛选后的微信推送 + 本地 Markdown 每日阅读报**，全自动、每天定时运行。

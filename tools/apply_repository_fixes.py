@@ -172,7 +172,8 @@ def prepare_changes(root: Path) -> dict[Path, str]:
             log.info("cards page rebuilt empty: no reports found in %s", reports_dir)
         # JALERT_EMPTY_WALL_V1: overwrite stale HTML even when reports are empty.
 '''
-    src = replace_once(src, before, after, 'empty card wall')
+    if 'cards page rebuilt empty:' not in src:
+        src = replace_once(src, before, after, 'empty card wall')
     ast.parse(src)
     if src != cards.read_text('utf-8'):
         changes[cards] = src
@@ -194,7 +195,8 @@ def prepare_changes(root: Path) -> dict[Path, str]:
     if not args.check and tried and not succeeded:
         raise RuntimeError("All journal data-source requests failed; aborting before dedupe, report and push")
 '''
-    src = replace_once(src, before, after, 'source health')
+    if 'source health: %d succeeded' not in src:
+        src = replace_once(src, before, after, 'source health')
     ast.parse(src)
     if src != run.read_text('utf-8'):
         changes[run] = src
@@ -204,57 +206,59 @@ def prepare_changes(root: Path) -> dict[Path, str]:
     before = '''        return min((bark_cap if "bark" in channels else 6400), wechat_cap * 2)'''
     after = '''        # JALERT_PUSH_CAP_V1: bytes <= character limit for all-ASCII messages.
         return min((bark_cap if "bark" in channels else wechat_cap), wechat_cap)'''
-    src = replace_once(src, before, after, 'message size bound')
+    if 'return min((bark_cap if "bark" in channels else wechat_cap), wechat_cap)' not in src:
+        src = replace_once(src, before, after, 'message size bound')
     ast.parse(src)
     if src != reliable.read_text('utf-8'):
         changes[reliable] = src
 
     flow = root / '.github/workflows/daily.yml'
     src = flow.read_text('utf-8')
-    src = replace_once(src,
-        '''      cards_only:
-        description: "仅重建双语网页，不检索、不推送"
-        type: boolean
-        default: false
-''',
-        '''      cards_only:
-        description: "仅重建双语网页，不检索、不推送"
-        type: boolean
-        default: false
-      rebuild_only:
-        description: "安全重建：重新检索并写日报和去重库，但不入队、不推送微信/Bark"
-        type: boolean
-        default: false
-''', 'rebuild workflow input')
-    src = replace_once(src,
-        '''          MODE_CARDS: ${{ inputs.cards_only }}
-''',
-        '''          MODE_CARDS: ${{ inputs.cards_only }}
-          MODE_REBUILD: ${{ inputs.rebuild_only }}
-''', 'rebuild validation env')
-    src = replace_once(src,
-        '''          [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
-''',
-        '''          [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
-          [[ "$MODE_REBUILD" == "true" ]] && selected+=(rebuild_only) || true
-''', 'rebuild validation')
-    src = replace_once(src,
-        '''          EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
-''',
-        '''          EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
-          EXTRA_REBUILD_ONLY: ${{ inputs.rebuild_only }}
-''', 'rebuild execution env')
-    src = replace_once(src,
-        '''          elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
-''',
-        '''          elif [[ "$EXTRA_REBUILD_ONLY" == "true" ]]; then
-            # JALERT_REBUILD_NO_QUEUE_V1: upstream run.py never touches the dual-channel queue.
-            rebuild_args=(--once --no-push)
-            if [[ -n "$EXTRA_DAYS" ]]; then rebuild_args+=(--days "$EXTRA_DAYS"); fi
-            if [[ -n "$EXTRA_SOURCES" ]]; then rebuild_args+=(--sources "$EXTRA_SOURCES"); fi
-            python run.py "${rebuild_args[@]}"
-          elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
-''', 'safe no-queue rebuild')
+    if '      rebuild_only:' not in src:
+        src = replace_once(src,
+            '''      cards_only:
+            description: "仅重建双语网页，不检索、不推送"
+            type: boolean
+            default: false
+    ''',
+            '''      cards_only:
+            description: "仅重建双语网页，不检索、不推送"
+            type: boolean
+            default: false
+          rebuild_only:
+            description: "安全重建：重新检索并写日报和去重库，但不入队、不推送微信/Bark"
+            type: boolean
+            default: false
+    ''', 'rebuild workflow input')
+        src = replace_once(src,
+            '''          MODE_CARDS: ${{ inputs.cards_only }}
+    ''',
+            '''          MODE_CARDS: ${{ inputs.cards_only }}
+              MODE_REBUILD: ${{ inputs.rebuild_only }}
+    ''', 'rebuild validation env')
+        src = replace_once(src,
+            '''          [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
+    ''',
+            '''          [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
+              [[ "$MODE_REBUILD" == "true" ]] && selected+=(rebuild_only) || true
+    ''', 'rebuild validation')
+        src = replace_once(src,
+            '''          EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
+    ''',
+            '''          EXTRA_CARDS_ONLY: ${{ inputs.cards_only }}
+              EXTRA_REBUILD_ONLY: ${{ inputs.rebuild_only }}
+    ''', 'rebuild execution env')
+        src = replace_once(src,
+            '''          elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
+    ''',
+            '''          elif [[ "$EXTRA_REBUILD_ONLY" == "true" ]]; then
+                # JALERT_REBUILD_NO_QUEUE_V1: upstream run.py never touches the dual-channel queue.
+                rebuild_args=(--once --no-push)
+                if [[ -n "$EXTRA_DAYS" ]]; then rebuild_args+=(--days "$EXTRA_DAYS"); fi
+                if [[ -n "$EXTRA_SOURCES" ]]; then rebuild_args+=(--sources "$EXTRA_SOURCES"); fi
+                python run.py "${rebuild_args[@]}"
+              elif [[ "$EXTRA_FLUSH_ONLY" == "true" ]]; then
+    ''', 'safe no-queue rebuild')
     if src != flow.read_text('utf-8'):
         changes[flow] = src
 
