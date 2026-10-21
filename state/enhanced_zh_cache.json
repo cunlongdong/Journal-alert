@@ -151,7 +151,8 @@
       "uid": "doi:10.1021/acsnano.6c11666",
       "doi": "10.1021/acsnano.6c11666",
       "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
-      "english_abstract": "Abstract Carbon-based synthetic lattices offer a versatile platform for the realization and control of correlated quantum effects at the nanoscale. Advances in on-surface synthesis have enabled the fabrication of increasingly complex molecular frameworks, providing opportunities for the exploration and engineering of custom tailored electronic and magnetic phases. Here, we report the design, on-surface synthesis, and characterization of a two-dimensional (2D) covalent organic framework (COF) assembled from D3h symmetric S = 3/2 [4]triangulene building blocks arranged in a honeycomb structure. Combined scanning probe microscopy and spectroscopy, corroborated by first-principles density functional theory (DFT) and GW calculations, establish an antiferromagnetic (AFM) insulating ground state. Low energy spectroscopy resolves spin excitations in both one-dimensional (1D) chains and extended 2D networks, providing direct insight into the emergent spin dynamics and establishing a modular platform to explore quantum magnetism in a π-conjugated organic system."
+      "english_abstract": "Abstract Carbon-based synthetic lattices offer a versatile platform for the realization and control of correlated quantum effects at the nanoscale. Advances in on-surface synthesis have enabled the fabrication of increasingly complex molecular frameworks, providing opportunities for the exploration and engineering of custom tailored electronic and magnetic phases. Here, we report the design, on-surface synthesis, and characterization of a two-dimensional (2D) covalent organic framework (COF) assembled from D3h symmetric S = 3/2 [4]triangulene building blocks arranged in a honeycomb structure. Combined scanning probe microscopy and spectroscopy, corroborated by first-principles density functional theory (DFT) and GW calculations, establish an antiferromagnetic (AFM) insulating ground state. Low energy spectroscopy resolves spin excitations in both one-dimensional (1D) chains and extended 2D networks, providing direct insight into the emergent spin dynamics and establishing a modular platform to explore quantum magnetism in a π-conjugated organic system.",
+      "zh_title": "[4]三角烯蜂窝反铁磁体中的低能激发"
     },
     "66628a2f488588bb14024dd66ab6d051d5178bad8976dd1d118e3ae5e96b1425": {
       "summary": "摘要 斯格明子拓扑的确定性翻转是拓扑自旋电子学的核心前沿，然而当前范式几乎完全依赖于耗散电流驱动的自旋力矩。在此，我们提出了一种在二维多铁材料中实现斯格明子拓扑非易失性翻转的根本不同机制。我们揭示，本征磁电耦合将面外铁电极化与层间磁交换紧密联系起来。因此，电场驱动的极化反转确定性地将层间耦合在铁磁态与反铁磁态之间转换。这种宏观交换反转直接翻转微观斯格明子核极性并反转其拓扑荷，从而稳定两个电可寻址的拓扑相。在我们建立的设计原则指导下，我们通过结合第一性原理计算与原子自旋模拟，在Co2CF2/MoN2多铁异质结构中严格验证了该机制。我们的发现绕过了连续电流注入的局限性，为节能多铁拓扑自旋电子学建立了一个稳健的物理框架。",
@@ -169,7 +170,8 @@
       "uid": "doi:10.1021/acsnano.6c14517",
       "doi": "10.1021/acsnano.6c14517",
       "title": "Ferroelectric Switching of Skyrmion Topology in 2D Multiferroics",
-      "english_abstract": "Abstract Deterministic switching of skyrmion topology is a central frontier in topological spintronics, yet current paradigms rely almost exclusively on dissipative-current-driven spin torques. Here, we propose a fundamentally distinct mechanism for the nonvolatile switching of the skyrmion topology in two-dimensional multiferroics. We reveal that the intrinsic magnetoelectric coupling intimately links the out-of-plane ferroelectric polarization to interlayer magnetic exchange. Consequently, an electric-field-driven polarization reversal deterministically converts the interlayer coupling between the ferromagnetic and antiferromagnetic states. This macroscopic exchange reversal directly flips the microscopic skyrmion core polarity and reverses its topological charge, thereby stabilizing the two electrically addressable topological phases. Guided by our established design principles, we rigorously validate this mechanism in a Co2CF2/MoN2 multiferroic heterostructure by using combined first-principles calculations and atomistic spin simulations. Our findings bypass the limitations of continuous current injection, establishing a robust physical framework for energy-efficient multiferroic topological spintronics."
+      "english_abstract": "Abstract Deterministic switching of skyrmion topology is a central frontier in topological spintronics, yet current paradigms rely almost exclusively on dissipative-current-driven spin torques. Here, we propose a fundamentally distinct mechanism for the nonvolatile switching of the skyrmion topology in two-dimensional multiferroics. We reveal that the intrinsic magnetoelectric coupling intimately links the out-of-plane ferroelectric polarization to interlayer magnetic exchange. Consequently, an electric-field-driven polarization reversal deterministically converts the interlayer coupling between the ferromagnetic and antiferromagnetic states. This macroscopic exchange reversal directly flips the microscopic skyrmion core polarity and reverses its topological charge, thereby stabilizing the two electrically addressable topological phases. Guided by our established design principles, we rigorously validate this mechanism in a Co2CF2/MoN2 multiferroic heterostructure by using combined first-principles calculations and atomistic spin simulations. Our findings bypass the limitations of continuous current injection, establishing a robust physical framework for energy-efficient multiferroic topological spintronics.",
+      "zh_title": "二维多铁性材料中斯格明子拓扑的铁电翻转"
     },
     "48597a8bd553837f17fe55ebb74875749eb844db161dfca9a56fbbd45439eb1e": {
       "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制，对于推进光磁技术至关重要，但这仍然具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列被放置在反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。被吸收的功率几乎全部在纳米磁体内耗散，仅有百分之几在金属背板中损失。增强的吸收还伴随着更强的磁光克尔效应，这是由光与纳米磁体相互作用增强以及反射背景降低共同驱动的。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
@@ -340,6 +342,127 @@
       "doi": "10.1063/5.0353242",
       "title": "Hybridization of a magnon mode with a higher-order topological photonic corner state",
       "english_abstract": "Photonic corner states in higher-order topological lattices combine topological localization with zero-dimensional field confinement, making them promising interfaces for enhanced light–matter interactions. Yet their coupling to material excitations remains largely unexplored. Here, we demonstrate hybridization between the Kittel mode of a yttrium iron garnet sphere and a higher-order topological photonic corner state in a two-dimensional Su–Schrieffer–Heeger microwave lattice. Tuning the Kittel mode through the corner-state resonance produces a pronounced avoided crossing with a minimum frequency splitting of 155.44 MHz. Moving the same sphere to the adjacent site reduces the splitting to 36.22 MHz, whereas no splitting is resolved in the bulk. The resulting coupling-strength map is concentrated at the corners and corroborates the corner-state assignment relative to extended edge and bulk modes. Our results show that higher-order topological corner states can serve as localized interfaces for cavity magnonics and hybrid topological light–matter systems."
+    },
+    "31ae1f79b58b06b03f18fcddc975dd8df0c5d777356576d2d184421afadb65d5": {
+      "summary": "英文论文标题：铁磁薄膜中通用的斯格明子相图 英文摘要：亚铁磁斯格明子由于反铁磁耦合的子晶格和降低的净磁化强度而提供了增强的可调性。在零磁场下的手性磁性薄膜中，斯格明子的稳定性通常由无量纲参数$κ$来表征，然而其对于亚铁磁系统的适用性仍不清楚，因为大多数研究假设一个固定的、强的子晶格间交换耦合$J$。在此，我们研究了$J$的变化如何调控弛豫后的稳定和亚稳态亚铁磁斯格明子构型，并引入一个无量纲参数$ζ_{eff}$来表征强与弱子晶格间锁定之间的交叉。在强耦合区域，子晶格间锁定使得斯格明子能够在一个本征Dzyaloshinskii-Moriya相互作用缺失的子晶格中稳定，而另一个子晶格具有有限DMI，从而产生具有无DMI子晶格的亚铁磁斯格明子。随着$J$减小，这种锁定被破坏，导致子晶格行为独立以及基于有效$κ$的描述失效。我们的结果建立了一个统一框架，将亚铁磁系统中的子晶格间交换与斯格明子相稳定性联系起来。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "897e115c2ad973c25074fe1412338467502c8d74dd7abec937fdeb52a84f5fa7": {
+      "summary": "英文论文标题：铁磁薄膜中通用的斯格明子相图 英文摘要：亚铁磁斯格明子由于反铁磁耦合的子晶格和降低的净磁化强度而提供了增强的可调性。在零磁场下的手性磁性薄膜中，斯格明子的稳定性通常由无量纲参数$κ$来表征，然而其对于亚铁磁系统的适用性仍不清楚，因为大多数研究假设一个固定的、强的子晶格间交换耦合$J$。在此，我们研究了$J$的变化如何调控弛豫后的稳定和亚稳态亚铁磁斯格明子构型，并引入一个无量纲参数$ζ_{eff}$来表征强与弱子晶格间锁定之间的交叉。在强耦合区域，子晶格间锁定使得斯格明子能够在一个本征Dzyaloshinskii-Moriya相互作用缺失的子晶格中稳定，而另一个子晶格具有有限DMI，从而产生具有无DMI子晶格的亚铁磁斯格明子。随着$J$减小，这种锁定被破坏，导致子晶格行为独立以及基于有效$κ$的描述失效。我们的结果建立了一个统一框架，将亚铁磁系统中的子晶格间交换与斯格明子相稳定性联系起来。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1103/627p-l6zk",
+      "doi": "10.1103/627p-l6zk",
+      "title": "Generic skyrmion phase diagram in ferrimagnetic films",
+      "english_abstract": "Ferrimagnetic skyrmions offer enhanced tunability due to antiferromagnetically coupled sublattices and reduced net magnetization. In chiral magnetic films at zero magnetic field, skyrmion stability is commonly characterized by a dimensionless parameter $κ$, yet its applicability to ferrimagnetic systems remains unclear, as most studies assume a fixed, strong inter-sublattice exchange coupling $J$. Here we investigate how variations in $J$ govern relaxed stable and metastable ferrimagnetic skyrmion configurations and introduce a dimensionless parameter $ζ_{eff}$ to characterize the crossover between strong and weak inter-sublattice locking. In the strong-coupling regime, inter-sublattice locking enables stabilization of skyrmion in a sublattice where intrinsic Dzyaloshinskii-Moriya interaction is absent while the other sublattice has finite DMI, yielding a sublattice with DMI-free ferrimagnetic skyrmions. As $J$ decreases, this locking breaks down, leading to independent sublattice behavior and the failure of an effective $κ$-based description. Our results establish a unified framework linking inter-sublattice exchange and skyrmion phase stability in ferrimagnetic systems."
+    },
+    "e963038311d09d6b240549f443f8836777a4d65545b9a285acf7f6ce942caaee": {
+      "summary": "kπ-斯格明子是在自旋电子器件中具有应用前景的拓扑磁结构。在本工作中，我们研究了跑道形纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性与电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋–轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "5ae75ddcac5055aab548d0201cabe7fa043009867e9b5c02f645acb5b3b7a831": {
+      "summary": "kπ-斯格明子是在自旋电子器件中具有应用前景的拓扑磁结构。在本工作中，我们研究了跑道形纳米结构中kπ-斯格明子（k=1、2、3和4）的稳定性与电流驱动动力学。我们构建了稳定性相图，其作为界面Dzyaloshinskii–Moriya相互作用强度（D_int）和垂直磁场（B_z）的函数。我们的结果表明，每种kπ-斯格明子的稳定范围强烈依赖于D_int。此外，所有结构的直径均随D_int增大而增大，并随B_z增大而减小。随后研究了由自旋–轨道力矩诱导的电流驱动动力学。我们的结果表明，所有kπ-斯格明子的速度均随电流密度增大而增大，并随垂直磁场增大而减小。尽管3π-斯格明子在瞬态阶段表现出比π-斯格明子更大的纵向速度，但两种结构达到了几乎相同的稳态速度。对于2π-和4π-斯格明子也观察到了类似行为。我们进一步使用Thiele形式体系分析了稳态动力学，其结果再现了微磁模拟中观察到的趋势。这些发现为kπ-斯格明子的稳定化和输运性质提供了见解，并支持其在未来自旋电子应用中的潜在用途。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1016/j.jmmm.2026.174602",
+      "doi": "10.1016/j.jmmm.2026.174602",
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "english_abstract": "k π -skyrmions are topological magnetic textures with promising applications in spintronic devices. In this work, we investigated the stability and current-driven dynamics of k π -skyrmions ( k = 1,2,3 , and 4) in racetrack nanostructures. Stability phase diagrams were constructed as a function of the interfacial Dzyaloshinskii–Moriya interaction strength ( D int ) and the perpendicular magnetic field ( B z ). Our results showed that the stabilization range of each k π -skyrmion strongly depends on D int . In addition, the diameters of all textures increased with increasing D int and decreased with increasing B z . The current-driven dynamics induced by spin–orbit torque were then investigated. Our results showed that the velocity of all k π -skyrmions increased with current density and decreased with perpendicular magnetic field. Although the 3 π -skyrmion exhibited larger longitudinal velocities during the transient regime than the π -skyrmion, both textures reached nearly identical steady-state velocities. A similar behavior was observed for the 2 π - and 4 π -skyrmions. The steady-state dynamics were further analyzed using the Thiele formalism, which reproduced the trends observed in the micromagnetic simulations. These findings provide insight into the stabilization and transport properties of k π -skyrmions and support their potential use in future spintronic applications."
+    },
+    "80f7028d7601be67e9107371df810091bddad3aaba32e857c78021418aa6bd4d": {
+      "summary": "摘要 二维材料的异质结构为磁性质提供了高度可调性，包括由非常规自旋–轨道力矩驱动的电流诱导磁化翻转。然而，范德华体系中自旋力矩翻转的微观机制仍未得到充分理解。在此，我们利用扫描谐波磁光克尔效应显微镜研究了Fe3GeTe2（FGT）与WTe2异质结构中的电流诱导磁化反转。空间分辨的磁化图显示，无场翻转从FGT薄片边缘的不对称畴成核开始，随后是畴壁传播。这种翻转行为是确定性的和双极性的，与来自WTe2的面内和面外自旋注入FGT所产生的自旋–轨道力矩一致。向上到向下和向下到向上翻转的临界电流不同，这是由于不对称的畴成核和方向性畴壁钉扎效应。微磁模拟再现了实验观察到的翻转行为，显示了初始畴成核位点如何由样品几何形状以及面内和面外自旋与Dzyaloshinskii-Moriya相互作用的共同影响所决定。最后，通过系统地改变类场和类阻尼力矩分量并在面内和面外自旋极化之间进行扫描，我们确定了在不同形状的范德华磁体中产生最有效翻转的力矩配置。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "ddeb2db5e3a44c5babeb72b98257d064fbd7d3dad19fa2f8d6b93f1ff909daa8": {
+      "summary": "摘要 二维材料的异质结构为磁性质提供了高度可调性，包括由非常规自旋–轨道力矩驱动的电流诱导磁化翻转。然而，范德华体系中自旋力矩翻转的微观机制仍未得到充分理解。在此，我们利用扫描谐波磁光克尔效应显微镜研究了Fe3GeTe2（FGT）与WTe2异质结构中的电流诱导磁化反转。空间分辨的磁化图显示，无场翻转从FGT薄片边缘的不对称畴成核开始，随后是畴壁传播。这种翻转行为是确定性的和双极性的，与来自WTe2的面内和面外自旋注入FGT所产生的自旋–轨道力矩一致。向上到向下和向下到向上翻转的临界电流不同，这是由于不对称的畴成核和方向性畴壁钉扎效应。微磁模拟再现了实验观察到的翻转行为，显示了初始畴成核位点如何由样品几何形状以及面内和面外自旋与Dzyaloshinskii-Moriya相互作用的共同影响所决定。最后，通过系统地改变类场和类阻尼力矩分量并在面内和面外自旋极化之间进行扫描，我们确定了在不同形状的范德华磁体中产生最有效翻转的力矩配置。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1021/acsnano.6c10331",
+      "doi": "10.1021/acsnano.6c10331",
+      "title": "Unfolding of Field-Free Spin–Orbit Torque Magnetization Switching in a van der Waals Heterostructure",
+      "english_abstract": "Abstract Heterostructures of 2D materials offer high tunability of magnetic properties, including current-induced magnetization switching by unconventional spin–orbit torques. The microscopic mechanisms governing spin-torque switching in van der Waals systems, however, remain insufficiently understood. Here, we investigate current-induced magnetization reversal in an Fe3GeTe2 (FGT) and WTe2 heterostructure using scanning harmonic magneto-optical Kerr effect microscopy. Spatially resolved magnetization maps show that field-free switching unfolds from asymmetric domain nucleation at the edges of the FGT flake, followed by domain wall propagation. This switching behavior is deterministic and bipolar, consistent with spin–orbit torques arising from the injection of both in-plane and out-of-plane spins from WTe2 into FGT. The critical currents for up-to-down and down-to-up switching differ because of asymmetric domain nucleation and directional domain wall pinning effects. Micromagnetic simulations reproduce the switching behavior observed experimentally, showing how the initial domain nucleation sites are determined by the sample geometry and combined influence of in-plane and out-of-plane spins and Dzyaloshinskii-Moriya interaction. Finally, by systematically varying the field-like and damping-like torque components and sweeping the spin polarization between in-plane and out-of-plane, we identify the torque configurations that yield the most efficient switching in van der Waals magnets with different shapes."
+    }
+  },
+  "titles": {
+    "ae4f9d2114d74ce0e88dde1f8704ad356e993db16c8efb6f0b3f33bf39c115d0": {
+      "title": "Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator",
+      "zh_title": "补偿型亚铁磁绝缘体中自旋霍尔磁电阻的电学调制",
+      "created": "2026-10-21"
+    },
+    "fa0ee3ca306f109c42326f19d88858750f686539ca0e7cbe9f0c6e60f446f5e5": {
+      "title": "Generic skyrmion phase diagram in ferrimagnetic films",
+      "zh_title": "铁磁薄膜中通用斯格明子相图",
+      "created": "2026-10-21"
+    },
+    "0853678197eb99813e3d03a740716bb0df329b241bc5afcdffea747c0df64b98": {
+      "title": "Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions",
+      "zh_title": "有机磁性隧道结中通过磁光可调缺陷态自旋注入过程的磁阻符号交叉",
+      "created": "2026-10-21"
+    },
+    "12f393c34570822e20195f576959a423dc3ccacbe82f07bd60dd5ab982d59592": {
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "zh_title": "赛道纳米结构中kπ-斯格明子的自旋轨道矩操控及其在自旋电子存储器中的应用",
+      "created": "2026-10-21"
+    },
+    "b6f899ae7abb5f138bba0b15755d5034f2b41eaeb519acf6f4416d20c8b13bd7": {
+      "title": "Ferroelectric Switching of Skyrmion Topology in 2D Multiferroics",
+      "zh_title": "二维多铁性材料中斯格明子拓扑的铁电翻转",
+      "created": "2026-10-21"
+    },
+    "62b4616a936197468843be442a53683facba6276b1fbf997d98888494767ccf0": {
+      "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
+      "zh_title": "[4]三角烯蜂窝反铁磁体中的低能激发",
+      "created": "2026-10-21"
+    },
+    "1aaa5a7bab6a1642590f7366801e2de474d53f2681c153a229f14769f1265392": {
+      "title": "Unfolding of Field-Free Spin–Orbit Torque Magnetization Switching in a van der Waals Heterostructure",
+      "zh_title": "无场自旋轨道矩磁化翻转在范德华异质结构中的展开",
+      "created": "2026-10-21"
+    },
+    "27c22fc9cbccadf5966a736102accec57e11e3dbac8751e63db20a7a201301ad": {
+      "title": "Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6",
+      "zh_title": "一维链自旋翻转反铁磁褐钇铌矿型MnV2O6中的磁热效应",
+      "created": "2026-10-21"
+    },
+    "5d34ac960413a781ecc2d36f2a832c5e46b5427e505a2b52b9e5bfcf89a19011": {
+      "title": "Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics",
+      "zh_title": "应变诱导的外延Mn3Sn薄膜中增强的室温磁化及其在反铁磁自旋电子学中的应用",
+      "created": "2026-10-21"
+    },
+    "96f757836d6bae13ce44560a899711e78c7e17a8a701c52eafea829280489fac": {
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "zh_title": "反相畴界驱动的NiCo2O4大交换偏置与负磁阻",
+      "created": "2026-10-21"
+    },
+    "8751b6aa696a37e447ab31838a70046ce49cbab3018597b8716f93524611c43d": {
+      "title": "Large coercivity and giant exchange bias in Eu₂NiIrO₆",
+      "zh_title": "Eu₂NiIrO₆中的大矫顽力和巨交换偏置",
+      "created": "2026-10-21"
+    },
+    "e2a807e4beaf135ccac9cd248ad577e264d230e7101e0c9bfb00b662dbb5017b": {
+      "title": "Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket",
+      "zh_title": "Sierpiński垫上自旋-1/2海森堡反铁磁体的扇区分辨微正则熵",
+      "created": "2026-10-21"
+    },
+    "700702db6771c2d566ce62cda8a6745a918af346706abfdb7dafdbbec21cf76d": {
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "zh_title": "亚铁磁Mn2PtSn Heusler合金中的表面增强反常霍尔电导率",
+      "created": "2026-10-21"
     }
   }
 }
