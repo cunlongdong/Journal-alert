@@ -1,5 +1,4 @@
 from __future__ import annotations
-import importlib
 import os
 import tempfile
 import unittest
@@ -131,6 +130,54 @@ class ReliabilityTests(unittest.TestCase):
             result=history_backfill.backfill(self.root,max_papers=1,lookup=lambda doi:('', ''))
         self.assertEqual(result['missing_source_abstract'],1)
         self.assertEqual(result['translated'],0)
+
+
+class CleanupRegressionTests(unittest.TestCase):
+    def test_history_cursor_advances_after_missing_doi_abstract(self):
+        papers = [
+            {'doi': '10.1000/not-found', 'title': 'No source abstract'},
+            {'doi': '10.1000/available', 'title': 'Available abstract'},
+        ]
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            called = []
+            def lookup(doi):
+                called.append(doi)
+                return ('', '') if doi.endswith('not-found') else (ORIGINAL, 'OpenAlex')
+            with patch.object(history_backfill, 'collect', return_value=(papers, [], [])):
+                first = history_backfill.backfill(root, max_papers=1, lookup=lookup)
+                self.assertEqual(first['missing_source_abstract'], 1)
+                # The next execution must progress to another paper, not retry
+                # the same unavailable DOI forever.
+                with patch.object(history_backfill.ReliableDelivery, '_get_translation', return_value=TRANSLATION):
+                    second = history_backfill.backfill(root, max_papers=1, lookup=lookup)
+            self.assertEqual(second['translated'], 1)
+            self.assertEqual(called, ['10.1000/not-found', '10.1000/available'])
+            cursor = root / 'state' / 'history_backfill_cursor.json'
+            self.assertEqual(__import__('json').loads(cursor.read_text('utf-8'))['next_index'], 0)
+
+    def test_history_backfill_dry_run_does_not_write_cursor(self):
+        papers = [{'doi': '10.1000/one', 'title': 'One article'}]
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            with patch.object(history_backfill, 'collect', return_value=(papers, [], [])):
+                info = history_backfill.backfill(root, max_papers=1, dry_run=True,
+                                                lookup=lambda doi: self.fail('dry-run requested'))
+            self.assertEqual(info['attempted'], 1)
+            self.assertFalse((root / 'state' / 'history_backfill_cursor.json').exists())
+
+    def test_status_reports_channel_readiness_not_secrets(self):
+        with tempfile.TemporaryDirectory() as temp:
+            with patch.dict(os.environ, {
+                'JALERT_SERVERCHAN_SENDKEY': 'server_super_secret',
+                'JALERT_BARK_ENABLED': 'true',
+                'JALERT_BARK_DEVICE_KEY': 'bark_super_secret',
+            }):
+                result = ReliableDelivery(Path(temp)).status()
+        self.assertEqual(result['channels_configured'], {
+            'wechat': True, 'bark_enabled': True, 'bark_key_present': True,
+        })
+        self.assertNotIn('super_secret', str(result))
 
 if __name__=='__main__':
     unittest.main()
