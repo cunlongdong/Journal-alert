@@ -150,7 +150,7 @@ class CleanupRegressionTests(unittest.TestCase):
                 self.assertEqual(first['missing_source_abstract'], 1)
                 # The next execution must progress to another paper, not retry
                 # the same unavailable DOI forever.
-                with patch.object(history_backfill.ReliableDelivery, '_get_translation', return_value=TRANSLATION):
+                with patch.object(history_backfill.ReliableDelivery, '_get_translation', return_value=CHINESE):
                     second = history_backfill.backfill(root, max_papers=1, lookup=lookup)
             self.assertEqual(second['translated'], 1)
             self.assertEqual(called, ['10.1000/not-found', '10.1000/available'])
