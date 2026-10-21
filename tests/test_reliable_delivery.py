@@ -116,6 +116,32 @@ class BarkTests(unittest.TestCase):
         self.assertNotIn("2", quality_report("2D material with 10 mT.", "二维材料表现出10 mT磁化。")["missing_numbers"])
         self.assertFalse(quality_report("At 10 K and 50 mT.", "在10 K下观测到磁性。")["ok"])
 
+    def test_real_title_translation_api_is_cached_without_second_call(self):
+        import json
+        title = "Exchange bias at 10 mT"
+        record = {"uid": "doi:10.2000/test", "title": title, "doi": "10.2000/test",
+                  "abstract": ABSTRACT}
+        class Reply:
+            def __enter__(self):
+                return self
+            def __exit__(self, *exc):
+                return None
+            def read(self, *args):
+                return json.dumps({"choices": [{"finish_reason": "stop",
+                    "message": {"content": "10 mT 条件下的交换偏置"}}]}).encode()
+        with patch.dict(os.environ, {
+            "JALERT_AI_PRIMARY": "custom", "JALERT_AI_FALLBACK": "none",
+            "CUSTOM_AI_BASE_URL": "https://example.edu/api/v1",
+            "CUSTOM_AI_MODEL": "deepseek-v4.1-flash", "CUSTOM_AI_API_KEY": "offline-test",
+        }):
+            with patch("jalert.reliable_delivery.urllib.request.urlopen", return_value=Reply()) as request:
+                title_zh = self.delivery._translate_title(record, "2026-10-21")
+                again = self.delivery._translate_title(record, "2026-10-21")
+            self.assertEqual(request.call_count, 1)
+        self.assertEqual(title_zh, "10 mT 条件下的交换偏置")
+        self.assertEqual(again, title_zh)
+        self.assertEqual(len(self.delivery.cache["titles"]), 1)
+
     def test_bark_json_uses_correct_chinese_title(self):
         with patch("jalert.reliable_delivery._http_json", return_value={"code":200}) as sender:
             self.assertTrue(self.delivery._bark("中文标题", "中文摘要全文"))
