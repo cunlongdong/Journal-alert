@@ -144,7 +144,7 @@ class CleanupRegressionTests(unittest.TestCase):
             called = []
             def lookup(doi):
                 called.append(doi)
-                return ('', '') if doi.endswith('not-found') else (ORIGINAL, 'OpenAlex')
+                return ('', '') if doi.endswith('not-found') else (ABSTRACT, 'OpenAlex')
             with patch.object(history_backfill, 'collect', return_value=(papers, [], [])):
                 first = history_backfill.backfill(root, max_papers=1, lookup=lookup)
                 self.assertEqual(first['missing_source_abstract'], 1)
