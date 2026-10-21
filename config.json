@@ -126,3 +126,463 @@
         "spin valve",
         "spin filtering",
         "spin-filter tunnel junction",
+        "perpendicular magnetic tunnel junction"
+      ]
+    },
+    {
+      "label": "自旋流与自旋输运",
+      "main": true,
+      "weight": 3,
+      "terms": [
+        "spin current",
+        "spin transport",
+        "spin injection",
+        "spin pumping",
+        "spin diffusion",
+        "spin mixing conductance",
+        "spin Hall magnetoresistance",
+        "spin Seebeck effect",
+        "inverse spin Hall effect",
+        "spin-to-charge conversion",
+        "charge-to-spin conversion",
+        "spin accumulation"
+      ]
+    },
+    {
+      "label": "磁各向异性与界面磁性",
+      "main": true,
+      "weight": 3,
+      "terms": [
+        "perpendicular magnetic anisotropy",
+        "magnetic anisotropy",
+        "interface anisotropy",
+        "interfacial anisotropy",
+        "voltage-controlled magnetic anisotropy",
+        "VCMA",
+        "magnetization reversal",
+        "magnetization switching",
+        "interfacial magnetism",
+        "proximity-induced magnetism",
+        "magnetic proximity effect"
+      ]
+    },
+    {
+      "label": "手性磁结构与自旋动力学",
+      "main": true,
+      "weight": 3,
+      "terms": [
+        "Dzyaloshinskii-Moriya interaction",
+        "Dzyaloshinskii Moriya interaction",
+        "DMI",
+        "skyrmion",
+        "domain-wall motion",
+        "domain wall motion",
+        "chiral magnetism",
+        "chiral spin texture",
+        "spin wave",
+        "magnon",
+        "spin dynamics",
+        "ferromagnetic resonance",
+        "spin-orbitronics"
+      ]
+    },
+    {
+      "label": "二维磁性与拓扑自旋电子学",
+      "main": false,
+      "weight": 3,
+      "terms": [
+        "two-dimensional magnet",
+        "2D magnet",
+        "van der Waals magnet",
+        "van der Waals ferromagnet",
+        "layered antiferromagnet",
+        "magnetic topological insulator",
+        "topological magnet",
+        "quantum anomalous Hall",
+        "spin-momentum locking",
+        "topological spintronics",
+        "magnetic heterostructure"
+      ]
+    },
+    {
+      "label": "自旋逻辑与神经形态器件",
+      "main": false,
+      "weight": 3,
+      "terms": [
+        "spintronic device",
+        "spintronic logic",
+        "spin-based logic",
+        "neuromorphic spintronics",
+        "spintronic neuron",
+        "spintronic synapse",
+        "probabilistic bit",
+        "p-bit",
+        "stochastic magnetic tunnel junction",
+        "magnetic sensor",
+        "magnetic sensing"
+      ]
+    }
+  ],
+  "exclude_terms": [
+    "retraction",
+    "retracted",
+    "correction",
+    "corrigendum",
+    "erratum",
+    "author correction",
+    "publisher correction",
+    "editorial board",
+    "in this issue",
+    "issue information",
+    "table of contents",
+    "call for papers"
+  ],
+  "exclude_doi_prefixes": [
+    "10.1038/d41586"
+  ],
+  "tiers": {
+    "must_read": 12,
+    "worth_reading": 6,
+    "min_score": 3
+  },
+  "journals": [
+    {
+      "name": "Science",
+      "issn": "0036-8075",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature",
+      "issn": "0028-0836",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review B",
+      "issn": "2469-9950",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review Applied",
+      "issn": "2331-7019",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Scientific Reports",
+      "issn": "2045-2322",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Communications",
+      "issn": "2041-1723",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Science Advances",
+      "issn": "2375-2548",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Advanced Materials",
+      "issn": "1521-4095",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Advanced Science",
+      "issn": "2198-3844",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "IEEE Electron Device Letters",
+      "issn": "0741-3106",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+      "issn": "1557-9999",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "IEEE Magnetics Letters",
+      "issn": "1949-3088",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "The Innovation",
+      "issn": "2666-6758",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Newton",
+      "issn": "2950-6360",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Device",
+      "issn": "2666-9986",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of Physics: Condensed Matter",
+      "issn": "1361-648X",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of Physics D: Applied Physics",
+      "issn": "1361-6463",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "IEEE Transactions on Magnetics",
+      "issn": "0018-9464",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Sensors",
+      "issn": "1424-8220",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "IEEE Sensors Journal",
+      "issn": "1558-1748",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review Letters",
+      "issn": "1079-7114",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Reviews of Modern Physics",
+      "issn": "1539-0756",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review X",
+      "issn": "2160-3308",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review Materials",
+      "issn": "2475-9953",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Physical Review Research",
+      "issn": "2643-1564",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Materials",
+      "issn": "1476-4660",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Electronics",
+      "issn": "2520-1131",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Nanotechnology",
+      "issn": "1748-3395",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Physics",
+      "issn": "1745-2481",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Europhysics Letters",
+      "issn": "1286-4854",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Applied Physics Letters",
+      "issn": "1077-3118",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Applied Physics Reviews",
+      "issn": "1931-9401",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "APL Materials",
+      "issn": "2166-532X",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nanoscale",
+      "issn": "2040-3372",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nanomaterials",
+      "issn": "2079-4991",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nanotechnology",
+      "issn": "1361-6528",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nano-Micro Letters",
+      "issn": "2150-5551",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Applied Physics Express",
+      "issn": "1882-0786",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Japanese Journal of Applied Physics",
+      "issn": "1347-4065",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of the American Chemical Society",
+      "issn": "1520-5126",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of Alloys and Compounds",
+      "issn": "0925-8388",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Advanced Electronic Materials",
+      "issn": "2199-160X",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Advanced Functional Materials",
+      "issn": "1616-3028",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nano Letters",
+      "issn": "1530-6992",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "ACS Nano",
+      "issn": "1936-086X",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "ACS Applied Materials & Interfaces",
+      "issn": "1944-8252",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "ACS Applied Electronic Materials",
+      "issn": "2637-6113",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Journal of Applied Physics",
+      "issn": "1089-7550",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Machine Intelligence",
+      "issn": "2522-5839",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Sensors",
+      "issn": "3059-4499",
+      "rss": "",
+      "enabled": true
+    },
+    {
+      "name": "Nature Computational Science",
+      "issn": "2662-8457",
+      "rss": "",
+      "enabled": true
+    }
+  ],
+  "push": {
+    "enabled": true,
+    "skip_when_empty": true,
+    "max_items": 6,
+    "max_chars": 1800,
+    "channels": {
+      "serverchan": {
+        "enabled": true,
+        "sendkey": ""
+      },
+      "pushplus": {
+        "enabled": true,
+        "token": ""
+      },
+      "bark": {
+        "enabled": false,
+        "key": "",
+        "server": "https://api.day.app",
+        "sound": "bird"
+      }
+    }
+  },
+  "log": {
+    "dir": "logs",
+    "level": "INFO"
+  }
+}
