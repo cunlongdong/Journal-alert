@@ -132,6 +132,96 @@ class ReliabilityTests(unittest.TestCase):
         self.assertEqual(result['translated'],0)
 
 
+
+class IndependentBarkTests(unittest.TestCase):
+    """Production call path: Bark messages are 1 paper each, independently acked."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.delivery = ReliableDelivery(self.root)
+        self.env = patch.dict(os.environ, {
+            "JALERT_SERVERCHAN_SENDKEY": "test_key",
+            "JALERT_BARK_ENABLED": "true",
+            "JALERT_BARK_DEVICE_KEY": "device_test",
+            "JALERT_BARK_BODY_BYTES": "1500",
+            "JALERT_BARK_MAX_MESSAGES_DAY": "2",  # deprecated setting must not stop Bark
+            "JALERT_BARK_MAX_MESSAGES_RUN": "5000",
+            "JALERT_WECHAT_MAX_MESSAGES_DAY": "4",
+            "JALERT_WECHAT_MAX_CHARS": "3500",
+        })
+        self.env.start()
+        self.addCleanup(self.env.stop)
+
+    def test_all_23_bark_papers_while_wechat_quota_exhausted(self):
+        for i in range(23):
+            self.delivery.enqueue([makeitem(i)])
+        day = __import__('jalert.enhanced_delivery', fromlist=['_now_date'])._now_date()
+        self.delivery.queue['usage'][day] = {'wechat_attempts': 4, 'ai_attempts': 0}
+        self.delivery._save_queue()
+        calls = []
+        with patch.object(self.delivery, '_get_translation', return_value=TRANSLATION), \
+             patch.object(self.delivery, '_bark', side_effect=lambda t,b: calls.append((t,b)) or True), \
+             patch.object(self.delivery, '_send', side_effect=AssertionError('Wechat quota must be respected')):
+            result = self.delivery.flush_both()
+        self.assertEqual(len(calls), 23)
+        self.assertEqual(result['bark_articles_sent_this_run'], 23)
+        self.assertEqual(result['bark_articles_waiting'], 0)
+        self.assertEqual(len({body.split("标题：", 1)[1].split("\n")[0] for _,body in calls}), 23)
+        self.assertTrue(all('论文链接' in body for _,body in calls))
+        self.assertTrue(all(len(body.encode('utf-8')) <= 1500 for _,body in calls))
+        self.assertEqual(result['pending_papers'], 23)  # WeChat still pending
+        another = ReliableDelivery(self.root)
+        with patch.object(another, '_bark', side_effect=AssertionError('duplicate Bark')):
+            again = another.flush_both()
+        self.assertEqual(again['bark_articles_sent_this_run'], 0)
+
+    def test_bark_failure_keeps_one_paper_for_retry(self):
+        for i in range(3):
+            self.delivery.enqueue([makeitem(i)])
+        with patch.dict(os.environ, {"JALERT_SERVERCHAN_SENDKEY": ""}), \
+             patch.object(self.delivery, '_get_translation', return_value=TRANSLATION), \
+             patch.object(self.delivery, '_bark', side_effect=[True, False, True]):
+            first = self.delivery.flush_both()
+        self.assertEqual(first['bark_articles_sent_this_run'], 2)
+        self.assertEqual(first['bark_articles_waiting'], 1)
+        self.assertEqual(first['pending_papers'], 1)
+        restarted = ReliableDelivery(self.root)
+        calls = []
+        with patch.dict(os.environ, {"JALERT_SERVERCHAN_SENDKEY": ""}), \
+             patch.object(restarted, '_get_translation', return_value=TRANSLATION), \
+             patch.object(restarted, '_bark', side_effect=lambda t,b: calls.append(t) or True):
+            second = restarted.flush_both()
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(second['pending_papers'], 0)
+
+    def test_oversize_abstract_one_notice_explicit_overflow(self):
+        self.delivery.enqueue([makeitem(0)])
+        bodies = []
+        with patch.dict(os.environ, {"JALERT_SERVERCHAN_SENDKEY": ""}), \
+             patch.object(self.delivery, '_get_translation', return_value=TRANSLATION * 60), \
+             patch.object(self.delivery, '_bark', side_effect=lambda t,b: bodies.append(b) or True):
+            result = self.delivery.flush_both()
+        self.assertEqual(len(bodies), 1)
+        self.assertIn('摘要超出系统通知上限', bodies[0])
+        self.assertIn('双语日报：', bodies[0])
+        self.assertLessEqual(len(bodies[0].encode('utf-8')), 1500)
+        self.assertEqual(result['pending_papers'], 0)
+
+    def test_no_abstract_sends_truthful_title_and_link(self):
+        self.delivery.enqueue([makeitem(0, abstract='')])
+        messages = []
+        with patch.dict(os.environ, {"JALERT_SERVERCHAN_SENDKEY": ""}), \
+             patch.object(self.delivery, '_get_translation', side_effect=AssertionError('No source to translate')), \
+             patch.object(self.delivery, '_bark', side_effect=lambda t,b: messages.append(b) or True):
+            result = self.delivery.flush_both()
+        self.assertEqual(len(messages), 1)
+        self.assertIn('数据源未提供可核实的论文摘要', messages[0])
+        self.assertEqual(result['pending_papers'], 0)
+
+
+
 class CleanupRegressionTests(unittest.TestCase):
     def test_history_cursor_advances_after_missing_doi_abstract(self):
         papers = [
