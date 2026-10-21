@@ -112,7 +112,7 @@ class _PublisherAbstractParser(HTMLParser):
             element_id = (props.get("id") or "").lower()
             if ("abstract" in classes or "abstract-content" in classes or
                     "abstract-section" in classes or "abstract-text" in classes or
-                    element_id in ("abstract", "abstract-section", "abstract-content")):
+                    element_id in ("abstract", "abstracts", "abstract-section", "abstract-content")):
                 self._abstract_depth = 1
                 self._abstract_parts = []
 
