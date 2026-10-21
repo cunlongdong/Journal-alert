@@ -91,11 +91,19 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
     delivery = ReliableDelivery(root, log)
     articles, _reports, _topics = collect(root / "reports")
     by_doi, by_title = cache_index(delivery.cache)
+    english_path = root / "state" / "full_english_abstracts.json"
+    if english_path.exists():
+        english_store = json.loads(english_path.read_text(encoding="utf-8"))
+        if not isinstance(english_store, dict) or not isinstance(english_store.get("abstracts"), dict):
+            raise ValueError("Malformed full English abstract store; refusing overwrite")
+    else:
+        english_store = {"version": 1, "abstracts": {}}
     remaining = []
     for paper in articles:
         doi = doi_key(paper.get("doi", ""))
         title = title_key(paper.get("title", ""))
-        if (doi and doi in by_doi) or (title and title in by_title):
+        record = by_doi.get(doi) if doi else by_title.get(title)
+        if record and record.get("english_abstract") and record.get("summary"):
             continue
         if not doi:  # Never translate a truncated report excerpt as if full.
             continue
@@ -120,7 +128,21 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         # repeatedly starve the rest after a job error or timeout.
         cursor["next_index"] = (start + attempted) % len(remaining)
         _atomic_json(cursor_path, cursor)
-        english, source = lookup(paper["doi"])
+        norm_doi = doi_key(paper["doi"])
+        existing = english_store["abstracts"].get(norm_doi)
+        if isinstance(existing, dict) and existing.get("abstract"):
+            english, source = existing["abstract"], existing.get("source", "stored")
+        else:
+            english, source = lookup(paper["doi"])
+            if english and len(english) <= DEFAULTS["max_input_chars"]:
+                english_store["abstracts"][norm_doi] = {
+                    "abstract": english,
+                    "source": source,
+                    "title": paper.get("title", ""),
+                    "retrieved_at": day,
+                }
+                # Even a failed AI translation must not discard retrieved English.
+                _atomic_json(english_path, english_store)
         if not english or len(english) > DEFAULTS["max_input_chars"]:
             missing += 1
             continue
@@ -133,7 +155,8 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         except (ValueError, RuntimeError, OSError, KeyError) as e:
             failed += 1
             log.warning("Historical DOI translation deferred: %s: %s", paper["doi"][:60], str(e)[:120])
-    result = {"cards": len(articles), "untranslated_visible_papers": len(remaining),
+    result = {"cards": len(articles), "full_english_cached": len(english_store["abstracts"]),
+              "untranslated_visible_papers": len(remaining),
               "attempted": attempted, "translated": translated, "missing_source_abstract": missing,
               "failed_quality_or_api": failed, "dry_run": dry_run}
     log.info("History backfill (never sends push): %s", json.dumps(result, ensure_ascii=False))
