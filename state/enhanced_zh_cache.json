@@ -54,6 +54,202 @@
       "doi": "10.1103/nny3-5mnz",
       "title": "Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions",
       "english_abstract": "We theoretically investigate the chaotic behavior of spin-torque ferromagnetic resonance in magnetic tunnel junctions (MTJs) with perpendicular magnetic anisotropy under thermal fluctuations. By calculating the Lyapunov exponent based on the Landau–Lifshitz–Gilbert equation, we demonstrate that an MTJ characterized by a double-well potential, composed of uniaxial magnetic anisotropy and an external dc magnetic field, exhibits chaotic magnetization dynamics that can be controlled by means of the dc bias via spin-transfer torque. Furthermore, we find that thermal fluctuations help to induce these chaotic magnetization dynamics, which can be regarded as noise-induced chaos. This research provides a basis for brain-inspired computing using spintronic devices and advances the understanding of the interplay between thermal fluctuations and chaos in magnetization dynamics."
+    },
+    "8223d00b3f93afbe16635a82578c63fb40e0b058f560a8b5dfdbf512d410ff21": {
+      "summary": "英文论文标题：反相边界驱动的NiCo2O4大交换偏置与负磁阻 英文摘要：镍基尖晶石氧化物近期因其显著的磁输运性质而备受关注，有望用于各种自旋电子学应用。在本研究中，我们观察到一种交换偏置效应：当单相纳米晶NiCo2O4在外加磁场存在下冷却时，其磁滞回线同时发生水平和垂直位移。在5 K时，交换偏置场的大小约为375 Oe，该效应在300 K左右消失。此外，NiCo2O4在纵向电阻率上表现出半导体行为，并在10 K时展现出约31.5%的显著负磁阻。该磁阻在低磁场下呈现蝴蝶形行为，在高磁场下则几乎变为线性。对负磁阻和交换偏置的详细分析表明，这两种现象均源于所合成NiCo2O4样品中反相边界的形成，这一点已由高分辨透射电子显微图证实。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "c66572090e26bf3852b75a002a5b56733666fcc308ee35f59b177a0f63278ecc": {
+      "summary": "英文论文标题：反相边界驱动的NiCo2O4大交换偏置与负磁阻 英文摘要：镍基尖晶石氧化物近期因其显著的磁输运性质而备受关注，有望用于各种自旋电子学应用。在本研究中，我们观察到一种交换偏置效应：当单相纳米晶NiCo2O4在外加磁场存在下冷却时，其磁滞回线同时发生水平和垂直位移。在5 K时，交换偏置场的大小约为375 Oe，该效应在300 K左右消失。此外，NiCo2O4在纵向电阻率上表现出半导体行为，并在10 K时展现出约31.5%的显著负磁阻。该磁阻在低磁场下呈现蝴蝶形行为，在高磁场下则几乎变为线性。对负磁阻和交换偏置的详细分析表明，这两种现象均源于所合成NiCo2O4样品中反相边界的形成，这一点已由高分辨透射电子显微图证实。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174575",
+      "doi": "10.1016/j.jmmm.2026.174575",
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "english_abstract": "Nickel-based spinel oxide has recently attracted significant attention due to its remarkable magneto-transport properties, promising various spintronic applications. In this study, we observe an exchange bias effect, where the magnetic hysteresis loop shifts both horizontally and vertically when single-phase nanocrystalline NiCo2O4 is cooled in the presence of an external magnetic field. The magnitude of the exchange bias field is approximately 375 Oe at 5 K, and this effect disappears around 300 K. Furthermore, NiCo2O4 shows semiconducting behaviour in longitudinal resistivity and demonstrates a substantial negative magnetoresistance of ~31.5% at 10 K. The magnetoresistance exhibits a butterfly-shaped behaviour at low magnetic fields and becomes almost linear at high magnetic fields. A detailed analysis of the negative magnetoresistance and exchange bias reveals that both phenomena originate from the formation of antiphase boundaries in the as-synthesized NiCo2O4 sample, as confirmed by the high-resolution transmission electron micrograph."
+    },
+    "9bab11b180ce8f2b6952bc998ee1b3a165f701f9f6db0f6d46dd6c904d045f91": {
+      "summary": "磁性拓扑绝缘体（TI）为工程化由拓扑与磁性相互作用所涌现的量子态提供了一个高度可调的平台。在这篇综述文章中，我们总结了过去十年中通过分子束外延（MBE）设计磁性TI多层膜的实验进展。通过将磁性掺杂和未掺杂的TI层视为拓扑乐高积木，我们讨论了如何以原子层精度利用层厚度、磁性掺杂、异质结构架构和堆叠顺序来控制磁交换能隙、层间耦合和Chern数C。我们首先简要回顾了2013年在均匀Cr掺杂的(Bi,Sb)2Te3薄膜和2015年在均匀V掺杂的(Bi,Sb)2Te3薄膜中实现C = 1量子反常霍尔（QAH）效应的工作。然后我们讨论了如何将Cr掺杂和未掺杂的(Bi,Sb)2Te3层组合起来，在磁性调制掺杂的三层结构中实现C = 1 QAH效应，包括将其扩展到三维（3D）区域。接下来，我们回顾了高C QAH态的发展、工程化平台相变、介观QAH器件以及手性边缘电流手性的电学切换。最后，我们讨论了在非对称磁性TI三层结构中轴子绝缘体和C = 1/2宇称反常态的实现。这些进展确立了磁性TI多层膜作为一个多功能材料平台的地位，可用于创建新的设计量子态，包括合成Weyl半金属和QAH金属相，并用于在厚轴子绝缘体和3D QAH绝缘体中探测拓扑磁电效应。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "c02c2e74d283eacf631ae59dc473c9f5110f33f2d01731e2b41786565bd0c718": {
+      "summary": "磁性拓扑绝缘体（TI）为工程化由拓扑与磁性相互作用所涌现的量子态提供了一个高度可调的平台。在这篇综述文章中，我们总结了过去十年中通过分子束外延（MBE）设计磁性TI多层膜的实验进展。通过将磁性掺杂和未掺杂的TI层视为拓扑乐高积木，我们讨论了如何以原子层精度利用层厚度、磁性掺杂、异质结构架构和堆叠顺序来控制磁交换能隙、层间耦合和Chern数C。我们首先简要回顾了2013年在均匀Cr掺杂的(Bi,Sb)2Te3薄膜和2015年在均匀V掺杂的(Bi,Sb)2Te3薄膜中实现C = 1量子反常霍尔（QAH）效应的工作。然后我们讨论了如何将Cr掺杂和未掺杂的(Bi,Sb)2Te3层组合起来，在磁性调制掺杂的三层结构中实现C = 1 QAH效应，包括将其扩展到三维（3D）区域。接下来，我们回顾了高C QAH态的发展、工程化平台相变、介观QAH器件以及手性边缘电流手性的电学切换。最后，我们讨论了在非对称磁性TI三层结构中轴子绝缘体和C = 1/2宇称反常态的实现。这些进展确立了磁性TI多层膜作为一个多功能材料平台的地位，可用于创建新的设计量子态，包括合成Weyl半金属和QAH金属相，并用于在厚轴子绝缘体和3D QAH绝缘体中探测拓扑磁电效应。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174589",
+      "doi": "10.1016/j.jmmm.2026.174589",
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "english_abstract": "Magnetic topological insulators (TIs) provide a highly tunable platform for engineering quantum states that emerge from the interplay between topology and magnetism. In this review article, we summarize experimental progress over the past decade in designing magnetic TI multilayers by molecular beam epitaxy (MBE). By treating magnetically doped and undoped TI layers as topological Legos, we discuss how layer thickness, magnetic doping, heterostructure architecture, and stacking sequence can be used to control magnetic exchange gaps, interlayer coupling, and the Chern number C with atomic-layer precision. We first briefly review the realization of the C = 1 quantum anomalous Hall (QAH) effect in uniformly Cr-doped (Bi,Sb)2Te3 films in 2013 and uniformly V-doped (Bi,Sb)2Te3 films in 2015. We then discuss how Cr-doped and undoped (Bi,Sb)2Te3 layers can be combined to realize the C = 1 QAH effect in magnetically modulation-doped trilayers, including its extension into the three-dimensional (3D) regime. Next, we review the development of high-C QAH states, engineered plateau phase transitions, mesoscopic QAH devices, and electrical switching of chiral edge-current chirality. Finally, we discuss the realizations of axion insulator and C = 1/2 parity anomaly states in asymmetric magnetic TI trilayers. These advances establish magnetic TI multilayers as a versatile materials platform for creating new designer quantum states, including synthetic Weyl semimetal and QAH metal phases, and for probing the topological magnetoelectric effect in thick axion insulators and 3D QAH insulators."
+    },
+    "8c9253d577597a4bd4c71692192e6d075448d0d2e3ae740fa9152d9c545f0a05": {
+      "summary": "采用密度泛函理论结合最大局域化Wannier函数，计算了块体亚铁磁Heusler合金Mn2PtSn的反常霍尔电导率。随后计算了相应的贝里曲率分布，并由此得到净反常霍尔电导率。为了通过对称性降低增强反常霍尔电导率，考虑了Mn2PtSn三种能量稳定的(001)表面终止，并将其贝里曲率分布与块体晶胞的贝里曲率分布进行了比较。表面终止处贝里曲率峰数量的增加导致反常霍尔电导率值更高。还评估了反常霍尔电导率作为费米能级的函数，费米能级附近尖锐峰的存在表明通过费米能级调谐实现进一步增强的潜力。表面处高值的反常霍尔电导率凸显了其在薄膜存储器件中的应用潜力，在这些器件中表面驱动的性质至关重要。• 计算了块体和(001) Mn2PtSn表面的反常霍尔电导率(AHC)。• 表面诱导的对称性破缺增强了AHC。• 由于强自旋-轨道相互作用，Pt完整单层显示出增强的贝里曲率和AHC。• 费米能级附近的AHC峰表明通过调谐进一步增强AHC的潜力。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "b3a4da20f7445e3f40bff1b0ef63e9a3fd74d7aa8a182be1a2d859c207217e9b": {
+      "summary": "采用密度泛函理论结合最大局域化Wannier函数，计算了块体亚铁磁Heusler合金Mn2PtSn的反常霍尔电导率。随后计算了相应的贝里曲率分布，并由此得到净反常霍尔电导率。为了通过对称性降低增强反常霍尔电导率，考虑了Mn2PtSn三种能量稳定的(001)表面终止，并将其贝里曲率分布与块体晶胞的贝里曲率分布进行了比较。表面终止处贝里曲率峰数量的增加导致反常霍尔电导率值更高。还评估了反常霍尔电导率作为费米能级的函数，费米能级附近尖锐峰的存在表明通过费米能级调谐实现进一步增强的潜力。表面处高值的反常霍尔电导率凸显了其在薄膜存储器件中的应用潜力，在这些器件中表面驱动的性质至关重要。• 计算了块体和(001) Mn2PtSn表面的反常霍尔电导率(AHC)。• 表面诱导的对称性破缺增强了AHC。• 由于强自旋-轨道相互作用，Pt完整单层显示出增强的贝里曲率和AHC。• 费米能级附近的AHC峰表明通过调谐进一步增强AHC的潜力。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174616",
+      "doi": "10.1016/j.jmmm.2026.174616",
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "english_abstract": "The anomalous Hall conductivity of the bulk ferrimagnetic Heusler alloy Mn 2 PtSn is calculated using density functional theory combined with maximally localized Wannier functions. The corresponding Berry curvature distributions are then computed, from which the net anomalous Hall conductivity is obtained. To enhance the anomalous Hall conductivity through symmetry reduction, three energetically stable (001) surface terminations of Mn 2 PtSn are considered, and their Berry curvature distributions are compared with those of the bulk unit cell. The increased number of Berry curvature peaks at the surface terminations leads to a higher value of the anomalous Hall conductivity. The anomalous Hall conductivity is also evaluated as a function of the Fermi level, and the presence of sharp peaks near the Fermi level indicates the potential for further enhancement through Fermi-level tuning. The high value of anomalous Hall conductivity at the surfaces highlights their potential for application in thin-film memory devices, where surface-driven properties are crucial. • Anomalous Hall conductivity (AHC) of bulk and (001) Mn 2 PtSn surfaces is calculated. • Surface-induced symmetry-breaking enhances the AHC. • The Pt full monolayer shows the enhanced Berry curvature and AHC due to strong spin–orbit interaction. • AHC peak near Fermi level suggests potential for further AHC enhancement via tuning."
+    },
+    "7915c2f76941a415a8e964634800b014735f772e6c6a042651e882fca9a0b44f": {
+      "summary": "通过微磁学模拟结合微动弹性带方法，研究了在降低晶间交换耦合的多晶磁性薄膜中磁斯格明子的稳定性。多晶薄膜采用Voronoi镶嵌建模，并系统性地降低跨晶界的交换耦合，以考察强晶界钉扎对斯格明子稳定性的影响。由于晶界钉扎抑制了斯格明子的收缩，斯格明子直径随晶间交换耦合的降低而显著增大。相应地，由于斯格明子态能量的降低，斯格明子坍缩的能垒主要随之增大，而鞍点能量对晶间交换耦合仅表现出较弱的依赖性。当跨晶界的磁性连续性保持相对较好时，观察到斯格明子直径与斯格明子态能量之间呈近乎线性的关系。然而，随着晶间交换耦合进一步降低，出现了对该直径-能量关系的系统性偏离。对斯格明子态与铁磁态之间能量差按斯格明子周长归一化后的分析表明，该偏离不能仅由单位周长能量差的变化来解释。相反，结果表明强晶界钉扎抑制了弛豫过程中斯格明子的进一步收缩。采用不同初始反转畴尺寸的额外模拟表明，在强交换不连续性下，弛豫后的斯格明子直径取决于初始引入的反转畴的尺寸。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 2
+    },
+    "17b29e03761fb53de727ad61e7115f55bd656eeb25c554b18be42f011bf25862": {
+      "summary": "结果表明，出现了与不同钉扎畴壁构型相关联的、具有不同直径的多个亚稳态斯格明子态。尽管斯格明子直径大幅增加，拓扑电荷的大小仅略有下降，这表明 enlarged skyrmions 保留了斯格明子的基本拓扑特征。这些发现表明，强晶界钉扎引入了超出传统直径-能量关系之外的额外效应，并为结构无序磁性薄膜中斯格明子的稳定性提供了新的见解。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 2,
+      "part_count": 2
+    },
+    "1d4830b23c8da88fe976f3c49727cabee0caee9bebd50ad630c2cdc6eaacf744": {
+      "summary": "通过微磁学模拟结合微动弹性带方法，研究了在降低晶间交换耦合的多晶磁性薄膜中磁斯格明子的稳定性。多晶薄膜采用Voronoi镶嵌建模，并系统性地降低跨晶界的交换耦合，以考察强晶界钉扎对斯格明子稳定性的影响。由于晶界钉扎抑制了斯格明子的收缩，斯格明子直径随晶间交换耦合的降低而显著增大。相应地，由于斯格明子态能量的降低，斯格明子坍缩的能垒主要随之增大，而鞍点能量对晶间交换耦合仅表现出较弱的依赖性。当跨晶界的磁性连续性保持相对较好时，观察到斯格明子直径与斯格明子态能量之间呈近乎线性的关系。然而，随着晶间交换耦合进一步降低，出现了对该直径-能量关系的系统性偏离。对斯格明子态与铁磁态之间能量差按斯格明子周长归一化后的分析表明，该偏离不能仅由单位周长能量差的变化来解释。相反，结果表明强晶界钉扎抑制了弛豫过程中斯格明子的进一步收缩。采用不同初始反转畴尺寸的额外模拟表明，在强交换不连续性下，弛豫后的斯格明子直径取决于初始引入的反转畴的尺寸。\n结果表明，出现了与不同钉扎畴壁构型相关联的、具有不同直径的多个亚稳态斯格明子态。尽管斯格明子直径大幅增加，拓扑电荷的大小仅略有下降，这表明 enlarged skyrmions 保留了斯格明子的基本拓扑特征。这些发现表明，强晶界钉扎引入了超出传统直径-能量关系之外的额外效应，并为结构无序磁性薄膜中斯格明子的稳定性提供了新的见解。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174629",
+      "doi": "10.1016/j.jmmm.2026.174629",
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "english_abstract": "The stability of magnetic skyrmions in polycrystalline magnetic thin films with reduced intergrain exchange coupling was investigated using micromagnetic simulations combined with the nudged elastic band method. Polycrystalline films were modeled using Voronoi tessellations, and the exchange coupling across grain boundaries was systematically reduced in order to examine the influence of strong grain-boundary pinning on skyrmion stability. The skyrmion diameter increased significantly with decreasing intergrain exchange coupling owing to the suppression of skyrmion shrinkage by grain-boundary pinning. Correspondingly, the energy barrier against skyrmion collapse increased primarily because of a reduction in the skyrmion-state energy, while the saddle-point energy exhibited only a weak dependence on intergrain exchange coupling. A nearly linear relationship between skyrmion diameter and skyrmion-state energy was observed when magnetic continuity across grain boundaries was relatively well preserved. However, systematic deviations from this diameter-energy relation emerged as the intergrain exchange coupling was further reduced. An analysis of the energy difference between the skyrmion and ferromagnetic states normalized by the skyrmion perimeter revealed that the deviation cannot be explained solely by variations in the energy difference per unit perimeter. Instead, the results suggest that strong grain-boundary pinning suppresses further skyrmion shrinkage during relaxation. Additional simulations employing different initial reversed-domain sizes demonstrated that the relaxed skyrmion diameter depends on the size of the initially introduced reversed domain under strong exchange discontinuity. The results suggest the emergence of multiple metastable skyrmion states with different diameters associated with different pinned domain-wall configurations. Despite a substantial increase in skyrmion diameter, the magnitude of the topological charge decreased only slightly, indicating that the enlarged skyrmions retain the essential topological characteristics of skyrmions. These findings demonstrate that strong grain-boundary pinning introduces additional effects beyond the conventional diameter-energy relation and provide new insight into skyrmion stability in structurally disordered magnetic films."
+    },
+    "5b69ba4d3c2bf0960a86eb21286e7515d3a4e203da53734b377a052f0d30866f": {
+      "summary": "英文论文标题：具有拓扑保护、霍尔效应抑制和可重构逻辑的手性势垒斯格明子赛道 英文摘要：同时抑制斯格明子霍尔效应（SkHE）并保持斯格明子拓扑完整性，仍然是基于斯格明子的赛道器件所面临的关键挑战。我们提出了一种手性工程化赛道架构，其中Dzyaloshinskii–Moriya相互作用（DMI）符号反转产生一个具有双重功能的能量势垒：通过防止斯格明子之间合并为条纹畴来保持斯格明子完整性，并提供一种排斥力以抵消马格努斯力从而抑制SkHE。该势垒还使基于螺旋度的编码和可重构AND/OR逻辑成为可能。通过调节过渡宽度w，该器件工作在两种 regime：对于w > 10 nm为无串扰输运，对于w ≤ 10 nm为通过斯格明子间相互作用实现逻辑操作。对于w ≥ 20 nm，拓扑电荷Q ≈ 2在整个过程中得以保持。Thiele方程分析确定非对角SOT耦合积分I x y为控制速度的参数。最佳宽度w = 20 nm使阈值电流密度（J th = 2.7 × 1 0 12 A / m 2）和稳态速度（v ̄ ∼ 296 m / s）最大化。势垒力模型验证确认了解析预测F y = − 2 π R t F D 0 / w。该架构在单一赛道内提供了一个紧凑的存储-逻辑集成平台。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "3f75d876967e22faba55dcbb99e00ff0828250c3b7ceda469ef9212084843888": {
+      "summary": "英文论文标题：具有拓扑保护、霍尔效应抑制和可重构逻辑的手性势垒斯格明子赛道 英文摘要：同时抑制斯格明子霍尔效应（SkHE）并保持斯格明子拓扑完整性，仍然是基于斯格明子的赛道器件所面临的关键挑战。我们提出了一种手性工程化赛道架构，其中Dzyaloshinskii–Moriya相互作用（DMI）符号反转产生一个具有双重功能的能量势垒：通过防止斯格明子之间合并为条纹畴来保持斯格明子完整性，并提供一种排斥力以抵消马格努斯力从而抑制SkHE。该势垒还使基于螺旋度的编码和可重构AND/OR逻辑成为可能。通过调节过渡宽度w，该器件工作在两种 regime：对于w > 10 nm为无串扰输运，对于w ≤ 10 nm为通过斯格明子间相互作用实现逻辑操作。对于w ≥ 20 nm，拓扑电荷Q ≈ 2在整个过程中得以保持。Thiele方程分析确定非对角SOT耦合积分I x y为控制速度的参数。最佳宽度w = 20 nm使阈值电流密度（J th = 2.7 × 1 0 12 A / m 2）和稳态速度（v ̄ ∼ 296 m / s）最大化。势垒力模型验证确认了解析预测F y = − 2 π R t F D 0 / w。该架构在单一赛道内提供了一个紧凑的存储-逻辑集成平台。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174638",
+      "doi": "10.1016/j.jmmm.2026.174638",
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "english_abstract": "Simultaneous suppression of the skyrmion Hall effect (SkHE) and preservation of skyrmion topological integrity remain critical challenges for skyrmion-based racetrack devices. We propose a chirality-engineered racetrack architecture in which a Dzyaloshinskii–Moriya interaction (DMI) sign reversal creates an energy barrier with a dual function: preserving skyrmion integrity by preventing inter-skyrmion merger into stripe domains, and providing a repulsive force that counterbalances the Magnus force to suppress the SkHE. The barrier also enables helicity-based encoding and reconfigurable AND/OR logic. By tuning the transition width w , the device operates in two regimes: crosstalk-free transport for w > 10 nm , and logic operations via inter-skyrmion interactions for w ≤ 10 nm . For w ≥ 20 nm , topological charge Q ≈ 2 is preserved throughout. Thiele-equation analysis identifies the off-diagonal SOT coupling integral I x y as the governing velocity parameter. An optimal width w = 20 nm maximizes the threshold current density ( J th = 2.7 × 1 0 12 A / m 2 ) and steady-state velocity ( v ̄ ∼ 296 m / s ). Barrier-force model verification confirms the analytic prediction F y = − 2 π R t F D 0 / w . This architecture provides a compact memory-logic integrated platform within a single racetrack."
+    },
+    "4284153ffe4605b8f039989b65ef3234d28b410c9c845d18810a739bd37b1183": {
+      "summary": "我们研究了受限Ir/Co/Pt纳米点中由电流驱动的斯格明子成核与湮灭，重点关注热涨落的作用。虽然最小能量方法预测出明确的转变机制，但我们表明，有限温度动力学可在相同标称条件下导致不同的磁构型。包含自旋转移矩、奥斯特场和热噪声的微磁模拟揭示了电流驱动磁响应中的随机变异性，同时在独立热噪声实现中保持了可重现的电流依赖磁区域。与测地线微扰弹性带（GNEB）计算的比较识别出两种相互竞争的斯格明子湮灭机制，即内部坍缩和边界介导的湮灭，二者具有显著不同的激活势垒。在T = 300 K时，相应的最大势垒分别约为44.7 k B T和21.2 k B T，表明在热激活下边界介导的湮灭在动力学上强烈占优。这些结果凸显了能量景观拓扑与随机动力学之间的相互作用，为受限几何结构中电流驱动的斯格明子转变提供了新见解。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "e7cec83748cc91f01d48963a96961783eaa3b5b37f0f489b70e436720211994b": {
+      "summary": "我们研究了受限Ir/Co/Pt纳米点中由电流驱动的斯格明子成核与湮灭，重点关注热涨落的作用。虽然最小能量方法预测出明确的转变机制，但我们表明，有限温度动力学可在相同标称条件下导致不同的磁构型。包含自旋转移矩、奥斯特场和热噪声的微磁模拟揭示了电流驱动磁响应中的随机变异性，同时在独立热噪声实现中保持了可重现的电流依赖磁区域。与测地线微扰弹性带（GNEB）计算的比较识别出两种相互竞争的斯格明子湮灭机制，即内部坍缩和边界介导的湮灭，二者具有显著不同的激活势垒。在T = 300 K时，相应的最大势垒分别约为44.7 k B T和21.2 k B T，表明在热激活下边界介导的湮灭在动力学上强烈占优。这些结果凸显了能量景观拓扑与随机动力学之间的相互作用，为受限几何结构中电流驱动的斯格明子转变提供了新见解。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174646",
+      "doi": "10.1016/j.jmmm.2026.174646",
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "english_abstract": "We investigate current-driven skyrmion nucleation and annihilation in confined Ir/Co/Pt nanodots, focusing on the role of thermal fluctuations. While minimum-energy approaches predict well-defined transition mechanisms, we show that finite-temperature dynamics can lead to distinct magnetic configurations under identical nominal conditions. Micromagnetic simulations including spin-transfer torques, Oersted fields, and thermal noise reveal stochastic variability in the current-driven magnetic response, while preserving reproducible current-dependent magnetic regimes across independent thermal-noise realisations. Comparison with geodesic nudged elastic band (GNEB) calculations identifies two competing skyrmion annihilation mechanisms, namely interior collapse and boundary-mediated annihilation, with markedly different activation barriers. At T = 300 K, the corresponding maximum barriers are approximately 44.7 k B T and 21.2 k B T , respectively, indicating that boundary-mediated annihilation is strongly kinetically favoured under thermal activation. These results highlight the interplay between energy landscape topology and stochastic dynamics, providing new insight into current-driven skyrmion transitions in confined geometries."
+    },
+    "ac82954471cc048f5150e569820d0bb22fd58f975ab6cbda849eaab84a03b61f": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 2
+    },
+    "a4132a8233809ddce7a88764e3934174a03a5231459797b75c0b6a08c8747845": {
+      "summary": "此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 2,
+      "part_count": 2
+    },
+    "27aa5ea3486fc3361e789fffdeb9b52b74496289bee5964a261f3d1865679772": {
+      "summary": "摘要 铁基铁磁材料因其高居里温度以及由贝里曲率驱动的显著反常霍尔效应（AHE），已成为自旋电子学中一个有前景的体系。尽管已有对非层状铁基铁磁材料外延生长的研究，但高质量单晶薄膜的实现仍然是一个艰巨的障碍。同时，晶界散射等问题进一步阻碍了它们的表征与应用。在此，我们报道了首次通过化学气相沉积合成单晶立方D03-Fe3Ge纳米片。该化合物与Fe–Ge体系中通常观察到的传统六方相有显著不同。结构表征证实了晶体的立方晶格和化学计量纯度。结构分析识别出强外延效应，导致界面处约4.16%的巨大压应变，并逐渐向表面弛豫。二次谐波产生信号可能进一步揭示，这种界面应变破坏了立方相固有的中心对称性。超导量子干涉器件磁强计测量显示出稳健的室温铁磁性和明显的磁各向异性。磁输运测量揭示出稳健的AHE，该效应在远高于室温的温度下仍保持稳定。在反常霍尔电阻与纵向电阻之间观察到的标度关系强烈表明，该效应由本征贝里曲率机制主导。\n此外，密度泛函理论计算表明，巨大的外延应变诱导能带重构，并在费米能级附近产生密集的自旋-轨道耦合带隙，从而有效地将反常霍尔电导率提高一倍，与我们的实验观测结果相符。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsami.6c14914",
+      "doi": "10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "english_abstract": "Abstract Iron-based ferromagnetic materials have emerged as a promising system for spintronics due to their high Curie temperatures and the significant anomalous Hall effect (AHE) driven by Berry curvature. While there have been investigations into the epitaxial growth of nonlayered iron-based ferromagnetic materials, the realization of high-quality single crystal thin films continues to be a formidable obstacle. Meanwhile, issues such as grain boundary scattering further hinder their characterization and application. Here, we report the first chemical vapor deposition synthesis of single-crystalline cubic D03-Fe3Ge nanoplates. This compound represents a substantial departure from the conventional hexagonal phases typically observed in the Fe–Ge system. Structural characterizations confirm the cubic lattice and the stoichiometric purity of the crystals. Structural analysis identifies a strong epitaxial effect, resulting in a giant compressive strain of ∼4.16% at the interface that relaxes gradually toward the surface. The second-harmonic generation signals might further reveal that such interfacial strain disrupted the inherent centrosymmetry of the cubic phase. Superconducting quantum interference device magnetometry shows robust room-temperature ferromagnetism and clear magnetic anisotropy. Magneto-transport measurements reveal a robust AHE that remains stable at temperatures far exceeding the room temperature. The scaling observed between the anomalous Hall resistance and longitudinal resistance strongly suggests that this effect is dominated by the intrinsic Berry curvature mechanism. Furthermore, density functional theory calculations reveal that the huge epitaxial strain induces band reconstructions and creates dense spin–orbit coupling gaps near the Fermi level, effectively doubling the anomalous Hall conductivity to match our experimental observations."
+    },
+    "48597a8bd553837f17fe55ebb74875749eb844db161dfca9a56fbbd45439eb1e": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制，对于推进光磁技术至关重要，但这仍然具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列被放置在反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。被吸收的功率几乎全部在纳米磁体内耗散，仅有百分之几在金属背板中损失。增强的吸收还伴随着更强的磁光克尔效应，这是由光与纳米磁体相互作用增强以及反射背景降低共同驱动的。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "0bc16b15e763cd49710d3585f6ca4f1c20b4bf6a9a3858f03be1c03b0c94143d": {
+      "summary": "摘要 无需外部磁场即可控制磁性系统的能力近来引起了关注，全光磁开关展现出越来越大的前景。在磁性纳米结构中实现对光与物质相互作用的精细控制，对于推进光磁技术至关重要，但这仍然具有挑战性，因为必须在目标波长下于超薄磁性结构内实现强光学耦合。在此，我们表明相干光学干涉可以增强图案化磁性超表面中的这种相互作用。坡莫合金纳米磁体阵列被放置在反射背板之上的薄介电间隔层上，形成磁性超表面，其反射波前由纳米磁体几何形状、填充因子和间隔层厚度决定。超表面与背板反射之间的相消干涉产生近完美吸收，对于圆形纳米磁体阵列，在模拟和实验中均超过95%。被吸收的功率几乎全部在纳米磁体内耗散，仅有百分之几在金属背板中损失。增强的吸收还伴随着更强的磁光克尔效应，这是由光与纳米磁体相互作用增强以及反射背景降低共同驱动的。这些结果为在纳米级磁性系统中实现高光学吸收和强磁光响应提供了一种通用方法，支持光可寻址自旋电子学、磁传感和全光磁控制方面的进展。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acsnano.6c15462",
+      "doi": "10.1021/acsnano.6c15462",
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "english_abstract": "Abstract The ability to control magnetic systems without external magnetic fields has attracted attention recently, with all-optical magnetic switching showing increasing promise. Gaining fine control over light-matter interactions in magnetic nanostructures is essential for advancing opto-magnetic technologies but remains challenging because strong optical coupling must be achieved within ultrathin magnetic structures at the target wavelength. Here, we show that coherent optical interference can increase this interaction in patterned magnetic metasurfaces. Arrays of permalloy nanomagnets are placed on a thin dielectric spacer above a reflective back-plane, forming a magnetic metasurface whose reflected wavefront is defined by the nanomagnet geometry, fill factor, and spacer thickness. Destructive interference between the metasurface and back-plane reflections yields near-perfect absorption, exceeding 95% for circular nanomagnet arrays in both simulation and experiment. The absorbed power is dissipated almost entirely within the nanomagnets, with only a few percent lost in the metallic back-plane. Enhanced absorption is also accompanied by a stronger magneto-optical Kerr effect, driven by both increased light–nanomagnet interaction and reduced reflected background. These results provide a general approach for achieving high optical absorption and strong magneto-optical response in nanoscale magnetic systems, supporting advances in optically addressable spintronics, magnetic sensing, and all-optical magnetic control."
+    },
+    "ee9d619891645b078973fac4fd19bd3db804327c70345bff45fdf36014a1e6bb": {
+      "summary": "本文研究了在真实量子硬件上使用变分量子本征求解器算法，探究基本kagome元胞（三角形和星形）上反铁磁Heisenberg模型基态的性质。我们证明，使用具有自然欧几里得参数空间的浅层硬件高效量子电路可以实现基态制备。我们的定制拟设能够在没有显式误差缓解的情况下准确恢复基态的有意义性质，例如自旋-自旋关联项和静态结构因子。这些特征被发现对噪声具有鲁棒性。我们在构造拟设时利用了Fubini-Study度量，确保参数空间无奇点。采用这种拟设设计，自适应梯度下降优化器在迭代次数方面相比同时扰动随机逼近实现了更快的收敛。我们进一步应用误差缓解技术，包括零噪声外推（ZNE）和逐量子比特读出误差缓解（REM）。虽然ZNE不遵循Rayleigh-Ritz变分原理，但讨论了REM保持该原理的条件。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "bcc83209247208b9df6803267d1d144954a94d83098603a951906e687f8d5c91": {
+      "summary": "本文研究了在真实量子硬件上使用变分量子本征求解器算法，探究基本kagome元胞（三角形和星形）上反铁磁Heisenberg模型基态的性质。我们证明，使用具有自然欧几里得参数空间的浅层硬件高效量子电路可以实现基态制备。我们的定制拟设能够在没有显式误差缓解的情况下准确恢复基态的有意义性质，例如自旋-自旋关联项和静态结构因子。这些特征被发现对噪声具有鲁棒性。我们在构造拟设时利用了Fubini-Study度量，确保参数空间无奇点。采用这种拟设设计，自适应梯度下降优化器在迭代次数方面相比同时扰动随机逼近实现了更快的收敛。我们进一步应用误差缓解技术，包括零噪声外推（ZNE）和逐量子比特读出误差缓解（REM）。虽然ZNE不遵循Rayleigh-Ritz变分原理，但讨论了REM保持该原理的条件。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/82g5-bsvp",
+      "doi": "10.1103/82g5-bsvp",
+      "title": "Probing the ground state of the antiferromagnetic Heisenberg model on the kagome lattice using geometrically informed variational quantum eigensolver",
+      "english_abstract": "This work investigates the nature of the ground state of the antiferromagnetic Heisenberg model on fundamental kagome cells, a triangle and a star, using the variational quantum eigensolver algorithm on real quantum hardware. We demonstrate that the ground-state preparation is achievable using a shallow hardware-efficient quantum circuit with a naturally Euclidean parameter space. Our custom ansatz is capable of accurately recovering meaningful properties of the ground state such as the spin-spin correlation terms and static structure factor without explicit error mitigation. These features are found to be resilient to noise. We exploited the Fubini-Study metric in constructing the ansatz, ensuring a singularity-free parameter space. With this ansatz design, the adaptive gradient descent optimizer achieves a faster convergence in terms of the number of iterations compared to simultaneous perturbation stochastic approximation. We further apply error mitigation techniques, including zero-noise extrapolation (ZNE) and qubitwise readout-error mitigation (REM). While ZNE does not obey the Rayleigh-Ritz variational principle, the conditions under which REM preserves it are discussed."
+    },
+    "274afc70cf133853f48ee9442666d2469ad0b3808452b658258578f08bfa91c3": {
+      "summary": "英文论文标题：手性保护表面自旋波的体介导反射 英文摘要：Damon-Eshbach型表面自旋波表现出本质上的非互易输运特性，其手性动力学场结构将反向传播的波局域在薄膜的相对表面上。此前已预测，在无体模的频率范围内，这种手性会抑制薄膜中的直接背散射。然而，在手性如何影响更厚的三维磁性介质中的反射方面——在该介质中，密集的体激发谱与表面波重叠——目前仍不清楚。在此，我们证明，在微米厚的钇铁石榴石薄膜中，手性Damon-Eshbach波从磁性介质边界的反射伴随着空间局域的厚度量子化体模的激发，而互易背向体波则几乎弹性反射。布里渊光散射光谱、红外热成像和微磁模拟揭示了反射边界处的驻体激发，并量化了相关的磁振子能量积累与耗散。这些结果将体模激发确定为在厚膜中实现手性局域表面波反转的物理途径，从而界定了基于手性的背散射免疫性的极限，并为非互易磁性介质中的波输运提供了一个通用框架。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "40ccbeeefb50a4d14302afdb5a7429d410af54f03de92afb61fdb30beea12aba": {
+      "summary": "英文论文标题：手性保护表面自旋波的体介导反射 英文摘要：Damon-Eshbach型表面自旋波表现出本质上的非互易输运特性，其手性动力学场结构将反向传播的波局域在薄膜的相对表面上。此前已预测，在无体模的频率范围内，这种手性会抑制薄膜中的直接背散射。然而，在手性如何影响更厚的三维磁性介质中的反射方面——在该介质中，密集的体激发谱与表面波重叠——目前仍不清楚。在此，我们证明，在微米厚的钇铁石榴石薄膜中，手性Damon-Eshbach波从磁性介质边界的反射伴随着空间局域的厚度量子化体模的激发，而互易背向体波则几乎弹性反射。布里渊光散射光谱、红外热成像和微磁模拟揭示了反射边界处的驻体激发，并量化了相关的磁振子能量积累与耗散。这些结果将体模激发确定为在厚膜中实现手性局域表面波反转的物理途径，从而界定了基于手性的背散射免疫性的极限，并为非互易磁性介质中的波输运提供了一个通用框架。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1103/hgvh-s6h5",
+      "doi": "10.1103/hgvh-s6h5",
+      "title": "Bulk-Mediated Reflection of Chirality-Protected Surface Spin Waves",
+      "english_abstract": "Surface spin waves of the Damon-Eshbach type exhibit intrinsically nonreciprocal transport properties with a chiral dynamical field structure that localizes counterpropagating waves at opposite film surfaces. Such chirality has been predicted to suppress direct backscattering in thin films within frequency ranges free of bulk modes. However, how chirality influences reflection in thicker three-dimensional magnetic media, where a dense spectrum of bulk excitations overlaps with surface waves, remains unclear. Here we demonstrate that, in micrometer-thick yttrium iron garnet films, reflection of the chiral Damon-Eshbach wave from the boundary of the magnetic medium is accompanied by excitation of spatially localized thickness-quantized bulk modes, whereas reciprocal backward-volume waves reflect nearly elastically. Brillouin light scattering spectroscopy, infrared thermography, and micromagnetic simulations reveal standing bulk excitations at the reflecting boundary and quantify the associated magnon energy accumulation and dissipation. These results identify bulk-mode excitations as the physical pathway enabling reversal of chirally localized surface waves in thick films, thereby defining the limits of chirality-based backscattering immunity and providing a general framework for wave transport in nonreciprocal magnetic media."
     }
   },
   "titles": {

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "next_id": 1,
+  "active": null,
+  "progress": {},
+  "usage": {
+    "2026-10-22": {
+      "bark_attempts": 34
+    }
+  }
+}
