@@ -322,6 +322,24 @@
       "doi": "10.35848/1882-0786/aeb69c",
       "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
       "english_abstract": "Abstract This paper reviews group-IV semiconductor physics and technologies for realizing ultra-low-power electron-photon-spin semiconductor systems on a silicon platform. First, some technologies for high-speed CMOS and silicon photonics devices are introduced on the basis of heteroepitaxy of Ge, SiGe, and GeSn alloys on Si. Next, aiming to integrate logic and nonvolatile memory, electrical spin injection and detection technologies for spin transistors are explained using Ge on Si. Also, recent progress of the studies of spin-related physical properties such as spin relaxation time and spin diffusion length is introduced for Ge. Meanwhile, recent research progress on low-temperature-formed gate stack structures, Ge-on-Insulator (GOI) structures, and Ge/SiGe multi-heterostructures will be presented to combine CMOS technology with spintronic and/or spin-photonic devices on a Si platform. Finally, the possibilities of spin-tunnel FETs, vertical spin FETs, GeSn-based spin devices on the Si platform will be described for future applications."
+    },
+    "00c78fbe8432658343bdae459a93d17edc40152d5e8c2c3ded2fc3fd3862fdf9": {
+      "summary": "我们研究了一种混合磁性系统中的自旋相关输运，其中一根非磁性（NM）导线与一个侧向连接的反铁磁介观环耦合，该体系置于两个非磁性电极之间，并受到垂直于NM导线的面内电场作用。该系统在紧束缚框架下描述，输运性质采用非平衡格林函数形式计算。我们考虑由环-导线耦合区分的两种结构型：单耦合结和双耦合结。在单耦合构型中，仅耦合几何结构本身就打破了自旋对称性，即使没有任何外场也产生有限的自旋极化（SP）。面内电场进一步增强两种构型中的对称性破缺，作为一个有效的调控参数，在低偏压区域驱动SP近乎。在双耦合构型中，无外场时自旋对称性得以保持，电场作为对称性破缺的唯一来源，产生大的SP。我们考察了有限温度效应和不同系统尺寸，证实了所观察特征的鲁棒性。为在广泛参数空间中验证这些发现，我们考虑了不同的参数集，发现关键特征保持不变。我们的结果表明，此类混合结构是在低维系统中实现外部可控自旋电子器件的有前景的候选者。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "992a401804e670e31a90a761d644b3130e4d058311fe224559a126450db11707": {
+      "summary": "我们研究了一种混合磁性系统中的自旋相关输运，其中一根非磁性（NM）导线与一个侧向连接的反铁磁介观环耦合，该体系置于两个非磁性电极之间，并受到垂直于NM导线的面内电场作用。该系统在紧束缚框架下描述，输运性质采用非平衡格林函数形式计算。我们考虑由环-导线耦合区分的两种结构型：单耦合结和双耦合结。在单耦合构型中，仅耦合几何结构本身就打破了自旋对称性，即使没有任何外场也产生有限的自旋极化（SP）。面内电场进一步增强两种构型中的对称性破缺，作为一个有效的调控参数，在低偏压区域驱动SP近乎。在双耦合构型中，无外场时自旋对称性得以保持，电场作为对称性破缺的唯一来源，产生大的SP。我们考察了有限温度效应和不同系统尺寸，证实了所观察特征的鲁棒性。为在广泛参数空间中验证这些发现，我们考虑了不同的参数集，发现关键特征保持不变。我们的结果表明，此类混合结构是在低维系统中实现外部可控自旋电子器件的有前景的候选者。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1088/1361-648x/aeb0fa",
+      "doi": "10.1088/1361-648x/aeb0fa",
+      "title": "Spin-dependent electron transfer through a ring-wire coupled junction: role of in-plane electric field",
+      "english_abstract": "We study spin-dependent transport in a hybrid magnetic system, where a non-magnetic (NM) wire is coupled to a side-attached antiferromagnetic mesoscopic ring, placed between two non-magnetic electrodes subject to an in-plane electric field oriented perpendicular to the NM wire. The system is described within a tight-binding framework, and transport properties are computed using the non-equilibrium Green's function formalism. We consider two junction configurations distinguished by the ring-wire coupling: a single-coupled junction and a double-coupled junction. In the single-coupled configuration, the coupling geometry alone breaks the spin symmetry, yielding a finite spin polarization (SP) even without any external field. The in-plane electric field further enhances the symmetry breaking in both configurations, serving as an efficient tuning parameter that drives the SP nearlyin the low-bias region. In the double-coupled configuration, spin symmetry is preserved in the absence of the external field, and the electric field acts as a sole source of symmetry breaking, producing a large SP. Finite temperature effects and different system sizes are examined, confirming the robustness of the observed features. To validate the findings over a wide parameter space, we considered different sets of parameters and found that the key signatures remain unchanged. Our results demonstrate that such hybrid structures are promising candidates for realizing an externally controllable spintronic device in low-dimensional systems."
     }
   },
   "titles": {
