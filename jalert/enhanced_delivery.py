@@ -143,6 +143,31 @@ class Delivery:
         self.log.info("enhanced outbox: added=%d pending=%d", count, self.pending_count())
         return count
 
+    def refresh_pending(self, metadata: dict) -> int:
+        """Use later verified metadata for pending papers, never sent records."""
+        records = metadata.get("articles", {})
+        if not isinstance(records, dict):
+            raise ValueError("Malformed metadata ledger")
+        changed = 0
+        for item in self.queue["items"].values():
+            if item.get("status") != "pending" or item.get("bark_done"):
+                continue
+            doi = str(item.get("doi") or "").strip().lower()
+            record = records.get("doi:" + doi) if doi else records.get(item.get("uid"))
+            if not isinstance(record, dict):
+                continue
+            if len(str(record.get("abstract") or "")) > len(str(item.get("abstract") or "")):
+                item["abstract"] = record["abstract"]
+                item["abstract_provider"] = record.get("abstract_source") or "source API"
+                item.pop("last_ai_error", None)
+                changed += 1
+            if len(record.get("authors") or []) > len(item.get("authors") or []):
+                item["authors"] = record["authors"]
+                changed += 1
+        if changed:
+            self._save_queue()
+        return changed
+
     def pending_count(self) -> int:
         return sum(1 for x in self.queue["items"].values() if x.get("status") == "pending")
 

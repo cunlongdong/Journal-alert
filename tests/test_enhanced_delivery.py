@@ -108,14 +108,19 @@ if __name__ == '__main__':
     def test_failed_commit_bark_acks_restored_without_resending(self):
         import shutil
         repo_root = Path(__file__).resolve().parents[1]
-        manifest_path = repo_root / "state" / "bark_run47_accepted.json"
-        saved = json.loads(manifest_path.read_text(encoding="utf-8"))
+        # Fixture is independent of repository state so resetting history
+        # cannot remove the regression test itself.
+        saved = {"version": 1, "run_id": 39617398380,
+                 "api_accepted_count": 33,
+                 "acked_uids": [f"doi:10.1234/ack{i}" for i in range(33)],
+                 "deferred_uids": [f"doi:10.1234/deferred{i}" for i in range(5)]}
         self.assertEqual(len(saved["acked_uids"]), 33)
         self.assertEqual(len(saved["deferred_uids"]), 5)
         self.assertFalse(set(saved["acked_uids"]) & set(saved["deferred_uids"]))
         state_dir = self.root / "state"
         state_dir.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(manifest_path, state_dir / "bark_run47_accepted.json")
+        (state_dir / "bark_run47_accepted.json").write_text(
+            json.dumps(saved), encoding="utf-8")
         from jalert.reliable_delivery import ReliableDelivery
         delivery = ReliableDelivery(self.root)
         accepted_uid = saved["acked_uids"][0]

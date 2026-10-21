@@ -394,6 +394,8 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
     if targets:
         articles = [a for a in articles if doi_key(a.get("doi", "")) in targets]
     by_doi, by_title = cache_index(delivery.cache)
+    from jalert.metadata import load_metadata
+    source_metadata = load_metadata(root).get("articles", {})
     english_path = root / "state" / "full_english_abstracts.json"
     if english_path.exists():
         english_store = json.loads(english_path.read_text(encoding="utf-8"))
@@ -409,7 +411,11 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
         record = by_doi.get(doi) if doi else by_title.get(title)
         title_hash = hashlib.sha256(str(paper.get("title") or "").strip().encode("utf-8")).hexdigest()
         title_done = bool((delivery.cache.get("titles") or {}).get(title_hash, {}).get("zh_title"))
-        english_done = bool(record and record.get("english_abstract") and record.get("summary"))
+        available = source_metadata.get("doi:" + doi, {}) if doi else {}
+        newer = str(available.get("abstract") or "")
+        # A newer longer verified source text requires a fresh translation.
+        english_done = bool(record and record.get("english_abstract") and record.get("summary")
+                            and len(str(record.get("english_abstract") or "")) >= len(newer))
         if doi:
             doi_outcomes[doi] = {"status": "already_complete" if english_done else "pending",
                                  "english_source": "translation cache" if english_done else "",
@@ -462,8 +468,13 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
             missing += 1
             continue
         existing = english_store["abstracts"].get(norm_doi)
-        if isinstance(existing, dict) and existing.get("abstract"):
-            english, source = existing["abstract"], existing.get("source", "stored")
+        observed = source_metadata.get("doi:" + norm_doi) or {}
+        stored_text = str(existing.get("abstract") or "") if isinstance(existing, dict) else ""
+        observed_text = str(observed.get("abstract") or "")
+        if observed_text and len(observed_text) > len(stored_text):
+            english, source = observed_text, observed.get("abstract_source") or "source API"
+        elif stored_text:
+            english, source = stored_text, existing.get("source", "stored")
         else:
             try:
                 english, source = lookup(paper["doi"])
@@ -485,6 +496,12 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *,
                 # Even a failed AI translation must not discard retrieved English.
                 _atomic_json(english_path, english_store)
         if english and not dry_run and len(english) <= DEFAULTS["max_input_chars"]:
+            if len(english) > len(stored_text):
+                english_store["abstracts"][norm_doi] = {
+                    "abstract": english, "source": source,
+                    "title": paper.get("title", ""), "retrieved_at": day,
+                }
+                _atomic_json(english_path, english_store)
             from jalert.metadata import merge_verified_abstract
             merge_verified_abstract(root, norm_doi, str(paper.get("title") or ""), english, source)
         if not english or len(english) > DEFAULTS["max_input_chars"]:

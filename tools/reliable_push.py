@@ -51,6 +51,10 @@ def main(argv=None):
         if not enabled or not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
             logging.error("Bark required: enable it and configure BARK_DEVICE_KEY")
             return 2
+        # Reuse richer source metadata from previous runs before DOI network retries.
+        from jalert.metadata import load_metadata
+        updated = delivery.refresh_pending(load_metadata(ROOT))
+        logging.info("Pending items updated from durable metadata: %d", updated)
         # JALERT_RECOVER_PENDING_V1: restore actual source abstracts, not invented text.
         from tools.recover_pending_abstracts import recover_pending_abstracts
         recovery = recover_pending_abstracts(delivery)
