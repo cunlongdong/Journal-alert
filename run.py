@@ -589,9 +589,21 @@ def run(args: argparse.Namespace) -> int:
     failures = [s for s in statuses if not s["ok"]]
     log.info("fetched %d unique items (%d source calls failed)", len(items), len(failures))
 
-    if args.check:
-        print_status_table(statuses)
-        return 0
+    if args.check or args.strict_check:
+    print_status_table(statuses)
+
+    if args.strict_check:
+        failures = [s for s in statuses if not s["ok"]]
+
+        if failures or not statuses:
+            log.error(
+                "数据源严格检查失败：%d 个失败，%d 个检查记录",
+                len(failures),
+                len(statuses),
+            )
+            return 1
+
+    return 0
 
     scorer = Scorer(
         cfg.get("keywords", []),
@@ -765,6 +777,11 @@ def main(argv: list[str] | None = None) -> int:
         help="send one test message through the configured channels, then exit",
     )
     parser.add_argument("--days", type=int, help="override the lookback window in days")
+    parser.add_argument(
+    "--strict-check",
+    action="store_true",
+    help="数据源检查失败时返回错误退出码",
+)
     parser.add_argument("--sources", help="comma list: rss,openalex,crossref")
     parser.add_argument("--date", help="report date label (YYYY-MM-DD), defaults to today")
     args = parser.parse_args(argv)
