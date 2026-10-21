@@ -154,6 +154,7 @@ class ReliableDelivery(Delivery):
             raise ValueError("Push body byte budget too small")
         fragments = []
         advances = {}
+        full_lengths = {}
         skipped = []
         for item in candidates:
             left = budget - _utf8size("".join(fragments))
@@ -178,6 +179,7 @@ class ReliableDelivery(Delivery):
                 break
             fragments.append(part)
             advances[uid] = offset + len(part)
+            full_lengths[uid] = len(full)
             if len(part) != len(rem):
                 break
         self._save_queue()
@@ -189,7 +191,7 @@ class ReliableDelivery(Delivery):
         title = f"自旋电子学文献日报｜第 {seq} 则"
         message = {"id": seq, "title": title, "body": body,
                    "targets": list(channels), "acked": {x: False for x in channels},
-                   "advances": advances, "created": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()}
+                   "advances": advances, "full_lengths": full_lengths, "created": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()}
         self.dual["next_id"] += 1
         self.dual["active"] = message
         self._persist()  # Persist the immutable page before attempting a network send.
@@ -293,8 +295,13 @@ class ReliableDelivery(Delivery):
                 break
             for uid, offset in active["advances"].items():
                 item = self.queue["items"][uid]
-                full = self._block(item, self._get_translation(item, day))
-                if offset >= len(full):
+                # Finalize the *already acknowledged immutable page* without
+                # contacting the AI or depending on mutable translation caches.
+                # Legacy active pages lack full_lengths; keep them compatible.
+                snapshot_length = active.get("full_lengths", {}).get(uid)
+                if snapshot_length is None:
+                    snapshot_length = len(self._block(item, self._get_translation(item, day)))
+                if offset >= snapshot_length:
                     item["status"] = "sent"
                     item.pop("abstract", None)
                     self.dual["progress"].pop(uid, None)
