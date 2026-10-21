@@ -7,6 +7,7 @@ feature was installed. Historical un-translated articles remain English-first.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -28,6 +29,7 @@ CSS = r"""
 .bilingual-preview.absent .excerpt { color:var(--ink3); font-style:italic; }
 .bilingual-section .sec-t { margin-top:15px; }
 .bilingual-section .abs { overflow-wrap:anywhere; }
+.english-title { display:block; font-size:0.76em; font-weight:500; color:var(--ink3); padding-top:3px; }
 """
 
 # Match template verbatim (as checked against 2026-10-21 upstream cards.py).
@@ -56,7 +58,7 @@ NEW_MODAL = """      +   '<div class="bilingual-section"><div class="sec-t">中�
             : '<p class="abs" style="color:#9d9da8">原数据源未提供英文摘要。</p>')
       +   '</div>'"""
 OLD_SEARCH = "a.title+' '+a.abstract+' '+a.authors.join(' ')"
-NEW_SEARCH = "a.title+' '+a.abstract+' '+(a.enAbstract||'')+' '+(a.zhAbstract||'')+' '+a.authors.join(' ')"
+NEW_SEARCH = "(a.zhTitle||'')+' '+a.title+' '+a.abstract+' '+(a.enAbstract||'')+' '+(a.zhAbstract||'')+' '+a.authors.join(' ')"
 
 
 def doi_key(doi: str) -> str:
@@ -125,6 +127,14 @@ def build_bilingual_html(page: str, cache: dict, english_store: dict | None = No
             paper['enAbstract'] = complete_en
         else:
             paper.pop('enAbstract', None)
+        # Titles have a separate verified cache, even without an abstract.
+        title_hash = hashlib.sha256(str(paper.get("title", "")).strip().encode("utf-8")).hexdigest()
+        title_record = (cache.get("titles") or {}).get(title_hash, {})
+        zh_title = (rec.get("zh_title") if rec else None) or title_record.get("zh_title")
+        if zh_title:
+            paper["zhTitle"] = zh_title
+        else:
+            paper.pop("zhTitle", None)
         if rec:
             paper['zhAbstract'] = rec['summary']
             translated_count += 1

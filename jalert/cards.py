@@ -734,7 +734,7 @@ svg.ic{display:block;flex:none}
       +   '<div class="tier '+a.tier+'"></div>'
       + '</div>'
       + '<div class="body">'
-      +   '<h3 class="title">'+esc(a.title)+'</h3>'
+      +   '<h3 class="title">'+(a.zhTitle ? esc(a.zhTitle)+'<span class="english-title">'+esc(a.title)+'</span>' : esc(a.title))+'</h3>'
       +   ab
       +   '<div class="tagrow">'+tags+'</div>'
       + '</div>'
@@ -793,7 +793,7 @@ svg.ic{display:block;flex:none}
       '<div class="mhead" style="background:linear-gradient(135deg,var(--'+a.tkey+'-a),var(--'+a.tkey+'-b))">'
       + '<button class="mclose" id="mclose" type="button">✕</button>'
       + '<div class="mj">'+esc(topicsOf(a).join(' / '))+' · '+esc(a.journal)+'</div>'
-      + '<h3>'+esc(a.title)+'</h3>'
+      + '<h3>'+(a.zhTitle ? esc(a.zhTitle)+'<span class="english-title">'+esc(a.title)+'</span>' : esc(a.title))+'</h3>'
       + '<div class="mmeta">'
       +   '<span>'+esc(a.tierLabel)+'</span>'
       +   (a.score!=null?'<span>得分 '+a.score+'</span>':'')
