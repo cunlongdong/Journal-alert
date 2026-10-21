@@ -84,11 +84,39 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run offline tests
+      # Avoid silently ignoring selected modes; only one special operation per run.
+      - name: Validate manual workflow options
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        env:
+          MODE_CARDS: ${{ inputs.cards_only }}
+          MODE_API: ${{ inputs.test_api }}
+          MODE_FLUSH: ${{ inputs.flush_only }}
+          MODE_STATUS: ${{ inputs.delivery_status }}
+          MODE_BARK: ${{ inputs.test_bark }}
+          MODE_BACKFILL: ${{ inputs.backfill_only }}
+          MODE_NO_PUSH: ${{ inputs.no_push }}
+        shell: bash
         run: |
-          python -m unittest discover -s tests -p 'test_enhanced_delivery.py' -v
-          python -m unittest discover -s tests -p 'test_bilingual_cards.py' -v
-          python -m unittest discover -s tests -p 'test_reliable_delivery.py' -v
+          set -eo pipefail
+          selected=()
+          [[ "$MODE_CARDS" == "true" ]] && selected+=(cards_only) || true
+          [[ "$MODE_API" == "true" ]] && selected+=(test_api) || true
+          [[ "$MODE_FLUSH" == "true" ]] && selected+=(flush_only) || true
+          [[ "$MODE_STATUS" == "true" ]] && selected+=(delivery_status) || true
+          [[ "$MODE_BARK" == "true" ]] && selected+=(test_bark) || true
+          [[ "$MODE_BACKFILL" == "true" ]] && selected+=(backfill_only) || true
+          if (( ${#selected[@]} > 1 )); then
+            echo "::error::请只勾选一个特殊模式。当前同时勾选：${selected[*]}"
+            exit 2
+          fi
+          if (( ${#selected[@]} > 0 )) && [[ "$MODE_NO_PUSH" == "true" ]]; then
+            echo "::error::no_push 只能单独使用（正常采集但不推送）。请取消其他特殊模式。"
+            exit 2
+          fi
+          echo "本次操作：${selected[0]:-normal_daily_pipeline}"
+
+      - name: Run offline tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Run literature, Bark, WeChat and history tasks
         env:
           EXTRA_DAYS: ${{ inputs.days }}
@@ -164,14 +192,14 @@ jobs:
           python tools/reliable_push.py --status >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
       - name: Configure GitHub Pages
-        if: success()
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
-        if: success()
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         uses: actions/upload-pages-artifact@v4
         with:
           path: docs
       - name: Deploy to GitHub Pages
-        if: success()
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api && !inputs.test_bark }}
         id: deployment
         uses: actions/deploy-pages@v4
