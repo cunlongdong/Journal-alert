@@ -22,7 +22,6 @@ from types import SimpleNamespace
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from jalert import push as push_module  # noqa: E402
 from jalert.cards import parse_report, write_cards  # noqa: E402
 from jalert.config import describe_secret_sources, load_config  # noqa: E402
 from jalert.fetch import collect_items, http_request, make_uid  # noqa: E402
@@ -559,20 +558,14 @@ def run(args: argparse.Namespace) -> int:
     log.info("=== %s run for %s ===", cfg.get("project", {}).get("name", "journal-alert"), day)
 
     if args.test_push:
-        project = cfg.get("project", {}).get("name", "文献日报")
-        title = f"{project} · 推送通道自检"
-        body = (
-            "如果你在微信里看到这条消息，说明推送密钥配置成功。\n\n"
-            "正式日报会在每个工作日 07:30 自动送达，内容是当天命中的文献摘要卡片。"
-        )
-        results = push_module.dispatch(cfg, title, body, log)
-        if not results:
-            print("\n没有任何「已启用且填了密钥」的渠道。请编辑 config.json：")
-            print('  push.enabled = true，并在 channels 里填入 serverchan.sendkey / pushplus.token / bark.key')
+        from jalert.reliable_delivery import ReliableDelivery
+        delivery = ReliableDelivery(Path(cfg["_root"]), log)
+        try:
+            success = delivery._bark("Bark 连接测试", "Journal-alert 中文 Bark 通知已配置。")
+        except (OSError, ValueError, RuntimeError, KeyError) as exc:
+            log.error("Bark test failed: %s", type(exc).__name__)
             return 1
-        for result in results:
-            print(f"  {result['channel']:<12} {'成功' if result['ok'] else '失败'}  {result['detail']}")
-        return 0 if any(r["ok"] for r in results) else 1
+        return 0 if success else 1
 
     if args.doctor:
         return doctor(cfg, log)
@@ -712,24 +705,7 @@ def run(args: argparse.Namespace) -> int:
                     newline="\n",
                 )
 
-        pushed = 0
-        if not args.dry_run and not args.no_push and cfg.get("push", {}).get("enabled", False):
-            push_cfg = cfg["push"]
-            if new_entries or not push_cfg.get("skip_when_empty", True):
-                title, body = build_digest(
-                    day=day,
-                    cfg=cfg,
-                    entries=sort_entries(new_entries, tiers, day),
-                    fetched_total=len(items),
-                    matched_total=len(matched),
-                    max_items=int(push_cfg.get("max_items", 6)),
-                    max_chars=int(push_cfg.get("max_chars", 1800)),
-                )
-                results = push_module.dispatch(cfg, title, body, log)
-                pushed = sum(1 for r in results if r["ok"])
-                log.info("push results: %s", json.dumps(results, ensure_ascii=False))
-            else:
-                log.info("no new items; push skipped (skip_when_empty=true)")
+        pushed = 0  # Bark delivery is handled only by tools/reliable_push.py
 
         if not args.dry_run:
             store.record_run(
@@ -783,7 +759,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--test-push",
         action="store_true",
-        help="send one test message through the configured channels, then exit",
+        help="send a Bark-only connectivity test",
     )
     parser.add_argument("--days", type=int, help="override the lookback window in days")
     parser.add_argument("--strict-check", action="store_true", help="fail if any source fails or no sources were checked")

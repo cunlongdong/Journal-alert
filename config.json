@@ -560,21 +560,11 @@
     }
   ],
   "push": {
-    "enabled": true,
+    "enabled": false,
     "skip_when_empty": true,
-    "max_items": 6,
-    "max_chars": 1800,
     "channels": {
-      "serverchan": {
-        "enabled": true,
-        "sendkey": ""
-      },
-      "pushplus": {
-        "enabled": true,
-        "token": ""
-      },
       "bark": {
-        "enabled": false,
+        "enabled": true,
         "key": "",
         "server": "https://api.day.app",
         "sound": "bird"

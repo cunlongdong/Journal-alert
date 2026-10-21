@@ -27,9 +27,7 @@ LOCAL_OVERLAY_NAME = "config.local.json"
 #: ``环境变量 -> (渠道, 字段)``。变量非空时覆盖配置文件里的值，并把该渠道打开。
 #: 用于 GitHub Actions：密钥存在仓库 Secrets 里，不进任何文件。
 SECRET_ENV: dict[str, tuple[str, str]] = {
-    "JALERT_SERVERCHAN_SENDKEY": ("serverchan", "sendkey"),
-    "JALERT_PUSHPLUS_TOKEN": ("pushplus", "token"),
-    "JALERT_BARK_KEY": ("bark", "key"),
+    "JALERT_BARK_DEVICE_KEY": ("bark", "key"),
 }
 
 #: 同上，但这些字段只覆盖、不隐式启用渠道（是渠道的附属参数）。
@@ -78,8 +76,6 @@ DEFAULTS: dict = {
         "max_items": 6,
         "max_chars": 1800,
         "channels": {
-            "serverchan": {"enabled": False, "sendkey": ""},
-            "pushplus": {"enabled": False, "token": ""},
             "bark": {"enabled": False, "key": "", "server": "https://api.day.app", "sound": "bird"},
         },
     },
@@ -154,8 +150,6 @@ def describe_secret_sources(cfg: dict) -> list[str]:
     channels = cfg.get("push", {}).get("channels", {})
     out: list[str] = []
     for channel, field, label in (
-        ("serverchan", "sendkey", "Server酱"),
-        ("pushplus", "token", "PushPlus"),
         ("bark", "key", "Bark"),
     ):
         env_name = next((k for k, v in SECRET_ENV.items() if v == (channel, field)), "")
