@@ -209,7 +209,8 @@ class ReliableDelivery(Delivery):
         else:
             url = f"https://sctapi.ftqq.com/{key}.send"
         data = _http_json(url, {"title": title, "desp": body}, form=True)
-        return data.get("code") in (0, "0")
+        code = data.get("code")
+        return type(code) in (int, str) and code in (0, "0")
 
     def _bark(self, title: str, body: str) -> bool:
         server = os.environ.get("JALERT_BARK_SERVER", "https://api.day.app").rstrip("/")
@@ -220,7 +221,8 @@ class ReliableDelivery(Delivery):
         payload = {"device_key": key, "title": title, "body": body,
                    "group": "Journal-alert", "url": os.environ.get("JALERT_REPORT_SITE_URL", SITE_URL)}
         data = _http_json(server + "/push", payload)
-        return data.get("code") in (0, 200, "0", "200") or data.get("success") is True
+        code = data.get("code")
+        return (type(code) in (int, str) and code in (0, 200, "0", "200")) or data.get("success") is True
 
     def _send(self, channel: str, title: str, body: str) -> bool:
         return self._wechat(title, body) if channel == "wechat" else self._bark(title, body)
