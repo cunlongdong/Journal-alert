@@ -29,6 +29,28 @@ def fill_missing_titles(root: Path, *, limit: int = 80, dry_run: bool = False,
     papers, _reports, _topics = collect(root / "reports")
     delivery = ReliableDelivery(root, log)
     titles = delivery.cache.setdefault("titles", {})
+    # A small DOI-and-exact-English-title reviewed glossary protects chemical
+    # formula notation (subscripts, Fe3-xGeTe2) from unreliable model output.
+    correction_path = ROOT / "research" / "title_corrections.json"
+    correction_map = json.loads(correction_path.read_text("utf-8")) if correction_path.exists() else {}
+    corrected = 0
+    for paper in papers:
+        doi = str(paper.get("doi") or "").lower().strip()
+        title = str(paper.get("title") or "").strip()
+        rec = correction_map.get(doi)
+        if not isinstance(rec, dict) or rec.get("title") != title:
+            continue
+        zh_title = str(rec.get("zh_title") or "")
+        if not zh_title or not any("\\u4e00" <= c <= "\\u9fff" for c in zh_title):
+            continue
+        key = hashlib.sha256(title.encode("utf-8")).hexdigest()
+        if not titles.get(key, {}).get("zh_title"):
+            corrected += 1
+            if not dry_run:
+                titles[key] = {"title": title, "zh_title": zh_title,
+                               "source": "curated technical-title glossary"}
+    if corrected and not dry_run:
+        delivery._save_cache()
     missing = []
     seen = set()
     for paper in papers:
@@ -73,6 +95,7 @@ def fill_missing_titles(root: Path, *, limit: int = 80, dry_run: bool = False,
     result = {
         "cards": len(papers),
         "title_cache_entries": len(titles),
+        "reviewed_glossary_applied": corrected,
         "missing_before": len(missing),
         "attempted": attempted,
         "translated": translated,
