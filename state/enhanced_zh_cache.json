@@ -12,6 +12,60 @@
       "provider": "custom",
       "model": "deepseek-v4.1-flash",
       "date": "2026-10-21"
+    },
+    "f2eb474c22defdda6e2d9bcd9989e5d6e06321d0f4bc16b2f0ee605d7411c110": {
+      "summary": "补偿亚铁磁体在基态下打破亚晶格对称性和时间反演对称性，尽管净磁化强度为零，却表现出类似各向同性铁磁体的自旋劈裂，这与具有动量依赖自旋劈裂的交变磁体形成对比。我们通过分析补偿亚铁磁体与普通金属之间结中的自旋塞贝克效应和自旋泵浦，研究各向同性自旋劈裂如何在自旋输运中体现。我们表明，补偿亚铁磁体产生可观的自旋塞贝克信号，其符号可通过在两个奈尔态之间切换而反转。此外，我们证明自旋泵浦表现出依赖于奈尔态的共振劈裂，这在常规反铁磁体中不存在。这些结果将自旋泵浦确定为补偿亚铁磁体的一种自然读出机制，并确立其作为自旋电子学存储器件中有前景的无磁化构建单元的地位。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "9919acfebe0a9dc0b8dc9e6d65b3a45b294f58c0c1c89d631a4de0b035886bda": {
+      "summary": "补偿亚铁磁体在基态下打破亚晶格对称性和时间反演对称性，尽管净磁化强度为零，却表现出类似各向同性铁磁体的自旋劈裂，这与具有动量依赖自旋劈裂的交变磁体形成对比。我们通过分析补偿亚铁磁体与普通金属之间结中的自旋塞贝克效应和自旋泵浦，研究各向同性自旋劈裂如何在自旋输运中体现。我们表明，补偿亚铁磁体产生可观的自旋塞贝克信号，其符号可通过在两个奈尔态之间切换而反转。此外，我们证明自旋泵浦表现出依赖于奈尔态的共振劈裂，这在常规反铁磁体中不存在。这些结果将自旋泵浦确定为补偿亚铁磁体的一种自然读出机制，并确立其作为自旋电子学存储器件中有前景的无磁化构建单元的地位。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1103/52g1-n617",
+      "doi": "10.1103/52g1-n617",
+      "title": "Spin current generation controlled by the Néel state in a compensated ferrimagnet",
+      "english_abstract": "Compensated ferrimagnets, which break sublattice and time-reversal symmetries in the ground state, exhibit an isotropic ferromagnet-like spin splitting despite a vanishing net magnetization, in contrast to altermagnets with momentum-dependent spin splitting. We investigate how isotropic spin splitting manifests in spin transport by analyzing the spin Seebeck effect and spin pumping in a junction between a compensated ferrimagnet and a normal metal. We show that compensated ferrimagnets generate a sizable spin Seebeck signal, with a sign that can be reversed by switching between the two Néel states. Furthermore, we demonstrate that spin pumping exhibits a Néel-state-dependent resonance splitting, which is absent in conventional antiferromagnets. These results identify spin pumping as a natural readout mechanism for compensated ferrimagnets and establish them as promising magnetization-free building blocks for spintronic memory devices."
+    },
+    "37ac2cddbcb5e2b938a1517d790cbe324749d9f71306296a21173129fa841a44": {
+      "summary": "反铁磁体能否在没有传统自旋选择性带隙的情况下实现方向鲁棒的自旋极化输运，仍然反铁磁自旋电子学中的一个核心挑战。在此，我们在一种补偿型二维交错磁Weyl半金属中建立了一种无带隙、方向鲁棒的自旋过滤机制，该机制既不需要自旋选择性带隙，也不需要自旋投影之间的大速度对比。以Janus单层Ta$_2$TeSeO作为现实平台，我们将对称性分析与第一性原理计算、全布里渊区Wannier插值和半经典输运相结合。旋转Néel矢量会移除一个酉镜面约束，并使一对Weyl锥偏离其母高对称线。对于面内Néel矢量，残余的$C_{2z}\\mathcal T$对称性禁止了会打开局域带隙的独立$σ_y$质量，使得重构后的锥在动量中移动同时保持无带隙。破坏酉$C_{2z}$同时解除了剩余镜面钉扎Weyl锥的能量等价性。由此产生的金属性自旋投影流形与低DOS的Weyl衍生流形的共存，产生了以DOS为主导的电导不平衡。在电荷中性和20~K下，对于$\\mathbf n\\parallel x$，纵向电导极化对于每个面内电流方向都保持为正，范围从$76.4\\%$到$82.0\\%$。简并的面内磁各向异性促进了利用应变或弱各向异性场在对称性相关的自旋过滤态之间进行可逆切换。这种Néel矢量驱动的对称性机制为补偿型交错磁体中的方向鲁棒无带隙自旋过滤提供了一条通用途径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "713d03c52ea7d8c8f567c82fc4e8ddba8f8df459f50c629dd3083a660cf9463f": {
+      "summary": "反铁磁体能否在没有传统自旋选择性带隙的情况下实现方向鲁棒的自旋极化输运，仍然反铁磁自旋电子学中的一个核心挑战。在此，我们在一种补偿型二维交错磁Weyl半金属中建立了一种无带隙、方向鲁棒的自旋过滤机制，该机制既不需要自旋选择性带隙，也不需要自旋投影之间的大速度对比。以Janus单层Ta$_2$TeSeO作为现实平台，我们将对称性分析与第一性原理计算、全布里渊区Wannier插值和半经典输运相结合。旋转Néel矢量会移除一个酉镜面约束，并使一对Weyl锥偏离其母高对称线。对于面内Néel矢量，残余的$C_{2z}\\mathcal T$对称性禁止了会打开局域带隙的独立$σ_y$质量，使得重构后的锥在动量中移动同时保持无带隙。破坏酉$C_{2z}$同时解除了剩余镜面钉扎Weyl锥的能量等价性。由此产生的金属性自旋投影流形与低DOS的Weyl衍生流形的共存，产生了以DOS为主导的电导不平衡。在电荷中性和20~K下，对于$\\mathbf n\\parallel x$，纵向电导极化对于每个面内电流方向都保持为正，范围从$76.4\\%$到$82.0\\%$。简并的面内磁各向异性促进了利用应变或弱各向异性场在对称性相关的自旋过滤态之间进行可逆切换。这种Néel矢量驱动的对称性机制为补偿型交错磁体中的方向鲁棒无带隙自旋过滤提供了一条通用途径。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1103/nyd5-ddcb",
+      "doi": "10.1103/nyd5-ddcb",
+      "title": "Neel-vector-orientation induced direction-robust spin filtering in two-dimensional altermagnets",
+      "english_abstract": "Whether an antiferromagnet can host direction-robust spin-polarized transport without a conventional spin-selective band gap remains a central challenge in antiferromagnetic spintronics. Here we establish a gapless, direction-robust spin-filtering mechanism in a compensated two-dimensional altermagnetic Weyl semimetal that requires neither a spin-selective band gap nor a large velocity contrast between spin projections. Using Janus monolayer Ta$_2$TeSeO as a realistic platform, we combine symmetry analysis with first-principles calculations, full-Brillouin-zone Wannier interpolation, and semiclassical transport. Rotating the Néel vector removes a unitary-mirror constraint and shifts one Weyl-cone pair away from its parent high-symmetry line. For an in-plane Néel vector, the residual $C_{2z}\\mathcal T$ symmetry forbids the independent $σ_y$ mass that would open a local gap, allowing the reconstructed cones to shift in momentum while remaining gapless. Breaking unitary $C_{2z}$ simultaneously lifts the energy equivalence of the remaining mirror-pinned Weyl cones. The resulting coexistence of a metallic spin-projected manifold and a low-DOS Weyl-derived manifold produces a predominantly DOS-driven conductance imbalance. At charge neutrality and 20~K, the longitudinal conductivity polarization for $\\mathbf n\\parallel x$ remains positive for every in-plane current direction and ranges from $76.4\\%$ to $82.0\\%$. The degenerate in-plane magnetic anisotropy facilitates reversible switching between symmetry-related spin-filtering states using strain or weak anisotropic fields. This Néel-vector-driven symmetry mechanism provides a general route to direction-robust gapless spin filtering in compensated altermagnets."
+    },
+    "13dec260fc408d62d75ef5f83c15d1762adf7ec449dfc090a8ddc74de768aa5b": {
+      "summary": "尽管铁磁体与拓扑材料双层结构已被广泛研究以通过拓扑表面态（TSS）获得高效的自旋-电荷转换，但磁邻近效应（MPE）对TSS演化及转换效率的影响仍知之甚少。在本研究中，我们通过自旋泵浦测量，在由铁磁Fe与拓扑狄拉克半金属α-Sn组成的异质结构中实验探测并揭示了自旋动量锁定的TSS的行为。随着α-Sn厚度（tSn）从9 nm增加至35 nm，Fe层的吉尔伯特阻尼常数在tSn = 25 nm处呈现显著峰值，随后在更大厚度处下降。我们结合解析建模与第一性原理计算的严格理论分析，将这一行为归因于Fe与α-Sn界面处TSS的消失以及相对表面上交换能隙的打开，二者均由长程MPE及其对自旋-电荷转换效率的影响所诱导。在tSn = 25 nm处，我们展示了高效的自旋-电荷转换，其逆Edelstein长度为3.14 nm，这是铁磁体与拓扑材料双层结构在室温下所报道的最高值。这些发现凸显了在MPE下调控TSS性质对于推进拓扑材料在自旋电子学应用中发展的关键作用。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-21",
+      "part": 1,
+      "part_count": 1
+    },
+    "3ca1ef0cc16c44000c6f8f6cbd7961b2669db2873cf59e7495c76a31b0c6013f": {
+      "summary": "尽管铁磁体与拓扑材料双层结构已被广泛研究以通过拓扑表面态（TSS）获得高效的自旋-电荷转换，但磁邻近效应（MPE）对TSS演化及转换效率的影响仍知之甚少。在本研究中，我们通过自旋泵浦测量，在由铁磁Fe与拓扑狄拉克半金属α-Sn组成的异质结构中实验探测并揭示了自旋动量锁定的TSS的行为。随着α-Sn厚度（tSn）从9 nm增加至35 nm，Fe层的吉尔伯特阻尼常数在tSn = 25 nm处呈现显著峰值，随后在更大厚度处下降。我们结合解析建模与第一性原理计算的严格理论分析，将这一行为归因于Fe与α-Sn界面处TSS的消失以及相对表面上交换能隙的打开，二者均由长程MPE及其对自旋-电荷转换效率的影响所诱导。在tSn = 25 nm处，我们展示了高效的自旋-电荷转换，其逆Edelstein长度为3.14 nm，这是铁磁体与拓扑材料双层结构在室温下所报道的最高值。这些发现凸显了在MPE下调控TSS性质对于推进拓扑材料在自旋电子学应用中发展的关键作用。",
+      "provider": "custom",
+      "date": "2026-10-21",
+      "mode": "literal-full-translation",
+      "uid": "history:10.1103/jg51-9xf7",
+      "doi": "10.1103/jg51-9xf7",
+      "title": "Giant spin-to-charge conversion by tailoring magnetically proximitized topological Dirac semimetal",
+      "english_abstract": "While ferromagnet and topological material bilayers are widely studied to obtain efficient spin charge conversion via topological surface states (TSS), the influence of the magnetic proximity effect (MPE) on the TSS evolution and conversion efficiency remains poorly understood. In this study, we experimentally probe and reveal the behavior of spin momentum locked TSS through spin pumping measurements in heterostructures composed of ferromagnetic Fe and the topological Dirac semimetal alpha Sn. As the alpha Sn thickness (tSn) increases from 9 to 35 nm, the Gilbert damping constant of the Fe layer exhibits a pronounced peak at tSn = 25 nm, followed by a decrease at greater thicknesses. Our rigorous theoretical analysis, combining analytical modeling and first principles calculations, attributes this behavior to the TSS disappearance at the Fe and alpha Sn interface and exchange gap opening on the opposite surface, both induced by the long range MPE and its influence on the spin charge conversion efficiency. At tSn = 25 nm, we demonstrate highly efficient spin charge conversion with an inverse Edelstein length of 3.14 nm, the highest value reported at room temperature for ferromagnet and topological material bilayers. These findings underscore the critical role of tuning TSS properties under MPE for advancing topological materials in spintronic applications."
     }
   }
 }
