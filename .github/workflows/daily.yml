@@ -77,7 +77,9 @@ jobs:
           python-version: '3.12'
 
       - name: Run local tests before production
-        run: python -m unittest discover -s tests -p 'test_enhanced_delivery.py' -v
+        run: |
+          python -m unittest discover -s tests -p 'test_enhanced_delivery.py' -v
+          python -m unittest discover -s tests -p 'test_bilingual_cards.py' -v
 
       - name: Environment self-check
         if: ${{ !inputs.cards_only && !inputs.flush_only && !inputs.delivery_status && !inputs.test_api }}
@@ -110,6 +112,12 @@ jobs:
             if [ "$EXTRA_NO_PUSH" = "true" ]; then set -- "$@" --no-push; fi
             python tools/enhanced_run.py "$@"
           fi
+
+      # Always refresh bilingual abstracts after generating/updating reports,
+      # including cards_only and flush_only. Never call the AI here.
+      - name: Enrich bilingual card wall
+        if: ${{ success() && !inputs.delivery_status && !inputs.test_api }}
+        run: python tools/enrich_bilingual_cards.py
 
       # Outbox/cache are tracked in state/; no change to state/seen.sqlite schema.
       - name: Commit reports, queue and cache
@@ -146,6 +154,12 @@ jobs:
           else
             echo '本次未生成新日报（仅检查/推送/卡片墙模式可以正常出现）。' >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: Summarize pending Chinese WeChat articles
+        if: always()
+        run: |
+          echo '### 中文微信推送队列' >> "$GITHUB_STEP_SUMMARY"
+          python tools/enhanced_run.py --delivery-status >> "$GITHUB_STEP_SUMMARY"
 
       - name: Configure GitHub Pages
         if: success()
