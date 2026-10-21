@@ -93,6 +93,7 @@ class Delivery:
             self.queue["items"][uid] = {
                 "uid": uid,
                 "title": str(item.title or ""),
+                "authors": [str(name) for name in (getattr(item, "authors", None) or []) if str(name).strip()][:30],
                 "journal": str(item.journal or ""),
                 "date": str(item.date or ""),
                 "doi": str(item.doi or ""),
