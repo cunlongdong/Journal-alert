@@ -10,6 +10,7 @@ import argparse
 import html
 import json
 import logging
+import os
 import re
 import sys
 import urllib.error
@@ -58,8 +59,12 @@ def from_inverted(index: dict | None) -> str:
     return " ".join(slots.get(i, "") for i in range(max(slots) + 1)).strip()
 
 
-def _get_json(url: str) -> dict:
-    req = urllib.request.Request(url, headers={"User-Agent": "journal-alert-history-backfill/1.0 (open-source academic citation alerts)", "Accept": "application/json"})
+def _get_json(url: str, *, headers: dict | None = None) -> dict:
+    request_headers = {"User-Agent": "journal-alert-history-backfill/1.1 (academic citation alerts)",
+                       "Accept": "application/json"}
+    if headers:
+        request_headers.update(headers)
+    req = urllib.request.Request(url, headers=request_headers)
     with urllib.request.urlopen(req, timeout=18) as response:
         return json.loads(response.read(5 * 1024 * 1024).decode("utf-8"))
 
@@ -83,6 +88,24 @@ def lookup_english_abstract(doi: str) -> tuple[str, str]:
             return full, "Crossref"
     except (OSError, ValueError, KeyError, RuntimeError) as e:
         LOG.info("Crossref abstract unavailable %s (%s)", d[:40], type(e).__name__)
+    # Fallback for works whose abstracts are unavailable in OpenAlex/Crossref.
+    # Exact DOI validation avoids linking a different paper's abstract to a card.
+    if os.getenv("JALERT_SEMANTIC_SCHOLAR_ENABLED", "true").lower() in ("true", "1", "yes"):
+        paper_id = urllib.parse.quote("DOI:" + d, safe="")
+        endpoint = ("https://api.semanticscholar.org/graph/v1/paper/" + paper_id
+                    + "?fields=title,abstract,externalIds")
+        key = os.getenv("SEMANTIC_SCHOLAR_API_KEY", "").strip()
+        extra_headers = {"x-api-key": key} if key else None
+        try:
+            entry = _get_json(endpoint, headers=extra_headers)
+            external = entry.get("externalIds") or {}
+            returned_doi = doi_key(external.get("DOI", "")) if isinstance(external, dict) else ""
+            abstract = clean_abstract(entry.get("abstract", ""))
+            if returned_doi == d and abstract:
+                return abstract, "Semantic Scholar"
+            LOG.info("Semantic Scholar result without matching DOI/abstract: %s", d[:40])
+        except (OSError, ValueError, KeyError, RuntimeError, TypeError) as e:
+            LOG.info("Semantic Scholar abstract unavailable for %s (%s)", d[:40], type(e).__name__)
     return "", ""
 
 
@@ -133,7 +156,13 @@ def backfill(root: Path, max_papers: int = 3, dry_run: bool = False, *, lookup=l
         if isinstance(existing, dict) and existing.get("abstract"):
             english, source = existing["abstract"], existing.get("source", "stored")
         else:
-            english, source = lookup(paper["doi"])
+            try:
+                english, source = lookup(paper["doi"])
+            except (OSError, ValueError, RuntimeError, KeyError, TypeError) as exc:
+                failed += 1
+                log.warning("Historical source lookup deferred for %s: %s",
+                            paper["doi"][:60], type(exc).__name__)
+                continue
             if english and len(english) <= DEFAULTS["max_input_chars"]:
                 english_store["abstracts"][norm_doi] = {
                     "abstract": english,
