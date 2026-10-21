@@ -47,8 +47,9 @@ class BarkTests(unittest.TestCase):
         self.assertEqual(len(sent), 23)
         self.assertEqual(result["pending_papers"], 0)
         self.assertEqual(result["bark_articles_sent_this_run"], 23)
-        self.assertTrue(all("中文标题：" in body and "英文标题：" in body and "中文摘要" in body for _,body in sent))
-        self.assertTrue(all("中文摘要（忠实翻译）：" in body for _,body in sent))
+        self.assertTrue(all("中文标题：" in body and "作者：" in body and "中文摘要：" in body for _,body in sent))
+        self.assertTrue(all("（忠实翻译）" not in body and "英文标题：" not in body for _,body in sent))
+        self.assertTrue(all(title.startswith("Exchange bias in structures ") for title,_ in sent))
         self.assertTrue(all(len(body.encode("utf-8")) <= 1500 for _,body in sent))
         restarted = ReliableDelivery(self.root)
         with patch.object(restarted, "_bark", side_effect=AssertionError("duplicate Bark")):
@@ -71,19 +72,26 @@ class BarkTests(unittest.TestCase):
         self.assertIn("暂未提供可核实的摘要", sent[0])
         self.assertIn("论文链接：", sent[0])
 
-    def test_missing_abstract_is_sent_even_when_title_translation_unavailable(self):
+    def test_missing_abstract_waits_for_verified_chinese_title(self):
         self.delivery.enqueue([makeitem(0, "")])
         sent = []
         with patch.object(self.delivery, "_translate_title", side_effect=RuntimeError("AI daily request budget exhausted")), \
              patch.object(self.delivery, "_get_translation", side_effect=AssertionError("no Abstract")), \
              patch.object(self.delivery, "_bark", side_effect=lambda t,b: sent.append(b) or True):
             status = self.delivery.flush_both()
+        self.assertEqual(sent, [])
+        self.assertEqual(status["pending_papers"], 1)
+        self.assertEqual(status["bark_articles_sent_this_run"], 0)
+        self.assertIn("budget exhausted", self.delivery.queue["items"][makeitem(0)[0].uid]["last_ai_error"])
+        with patch.object(self.delivery, "_translate_title", return_value=CHINESE_TITLE), \
+             patch.object(self.delivery, "_bark", side_effect=lambda t,b: sent.append((t,b)) or True):
+            result = self.delivery.flush_both()
+        self.assertEqual(result["pending_papers"], 0)
         self.assertEqual(len(sent), 1)
-        self.assertEqual(status["pending_papers"], 0)
-        self.assertEqual(status["sent_without_abstract"], 1)
-        self.assertEqual(status["sent_without_chinese_title"], 1)
-        self.assertIn("中文标题暂不可用", sent[0])
-        self.assertIn("数据源", sent[0])
+        self.assertTrue(sent[0][0].startswith("Exchange bias"))
+        self.assertIn("中文标题："+CHINESE_TITLE, sent[0][1])
+        self.assertIn("中文摘要：", sent[0][1])
+        self.assertIn("暂未提供", sent[0][1])
 
     def test_ai_failure_keeps_original_pending(self):
         self.delivery.enqueue([makeitem(0)])
