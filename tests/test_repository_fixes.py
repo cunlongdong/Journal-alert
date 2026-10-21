@@ -27,6 +27,26 @@ class RecoverPendingTests(unittest.TestCase):
         self.assertEqual(d.queue['items']['x']['abstract'],'Actual complete English Abstract')
         self.assertGreaterEqual(d.saves,2)
 
+    def test_recovered_abstract_survives_bark_queue_compaction(self):
+        from jalert.reliable_delivery import ReliableDelivery
+        from jalert.metadata import load_metadata
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            delivery = ReliableDelivery(root)
+            item = SimpleNamespace(
+                uid="doi:10.7/abc", doi="10.7/abc", title="Magnetic tunnel junction",
+                authors=["A"], journal="PRB", date="2026-10-21", url="", abstract="")
+            score = SimpleNamespace(score=7, labels=["MTJ"])
+            delivery.enqueue([(item, score)])
+            full = "A verified original abstract describing magnetic switching. " * 5
+            found = recover_pending_abstracts(delivery, lookup=lambda doi:(full, "Crossref"))
+            self.assertEqual(found["recovered"], 1)
+            delivery.queue["items"][item.uid].pop("abstract")
+            delivery._save_queue()
+            stored = load_metadata(root)["articles"]["doi:10.7/abc"]
+            self.assertEqual(stored["abstract"], full.strip())
+            self.assertEqual(stored["abstract_source"], "Crossref")
+
     def test_cooldown_prevents_repeat_requests(self):
         d=SimpleNamespace(queue={'items':{'x':{'uid':'x','doi':'10.7/abc','abstract':'',
               'status':'pending','abstract_last_checked':__import__('datetime').date.today().isoformat()}}},

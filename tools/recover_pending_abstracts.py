@@ -74,6 +74,14 @@ def recover_pending_abstracts(
         with ThreadPoolExecutor(max_workers=min(6, len(selected))) as pool:
             for (item, _doi), (english, provider) in zip(selected, pool.map(query, selected)):
                 if english and len(english) <= DEFAULTS["max_input_chars"]:
+                    # The queue compacts sent papers by removing their Abstract.
+                    # Persist DOI-verified source text first, so later reports
+                    # and bilingual cards retain it after Bark acknowledges.
+                    root = getattr(delivery, "root", None)
+                    if root is not None:
+                        from jalert.metadata import merge_verified_abstract
+                        merge_verified_abstract(root, _doi, str(item.get("title") or ""),
+                                                english, provider)
                     item["abstract"] = english
                     item["abstract_provider"] = provider
                     item["abstract_lookup_status"] = "recovered"
