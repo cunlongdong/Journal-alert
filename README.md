@@ -32,6 +32,7 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 - `no_push`：抓取并加入待发队列，本次不推送。
 - `flush_only`：只尝试补发待处理的论文（同时恢复缺失英文摘要）；不再次抓取期刊。
 - `cards_only`：只重建文献网页；不发 Bark。
+- `titles_only`：只为已有卡片中尚无中文标题的论文调用翻译，并更新双语网页；**不会抓取新论文，也不会发送 Bark**。翻译额度不足时继续保留待补标题。
 - `backfill_only`：历史论文补摘要和中文标题，最多处理 `history_max` 指定的论文（上限 15）；**不会向 Bark 补发旧通知**。
 - `rebuild_only`：不进入待发队列，但会将新论文标记为已见；谨慎使用。
 - `delivery_status`：查看待处理队列、缺少英文摘要数量、Bark 接受确认等。
@@ -49,6 +50,12 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 - `JALERT_BARK_BODY_BYTES`：通知正文上限（默认 2400 字节）；`JALERT_BARK_MAX_MESSAGES_RUN`：单轮安全尝试上限。
 
 配置中的 API 密钥不应提交到仓库；设置均通过 GitHub Secrets 读取。
+
+## 摘要补全来源与开源借鉴
+
+完整摘要按 DOI 依次参考 OpenAlex、Crossref、Semantic Scholar、**Europe PMC（免费 core 元数据）**和出版社官网公开的 Abstract 区块。此措施增加覆盖范围，但无法保证付费/动态网页的摘要一定可抓取。详细比较 Zotero、Trafilatura、ScholarFetch、paperscraper 与 GROBID，请见 [开源摘要恢复方案](research/abstract_recovery_options.md)。
+
+历史网页仍显示英文标题时，请选 Actions → journal-alert daily → Run workflow → main → **titles_only**，该操作不推送、不清库；随后从 Summary 检查尚未补齐的中文标题。自动每日工作流也会在网页生成前尝试补充遗漏的中文标题。
 
 ## 中英文完整性
 
