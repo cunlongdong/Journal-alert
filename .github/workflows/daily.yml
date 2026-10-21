@@ -166,7 +166,15 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A
+          git add -- reports/ docs/
+
+          git add -- \
+            state/seen.sqlite \
+            state/enhanced_wechat_outbox.json \
+            state/enhanced_zh_cache.json \
+            state/dual_channel_delivery.json \
+            state/full_english_abstracts.json \
+            state/history_backfill_cursor.json
           if git diff --cached --quiet; then
             echo 'Nothing changed'
           else
