@@ -545,7 +545,7 @@ def main(argv=None) -> int:
         for doi, info in sorted(result["doi_outcomes"].items()):
             state = info["status"]
             source = str(info.get("english_source") or "—").replace("|", "/")
-            header.append(f"| \`{doi}\` | {state} | {source} | " +
+            header.append(f"| `{doi}` | {state} | {source} | " +
                           ("有" if info.get("chinese_title") else "缺") + " | " +
                           ("有" if info.get("chinese_abstract") else "缺") + " |")
             if state not in ("complete", "already_complete"):
@@ -555,7 +555,7 @@ def main(argv=None) -> int:
         summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
         if summary_path:
             with open(summary_path, "a", encoding="utf-8") as out:
-                out.write("\\n".join(header) + "\\n")
+                out.write("\n".join(header) + "\n")
         if incomplete:
             LOG.warning("%d/%d selected DOI(s) remain incomplete (see run summary)",
                         len(incomplete), len(requested))
