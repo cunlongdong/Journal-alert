@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "requires_review": true,
+  "reason": "Fresh database reset requested by repository owner. Do not send queued papers until they have reviewed the regenerated cards and status.",
+  "created": "2026-10-21",
+  "how_to_release": "Manually trigger journal-alert daily on main with approve_rebuild=true; this does not send Bark. Then run flush_only if desired."
+}
