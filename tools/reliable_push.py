@@ -20,6 +20,16 @@ def main(argv=None):
     ns = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format='%(levelname)s %(message)s')
     delivery = ReliableDelivery(ROOT)
+    # Run #47 accepted 33 Bark articles, but the state push was rejected.
+    # Never replay these possible deliveries without an explicit reconciliation.
+    hold_path = ROOT / "state" / "bark_recovery_required.json"
+    recovery_hold = json.loads(hold_path.read_text("utf-8")) if hold_path.is_file() else None
+    if ns.flush and recovery_hold is not None:
+        logging.error("Bark paused: review %s before replaying uncommitted notifications", hold_path)
+        print(json.dumps({"recovery_required": recovery_hold,
+                          "pending_papers": delivery.pending_count()},
+                         ensure_ascii=False, indent=2))
+        return 3
     if ns.test_bark:
         import os
         if os.getenv('JALERT_BARK_ENABLED', 'false').lower() not in ('true','1','yes'):
@@ -45,6 +55,8 @@ def main(argv=None):
         report = delivery.flush_both()
     else:
         report = delivery.status()
+    if recovery_hold is not None:
+        report['recovery_required'] = recovery_hold
     report['pending_without_english'] = sum(
         bool(x.get('status') == 'pending' and not x.get('abstract', '').strip())
         for x in delivery.queue['items'].values()

@@ -247,6 +247,17 @@ jobs:
             git commit -m "chore(state): $(date +%F) Bark alerts and bilingual history"
             git push
           fi
+      - name: Preserve runtime state after failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: recoverable-state-${{ github.run_id }}
+          path: |
+            state/
+            reports/
+            docs/index.html
+          if-no-files-found: warn
+          retention-days: 21
       - name: Upload diagnostic logs
         if: always()
         uses: actions/upload-artifact@v4
