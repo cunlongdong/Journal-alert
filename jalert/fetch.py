@@ -84,6 +84,9 @@ def http_request(
     backoff: float = 1.5,
 ) -> tuple[int, bytes]:
     """GET/POST a URL, returning ``(status, body)``; retries transient failures."""
+    effective_method = (method or ("POST" if data is not None else "GET")).upper()
+    if effective_method not in ("GET", "HEAD", "OPTIONS"):
+        retries = 0
     last_error = "unknown error"
     for attempt in range(retries + 1):
         try:
