@@ -29,11 +29,11 @@ on:
         type: boolean
         default: false
       flush_only:
-        description: "只推送待发队列到微信+Bark，不检索"
+        description: "仅发送待处理的中文 Bark 论文，不检索"
         type: boolean
         default: false
       test_bark:
-        description: "只向 Bark 发一条连接测试（不发微信）"
+        description: "只发送一条 Bark 连接测试"
         type: boolean
         default: false
       delivery_status:
@@ -41,7 +41,7 @@ on:
         type: boolean
         default: false
       backfill_only:
-        description: "历史论文补译（不发送微信/Bark）"
+        description: "历史论文补译（不发送 Bark）"
         type: boolean
         default: false
       history_max:
@@ -64,10 +64,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     env:
       TZ: Asia/Shanghai
-      JALERT_SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
       JALERT_BARK_DEVICE_KEY: ${{ secrets.BARK_DEVICE_KEY }}
       JALERT_BARK_ENABLED: ${{ vars.JALERT_BARK_ENABLED || 'true' }}
-      JALERT_BARK_REQUIRED: 'true'
       JALERT_BARK_SERVER: ${{ vars.JALERT_BARK_SERVER || 'https://api.day.app' }}
       JALERT_BARK_BODY_BYTES: ${{ vars.JALERT_BARK_BODY_BYTES || '2400' }}
       JALERT_BARK_MAX_MESSAGES_RUN: ${{ vars.JALERT_BARK_MAX_MESSAGES_RUN || '5000' }}
@@ -76,10 +74,8 @@ jobs:
       CUSTOM_AI_MODEL: ${{ vars.CUSTOM_AI_MODEL }}
       JALERT_AI_PRIMARY: custom
       JALERT_AI_FALLBACK: none
-      JALERT_AI_MAX_CALLS_DAY: ${{ vars.JALERT_AI_MAX_CALLS_DAY || '25' }}
+      JALERT_AI_MAX_CALLS_DAY: ${{ vars.JALERT_AI_MAX_CALLS_DAY || '200' }}
       JALERT_AI_MAX_TOKENS: ${{ vars.JALERT_AI_MAX_TOKENS || '2200' }}
-      JALERT_WECHAT_MAX_MESSAGES_DAY: ${{ vars.JALERT_WECHAT_MAX_MESSAGES_DAY || '4' }}
-      JALERT_WECHAT_MAX_CHARS: ${{ vars.JALERT_WECHAT_MAX_CHARS || '3500' }}
       JALERT_REPORT_SITE_URL: https://cunlongdong.github.io/Journal-alert/
       JALERT_MAILTO: ${{ vars.JALERT_MAILTO }}
     steps:
@@ -124,7 +120,7 @@ jobs:
 
       - name: Run offline tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
-      - name: Run literature, Bark, WeChat and history tasks
+      - name: Run literature and Chinese Bark history tasks
         env:
           EXTRA_DAYS: ${{ inputs.days }}
           EXTRA_SOURCES: ${{ inputs.sources }}
@@ -167,7 +163,7 @@ jobs:
             if [[ "$EXTRA_NO_PUSH" != "true" ]]; then
               python tools/reliable_push.py --flush
               # Historical backfill runs AFTER today's notifications; never re-pushes history.
-              python tools/history_backfill.py --max 2
+              python tools/history_backfill.py --max 10
             fi
           fi
       - name: Enrich bilingual card wall
@@ -219,7 +215,7 @@ jobs:
         if: always()
         shell: bash
         run: |
-          echo '### Bark 逐篇推送 + 微信分页 / 积压状态' >> "$GITHUB_STEP_SUMMARY"
+          echo '### Bark 中文逐篇推送 / 待补译状态' >> "$GITHUB_STEP_SUMMARY"
           echo '```json' >> "$GITHUB_STEP_SUMMARY"
           python tools/reliable_push.py --status >> "$GITHUB_STEP_SUMMARY"
           echo '```' >> "$GITHUB_STEP_SUMMARY"
