@@ -71,6 +71,20 @@ class BarkTests(unittest.TestCase):
         self.assertIn("暂未提供可核实的摘要", sent[0])
         self.assertIn("论文链接：", sent[0])
 
+    def test_missing_abstract_is_sent_even_when_title_translation_unavailable(self):
+        self.delivery.enqueue([makeitem(0, "")])
+        sent = []
+        with patch.object(self.delivery, "_translate_title", side_effect=RuntimeError("AI daily request budget exhausted")), \
+             patch.object(self.delivery, "_get_translation", side_effect=AssertionError("no Abstract")), \
+             patch.object(self.delivery, "_bark", side_effect=lambda t,b: sent.append(b) or True):
+            status = self.delivery.flush_both()
+        self.assertEqual(len(sent), 1)
+        self.assertEqual(status["pending_papers"], 0)
+        self.assertEqual(status["sent_without_abstract"], 1)
+        self.assertEqual(status["sent_without_chinese_title"], 1)
+        self.assertIn("中文标题暂不可用", sent[0])
+        self.assertIn("数据源", sent[0])
+
     def test_ai_failure_keeps_original_pending(self):
         self.delivery.enqueue([makeitem(0)])
         with patch.object(self.delivery, "_translate_title", return_value=CHINESE_TITLE), \
