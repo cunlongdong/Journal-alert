@@ -1,4 +1,4 @@
-"""Entry point for bilingual notification delivery with separate Bark/WeChat acks."""
+"""Reliable dual-channel alerts, with bounded missing-abstract recovery."""
 from __future__ import annotations
 import argparse
 import json
@@ -32,8 +32,21 @@ def main(argv=None):
             return 1
         print('Bark test accepted by API' if accepted else 'Bark rejected test message')
         return 0 if accepted else 1
-    report = delivery.status() if ns.status else delivery.flush_both()
+    if ns.flush:
+        # JALERT_RECOVER_PENDING_V1: restore actual source abstracts, not invented text.
+        from tools.recover_pending_abstracts import recover_pending_abstracts
+        recovery = recover_pending_abstracts(delivery)
+        logging.info('Pending Abstract recovery: %s', recovery)
+        report = delivery.flush_both()
+    else:
+        report = delivery.status()
+    report['pending_without_english'] = sum(
+        bool(x.get('status') == 'pending' and not x.get('abstract', '').strip())
+        for x in delivery.queue['items'].values()
+    )
     print(json.dumps(report, ensure_ascii=False, indent=2))
+    if report['pending_without_english']:
+        logging.warning('%d pending papers have no original English Abstract; retry is scheduled with a 7-day cooldown', report['pending_without_english'])
     return 0
 
 
