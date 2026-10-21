@@ -66,361 +66,261 @@ def _http_json(url: str, payload: dict, *, form: bool = False, timeout: int = 30
 
 
 class ReliableDelivery(Delivery):
+    """Bark-only, one paper per accepted notification.
+
+    The publication and translated-title caches survive restarts. No message is
+    sent if the source abstract or verified Chinese translation is unavailable.
+    """
+
     def __init__(self, root: Path, log: logging.Logger | None = None):
         super().__init__(root, log)
         self.dual_path = self.root / "state" / STATE_NAME
-        if self.dual_path.exists():
+        if self.dual_path.is_file():
             self.dual = json.loads(self.dual_path.read_text(encoding="utf-8"))
         else:
             self.dual = {"version": 1, "next_id": 1, "active": None, "progress": {}, "usage": {}}
-        if self.dual.get("version") != 1 or not isinstance(self.dual.get("progress"), dict):
-            raise ValueError("Unexpected dual-channel state format; refusing to overwrite")
+        if self.dual.get("version") != 1 or not isinstance(self.dual.get("usage"), dict):
+            raise ValueError("Unrecognized Bark delivery state: refusing overwrite")
+        # Previously Bark-acknowledged papers must not be resent solely because
+        # the now-removed WeChat channel still showed them as pending.
+        changed = False
+        for item in self.queue["items"].values():
+            if item.get("status") == "pending" and item.get("bark_done"):
+                item["status"] = "sent"
+                changed = True
+        if changed:
+            self._save_queue()
 
     def _persist(self):
         _atomic_json(self.dual_path, self.dual)
         self._save_queue()
 
     def _call_model(self, name: str, base: str, model: str, key: str, item: dict) -> str:
-        value = super()._call_model(name, base, model, key, item)
-        q = quality_report(str(item.get("abstract", "")), value)
-        if not q["ok"]:
-            raise ValueError("translation quality check failed: missing_numbers=" + str(q["missing_numbers"][:8]) + ", suspiciously_short=" + str(q["possibly_short"]))
-        if q["missing_acronyms_advisory"]:
-            self.log.warning("Translation acronyms require review: %s", q["missing_acronyms_advisory"])
-        return value
-
-    def _get_translation(self, item: dict, day: str) -> str:
-        if not item.get("abstract", "").strip():
-            raise ValueError("English source abstract missing; cannot provide faithful full translation")
-        translated = self._summary(item, day)
-        check = quality_report(item["abstract"], translated)
+        translated = super()._call_model(name, base, model, key, item)
+        check = quality_report(str(item.get("abstract") or ""), translated)
         if not check["ok"]:
-            raise ValueError("Cached translation failed critical checks: " + str(check["missing_numbers"][:8]))
+            raise ValueError("translation quality check failed: " + str(check["missing_numbers"][:8]))
+        if check["missing_acronyms_advisory"]:
+            self.log.warning("Translated acronyms warrant review: %s", check["missing_acronyms_advisory"])
         return translated
 
-    def _channels(self) -> tuple[str, ...]:
-        chans = []
-        if os.getenv("JALERT_SERVERCHAN_SENDKEY", "").strip():
-            chans.append("wechat")
-        if os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes"):
-            if not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
-                raise ValueError("JALERT_BARK_ENABLED=true but BARK_DEVICE_KEY secret is missing")
-            chans.append("bark")
-        if not chans:
-            raise ValueError("No push channel configured: add SERVERCHAN_SENDKEY and/or BARK_DEVICE_KEY")
-        return tuple(chans)
+    def _get_translation(self, item: dict, day: str) -> str:
+        abstract = str(item.get("abstract") or "").strip()
+        if not abstract:
+            raise ValueError("English source abstract missing; source lookup required")
+        translated = self._summary(item, day)
+        check = quality_report(abstract, translated)
+        if not check["ok"]:
+            raise ValueError("Cached translation failed fidelity checks: " + str(check["missing_numbers"][:8]))
+        return translated
 
     @staticmethod
     def _url(item: dict) -> str:
         if item.get("doi"):
-            return "https://doi.org/" + item["doi"].strip()
+            return "https://doi.org/" + str(item["doi"]).strip()
         return str(item.get("url") or "")
-
-    def _block(self, item: dict, translated: str) -> str:
-        return (f"【{item.get('journal','')}】{item['title']}\n"
-                f"中文摘要（全文直译）：\n{translated}\n"
-                f"论文链接：{self._url(item)}\n\n")
-
-    def _cap(self, channels: tuple[str, ...]) -> int:
-        # APNs notifications are 4096 bytes including metadata; Bark JSON
-        # requests must leave generous room for APS headers and app metadata.
-        bark_cap = min(2600, int(os.getenv("JALERT_BARK_BODY_BYTES", "2400")))
-        wechat_cap = int(os.getenv("JALERT_WECHAT_MAX_CHARS", "3500"))
-        # Bytes never exceed the WeChat character budget (conservative for CJK).
-        return min((bark_cap if "bark" in channels else wechat_cap), wechat_cap)
 
     @staticmethod
     def _slice_bytes(source: str, budget: int) -> str:
-        used = 0
-        chars = []
+        size = 0
+        out = []
         for ch in source:
-            b = len(ch.encode("utf-8"))
-            if used + b > budget:
+            cost = len(ch.encode("utf-8"))
+            if size + cost > budget:
                 break
-            chars.append(ch)
-            used += b
-        return "".join(chars)
+            out.append(ch)
+            size += cost
+        return "".join(out)
 
-    def _make_page(self, channels: tuple[str, ...], day: str) -> dict | None:
-        candidates = sorted((x for x in self.queue["items"].values() if x.get("status") == "pending" and not x.get("wechat_done")), key=lambda x: (x.get("enqueued_at", ""), -int(x.get("score", 0)), x["uid"]))
-        if not candidates:
-            return None
-        seq = self.dual["next_id"]
-        header = (f"自旋电子学中文文献日报｜第 {seq} 则\n"
-                  f"【积压提醒】仍有 {len(candidates)} 篇待处理（含本条）；篇幅超限会续页发送，绝不截断。\n")
-        footer = f"\n完整双语卡片墙：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}"
-        cap = self._cap(channels)
-        budget = cap - _utf8size(header + footer) - 22
-        if budget < 280:
-            raise ValueError("Push body byte budget too small")
-        fragments = []
-        advances = {}
-        full_lengths = {}
-        skipped = []
-        for item in candidates:
-            left = budget - _utf8size("".join(fragments))
-            if left < 64:  # Do not call an AI model just to fill a few bytes.
-                break
-            uid = item["uid"]
-            try:
-                full = self._block(item, self._get_translation(item, day))
-            except (ValueError, RuntimeError, OSError) as ex:
-                item["last_ai_error"] = str(ex)[:190]
-                item["last_ai_error_at"] = day
-                skipped.append(uid)
-                # AI allowance may be exhausted: continue using cached items if any.
+    def _cap(self, channels=("bark",)) -> int:
+        return max(500, min(2600, int(os.getenv("JALERT_BARK_BODY_BYTES", "2400"))))
+
+    def _translate_title(self, item: dict, day: str) -> str:
+        import hashlib
+        import time
+        from jalert.enhanced_delivery import _int_env, DEFAULTS
+
+        title = str(item.get("title") or "").strip()
+        if not title:
+            raise ValueError("Missing source article title")
+        key = hashlib.sha256(title.encode("utf-8")).hexdigest()
+        cache = self.cache.setdefault("titles", {})
+        old = cache.get(key)
+        if old and old.get("zh_title"):
+            return old["zh_title"]
+        budget = _int_env("JALERT_AI_MAX_CALLS_DAY", DEFAULTS["max_ai_calls_day"], 1, 200)
+        errors = []
+        for name, base, model, secret in self._model_endpoints():
+            if not base or not model or (name == "deepseek" and not secret):
+                errors.append(name + ": missing AI settings")
                 continue
-            offset = int(self.dual["progress"].get(uid, 0))
-            if offset >= len(full):
-                raise ValueError("Stale translation progress beyond source length: " + uid)
-            rem = full[offset:]
-            # Keep exact source characters, never crop/deliberately summarize.
-            part = self._slice_bytes(rem, left)
-            if not part:
-                break
-            fragments.append(part)
-            advances[uid] = offset + len(part)
-            full_lengths[uid] = len(full)
-            if len(part) != len(rem):
-                break
-        self._save_queue()
-        if not fragments:
-            self.log.warning("No translatable pending papers (count=%s); items remain queued; %d errors", len(candidates), len(skipped))
-            return None
-        body = header + "".join(fragments) + footer
-        assert _utf8size(body) <= cap
-        title = f"自旋电子学文献日报｜第 {seq} 则"
-        message = {"id": seq, "title": title, "body": body,
-                   "targets": list(channels), "acked": {x: False for x in channels},
-                   "advances": advances, "full_lengths": full_lengths, "created": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat()}
-        self.dual["next_id"] += 1
-        self.dual["active"] = message
-        self._persist()  # Persist the immutable page before attempting a network send.
-        return message
+            if self._usage(day)["ai_attempts"] >= budget:
+                raise RuntimeError(f"AI daily request budget exhausted ({budget}), title pending")
+            self._usage(day)["ai_attempts"] += 1
+            self._save_queue()  # reserve before HTTP
+            endpoint = base.rstrip("/")
+            if not endpoint.endswith("/chat/completions"):
+                endpoint += "/chat/completions"
+            payload = {
+                "model": model,
+                "temperature": 0.1,
+                "max_tokens": 256,
+                "stream": False,
+                "messages": [
+                    {"role": "system", "content": "你是自旋电子学论文标题英译中译者。只输出忠实、完整的中文论文标题；保留材料化学式、学术缩写、数字和单位，不添加解释。"},
+                    {"role": "user", "content": title},
+                ],
+            }
+            if name == "custom" and model.lower().startswith("deepseek-v4.1-flash"):
+                payload["reasoning_effort"] = "none"
+            if name == "deepseek":
+                payload["thinking"] = {"type": "disabled"}
+            headers = {"Content-Type": "application/json", "Accept": "application/json"}
+            if secret:
+                headers["Authorization"] = "Bearer " + secret
+            req = urllib.request.Request(endpoint, data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+                                         headers=headers, method="POST")
+            try:
+                with urllib.request.urlopen(req, timeout=90) as response:
+                    answer = json.loads(response.read(512000).decode("utf-8"))
+                choice = answer["choices"][0]
+                if choice.get("finish_reason") == "length":
+                    raise ValueError("title translation truncated")
+                zh = str(choice["message"]["content"]).strip().strip('"“”')
+                if len(re.findall(r"[\u4e00-\u9fff]", zh)) < 2:
+                    raise ValueError("title translation contains no meaningful Chinese")
+                if _critical_tokens(title) - _critical_tokens(zh):
+                    raise ValueError("title translation omitted important numerals")
+            except (OSError, RuntimeError, ValueError, KeyError, TypeError, IndexError) as exc:
+                errors.append(f"{name}: {type(exc).__name__}")
+                self.log.warning("Title translation deferred: %s %s", title[:65], type(exc).__name__)
+                continue
+            cache[key] = {"title": title, "zh_title": zh, "created": day}
+            # The existing bilingual card enhancer uses complete-summary cache
+            # records, so attach the title translation to those records too.
+            for rec in self.cache.get("summaries", {}).values():
+                if rec.get("mode") == "literal-full-translation" and rec.get("title") == title:
+                    rec["zh_title"] = zh
+            self._save_cache()
+            return zh
+        raise RuntimeError("Title translation unavailable: " + "; ".join(errors))
 
-    def _wechat(self, title: str, body: str) -> bool:
-        key = os.environ.get("JALERT_SERVERCHAN_SENDKEY", "").strip()
-        if not key:
-            return False
-        if key.lower().startswith("sctp"):
-            match = re.match(r"^sctp(\d+)t", key, re.I)
-            if not match:
-                raise ValueError("Invalid ServerChan Turbo key")
-            url = f"https://{match.group(1)}.push.ft07.com/send/{key}.send"
-        else:
-            url = f"https://sctapi.ftqq.com/{key}.send"
-        data = _http_json(url, {"title": title, "desp": body}, form=True)
-        code = data.get("code")
-        return type(code) in (int, str) and code in (0, "0")
+    def _bark_article(self, item: dict, day: str) -> tuple[str, str]:
+        # Translate before marking any paper as sent. Never silently replace
+        # Chinese with English because an AI limit was exhausted.
+        chinese = self._get_translation(item, day)
+        zh_title = self._translate_title(item, day)
+        item.pop("last_ai_error", None)
+        item.pop("last_ai_error_at", None)
+        title = "论文｜" + zh_title[:80]
+        header = (f"中文标题：{zh_title}\n英文标题：{item.get('title','')}\n"
+                  f"期刊：{item.get('journal','')}\n中文摘要（全文直译）：\n")
+        footer = (f"\n论文链接：{self._url(item)}\n"
+                  f"完整中英文摘要：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}")
+        cap = self._cap()
+        body = header + chinese + footer
+        if _utf8size(body) > cap:
+            note = "\n【摘要较长：请点击论文链接或双语网页查看完整版本】"
+            room = cap - _utf8size(header + note + footer)
+            if room <= 0:
+                header = "中文标题：" + self._slice_bytes(zh_title, 135) + "\n"
+                room = cap - _utf8size(header + note + footer)
+            if room <= 0:
+                raise ValueError("Bark notification cannot fit links")
+            body = header + self._slice_bytes(chinese, room) + note + footer
+        return title, body
 
     def _bark(self, title: str, body: str) -> bool:
-        server = os.environ.get("JALERT_BARK_SERVER", "https://api.day.app").rstrip("/")
+        server = os.getenv("JALERT_BARK_SERVER", "https://api.day.app").rstrip("/")
         parsed = urllib.parse.urlparse(server)
         if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
-            raise ValueError("Bark server must be externally accessible HTTPS")
-        key = os.environ["JALERT_BARK_DEVICE_KEY"]
-        payload = {"device_key": key, "title": title, "body": body,
-                   "group": "Journal-alert", "url": os.environ.get("JALERT_REPORT_SITE_URL", SITE_URL)}
-        data = _http_json(server + "/push", payload)
-        code = data.get("code")
-        return (type(code) in (int, str) and code in (0, 200, "0", "200")) or data.get("success") is True
+            raise ValueError("Bark server must use HTTPS")
+        key = os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()
+        if not key:
+            raise ValueError("BARK_DEVICE_KEY secret is missing")
+        result = _http_json(server + "/push", {
+            "device_key": key, "title": title, "body": body, "group": "Journal-alert",
+            "url": os.getenv("JALERT_REPORT_SITE_URL", SITE_URL),
+        })
+        code = result.get("code")
+        return code in (0, 200, "0", "200") or result.get("success") is True
 
-    def _send(self, channel: str, title: str, body: str) -> bool:
-        return self._wechat(title, body) if channel == "wechat" else self._bark(title, body)
-
-    def _limit(self, channel: str) -> int:
-        if channel == "wechat":
-            return max(1, min(5, int(os.getenv("JALERT_WECHAT_MAX_MESSAGES_DAY", "4"))))
-        return max(1, min(30, int(os.getenv("JALERT_BARK_MAX_MESSAGES_DAY", "12"))))
-
-    def _attempts(self, channel: str, day: str) -> int:
-        if channel == "wechat":
-            return int(self._usage(day).get("wechat_attempts", 0))
-        return int(self.dual["usage"].setdefault(day, {}).get("bark_attempts", 0))
-
-    def _charge(self, channel: str, day: str):
-        if channel == "wechat":
-            self._usage(day)["wechat_attempts"] += 1
-        else:
-            v = self.dual["usage"].setdefault(day, {})
-            v["bark_attempts"] = int(v.get("bark_attempts", 0)) + 1
+    def _charge(self, day: str):
+        state = self.dual["usage"].setdefault(day, {})
+        state["bark_attempts"] = int(state.get("bark_attempts", 0)) + 1
         self._persist()
 
     def status(self) -> dict:
         day = _now_date()
-        active = self.dual.get("active")
-        bark_on = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
-        return {"pending_papers": self.pending_count(), "bark_papers_acknowledged": sum(bool(x.get("bark_done")) for x in self.queue["items"].values()), "active_message": active["id"] if active else None,
-                "channel_acks": active["acked"] if active else {},
-                "channels_configured": {
-                    "wechat": bool(os.getenv("JALERT_SERVERCHAN_SENDKEY", "").strip()),
-                    "bark_enabled": bark_on,
-                    "bark_key_present": bool(os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()),
-                },
-                "wechat_attempts_today": self._attempts("wechat", day),
-                "bark_attempts_today": self._attempts("bark", day),
-                "recent_errors": [{"uid": x["uid"], "error": x.get("last_ai_error")}
-                                  for x in self.queue["items"].values() if x.get("status") == "pending" and x.get("last_ai_error")][:8]}
+        pending = [x for x in self.queue["items"].values() if x.get("status") == "pending"]
+        return {
+            "pending_papers": len(pending),
+            "bark_papers_acknowledged": sum(bool(x.get("bark_done")) for x in self.queue["items"].values()),
+            "bark_articles_waiting": len(pending),
+            "pending_without_english": sum(not str(x.get("abstract") or "").strip() for x in pending),
+            "channels_configured": {
+                "bark_enabled": os.getenv("JALERT_BARK_ENABLED", "true").lower() in ("true", "1", "yes"),
+                "bark_key_present": bool(os.getenv("JALERT_BARK_DEVICE_KEY", "").strip()),
+            },
+            "bark_attempts_today": int(self.dual["usage"].get(day, {}).get("bark_attempts", 0)),
+            "ai_attempts_today": int(self._usage(day).get("ai_attempts", 0)),
+            "recent_errors": [
+                {"uid": x.get("uid"), "error": x.get("last_ai_error")}
+                for x in pending if x.get("last_ai_error")
+            ][:10],
+        }
 
+    def flush_both(self, *, send_func=None, max_pages: int = 10) -> dict:
+        """Compatibility method name: now only sends individual Bark papers.
 
-    def _bark_article(self, item: dict, day: str) -> tuple[str, str]:
-        """Exactly one Bark notification for this paper, with an explicit overflow link.
-
-        Do not split a single paper across notifications. Apple APNs limits
-        payloads to 4096 bytes including metadata, so excess text must be
-        accessible via the report site / DOI, never silently discarded.
+        send_func accepts (channel,title,body) for offline tests.
+        max_pages does not constrain individual paper count; each run uses a
+        separate bounded safety cap.
         """
-        title = "论文｜" + str(item.get("title") or "未命名论文")[:85]
-        link = self._url(item)
-        english = str(item.get("abstract") or "").strip()
-        try:
-            chinese = self._get_translation(item, day) if english else ""
-        except (ValueError, RuntimeError, OSError) as exc:
-            item["last_ai_error"] = str(exc)[:190]
-            item["last_ai_error_at"] = day
-            chinese = ""
-        language = "中文摘要（全文直译）" if chinese else "英文原文摘要（中文待补译）"
-        abstract = chinese or english or "数据源未提供可核实的论文摘要。"
-        prefix = (f"期刊：{item.get('journal', '')}\n"
-                  f"标题：{item.get('title', '')}\n"
-                  f"{language}：\n")
-        footer = f"\n论文链接：{link}\n双语日报：{os.getenv('JALERT_REPORT_SITE_URL', SITE_URL)}"
-        body = prefix + abstract + footer
-        limit = self._cap(("bark",))
-        if _utf8size(body) > limit:
-            note = "\n【摘要超出系统通知上限；请打开双语日报或原文阅读完整内容】"
-            remaining = limit - _utf8size(prefix + note + footer)
-            if remaining < 0:
-                # Very long titles still get one bounded, traceable message.
-                prefix = "标题：" + self._slice_bytes(str(item.get("title") or ""), 160) + "\n"
-                remaining = limit - _utf8size(prefix + note + footer)
-            if remaining <= 0:
-                raise ValueError("Bark notification capacity too small for article links")
-            body = prefix + self._slice_bytes(abstract, remaining) + note + footer
-        return title, body
-
-    def _flush_separate(self, *, max_pages: int = 10) -> dict:
-        """Independent per-article Bark delivery and quota-aware WeChat pages.
-
-        Bark is not blocked by WeChat daily quota, AI translation failures, or
-        other papers. Each acknowledged Bark paper is persisted separately.
-        """
-        channels = self._channels()
+        if os.getenv("JALERT_BARK_ENABLED", "true").lower() not in ("true", "1", "yes"):
+            raise ValueError("Bark must be enabled")
+        if send_func is None and not os.getenv("JALERT_BARK_DEVICE_KEY", "").strip():
+            raise ValueError("BARK_DEVICE_KEY secret is missing")
         day = _now_date()
-        bark_sent = 0
-        bark_failed = 0
-
-        # Bark first: a full WeChat quota never delays the individual notices.
-        if "bark" in channels:
-            max_per_run = max(1, int(os.getenv("JALERT_BARK_MAX_MESSAGES_RUN", "5000")))
-            for item in sorted(self.queue["items"].values(),
-                               key=lambda x: (x.get("enqueued_at", ""), x.get("uid", ""))):
-                if item.get("status") != "pending" or item.get("bark_done"):
-                    continue
-                if bark_sent + bark_failed >= max_per_run:
-                    self.log.error("Bark safety cap reached: %d; remaining papers stay queued", max_per_run)
-                    break
-                try:
-                    title, body = self._bark_article(item, day)
-                except (ValueError, RuntimeError, OSError) as exc:
-                    self.log.warning("Bark article formatting failed for %s: %s", item.get("uid"), type(exc).__name__)
-                    bark_failed += 1
-                    self._persist()
-                    continue
-                self._charge("bark", day)
-                try:
-                    accepted = self._bark(title, body)
-                except (OSError, RuntimeError, ValueError, urllib.error.URLError,
-                        urllib.error.HTTPError, KeyError) as exc:
-                    self.log.warning("Bark article failed for %s: %s", item.get("uid"), type(exc).__name__)
-                    accepted = False
-                if accepted:
-                    item["bark_done"] = True
-                    if "wechat" not in channels or item.get("wechat_done"):
-                        item["status"] = "sent"
-                        item.pop("abstract", None)
-                    bark_sent += 1
-                else:
-                    bark_failed += 1
-                self._persist()
-
-        if "wechat" in channels:
-            # Reuse immutable page snapshots and acknowledgements only for WeChat.
-            self.flush_both(send_func=self._send, max_pages=max_pages,
-                            channels_override=("wechat",))
-
-        result = self.status()
-        result["bark_articles_sent_this_run"] = bark_sent
-        result["bark_articles_failed_this_run"] = bark_failed
-        result["bark_articles_waiting"] = sum(
-            1 for item in self.queue["items"].values()
-            if item.get("status") == "pending" and not item.get("bark_done")
-        ) if "bark" in channels else 0
-        self.log.info("Independent Bark + WeChat delivery: %s", json.dumps(result, ensure_ascii=False))
-        return result
-
-    def flush_both(self, *, send_func=None, max_pages: int = 10, channels_override=None) -> dict:
-        """Send exactly the same immutable body to both channels, independently acked.
-
-        Inject send_func(channel,title,body) for offline tests. If one channel
-        fails/uses daily quota, no later page overtakes it.
-        """
-        if send_func is None:
-            return self._flush_separate(max_pages=max_pages)
-        day = _now_date()
-        channels = channels_override or ("wechat", "bark")
-        completed = 0
-        for _ in range(max_pages):
-            active = self.dual.get("active")
-            if active is None:
-                if any(self._attempts(ch, day) >= self._limit(ch) for ch in channels):
-                    break
-                active = self._make_page(channels, day)
-                if active is None:
-                    break
-            for ch in active["targets"]:
-                if active["acked"].get(ch):
-                    continue
-                if self._attempts(ch, day) >= self._limit(ch):
-                    continue
-                self._charge(ch, day)  # reserve quota before HTTP to prevent loops
-                try:
-                    success = bool(send_func(ch, active["title"], active["body"])) if send_func else self._send(ch, active["title"], active["body"])
-                except (OSError, RuntimeError, ValueError, urllib.error.URLError, urllib.error.HTTPError, KeyError) as ex:
-                    self.log.warning("%s push failed: %s", ch, type(ex).__name__)
-                    success = False
-                if success:
-                    active["acked"][ch] = True
-                    self._persist()
-            if not all(active["acked"].get(ch) for ch in active["targets"]):
-                self.log.warning("Notification page %d still waiting for channels %s", active["id"], [ch for ch in active["targets"] if not active["acked"].get(ch)])
+        attempted = sent = 0
+        deferred = 0
+        max_attempts = max(1, min(10000, int(os.getenv("JALERT_BARK_MAX_MESSAGES_RUN", "5000"))))
+        for item in sorted(self.queue["items"].values(),
+                           key=lambda x: (x.get("enqueued_at", ""), x.get("uid", ""))):
+            if item.get("status") != "pending" or item.get("bark_done"):
+                continue
+            if attempted >= max_attempts:
+                self.log.warning("Bark run safety cap reached (%d)", max_attempts)
                 break
-            for uid, offset in active["advances"].items():
-                item = self.queue["items"][uid]
-                # Finalize the *already acknowledged immutable page* without
-                # contacting the AI or depending on mutable translation caches.
-                # Legacy active pages lack full_lengths; keep them compatible.
-                snapshot_length = active.get("full_lengths", {}).get(uid)
-                if snapshot_length is None:
-                    snapshot_length = len(self._block(item, self._get_translation(item, day)))
-                if offset >= snapshot_length:
-                    if channels_override == ("wechat",):
-                        item["wechat_done"] = True
-                        bark_required = os.getenv("JALERT_BARK_ENABLED", "false").lower() in ("true", "1", "yes")
-                        if not bark_required or item.get("bark_done"):
-                            item["status"] = "sent"
-                            item.pop("abstract", None)
-                            completed += 1
-                    else:
-                        item["status"] = "sent"
-                        item.pop("abstract", None)
-                        completed += 1
-                    self.dual["progress"].pop(uid, None)
-                else:
-                    self.dual["progress"][uid] = offset
-            self.dual["active"] = None
+            try:
+                title, body = self._bark_article(item, day)
+            except (ValueError, RuntimeError, OSError) as exc:
+                item["last_ai_error"] = str(exc)[:190]
+                item["last_ai_error_at"] = day
+                deferred += 1
+                self._save_queue()
+                # Stop repeated work on other titles if quota is exhausted.
+                if "budget exhausted" in str(exc):
+                    break
+                continue
+            self._charge(day)
+            attempted += 1
+            try:
+                accepted = bool(send_func("bark", title, body)) if send_func else self._bark(title, body)
+            except (OSError, RuntimeError, ValueError, urllib.error.URLError, KeyError) as exc:
+                item["last_ai_error"] = f"Bark transmission: {type(exc).__name__}"
+                accepted = False
+            if accepted:
+                item["bark_done"] = True
+                item["status"] = "sent"
+                # Keep full original abstract in the cache and generated report.
+                # Queue metadata may be compacted after final acknowledgment.
+                item.pop("abstract", None)
+                sent += 1
             self._persist()
         result = self.status()
-        result["completed_papers_this_run"] = completed
-        self.log.info("Reliable dual-channel push: %s", json.dumps(result, ensure_ascii=False))
+        result["bark_articles_sent_this_run"] = sent
+        result["bark_articles_failed_this_run"] = attempted - sent
+        result["bark_articles_deferred_this_run"] = deferred
+        self.log.info("Bark-only Chinese delivery: %s", json.dumps(result, ensure_ascii=False))
         return result
