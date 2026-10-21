@@ -69,6 +69,43 @@ class PublisherAbstractTests(unittest.TestCase):
                     "https://user:secret@publisher.org/"):
             self.assertFalse(_safe_publisher_url(url))
 
+    def test_europe_pmc_requires_exact_doi_and_core_abstract(self):
+        from tools.history_backfill import europe_pmc_abstract
+        entries = {"resultList": {"result": [
+            {"doi": "10.1234/other", "abstractText": "Irrelevant study. " * 20},
+            {"doi": "10.1234/target", "abstractText": "<p>Spin-current conversion measured.</p> " * 6}
+        ]}}
+        with patch("tools.history_backfill._get_json", return_value=entries) as request:
+            result = europe_pmc_abstract("10.1234/target")
+        self.assertIn("Spin-current conversion", result)
+        self.assertNotIn("<p>", result)
+        self.assertIn("resultType=core", request.call_args.args[0])
+        self.assertIn("DOI%3A", request.call_args.args[0])
+
+    def test_europe_pmc_doi_mismatch_cannot_forge_abstract(self):
+        from tools.history_backfill import europe_pmc_abstract
+        with patch("tools.history_backfill._get_json", return_value={
+            "resultList": {"result": [
+                {"doi": "10.1234/not-the-same", "abstractText": "Unrelated " * 30}
+            ]}
+        }):
+            self.assertEqual(europe_pmc_abstract("10.1234/target"), "")
+
+    def test_europe_pmc_is_preferred_to_publisher_after_other_sources_fail(self):
+        def fake_json(url, **kwargs):
+            if "europepmc" in url:
+                return {"resultList": {"result": [{
+                    "doi": "10.1234/target",
+                    "abstractText": "An experimentally measured interfacial magnetic response. " * 5,
+                }]}}
+            raise RuntimeError("No abstract from first three services")
+        with patch("tools.history_backfill._get_json", side_effect=fake_json), \
+             patch("tools.history_backfill.publisher_abstract",
+                   side_effect=AssertionError("Europe PMC already provides it")):
+            text, source = lookup_english_abstract("10.1234/target")
+        self.assertEqual(source, "Europe PMC")
+        self.assertIn("interfacial magnetic response", text)
+
     def test_publisher_is_final_doi_fallback(self):
         with patch("tools.history_backfill._get_json", side_effect=RuntimeError("unavailable")), \
              patch("tools.history_backfill.publisher_abstract",
