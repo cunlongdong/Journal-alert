@@ -60,7 +60,7 @@ def quality_report(english: str, chinese: str) -> dict:
     # The following natural Chinese equivalents are unambiguous geometry
     # terminology, not a blanket exemption for missing scientific measurements.
     for digit, keyword in (("2", "二维"), ("3", "三维")):
-        if keyword in zh and re.search(r"(?<![A-Za-z0-9])" + digit + r"\\s*[-–‑]?D(?![A-Za-z0-9])", en, re.I):
+        if keyword in zh and re.search(r"(?<![A-Za-z0-9])" + digit + r"\s*[-–‑]?D(?![A-Za-z0-9])", en, re.I):
             missing_numbers.discard(digit)
     missing = sorted(missing_numbers)
     letters = len(re.findall(r"[A-Za-z]+", en))
