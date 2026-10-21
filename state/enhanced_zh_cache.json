@@ -547,6 +547,30 @@
       "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
       "zh_title": "面向硅上下一代电子-光子-自旋集成器件的IV族半导体物理与技术",
       "created": "2026-10-21"
+    },
+    "ab0b42113b638caaab57f8b1a167fefa4d637b4d8fc9cd4d63f4939d66541cbd": {
+      "title": "The challenging path toward high-temperature quantum anomalous hall effect in MnBi 2 Te 4",
+      "zh_title": "在 MnBi₂Te₄ 中实现高温量子反常霍尔效应的挑战之路",
+      "created": "2026-10-21",
+      "source": "technical title correction after failed AI numeric validation"
+    },
+    "0df833d74ba277903a8d30fe3796b7d14e4677bde9cb99553d8d1f2393579061": {
+      "title": "Ground-state properties of the S = 3 2 anisotropic triangular lattice antiferromagnet Na 3 Cr (PO 4) 2",
+      "zh_title": "S = 3/2 各向异性三角晶格反铁磁体 Na₃Cr(PO₄)₂ 的基态性质",
+      "created": "2026-10-21",
+      "source": "technical title correction after failed AI numeric validation"
+    },
+    "331e66304715172539e78132f097e7182f2fa468cfcb30571f19542317946326": {
+      "title": "Comparative analysis of unconventional spin-orbit torques and magnetization switching efficiencies in Fe 3 GeTe 2 /WTe 2",
+      "zh_title": "Fe₃GeTe₂/WTe₂ 中非常规自旋轨道力矩与磁化翻转效率的比较分析",
+      "created": "2026-10-21",
+      "source": "technical title correction after failed AI numeric validation"
+    },
+    "5b194152443cb0542debbda2a044bbf06eb409e2c27a538a2f97fb49f8be86cb": {
+      "title": "Space group symmetry of chiral Fe-deficient van der Waals magnet Fe 3 − x GeTe 2 probed by convergent beam electron diffraction",
+      "zh_title": "通过会聚束电子衍射探测手性缺铁范德华磁体 Fe₃₋ₓGeTe₂ 的空间群对称性",
+      "created": "2026-10-21",
+      "source": "technical title correction after failed AI numeric validation"
     }
   }
 }
