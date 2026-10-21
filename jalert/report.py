@@ -232,7 +232,7 @@ def build_markdown(
                 lines.append(f"- **作者**：{', '.join(item.authors[:6])}{' 等' if len(item.authors) > 6 else ''}")
             if item.abstract:
                 lines.append("")
-                lines.append(f"> {_truncate(item.abstract, 700)}")
+                lines.append("> " + " ".join(item.abstract.split()))
             lines.append("")
         lines.append("---")
         lines.append("")
