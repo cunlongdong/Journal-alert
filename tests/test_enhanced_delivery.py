@@ -67,6 +67,44 @@ if __name__ == '__main__':
     unittest.main()
 
 # These additional tests use no network, no API credits, and no GitHub changes.
+
+    def test_quality_error_retried_once_with_separate_budget_charge(self):
+        attempts = []
+        def fake_model(name, base, model, key, item):
+            attempts.append(bool(item.get("_translation_retry_warning")))
+            if not item.get("_translation_retry_warning"):
+                raise ValueError("translation quality check failed: ['14']")
+            return "在 0.1 至 14 个离子的照射后，研究者观察到磁畴结构明显改变。"
+        with patch.dict(os.environ, {
+            "JALERT_AI_PRIMARY": "custom", "JALERT_AI_FALLBACK": "none",
+            "CUSTOM_AI_BASE_URL": "https://offline.example.org/api",
+            "CUSTOM_AI_MODEL": "offline", "JALERT_AI_MAX_CALLS_DAY": "3",
+        }), patch.object(self.delivery, "_call_model", side_effect=fake_model):
+            result = self.delivery._summary({
+                "uid": "doi:10.1234/retry", "doi": "10.1234/retry",
+                "title": "Irradiation", "abstract": "Irradiation from 0.1 to 14 ions was measured.",
+            }, "2026-10-21")
+        self.assertIn("14", result)
+        self.assertEqual(attempts, [False, True])
+        self.assertEqual(self.delivery._usage("2026-10-21")["ai_attempts"], 2)
+
+    def test_repeated_quality_failure_remains_pending_without_full_cache(self):
+        with patch.dict(os.environ, {
+            "JALERT_AI_PRIMARY": "custom", "JALERT_AI_FALLBACK": "none",
+            "CUSTOM_AI_BASE_URL": "https://offline.example.org/api",
+            "CUSTOM_AI_MODEL": "offline", "JALERT_AI_MAX_CALLS_DAY": "3",
+        }), patch.object(self.delivery, "_call_model",
+                         side_effect=ValueError("translation quality check failed: ['50']")) as model:
+            with self.assertRaises(RuntimeError):
+                self.delivery._summary({
+                    "uid": "doi:10.1234/test", "doi": "10.1234/test",
+                    "title": "Test", "abstract": "Magnetic switching at 50 mT.",
+                }, "2026-10-21")
+        self.assertEqual(model.call_count, 2)
+        self.assertFalse(any(rec.get("mode") == "literal-full-translation"
+                             for rec in self.delivery.cache["summaries"].values()))
+
+
 class IntegrationContractTests(unittest.TestCase):
     def test_ai_primary_and_fallback_resolution(self):
         with tempfile.TemporaryDirectory() as temp:
