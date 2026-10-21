@@ -22,6 +22,9 @@ Crossref/OpenAlex 记录与出版社网页并不是同一个数据源；出版�
 - DOI 出版社网页：读取 citation_abstract、Dublin Core、JSON-LD 和明确的 HTML Abstract 区块；对返回的 DOI 不匹配内容拒绝。
 - 保存来源，只有能证明对应论文的公开摘要才翻译；无摘要时在 Bark 标为暂缺，不能让模型凭空补原文。
 - 独立翻译所有旧卡片缺失的中文标题，不要求摘要可用。
+- 对 10.1016/j.jmmm.2026.174589、10.1016/j.jmmm.2026.174575 配置已核查的 ScienceDirect PII 网页与 arXiv 版本（2605.21287、2607.12740）回退。arXiv Atom 接口会逐篇核对**题目、第一作者、arXiv ID**，并明确标注预印本来源；预印本摘要可能与正式版不同。
+- 对 10.1103/jlhg-yy14 配置 APS Physical Review Applied 文章页回退，但尚未证实自动提取成功。此 DOI 不使用其他论文的预印本摘要。
+- `abstracts_only` + `abstract_dois` 可精准运行指定 DOI 的历史补摘要、翻译和网页部署，不发 Bark，也不更新常规回溯指针。
 
 ## 推荐下一阶段
 

@@ -24,6 +24,10 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 
 **中文标题保障：** 本地翻译缓存可复用；若模型调用额度用尽或翻译不符合基本质量要求，仍保留待发记录，次日继续重试。无法保证 AI 服务故障时当天所有论文都有中文标题。GitHub Actions Variable `JALERT_AI_MAX_CALLS_DAY` 如果以前设置为 `25`，需要按服务额度自行提高；未设置则默认 `200`（调用可能产生费用）。
 
+## 标题翻译失败的诊断与修复
+
+2026-10-21 的 `titles_only` 运行虽显示绿色 Success，但 4 篇带化学式标题被旧数字校验规则误拒绝，导致没有新增中文标题。已修正化学式 Unicode 下标、数学分数检查；并将这 4 篇已对照英文题名的中文翻译保存在 [research/title_corrections.json](research/title_corrections.json)，即使后续重新生成网页也可恢复对应中文标题。原有缓存和卡片文件现已更新为 45/45 篇中文标题。**线上 Pages 需要下次工作流部署后才会刷新。**
+
 ## GitHub Actions 操作
 
 在 [Actions](https://github.com/cunlongdong/Journal-alert/actions) 中选择 `journal-alert daily` → `Run workflow` → 分支 `main`。
@@ -33,6 +37,8 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 - `flush_only`：只尝试补发待处理的论文（同时恢复缺失英文摘要）；不再次抓取期刊。
 - `cards_only`：只重建文献网页；不发 Bark。
 - `titles_only`：只为已有卡片中尚无中文标题的论文调用翻译，并更新双语网页；**不会抓取新论文，也不会发送 Bark**。翻译额度不足时继续保留待补标题。
+- `abstracts_only`：仅按 `abstract_dois` 指定的 DOI 补齐真实英文摘要、尝试中文翻译并重建网页；**不发送 Bark，不触及去重库**。DOI 以英文逗号分隔（最多 15 个）。例如：
+  `10.1016/j.jmmm.2026.174589,10.1103/jlhg-yy14,10.1016/j.jmmm.2026.174575`。
 - `backfill_only`：历史论文补摘要和中文标题，最多处理 `history_max` 指定的论文（上限 15）；**不会向 Bark 补发旧通知**。
 - `rebuild_only`：不进入待发队列，但会将新论文标记为已见；谨慎使用。
 - `delivery_status`：查看待处理队列、缺少英文摘要数量、Bark 接受确认等。
