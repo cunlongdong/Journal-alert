@@ -62,6 +62,22 @@ class TitleBackfillTests(unittest.TestCase):
         self.assertEqual(result["remaining_estimate"], 2)
         self.assertEqual(len(ReliableDelivery(self.root).cache.get("titles", {})), 0)
 
+    def test_scientific_formula_corrections_avoid_failed_model_calls(self):
+        import json
+        from tools.backfill_titles import ROOT
+        glossary = json.loads((ROOT / "research" / "title_corrections.json").read_text("utf-8"))
+        self.assertEqual(len(glossary), 4)
+        papers = [{"doi": doi, "title": row["title"]} for doi,row in glossary.items()]
+        with patch("tools.backfill_titles.collect", return_value=(papers, [], [])), \
+             patch.object(ReliableDelivery, "_translate_title",
+                          side_effect=AssertionError("curated titles must not invoke AI")):
+            first = fill_missing_titles(self.root)
+            repeated = fill_missing_titles(self.root)
+        self.assertEqual(first["reviewed_glossary_applied"], 4)
+        self.assertEqual(first["missing_before"], 0)
+        self.assertEqual(repeated["reviewed_glossary_applied"], 0)
+        self.assertEqual(len(ReliableDelivery(self.root).cache["titles"]), 4)
+
     def test_invalid_max_rejected(self):
         for value in (-1, 201):
             with self.assertRaises(ValueError):

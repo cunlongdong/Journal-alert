@@ -143,6 +143,15 @@ class BarkTests(unittest.TestCase):
         with patch.object(other, "_bark", side_effect=AssertionError("old acknowledged article")):
             self.assertEqual(other.flush_both()["bark_articles_sent_this_run"], 0)
 
+    def test_title_number_validator_understands_chemical_subscripts(self):
+        from jalert.reliable_delivery import _title_numbers
+        source = "Ground-state S = 3 2 in Na 3 Cr (PO 4) 2"
+        translated = "S=3/2 的 Na₃Cr(PO₄)₂ 中的基态"
+        self.assertFalse(_title_numbers(source) - _title_numbers(translated))
+        self.assertFalse(_title_numbers("Fe 3 − x GeTe 2") -
+                         _title_numbers("Fe₃₋ₓGeTe₂"))
+        self.assertEqual(_title_numbers("MnBi2Te4") - _title_numbers("MnBi₂Te"), {"4"})
+
     def test_critical_numerals_and_2d_notation(self):
         self.assertNotIn("2", quality_report("2D material with 10 mT.", "二维材料表现出10 mT磁化。")["missing_numbers"])
         self.assertFalse(quality_report("At 10 K and 50 mT.", "在10 K下观测到磁性。")["ok"])

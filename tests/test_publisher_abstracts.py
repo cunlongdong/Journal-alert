@@ -115,6 +115,73 @@ class PublisherAbstractTests(unittest.TestCase):
         self.assertIn("Experimental Abstract", result)
         pub.assert_called_once_with("10.1234/paper")
 
+    def test_verified_arxiv_preprint_abstract_for_both_jmmm_dois(self):
+        from tools.history_backfill import arxiv_preprint_abstract, ARXIV_MATCHES
+        for doi, (arxiv_id, title, author) in ARXIV_MATCHES.items():
+            with self.subTest(doi=doi):
+                xml = (f'<feed xmlns="http://www.w3.org/2005/Atom">'
+                       f'<entry><id>https://arxiv.org/abs/{arxiv_id}v2</id>'
+                       f'<title>{title}</title>'
+                       f'<author><name>{author}</name></author>'
+                       f'<summary>{"A genuine experimentally verified magnetic heterostructure abstract. " * 4}</summary>'
+                       '</entry></feed>')
+                class Response:
+                    def __enter__(self): return self
+                    def __exit__(self, *args): return None
+                    def read(self, *args): return xml.encode()
+                with patch("tools.history_backfill.urllib.request.urlopen",
+                           return_value=Response()):
+                    result = arxiv_preprint_abstract(doi)
+                self.assertIn("experimentally verified", result)
+
+    def test_arxiv_different_author_or_title_is_rejected(self):
+        from tools.history_backfill import arxiv_preprint_abstract
+        xml = ('<feed xmlns="http://www.w3.org/2005/Atom">'
+               '<entry><id>https://arxiv.org/abs/2605.21287</id>'
+               '<title>Different unrelated paper</title>'
+               '<author><name>Somebody Else</name></author>'
+               '<summary>Arbitrary made up Abstract. </summary></entry></feed>')
+        class Response:
+            def __enter__(self): return self
+            def __exit__(self, *args): return None
+            def read(self, *args): return xml.encode()
+        with patch("tools.history_backfill.urllib.request.urlopen", return_value=Response()):
+            self.assertEqual(arxiv_preprint_abstract("10.1016/j.jmmm.2026.174589"), "")
+
+    def test_sciencedirect_direct_page_fallback_when_doi_redirect_blocked(self):
+        import urllib.error
+        from tools.history_backfill import PUBLISHER_ARTICLE_URLS
+        target = "10.1016/j.jmmm.2026.174575"
+        urls = []
+        class Page:
+            headers = {"Content-Type": "text/html; charset=utf-8"}
+            def __enter__(self): return self
+            def __exit__(self, *args): return None
+            def geturl(self): return PUBLISHER_ARTICLE_URLS[target]
+            def read(self, size):
+                return (f'<meta name="citation_doi" content="{target}">'
+                        '<section id="abstracts"><h2>Abstract</h2><p>'
+                        + 'Spinel oxide spin transport and exchange bias are measured experimentally. ' * 5
+                        + '</p></section>').encode()
+        class Opener:
+            def open(self, req, timeout):
+                urls.append(req.full_url)
+                if "doi.org" in req.full_url:
+                    raise urllib.error.HTTPError(req.full_url, 403, "blocked", None, None)
+                return Page()
+        with patch("tools.history_backfill.urllib.request.build_opener", return_value=Opener()):
+            value = publisher_abstract(target)
+        self.assertIn("Spinel oxide spin transport", value)
+        self.assertEqual(len(urls), 2)
+        self.assertIn("sciencedirect.com", urls[1])
+
+    def test_unmapped_aps_article_does_not_fabricate_preprint_abstract(self):
+        from tools.history_backfill import ARXIV_MATCHES, PUBLISHER_ARTICLE_URLS, arxiv_preprint_abstract
+        doi = "10.1103/jlhg-yy14"
+        self.assertIn(doi, PUBLISHER_ARTICLE_URLS)
+        self.assertNotIn(doi, ARXIV_MATCHES)
+        self.assertEqual(arxiv_preprint_abstract(doi), "")
+
     def test_authors_persist_from_source_item(self):
         with tempfile.TemporaryDirectory() as root:
             delivery = Delivery(Path(root))
