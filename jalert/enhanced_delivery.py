@@ -1,4 +1,4 @@
-"""Persistent Chinese-abstract delivery for journal-alert.
+"""Durable article outbox and Chinese translation caching for Bark.
 
 Independent of the existing state/seen.sqlite and original push pipeline.
 Python >=3.10, standard library only. Never commits API keys.
@@ -19,8 +19,6 @@ from zoneinfo import ZoneInfo
 
 PROMPT_VERSION = "literal-translation-zh-v2"
 DEFAULTS = {
-    "max_messages": 5,             # ServerChan free tier hard ceiling
-    "max_chars": 3500,             # conservative message length, incl. header
     "max_ai_calls_day": 25,        # maximum *attempts*, including failures/fallback
     "max_ai_tokens": 2200,         # tokens generated per source chunk
     "max_input_chars": 20000,    # refuse excessively long source, never silently cut
@@ -116,7 +114,7 @@ class Delivery:
         return sum(1 for x in self.queue["items"].values() if x.get("status") == "pending")
 
     def _usage(self, day: str) -> dict:
-        usage = self.queue["usage"].setdefault(day, {"wechat_attempts": 0, "ai_attempts": 0})
+        usage = self.queue["usage"].setdefault(day, {"ai_attempts": 0})
         # Avoid unbounded usage history while preserving recent accounting.
         if len(self.queue["usage"]) > 45:
             for old in sorted(self.queue["usage"])[:-40]:

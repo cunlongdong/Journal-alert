@@ -1,8 +1,7 @@
 """Reliable independent per-article Bark and paginated WeChat delivery.
 
-Independent from the original seen.sqlite schema. Uses the original Delivery
-translator and persistent cache, and stores immutable pages and channel-specific
-acknowledgements in state/dual_channel_delivery.json.
+Independent of seen.sqlite; uses durable original Abstract and Chinese title
+and translation caches. Confirms accepted Bark notifications individually.
 """
 from __future__ import annotations
 
