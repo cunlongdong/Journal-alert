@@ -66,7 +66,7 @@ jobs:
       TZ: Asia/Shanghai
       JALERT_SERVERCHAN_SENDKEY: ${{ secrets.SERVERCHAN_SENDKEY }}
       JALERT_BARK_DEVICE_KEY: ${{ secrets.BARK_DEVICE_KEY }}
-      JALERT_BARK_ENABLED: ${{ vars.JALERT_BARK_ENABLED || 'false' }}
+      JALERT_BARK_ENABLED: ${{ vars.JALERT_BARK_ENABLED || 'true' }}
       JALERT_BARK_SERVER: ${{ vars.JALERT_BARK_SERVER || 'https://api.day.app' }}
       JALERT_BARK_BODY_BYTES: ${{ vars.JALERT_BARK_BODY_BYTES || '2400' }}
       JALERT_BARK_MAX_MESSAGES_RUN: ${{ vars.JALERT_BARK_MAX_MESSAGES_RUN || '5000' }}
@@ -179,15 +179,25 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- reports/ docs/
-
-          git add -- \
+          # Stage only public outputs, tolerating absent state after reset.
+          for directory in reports docs; do
+            if [[ -d "$directory" ]]; then
+              git add -A -- "$directory"
+            fi
+          done
+          for path in \
             state/seen.sqlite \
             state/enhanced_wechat_outbox.json \
             state/enhanced_zh_cache.json \
             state/dual_channel_delivery.json \
             state/full_english_abstracts.json \
-            state/history_backfill_cursor.json
+            state/history_backfill_cursor.json; do
+            if [[ -f "$path" ]]; then
+              git add -- "$path"
+            elif git ls-files --error-unmatch -- "$path" >/dev/null 2>&1; then
+              git rm --cached -f -- "$path"
+            fi
+          done
           if git diff --cached --quiet; then
             echo 'Nothing changed'
           else

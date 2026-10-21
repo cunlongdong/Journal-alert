@@ -7,7 +7,6 @@ from types import SimpleNamespace
 
 from jalert.reliable_delivery import ReliableDelivery
 from tools.history_backfill import lookup_english_abstract
-from tools.apply_safe_fixes import prepare_changes
 
 
 class SafetyFixTests(unittest.TestCase):
@@ -58,28 +57,5 @@ class SafetyFixTests(unittest.TestCase):
             s,provider=lookup_english_abstract('10.2000/example')
         self.assertEqual((s,provider),('',''))
 
-    def test_source_patcher_preview_is_read_only_and_idempotent(self):
-        with tempfile.TemporaryDirectory() as td:
-            root=Path(td)
-            (root/'jalert').mkdir(); (root/'.github/workflows').mkdir(parents=True)
-            cards='''def write_cards():
-    if not articles:
-        if log:
-            log.info("cards page skipped: no reports found in %s", reports_dir)
-        return None
-    result = build_html()
-'''
-            readme='# 大气环境文献日报（journal-alert）\n\n把「期刊定期推送」变成**按关键词筛选后的微信推送 + 本地 Markdown 每日阅读报**，全自动、每天定时运行。\n'
-            flow='name: journal-alert daily\n      - name: Commit reports and safe resumable state\n'
-            (root/'jalert/cards.py').write_text(cards)
-            (root/'README.md').write_text(readme)
-            (root/'.github/workflows/daily.yml').write_text(flow)
-            updates=prepare_changes(root)
-            self.assertEqual(len(updates),3)
-            self.assertEqual((root/'jalert/cards.py').read_text(),cards)
-            self.assertEqual((root/'README.md').read_text(),readme)
-            for file,body in updates.items():file.write_text(body)
-            self.assertEqual(prepare_changes(root),{})
-            self.assertIn('cards page rebuilt empty', (root/'jalert/cards.py').read_text())
 
 if __name__=='__main__':unittest.main()

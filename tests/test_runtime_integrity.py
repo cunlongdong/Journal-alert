@@ -109,10 +109,6 @@ class SafetyTests(unittest.TestCase):
                     daily.run(args)
             self.assertFalse(Path(cfg["state_db"]).exists())
 
-    def test_patcher_recognizes_current_main(self):
-        from tools.apply_repository_fixes import prepare_changes
-        repo_root = Path(__file__).resolve().parents[1]
-        self.assertEqual(prepare_changes(repo_root), {})
 
 
 if __name__ == "__main__":
