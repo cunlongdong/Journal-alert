@@ -23,6 +23,8 @@ def inspect(path: Path) -> dict:
         'card_count': len(papers),
         'chinese_title_present': sum(bool(p.get('zhTitle')) for p in papers),
         'chinese_title_pending': sum(not p.get('zhTitle') for p in papers),
+        'missing_chinese_titles': [{'title': p.get('title',''), 'doi': p.get('doi','')}
+                                   for p in papers if not p.get('zhTitle')][:30],
         'full_english_source_present': en,
         'full_chinese_translation_present': zh,
         'both_full': both,
