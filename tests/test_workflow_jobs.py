@@ -23,7 +23,7 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("Show trigger and schedule diagnostics", self.source)
         self.assertIn("github.event.schedule", self.source)
         self.assertIn("TZ=Asia/Shanghai date", self.source)
-        self.assertIn("concurrency:\\n  group: journal-alert", self.source)
+        self.assertIn("concurrency:\n  group: journal-alert", self.source)
         self.assertIn("cancel-in-progress: false", self.source)
 
     def test_fallback_run_does_not_replay_bark_ack(self):
@@ -39,7 +39,7 @@ class WorkflowContractTests(unittest.TestCase):
             score = SimpleNamespace(labels=["spin logic"], score=10)
             first = ReliableDelivery(root)
             self.assertEqual(first.enqueue([(paper, score)]), 1)
-            with patch.object(ReliableDelivery, "_translate_title", return_value="自旋逻辑论文"), \\
+            with patch.object(ReliableDelivery, "_translate_title", return_value="自旋逻辑论文"), \
                  patch.object(ReliableDelivery, "_get_translation", return_value="测量证明存在10 mT的磁化翻转。"):
                 one = first.flush_both(send_func=lambda *args: True)
                 self.assertEqual(one["bark_articles_sent_this_run"], 1)
