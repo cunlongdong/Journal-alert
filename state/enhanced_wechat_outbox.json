@@ -1,0 +1,2513 @@
+{
+  "version": 1,
+  "items": {
+    "doi:10.1016/j.jmmm.2026.174649": {
+      "uid": "doi:10.1016/j.jmmm.2026.174649",
+      "title": "Operating regimes and materials limits of nonlinear magnon dynamics in Co-doped YIG",
+      "authors": [
+        "A.M. Tishin"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-12-01",
+      "doi": "10.1016/j.jmmm.2026.174649",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174649",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174675": {
+      "uid": "doi:10.1016/j.jmmm.2026.174675",
+      "title": "Magnetocaloric effect in one-dimensional chain spin-flop antiferromagnetic Brannerite MnV2O6",
+      "authors": [
+        "L. Gowsalya",
+        "N. Lakshminarasimhan"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-12-01",
+      "doi": "10.1016/j.jmmm.2026.174675",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174675",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174700": {
+      "uid": "doi:10.1016/j.jmmm.2026.174700",
+      "title": "Probabilistic tunable true random number generation using spin-orbit torque magnetic tunnel junctions",
+      "authors": [
+        "Wenbo Zhang",
+        "Yiyue Wang",
+        "Zhaohan Su",
+        "Jianwei Zhang",
+        "Yaowen Liu"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-12-01",
+      "doi": "10.1016/j.jmmm.2026.174700",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174700",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "磁隧道结与磁电阻"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174651": {
+      "uid": "doi:10.1016/j.jmmm.2026.174651",
+      "title": "Spin hall magnetoresistance in an antiferromagnetic magnetoelectric Sr2IrO4/heavy-metal Pt heterostructure",
+      "authors": [
+        "Shizhe Wu",
+        "Yingxin Shao",
+        "Zedong Xu",
+        "Yong Wu",
+        "Yong Jiang"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174651",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174651",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋流与自旋输运"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174674": {
+      "uid": "doi:10.1016/j.jmmm.2026.174674",
+      "title": "Modulation of Current-Induced Magnetization Switching by Tb Layer Thickness in Ti/Pt/Co/Tb/Ti Heterostructures",
+      "authors": [
+        "Shumin Lv",
+        "Zhicheng Wang",
+        "Mengjia Sun",
+        "Wenrui Guo",
+        "Liang Liu",
+        "Xiangxiang Zhao",
+        "Weixiao Hou",
+        "Qi Guo",
+        "Xue Ren",
+        "Yong Jiang",
+        "Jifan Hu"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174674",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174674",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174638": {
+      "uid": "doi:10.1016/j.jmmm.2026.174638",
+      "title": "Chirality-Barrier skyrmion racetrack with topological protection, Hall effect suppression, and reconfigurable logic",
+      "authors": [
+        "Xue-Feng Zhang",
+        "Wenbin Liu",
+        "Xiao-Ping Ma",
+        "Hongyan Zhang",
+        "Mengyao Han",
+        "Cunlong Dong",
+        "Guoqiang Yu",
+        "Hong-Guang Piao"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174638",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174638",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174605": {
+      "uid": "doi:10.1016/j.jmmm.2026.174605",
+      "title": "Spin-wave behavior and quantum fluctuations in AB-stacked bilayer zigzag nanoribbons",
+      "authors": [
+        "He Liu",
+        "Anbang Guo",
+        "Ao Tang",
+        "Qi Zhi"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174605",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174605",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174575": {
+      "uid": "doi:10.1016/j.jmmm.2026.174575",
+      "title": "Antiphase boundary-driven large exchange bias and negative magnetoresistance in NiCo2O4",
+      "authors": [
+        "Biswanath Pramanik",
+        "Pushpesh Pathak",
+        "Binoy K. Hazra"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174575",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174575",
+      "topics": [
+        "交换偏置与界面交换耦合"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "arXiv preprint (title and first author verified)",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174668": {
+      "uid": "doi:10.1016/j.jmmm.2026.174668",
+      "title": "Multi-scale characterization of magnetic anisotropy via magnetic acoustic emission, Barkhausen noise and magnetic domain observation",
+      "authors": [
+        "YuFan Zeng",
+        "Fasheng Qiu",
+        "Yao Chen"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174668",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174668",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174563": {
+      "uid": "doi:10.1016/j.jmmm.2026.174563",
+      "title": "Sign crossover of magnetoresistance through magneto-optically tunable defect state spin injection process in organic magnetic tunnel junctions",
+      "authors": [
+        "Yadlapalli Sujatha",
+        "Debajit Deb",
+        "Pamulapati Soujanya",
+        "Nitish Ghosh",
+        "S Vamsee Krishna"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174563",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174563",
+      "topics": [
+        "磁隧道结与磁电阻",
+        "自旋流与自旋输运"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174602": {
+      "uid": "doi:10.1016/j.jmmm.2026.174602",
+      "title": "Spin orbit torque manipulation of kπ-skyrmions in racetrack nanostructures for spintronic memory applications",
+      "authors": [
+        "H. Vigo-Cotrina",
+        "Eduardo Saavedra",
+        "S. Urcia-Romero",
+        "S. Navarro-Vilca",
+        "J. Sifuentes-Rivera",
+        "A.P. Guimarães"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174602",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174602",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "自旋转移力矩与自旋电子存储"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174650": {
+      "uid": "doi:10.1016/j.jmmm.2026.174650",
+      "title": "Large coercivity and giant exchange bias in Eu₂NiIrO₆",
+      "authors": [
+        "T. Durga Rao",
+        "Manish K. Niranjan",
+        "K. Ramesh Kumar",
+        "G. Bhavani",
+        "B. Sattibabu",
+        "Thao T. Tran",
+        "Jyothinagaram Krishnamurthy"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174650",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174650",
+      "topics": [
+        "交换偏置与界面交换耦合"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174590": {
+      "uid": "doi:10.1016/j.jmmm.2026.174590",
+      "title": "Bias-field-free conversion of domain wall pair to skyrmion under spin transfer torque in synthetic antiferromagnet-based racetrack",
+      "authors": [
+        "Mani Bharathi Manickavasagam",
+        "T. Perarasan",
+        "Priyanka Babu",
+        "Jaivardhan Sinha"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174590",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174590",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋转移力矩与自旋电子存储",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 30,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174633": {
+      "uid": "doi:10.1016/j.jmmm.2026.174633",
+      "title": "Sector-resolved microcanonical entropy of the spin-1/2 Heisenberg antiferromagnet on the Sierpiński gasket",
+      "authors": [
+        "J. Ricardo de Sousa",
+        "Orion Ciftja"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174633",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174633",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174616": {
+      "uid": "doi:10.1016/j.jmmm.2026.174616",
+      "title": "Surface-enhanced anomalous Hall conductivity in ferrimagnetic Mn2PtSn Heusler alloy",
+      "authors": [
+        "Sadikul Alom",
+        "Bhargab Kakati",
+        "Munima B. Sahariah"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174616",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174616",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174570": {
+      "uid": "doi:10.1016/j.jmmm.2026.174570",
+      "title": "The magnetic immunity of perpendicular STT-MRAM",
+      "authors": [
+        "Zhengren Yan",
+        "Pengqi Lu",
+        "Yuyan Chu",
+        "Yizhou Liu",
+        "Haifeng Du",
+        "Shikun He"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174570",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174570",
+      "topics": [
+        "自旋转移力矩与自旋电子存储",
+        "轨道力矩磁存储与晶圆级集成"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174566": {
+      "uid": "doi:10.1016/j.jmmm.2026.174566",
+      "title": "Characterization of ferrimagnetic FeGd coatings formed by a magnetron sputtering",
+      "authors": [
+        "V.O. Semin",
+        "M.V. Shandrikov",
+        "V.R. Utyaganova",
+        "M.G. Ostapenko",
+        "F.A. D'yachenko",
+        "A.A. Cherkasov",
+        "S.A. Larionov"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174566",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174566",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174543": {
+      "uid": "doi:10.1016/j.jmmm.2026.174543",
+      "title": "Impact of He+ ion irradiation on the domain wall dynamics in Pd/Co/Pd trilayers with perpendicular magnetic anisotropy",
+      "authors": [
+        "Anurag Keloth",
+        "Sakshath Sadashivaiah",
+        "Parswajit Kalita",
+        "Rakhul Raj",
+        "V. Raghavendra Reddy",
+        "Bikram Das",
+        "Bharti Pandit",
+        "Ralf Röhlsberger",
+        "P.S. Anil Kumar",
+        "Ajay Gupta",
+        "Sarathlal Koyiloth Vayalil"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174543",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174543",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174673": {
+      "uid": "doi:10.1016/j.jmmm.2026.174673",
+      "title": "Electrical modulation of spin Hall magnetoresistance in a compensated ferrimagnetic insulator",
+      "authors": [
+        "Kaili Li",
+        "Zhigang Li",
+        "Zixiao Wu",
+        "Chenjie Yuan",
+        "Hanyuan Ding",
+        "Yangyang Xu",
+        "Sen Yang",
+        "Yu Wang"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174673",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174673",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋流与自旋输运"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174646": {
+      "uid": "doi:10.1016/j.jmmm.2026.174646",
+      "title": "Thermally driven stochastic magnetic-state selection and competing skyrmion annihilation pathways",
+      "authors": [
+        "F. Tejo",
+        "D. Cortés-Ortuño",
+        "J. Escrig"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174646",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174646",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174589": {
+      "uid": "doi:10.1016/j.jmmm.2026.174589",
+      "title": "Designer quantum states in magnetic topological insulator multilayers",
+      "authors": [
+        "Deyi Zhuo",
+        "Han Tay",
+        "Cui-Zu Chang"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174589",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174589",
+      "topics": [
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "arXiv preprint (title and first author verified)",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174629": {
+      "uid": "doi:10.1016/j.jmmm.2026.174629",
+      "title": "Emergence of multiple metastable Skyrmion states induced by strong grain-boundary pinning",
+      "authors": [
+        "Terumitsu Tanaka",
+        "Budi Purnama"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jmmm.2026.174629",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174629",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1016/j.jallcom.2026.191741": {
+      "uid": "doi:10.1016/j.jallcom.2026.191741",
+      "title": "Strain-induced enhanced room-temperature magnetization in epitaxial Mn3Sn thin films for antiferromagnetic spintronics",
+      "authors": [
+        "Subhankar Das",
+        "Sriram Kasilingam",
+        "Ajoy Dinda",
+        "Bilal Jamshed",
+        "Biswanath Pramanik",
+        "Subrata Biswas",
+        "Badsha Sekh",
+        "Hasibur Rahaman",
+        "Lalit Katariya",
+        "Ramu Maddu",
+        "Ahin Roy",
+        "S.N. Piramanayagam"
+      ],
+      "journal": "Journal of Alloys and Compounds",
+      "date": "2026-11-01",
+      "doi": "10.1016/j.jallcom.2026.191741",
+      "url": "https://doi.org/10.1016/j.jallcom.2026.191741",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1126/sciadv.aeh1582": {
+      "uid": "doi:10.1126/sciadv.aeh1582",
+      "title": "Vortex-mediated spin current injection into two-dimensional superconductor NbSe 2",
+      "authors": [
+        "Meng Yang",
+        "Xiaolong Yin",
+        "Jingjing Liu",
+        "Yifeng Chen",
+        "Qinwu Gao",
+        "Hongxing Zhu",
+        "Danni Huang",
+        "Lang Chen",
+        "Shuo-Ying Yang",
+        "Junxue Li"
+      ],
+      "journal": "Science Advances",
+      "date": "2026-10-23",
+      "doi": "10.1126/sciadv.aeh1582",
+      "url": "https://doi.org/10.1126/sciadv.aeh1582",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋轨道力矩SOT",
+        "自旋流与自旋输运"
+      ],
+      "score": 16,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1126/sciadv.aeh0887": {
+      "uid": "doi:10.1126/sciadv.aeh0887",
+      "title": "Anomalous phonon selection rules and Raman optical activity in RuO 2",
+      "authors": [
+        "Di Cheng",
+        "Ao Wu",
+        "Hui Pan",
+        "Yu-Peng Zhu",
+        "Shizhuo Luo",
+        "King Yau Yip",
+        "Wei Zhang",
+        "Ariando Ariando",
+        "Chang Liu",
+        "Jian-Sheng Wang",
+        "Xinwei Li"
+      ],
+      "journal": "Science Advances",
+      "date": "2026-10-23",
+      "doi": "10.1126/sciadv.aeh0887",
+      "url": "https://doi.org/10.1126/sciadv.aeh0887",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1126/sciadv.aej9484": {
+      "uid": "doi:10.1126/sciadv.aej9484",
+      "title": "A continuous confinement-deconfinement transition in a triangular quantum magnet",
+      "authors": [
+        "Suguru Hosoi",
+        "Sejun Park",
+        "Michihiro Hirata",
+        "Minseong Lee",
+        "Adam P. Dioguardi",
+        "Joe D. Thompson",
+        "Filip Ronning",
+        "Allen O. Scheie",
+        "Kumpei Imamura",
+        "Kenichiro Hashimoto",
+        "Takasada Shibauchi",
+        "Bishnu P. Belbase"
+      ],
+      "journal": "Science Advances",
+      "date": "2026-10-23",
+      "doi": "10.1126/sciadv.aej9484",
+      "url": "https://doi.org/10.1126/sciadv.aej9484",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/82g5-bsvp": {
+      "uid": "doi:10.1103/82g5-bsvp",
+      "title": "Probing the ground state of the antiferromagnetic Heisenberg model on the kagome lattice using geometrically informed variational quantum eigensolver",
+      "authors": [
+        "Abdellah Tounsi",
+        "Nacer Eddine Belaloui",
+        "Abdelmouheymen Rabah Khamadja",
+        "Takei Eddine Fadi Lalaoui",
+        "Mohamed Messaoud Louamri",
+        "David E. Bernal Neira",
+        "Mohamed Taha Rouabah"
+      ],
+      "journal": "Physical Review Research",
+      "date": "2026-10-21",
+      "doi": "10.1103/82g5-bsvp",
+      "url": "https://doi.org/10.1103/82g5-bsvp",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/hgvh-s6h5": {
+      "uid": "doi:10.1103/hgvh-s6h5",
+      "title": "Bulk-Mediated Reflection of Chirality-Protected Surface Spin Waves",
+      "authors": [
+        "Vitaliy I. Vasyuchka",
+        "Florin Ciubotaru",
+        "Andrii V. Chumak",
+        "Burkard Hillebrands",
+        "Alexander A. Serga"
+      ],
+      "journal": "Physical Review Letters",
+      "date": "2026-10-21",
+      "doi": "10.1103/hgvh-s6h5",
+      "url": "https://doi.org/10.1103/hgvh-s6h5",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/mcz4-xh6z": {
+      "uid": "doi:10.1103/mcz4-xh6z",
+      "title": "Probing antiferromagnetic hysteresis on programmable quantum annealers",
+      "authors": [
+        "Elijah Pelofske",
+        "Pratik Sathe",
+        "Cristiano Nisoli",
+        "Frank Barrows"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/mcz4-xh6z",
+      "url": "https://doi.org/10.1103/mcz4-xh6z",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/tn92-kx55": {
+      "uid": "doi:10.1103/tn92-kx55",
+      "title": "Spin Hall effect in electronic Lévy glasses: Enhanced spin-current generation in the superdiffusive regime",
+      "authors": [
+        "Diego B. Fonseca",
+        "Luiz Felipe C. Pereira",
+        "Anderson L. R. Barbosa"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/tn92-kx55",
+      "url": "https://doi.org/10.1103/tn92-kx55",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "自旋流与自旋输运"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/kz93-vvjb": {
+      "uid": "doi:10.1103/kz93-vvjb",
+      "title": "Anomalous Hall enhancement in fully compensated noncollinear antiferromagnetic Cr-doped Mn 3 Sn",
+      "authors": [
+        "Ying Zhang",
+        "Xin Chen",
+        "Hang Xie",
+        "Ziyan Luo",
+        "Yihong Wu",
+        "Lei Shen"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/kz93-vvjb",
+      "url": "https://doi.org/10.1103/kz93-vvjb",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/rvzx-phch": {
+      "uid": "doi:10.1103/rvzx-phch",
+      "title": "Chiral topological superconductivity from quantum anomalous Hall states in ferromagnetic metals",
+      "authors": [
+        "Yun-Lei Sun"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/rvzx-phch",
+      "url": "https://doi.org/10.1103/rvzx-phch",
+      "topics": [
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/lfl8-syfd": {
+      "uid": "doi:10.1103/lfl8-syfd",
+      "title": "Intra-atomic magnetic octupoles and their coupling to cluster magnetic octupoles in chiral antiferromagnetic Mn 3 Sn",
+      "authors": [
+        "Dohoon Park",
+        "Seungyun Han",
+        "Hyun-Woo Lee"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/lfl8-syfd",
+      "url": "https://doi.org/10.1103/lfl8-syfd",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/dbd5-2s48": {
+      "uid": "doi:10.1103/dbd5-2s48",
+      "title": "Magnon-dislon hybridization in magnetic insulators",
+      "authors": [
+        "Carlos Saji",
+        "Nicolas Vidal-Silva",
+        "Roberto E. Troncoso"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/dbd5-2s48",
+      "url": "https://doi.org/10.1103/dbd5-2s48",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/sqws-q32r": {
+      "uid": "doi:10.1103/sqws-q32r",
+      "title": "Magnetic circular dichroism of terahertz modes and selection rules of Raman-active optical phonons in the polar altermagnet candidate Mn 2 Mo 3 O 8",
+      "authors": [
+        "F. Schilberth",
+        "K. Vasin",
+        "M. Knauft",
+        "M. Kondákor",
+        "M. Vuckovic",
+        "N. Herrmann",
+        "K. Penc",
+        "M. Minola",
+        "B. Keimer",
+        "V. A. Martinez",
+        "K. Panda",
+        "A. A. Sirenko"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/sqws-q32r",
+      "url": "https://doi.org/10.1103/sqws-q32r",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/38sm-tbwf": {
+      "uid": "doi:10.1103/38sm-tbwf",
+      "title": "Correlation-driven metal-insulator transition in a d -wave altermagnet",
+      "authors": [
+        "Santhosh Kannan",
+        "Jainam Savla",
+        "Madhuparna Karmakar"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-21",
+      "doi": "10.1103/38sm-tbwf",
+      "url": "https://doi.org/10.1103/38sm-tbwf",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/nny3-5mnz": {
+      "uid": "doi:10.1103/nny3-5mnz",
+      "title": "Current-control of chaos and effects of thermal fluctuations in magnetic tunnel junctions",
+      "authors": [
+        "Ryo Tatsumi",
+        "Shinji Miwa",
+        "Hiroaki Matsueda",
+        "Takahiro Chiba"
+      ],
+      "journal": "Physical Review Applied",
+      "date": "2026-10-21",
+      "doi": "10.1103/nny3-5mnz",
+      "url": "https://doi.org/10.1103/nny3-5mnz",
+      "topics": [
+        "自旋转移力矩与自旋电子存储",
+        "磁隧道结与磁电阻",
+        "磁各向异性与界面磁性",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/8q5b-3xcn": {
+      "uid": "doi:10.1103/8q5b-3xcn",
+      "title": "Topological magnon frequency combs",
+      "authors": [
+        "Zhixiong Li",
+        "Xuejuan Liu",
+        "Zhejunyu Jin",
+        "Guanghua Guo",
+        "Xingen Zheng",
+        "Peng Yan"
+      ],
+      "journal": "Physical Review Applied",
+      "date": "2026-10-21",
+      "doi": "10.1103/8q5b-3xcn",
+      "url": "https://doi.org/10.1103/8q5b-3xcn",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1038/s41586-026-11172-5": {
+      "uid": "doi:10.1038/s41586-026-11172-5",
+      "title": "Octupole-driven spin torque switching of antiferromagnetic tunnel junctions",
+      "authors": [
+        "Jaimin Kang",
+        "Mohammad Hamdi",
+        "Shun Kong Cheung",
+        "Lin-Ding Yuan",
+        "Mohamed Elekhtiar",
+        "Eric Matt",
+        "William Rogers",
+        "Andrea Meo",
+        "Peter G. Lim",
+        "M. S. Nicholas Tey",
+        "Anthony D’Addario",
+        "Shiva T. Konakanchi"
+      ],
+      "journal": "Nature",
+      "date": "2026-10-21",
+      "doi": "10.1038/s41586-026-11172-5",
+      "url": "https://doi.org/10.1038/s41586-026-11172-5",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1021/acs.nanolett.6c04307": {
+      "uid": "doi:10.1021/acs.nanolett.6c04307",
+      "title": "Unidirectional Magnetoresistance Driven by Nonequilibrium Antiferromagnetic Magnons",
+      "authors": [
+        "Xue He",
+        "Hans Gløckner Giil",
+        "Caiqiong Xu",
+        "Jicheng Wang",
+        "Arne Brataas",
+        "Jinbo Yang",
+        "Yanglong Hou",
+        "Zhaochu Luo",
+        "Rui Wu",
+        "Shilei Ding"
+      ],
+      "journal": "Nano Letters",
+      "date": "2026-10-21",
+      "doi": "10.1021/acs.nanolett.6c04307",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c04307",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋流与自旋输运",
+        "磁各向异性与界面磁性",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1088/1361-648x/aeb782": {
+      "uid": "doi:10.1088/1361-648x/aeb782",
+      "title": "Controlling the magnetic properties of microwires by gradient annealing",
+      "authors": [
+        "Alexander Chizhik",
+        "Valentina Zhukova",
+        "Arcady Zhukov"
+      ],
+      "journal": "Journal of Physics: Condensed Matter",
+      "date": "2026-10-21",
+      "doi": "10.1088/1361-648x/aeb782",
+      "url": "https://doi.org/10.1088/1361-648x/aeb782",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsnano.6c15462": {
+      "uid": "doi:10.1021/acsnano.6c15462",
+      "title": "Enhanced Magneto-Optical Kerr Effect in Nano-Magnetic Metamaterials with Near-Perfect Coherent Absorption",
+      "authors": [
+        "Xiaofei Xiao",
+        "Tingjun Zheng",
+        "Alex Vanstone",
+        "Daniel S. Bromley",
+        "Holly Holder",
+        "Kilian D. Stenning",
+        "Jack C. Gartside",
+        "Will R. Branford",
+        "Rupert F. Oulton"
+      ],
+      "journal": "ACS Nano",
+      "date": "2026-10-21",
+      "doi": "10.1021/acsnano.6c15462",
+      "url": "https://doi.org/10.1021/acsnano.6c15462",
+      "topics": [
+        "自旋逻辑与神经形态器件"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsami.6c14914": {
+      "uid": "doi:10.1021/acsami.6c14914",
+      "title": "Robust Anomalous Hall Effect in Epitaxial Cubic D03-Fe3Ge Nanoplates Grown via Chemical Vapor Deposition",
+      "authors": [
+        "Mingxuan Chen",
+        "Chao Chen",
+        "Siqi Jiang",
+        "Shuxiang Qiao",
+        "Hongyan Lu",
+        "Di Zhang",
+        "Jiabei Huang",
+        "Fuzhuo Lian",
+        "Zhaochen Qu",
+        "Siqin Wang",
+        "Ziyi Wang",
+        "Shuai Zhang"
+      ],
+      "journal": "ACS Applied Materials & Interfaces",
+      "date": "2026-10-21",
+      "doi": "10.1021/acsami.6c14914",
+      "url": "https://doi.org/10.1021/acsami.6c14914",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/lmlm-2mxw": {
+      "uid": "doi:10.1103/lmlm-2mxw",
+      "title": "Deconfined quantum critical point in a dissipative spin-1/2 chain",
+      "authors": [
+        "Longye Lu",
+        "Shifeng Cui",
+        "Wenan Guo"
+      ],
+      "journal": "Physical Review Letters",
+      "date": "2026-10-20",
+      "doi": "10.1103/lmlm-2mxw",
+      "url": "https://doi.org/10.1103/lmlm-2mxw",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/s83n-w474": {
+      "uid": "doi:10.1103/s83n-w474",
+      "title": "Ligand-mediated origin of altermagnetic spin splitting",
+      "authors": [
+        "Luigi Camerano",
+        "F. Bisti",
+        "Gianni Profeta"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/s83n-w474",
+      "url": "https://doi.org/10.1103/s83n-w474",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/g58f-n3tg": {
+      "uid": "doi:10.1103/g58f-n3tg",
+      "title": "Orbital-to-spin conversion in Pt and W: Sign reversal and crystal-phase dependence",
+      "authors": [
+        "Riko Fukunaga",
+        "Naoki Yano",
+        "Asahi Oe",
+        "Hisanobu Kashiki",
+        "Kazuya Ando"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/g58f-n3tg",
+      "url": "https://doi.org/10.1103/g58f-n3tg",
+      "topics": [
+        "自旋轨道力矩SOT"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/yyd4-l1vx": {
+      "uid": "doi:10.1103/yyd4-l1vx",
+      "title": "Traveling-wave-mediated remote magnon-magnon coupling",
+      "authors": [
+        "Lihua Zhong",
+        "Chenyang Lu",
+        "Jiguang Yao",
+        "Bimu Yao",
+        "Wei Lu",
+        "Can-Ming Hu"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/yyd4-l1vx",
+      "url": "https://doi.org/10.1103/yyd4-l1vx",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/8m9g-7frl": {
+      "uid": "doi:10.1103/8m9g-7frl",
+      "title": "Pseudogauge field-driven magnon thermal Hall effect in two-dimensional compensated ferrimagnets",
+      "authors": [
+        "Mohd Faizee",
+        "Abir De Sarkar"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/8m9g-7frl",
+      "url": "https://doi.org/10.1103/8m9g-7frl",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/n4mx-v1fx": {
+      "uid": "doi:10.1103/n4mx-v1fx",
+      "title": "Comparative analysis of unconventional spin-orbit torques and magnetization switching efficiencies in Fe 3 GeTe 2 /WTe 2",
+      "authors": [
+        "Niklas Kercher",
+        "Paul Noël",
+        "Emir Karadža",
+        "Pietro Gambardella"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/n4mx-v1fx",
+      "url": "https://doi.org/10.1103/n4mx-v1fx",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/7mm4-xymn": {
+      "uid": "doi:10.1103/7mm4-xymn",
+      "title": "Spin filtering by electron reflection from surfaces of collinear compensated magnets",
+      "authors": [
+        "Eugene E. Krasovskii",
+        "A. N. Yaresko"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/7mm4-xymn",
+      "url": "https://doi.org/10.1103/7mm4-xymn",
+      "topics": [
+        "磁隧道结与磁电阻"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/9w3c-7kcr": {
+      "uid": "doi:10.1103/9w3c-7kcr",
+      "title": "Parity-driven RKKY decoupling and anomalous 1 / R Dzyaloshinskii-Moriya interaction in odd-parity magnets",
+      "authors": [
+        "Morteza Salehi",
+        "T. Farajollahpour"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/9w3c-7kcr",
+      "url": "https://doi.org/10.1103/9w3c-7kcr",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/3hjn-dx1x": {
+      "uid": "doi:10.1103/3hjn-dx1x",
+      "title": "Space group symmetry of chiral Fe-deficient van der Waals magnet Fe 3 − x GeTe 2 probed by convergent beam electron diffraction",
+      "authors": [
+        "O. Zaiets",
+        "S. Subakti",
+        "D. Wolf",
+        "J. Steinweh",
+        "S. Parkin",
+        "A. Lubk"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/3hjn-dx1x",
+      "url": "https://doi.org/10.1103/3hjn-dx1x",
+      "topics": [
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/d35n-4jtr": {
+      "uid": "doi:10.1103/d35n-4jtr",
+      "title": "Ground-state properties of the S = 3 2 anisotropic triangular lattice antiferromagnet Na 3 Cr ( PO 4 ) 2",
+      "authors": [
+        "A. Magar",
+        "Sebin J. Sebastian",
+        "Q.-P. Ding",
+        "Y. Skourski",
+        "A. A. Tsirlin",
+        "Y. Furukawa",
+        "R. Nath"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/d35n-4jtr",
+      "url": "https://doi.org/10.1103/d35n-4jtr",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/xqff-gsby": {
+      "uid": "doi:10.1103/xqff-gsby",
+      "title": "Affine tangent-plane analysis of spin-transfer-torque-driven magnetization dynamics: Static displacement, frequency tuning, and exceptional points",
+      "authors": [
+        "Yang Liu",
+        "Suying Zhang"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/xqff-gsby",
+      "url": "https://doi.org/10.1103/xqff-gsby",
+      "topics": [
+        "自旋转移力矩与自旋电子存储"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/148w-67vq": {
+      "uid": "doi:10.1103/148w-67vq",
+      "title": "Néel-vector-dependent magneto-optical and spin Hall responses in altermagnetic CrSb",
+      "authors": [
+        "Zongying Wang",
+        "Weiyi Pan"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-20",
+      "doi": "10.1103/148w-67vq",
+      "url": "https://doi.org/10.1103/148w-67vq",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/jlhg-yy14": {
+      "uid": "doi:10.1103/jlhg-yy14",
+      "title": "Supercurrent-controlled magnon transport via suppression of the superconducting gap",
+      "authors": [
+        "Tetsuma Mandokoro",
+        "Yoichi Shiota",
+        "Hisakazu Matsuki",
+        "Ryusuke Hisatomi",
+        "Shutaro Karube",
+        "Akito Daido",
+        "Youichi Yanase",
+        "Teruo Ono"
+      ],
+      "journal": "Physical Review Applied",
+      "date": "2026-10-20",
+      "doi": "10.1103/jlhg-yy14",
+      "url": "https://doi.org/10.1103/jlhg-yy14",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1038/s41467-026-78519-4": {
+      "uid": "doi:10.1038/s41467-026-78519-4",
+      "title": "Terahertz field-induced giant symmetry modulations in a van der Waals antiferromagnet",
+      "authors": [
+        "Sheikh Rubaiat Ul Haque",
+        "Martin J. Cross",
+        "Sangeeta Rajpurohit",
+        "Jonah B. Haber",
+        "Christopher J. Ciccarino",
+        "Alexandra C. Zimmerman",
+        "Isabelle J. Sealey",
+        "V. A. Kulichenko",
+        "Monique Tie",
+        "Huaiyu Hugo Wang",
+        "Sharon S. Philip",
+        "Choongwon Seo"
+      ],
+      "journal": "Nature Communications",
+      "date": "2026-10-20",
+      "doi": "10.1038/s41467-026-78519-4",
+      "url": "https://doi.org/10.1038/s41467-026-78519-4",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.3390/nano16201323": {
+      "uid": "doi:10.3390/nano16201323",
+      "title": "Boosting Microwave Absorption via Hollow CoFe/CoFe2O4 Nanoparticles Anchored on Lotus-Leaf-Derived Biochar",
+      "authors": [
+        "Feng Han",
+        "Maomao He",
+        "Hongchun Yu",
+        "Luran Zhang"
+      ],
+      "journal": "Nanomaterials",
+      "date": "2026-10-20",
+      "doi": "10.3390/nano16201323",
+      "url": "https://doi.org/10.3390/nano16201323",
+      "topics": [
+        "交换偏置与界面交换耦合"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acs.nanolett.6c03322": {
+      "uid": "doi:10.1021/acs.nanolett.6c03322",
+      "title": "Magnetic Phase Diagram of Cr2Te3: The Hidden Role of Layer Stacking",
+      "authors": [
+        "C. Jego",
+        "Thierry Sauvage",
+        "Nicolas Gauthier",
+        "Quentin Guillet",
+        "Jean‐François Jacquot",
+        "Isabelle Gomes de Moraes",
+        "Damien Caliste",
+        "Pascal Pochet",
+        "D. Jalabert",
+        "Hanako Okuno",
+        "Thomas Olsen",
+        "A. Marty"
+      ],
+      "journal": "Nano Letters",
+      "date": "2026-10-20",
+      "doi": "10.1021/acs.nanolett.6c03322",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c03322",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/jacs.6c16438": {
+      "uid": "doi:10.1021/jacs.6c16438",
+      "title": "Topological Frustration Enables Exchange-Coupled Spin-Qubit Behavior in a Concealed Non-Kekule Nanographene",
+      "authors": [
+        "Muhammad Imran",
+        "Zhen‐Lin Qiu",
+        "William K. Myers",
+        "Philipp Royla",
+        "Simon J. Cassidy",
+        "Jan J. Weigand",
+        "Jan Behrends",
+        "Xinliang Feng"
+      ],
+      "journal": "Journal of the American Chemical Society",
+      "date": "2026-10-20",
+      "doi": "10.1021/jacs.6c16438",
+      "url": "https://doi.org/10.1021/jacs.6c16438",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/jacs.6c13726": {
+      "uid": "doi:10.1021/jacs.6c13726",
+      "title": "A Route to Enhanced Energy Barriers and Reduced Magnetic Relaxation in Axial Bis(stannolediide) Lanthanidocenates",
+      "authors": [
+        "Xiaofei Sun",
+        "Concepción Molina-Jirón",
+        "Masaichi Saito",
+        "Sagar Paul",
+        "Mario Ruben",
+        "Wolfgang Wernsdorfer",
+        "Eufemio Moreno Pineda",
+        "Peter W. Roesky"
+      ],
+      "journal": "Journal of the American Chemical Society",
+      "date": "2026-10-20",
+      "doi": "10.1021/jacs.6c13726",
+      "url": "https://doi.org/10.1021/jacs.6c13726",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1088/1361-648x/aeb697": {
+      "uid": "doi:10.1088/1361-648x/aeb697",
+      "title": "2DNL dynamical response of the magnetoelectrically driven dimerized XXZ-chain",
+      "authors": [
+        "Wolfram Brenig"
+      ],
+      "journal": "Journal of Physics: Condensed Matter",
+      "date": "2026-10-20",
+      "doi": "10.1088/1361-648x/aeb697",
+      "url": "https://doi.org/10.1088/1361-648x/aeb697",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1088/1361-648x/aeb217": {
+      "uid": "doi:10.1088/1361-648x/aeb217",
+      "title": "The challenging path toward high-temperature quantum anomalous hall effect in MnBi 2 Te 4",
+      "authors": [
+        "Liangcai Xu",
+        "Yuetan Li",
+        "Zichen Lian",
+        "Jinsong Zhang"
+      ],
+      "journal": "Journal of Physics: Condensed Matter",
+      "date": "2026-10-20",
+      "doi": "10.1088/1361-648x/aeb217",
+      "url": "https://doi.org/10.1088/1361-648x/aeb217",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 13,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1088/1361-648x/aeb0fa": {
+      "uid": "doi:10.1088/1361-648x/aeb0fa",
+      "title": "Spin-dependent electron transfer through a ring-wire coupled junction: role of in-plane electric field",
+      "authors": [
+        "Prabhab Patra",
+        "Santanu K Maiti"
+      ],
+      "journal": "Journal of Physics: Condensed Matter",
+      "date": "2026-10-20",
+      "doi": "10.1088/1361-648x/aeb0fa",
+      "url": "https://doi.org/10.1088/1361-648x/aeb0fa",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "自旋逻辑与神经形态器件"
+      ],
+      "score": 7,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.35848/1882-0786/aeb69c": {
+      "uid": "doi:10.35848/1882-0786/aeb69c",
+      "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
+      "authors": [
+        "Kohei Hamaya",
+        "Keisuke Yamamoto",
+        "Kentarou Sawano"
+      ],
+      "journal": "Applied Physics Express",
+      "date": "2026-10-20",
+      "doi": "10.35848/1882-0786/aeb69c",
+      "url": "https://doi.org/10.35848/1882-0786/aeb69c",
+      "topics": [
+        "自旋流与自旋输运"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1002/advs.78167": {
+      "uid": "doi:10.1002/advs.78167",
+      "title": "Intrinsic i‐Wave Altermagnetism in 2D Graphene Superlattices",
+      "authors": [
+        "Cuiju Yu",
+        "Jose L. Lado"
+      ],
+      "journal": "Advanced Science",
+      "date": "2026-10-20",
+      "doi": "10.1002/advs.78167",
+      "url": "https://doi.org/10.1002/advs.78167",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1002/advs.78269": {
+      "uid": "doi:10.1002/advs.78269",
+      "title": "Skyrmion Bubbles by Design in a Centrosymmetric Kagome Magnet",
+      "authors": [
+        "Mohamed El Gazzah",
+        "Fehmi Sami Yasin",
+        "Sk Jamaluddin",
+        "Hari Bhandari",
+        "Resham Babu Regmi",
+        "Xiuzhen Yu",
+        "Nirmal J. Ghimire"
+      ],
+      "journal": "Advanced Science",
+      "date": "2026-10-20",
+      "doi": "10.1002/advs.78269",
+      "url": "https://doi.org/10.1002/advs.78269",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsnano.6c11666": {
+      "uid": "doi:10.1021/acsnano.6c11666",
+      "title": "Low Energy Excitations in a [4]Triangulene Honeycomb Antiferromagnet",
+      "authors": [
+        "Aidan Delgado",
+        "Carolin Dusold",
+        "James Wu",
+        "Jingwei Jiang",
+        "Christina M. Dadich",
+        "Adam Cronin",
+        "Steven G. Louie",
+        "Felix Raoul Fischer"
+      ],
+      "journal": "ACS Nano",
+      "date": "2026-10-20",
+      "doi": "10.1021/acsnano.6c11666",
+      "url": "https://doi.org/10.1021/acsnano.6c11666",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 15,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/qr4c-8gnp": {
+      "uid": "doi:10.1103/qr4c-8gnp",
+      "title": "Optical vortex generation by magnons with spin-orbit-coupled light",
+      "authors": [
+        "Ryusuke Hisatomi",
+        "Alto Osada",
+        "Kotaro Taga",
+        "Haruka Komiyama",
+        "Takuya Takahashi",
+        "Shutaro Karube",
+        "Yoichi Shiota",
+        "Teruo Ono"
+      ],
+      "journal": "Physical Review Research",
+      "date": "2026-10-19",
+      "doi": "10.1103/qr4c-8gnp",
+      "url": "https://doi.org/10.1103/qr4c-8gnp",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/j14s-sfj5": {
+      "uid": "doi:10.1103/j14s-sfj5",
+      "title": "Field-induced magnetic phase transition driven by a ground-state level crossing in CsErSe 2",
+      "authors": [
+        "Hope Whitelock",
+        "Allen O. Scheie",
+        "Marissa McMaster",
+        "Ian A. Leahy",
+        "Li Xiang",
+        "Mykhaylo Ozerov",
+        "Dmitry Smirnov",
+        "Eun Sang Choi",
+        "C. dela Cruz",
+        "M. O. Ajeesh",
+        "Eliana S. Krakovsky",
+        "Daniel A. Rehn"
+      ],
+      "journal": "Physical Review Research",
+      "date": "2026-10-19",
+      "doi": "10.1103/j14s-sfj5",
+      "url": "https://doi.org/10.1103/j14s-sfj5",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/nn6m-pp8c": {
+      "uid": "doi:10.1103/nn6m-pp8c",
+      "title": "Advances on jacutingaite ( Pt 2 HgSe 3 )-based materials: Natural mineral to tunable topological phases",
+      "authors": [
+        "Pradip Basnet",
+        "Madhav Prasad Ghimire"
+      ],
+      "journal": "Physical Review Materials",
+      "date": "2026-10-19",
+      "doi": "10.1103/nn6m-pp8c",
+      "url": "https://doi.org/10.1103/nn6m-pp8c",
+      "topics": [
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/sffm-3s75": {
+      "uid": "doi:10.1103/sffm-3s75",
+      "title": "Strain induced magnetic order and magnetic anisotropy transitions in epitaxial SrM n 0.3 Ir 0.7 O 3 films",
+      "authors": [
+        "Shengkai Liu",
+        "Yuqi Wang",
+        "Pengxiang Hou",
+        "Yang Wu",
+        "Jibo Xu",
+        "Ya-jie Han",
+        "Yu Deng",
+        "Di Wu"
+      ],
+      "journal": "Physical Review Materials",
+      "date": "2026-10-19",
+      "doi": "10.1103/sffm-3s75",
+      "url": "https://doi.org/10.1103/sffm-3s75",
+      "topics": [
+        "磁各向异性与界面磁性"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/bdrw-y6tl": {
+      "uid": "doi:10.1103/bdrw-y6tl",
+      "title": "Intrinsic defects and 4 d / 5 d transition metal defects in Cr 2 O 3 : Pathways for enhancing the Néel temperature",
+      "authors": [
+        "Xuecong Wang",
+        "Sai Mu"
+      ],
+      "journal": "Physical Review Materials",
+      "date": "2026-10-19",
+      "doi": "10.1103/bdrw-y6tl",
+      "url": "https://doi.org/10.1103/bdrw-y6tl",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/65kw-1h1l": {
+      "uid": "doi:10.1103/65kw-1h1l",
+      "title": "Moiré strain skyrmions in sliding twisted bilayers",
+      "authors": [
+        "Rong Hu",
+        "Yu-Tao Tan",
+        "Dapeng Liu",
+        "Jie Ren",
+        "Yizhou Liu"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/65kw-1h1l",
+      "url": "https://doi.org/10.1103/65kw-1h1l",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/9x45-12q2": {
+      "uid": "doi:10.1103/9x45-12q2",
+      "title": "Coherent and incoherent interfacial spin transport: Quantum-to-classical crossover in spin superfluids",
+      "authors": [
+        "A. R. Moura",
+        "L. S. L. Barbosa"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/9x45-12q2",
+      "url": "https://doi.org/10.1103/9x45-12q2",
+      "topics": [
+        "自旋流与自旋输运"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/vsw5-8s3w": {
+      "uid": "doi:10.1103/vsw5-8s3w",
+      "title": "Magnetic quadrupole current generation and accumulation in noncentrosymmetric systems",
+      "authors": [
+        "Yuuga Takasu",
+        "Satoru Hayami"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/vsw5-8s3w",
+      "url": "https://doi.org/10.1103/vsw5-8s3w",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "自旋流与自旋输运"
+      ],
+      "score": 6,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/27h2-qnt8": {
+      "uid": "doi:10.1103/27h2-qnt8",
+      "title": "Magnetic anisotropy in the near-stoichiometric van der Waals ferromagnet Fe 3 GeTe 2",
+      "authors": [
+        "Riju Pal",
+        "Joyal John Abraham",
+        "Satyabrata Bera",
+        "Mintu Mondal",
+        "Atindra Nath Pal",
+        "Bernd Büchner",
+        "Vladislav Kataev",
+        "Alexey Alfonsov"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/27h2-qnt8",
+      "url": "https://doi.org/10.1103/27h2-qnt8",
+      "topics": [
+        "磁各向异性与界面磁性",
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 18,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/mjd4-ylmx": {
+      "uid": "doi:10.1103/mjd4-ylmx",
+      "title": "Spin order and excitations in the collinear kagome antiferromagnet Y 0.5 Fe 3 Sn 3",
+      "authors": [
+        "Jin Ding",
+        "Yang Liu",
+        "Feihao Pan",
+        "Yinghao Zhu",
+        "Yixi Su",
+        "Stanislav E. Nikitin",
+        "Ursula B. Hansen",
+        "Mechthild Enderle",
+        "Zhilun Lu",
+        "Linxuan Song",
+        "Yong-Chang Lau",
+        "Xiaoyan Ma"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/mjd4-ylmx",
+      "url": "https://doi.org/10.1103/mjd4-ylmx",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/4j2l-5hqs": {
+      "uid": "doi:10.1103/4j2l-5hqs",
+      "title": "Probing the intrinsic linear magnetoelectric effect in the honeycomb antiferromagnet Co 4 Nb 2 O 9 using high magnetic fields",
+      "authors": [
+        "Yuting Chang",
+        "Huakun Zuo",
+        "Junfeng Wang",
+        "Chengliang Lu"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/4j2l-5hqs",
+      "url": "https://doi.org/10.1103/4j2l-5hqs",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/627p-l6zk": {
+      "uid": "doi:10.1103/627p-l6zk",
+      "title": "Generic skyrmion phase diagram in ferrimagnetic films",
+      "authors": [
+        "M. V. Wijethunga",
+        "X. R. Wang"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/627p-l6zk",
+      "url": "https://doi.org/10.1103/627p-l6zk",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/417j-6hyz": {
+      "uid": "doi:10.1103/417j-6hyz",
+      "title": "Si 29 nuclear spin diffusion effects on the electron spin resonance spectrum in silicon: Low temperature and high magnetic field regime",
+      "authors": [
+        "V. A. Grabar",
+        "M. B. Lifshits",
+        "N. S. Averkiev"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/417j-6hyz",
+      "url": "https://doi.org/10.1103/417j-6hyz",
+      "topics": [
+        "自旋流与自旋输运"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1103/1vc6-c7rs": {
+      "uid": "doi:10.1103/1vc6-c7rs",
+      "title": "High-harmonic spin-current signatures of altermagnetic spin-group symmetry",
+      "authors": [
+        "Koki Mizuno"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/1vc6-c7rs",
+      "url": "https://doi.org/10.1103/1vc6-c7rs",
+      "topics": [
+        "自旋流与自旋输运"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1103/trdd-j3wy": {
+      "uid": "doi:10.1103/trdd-j3wy",
+      "title": "Skyrmion and meron phases induced by spin-phonon coupling",
+      "authors": [
+        "E. Iroulart",
+        "F. A. Gómez Albarracín",
+        "H. Diego Rosales"
+      ],
+      "journal": "Physical Review B",
+      "date": "2026-10-19",
+      "doi": "10.1103/trdd-j3wy",
+      "url": "https://doi.org/10.1103/trdd-j3wy",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1038/s41567-026-03454-6": {
+      "uid": "doi:10.1038/s41567-026-03454-6",
+      "title": "Evidence for spin-fluctuation-mediated superconductivity in electron-doped cuprates",
+      "authors": [
+        "C. M. Duffy",
+        "S. J. Tu",
+        "Qingze Chen",
+        "J. S. Zhang",
+        "Alessandro Cuoghi",
+        "Roemer D. H. Hinlopen",
+        "Tarapada Sarkar",
+        "R. L. Greene",
+        "Kui Juan Jin",
+        "N. E. Hussey"
+      ],
+      "journal": "Nature Physics",
+      "date": "2026-10-19",
+      "doi": "10.1038/s41567-026-03454-6",
+      "url": "https://doi.org/10.1038/s41567-026-03454-6",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1038/s41567-026-03379-0": {
+      "uid": "doi:10.1038/s41567-026-03379-0",
+      "title": "A liquid-crystal analogue of the skyrmion Hall effect",
+      "authors": [
+        "Rodrigo C. V. Coelho",
+        "Hanqing Zhao",
+        "Guilherme N. C. Amaral",
+        "Ivan I. Smalyukh",
+        "M. M. Telo da Gama",
+        "Mykola Tasinkevych"
+      ],
+      "journal": "Nature Physics",
+      "date": "2026-10-19",
+      "doi": "10.1038/s41567-026-03379-0",
+      "url": "https://doi.org/10.1038/s41567-026-03379-0",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "unavailable",
+      "notification_without_abstract": true,
+      "bark_done": true
+    },
+    "doi:10.1021/acs.nanolett.6c01819": {
+      "uid": "doi:10.1021/acs.nanolett.6c01819",
+      "title": "Termination-Dependent Surface Fermiology in the Intercalated Altermagnet CoNb4Se8",
+      "authors": [
+        "Pietro Maria Forcella",
+        "Alessandro De Vita",
+        "Matthew D. Watson",
+        "Sammar Tayyab",
+        "Chiara Bigi",
+        "Iulia Cojocariu",
+        "M. Szpytma",
+        "Matteo Jugovac",
+        "Andrea Locatelli",
+        "Tevfik Onur Menteş",
+        "My Bang Petersen",
+        "Paolo Moras"
+      ],
+      "journal": "Nano Letters",
+      "date": "2026-10-19",
+      "doi": "10.1021/acs.nanolett.6c01819",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c01819",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/jacs.6c16624": {
+      "uid": "doi:10.1021/jacs.6c16624",
+      "title": "Planar Benzene Trianion-Bridged Dilanthanide Complexes Exhibiting Strong Ferromagnetic Exchange via Metal–Radical Covalency",
+      "authors": [
+        "Danh X. Ngo",
+        "K. Randall McClain",
+        "Ahmadreza Rajabi",
+        "Leander I. Held",
+        "Dang Khoa Nguyen",
+        "Adrian J. Huang",
+        "Hyunchul Kwon",
+        "Priya G. Patel",
+        "Filipp Furche",
+        "Jeffrey R. Long"
+      ],
+      "journal": "Journal of the American Chemical Society",
+      "date": "2026-10-19",
+      "doi": "10.1021/jacs.6c16624",
+      "url": "https://doi.org/10.1021/jacs.6c16624",
+      "topics": [
+        "交换偏置与界面交换耦合"
+      ],
+      "score": 4,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1063/5.0337390": {
+      "uid": "doi:10.1063/5.0337390",
+      "title": "Design optimization of flux concentrators for magnetic tunnel junctions-based sensors",
+      "authors": [
+        "Thomas Brun",
+        "Javier Rial",
+        "Lucía Risoli",
+        "Johanna Fischer",
+        "Philippe Sabon",
+        "G. Jannet",
+        "M. Kretzschmar",
+        "H. Béa",
+        "C. Baraduc"
+      ],
+      "journal": "Applied Physics Letters",
+      "date": "2026-10-19",
+      "doi": "10.1063/5.0337390",
+      "url": "https://doi.org/10.1063/5.0337390",
+      "topics": [
+        "磁隧道结与磁电阻",
+        "自旋逻辑与神经形态器件"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1063/5.0350854": {
+      "uid": "doi:10.1063/5.0350854",
+      "title": "Controlling carrier localization in 2D lead-free halide perovskites for dual-functional photodetector and photosynapse",
+      "authors": [
+        "Bo Zhang",
+        "Tingting Mei",
+        "Julian A. Steele",
+        "Isaac Etchells",
+        "Yoshiki Sugai",
+        "Huiyuan Cheng",
+        "Zitong Wang",
+        "Dongxu He",
+        "Paul E. Shaw",
+        "Chun‐Ho Lin",
+        "Lianzhou Wang",
+        "Miaoqiang Lyu"
+      ],
+      "journal": "Applied Physics Letters",
+      "date": "2026-10-19",
+      "doi": "10.1063/5.0350854",
+      "url": "https://doi.org/10.1063/5.0350854",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1063/5.0349993": {
+      "uid": "doi:10.1063/5.0349993",
+      "title": "On the origin of nonreciprocal charge transport in topological insulator BiSbTeSe2",
+      "authors": [
+        "Fengyi Guo",
+        "Ziqi Wang",
+        "Xiubing Li",
+        "Anonymous",
+        "Congcong Li",
+        "Yufan Ju",
+        "Xicheng Zhang",
+        "Bin Cheng",
+        "Zhe Ying",
+        "Fengqi Song"
+      ],
+      "journal": "Applied Physics Letters",
+      "date": "2026-10-19",
+      "doi": "10.1063/5.0349993",
+      "url": "https://doi.org/10.1063/5.0349993",
+      "topics": [
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1063/5.0353242": {
+      "uid": "doi:10.1063/5.0353242",
+      "title": "Hybridization of a magnon mode with a higher-order topological photonic corner state",
+      "authors": [
+        "Wen Qiao Wu",
+        "Shu-Man Huang",
+        "Jie Qian",
+        "Zhiwei Guo",
+        "Yi‐Pu Wang"
+      ],
+      "journal": "Applied Physics Letters",
+      "date": "2026-10-19",
+      "doi": "10.1063/5.0353242",
+      "url": "https://doi.org/10.1063/5.0353242",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1002/adfm.79104": {
+      "uid": "doi:10.1002/adfm.79104",
+      "title": "Suppression and Reemergence of Directional Transport across the Ferromagnetic Transition in SrRuO 3",
+      "authors": [
+        "Smriti Bhatia",
+        "Neha Sharma",
+        "Srishti Bhardwaj",
+        "Shruti Roy",
+        "D. Fuchs",
+        "Tulika Maitra",
+        "Vivek Kumar Malik",
+        "Kaushik Sen"
+      ],
+      "journal": "Advanced Functional Materials",
+      "date": "2026-10-19",
+      "doi": "10.1002/adfm.79104",
+      "url": "https://doi.org/10.1002/adfm.79104",
+      "topics": [
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 3,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsnano.6c10331": {
+      "uid": "doi:10.1021/acsnano.6c10331",
+      "title": "Unfolding of Field-Free Spin–Orbit Torque Magnetization Switching in a van der Waals Heterostructure",
+      "authors": [
+        "Niklas Kercher",
+        "Paul Noël",
+        "Emir Karadža",
+        "Pietro Gambardella"
+      ],
+      "journal": "ACS Nano",
+      "date": "2026-10-19",
+      "doi": "10.1021/acsnano.6c10331",
+      "url": "https://doi.org/10.1021/acsnano.6c10331",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "磁各向异性与界面磁性",
+        "手性磁结构与自旋动力学"
+      ],
+      "score": 21,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsnano.6c14517": {
+      "uid": "doi:10.1021/acsnano.6c14517",
+      "title": "Ferroelectric Switching of Skyrmion Topology in 2D Multiferroics",
+      "authors": [
+        "Xu Wang",
+        "Kaiying Dou",
+        "Xiudong Wang",
+        "Junhuang Yang",
+        "Ying Dai",
+        "Baibiao Huang",
+        "Xinru Li",
+        "Yandong Ma"
+      ],
+      "journal": "ACS Nano",
+      "date": "2026-10-19",
+      "doi": "10.1021/acsnano.6c14517",
+      "url": "https://doi.org/10.1021/acsnano.6c14517",
+      "topics": [
+        "反铁磁与补偿磁体",
+        "手性磁结构与自旋动力学",
+        "二维磁性与拓扑自旋电子学"
+      ],
+      "score": 16,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acsaelm.6c01591": {
+      "uid": "doi:10.1021/acsaelm.6c01591",
+      "title": "Strain-Engineered Giant Tunneling Magnetoresistance in Fe-Intercalated MoS2 van der Waals Magnetic Tunnel Junctions",
+      "authors": [
+        "Huan Wang",
+        "Xiaojie Liu",
+        "Hui Wang",
+        "Haitao Yin"
+      ],
+      "journal": "ACS Applied Electronic Materials",
+      "date": "2026-10-19",
+      "doi": "10.1021/acsaelm.6c01591",
+      "url": "https://doi.org/10.1021/acsaelm.6c01591",
+      "topics": [
+        "磁隧道结与磁电阻",
+        "自旋流与自旋输运"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T10:12:23+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    }
+  },
+  "usage": {
+    "2026-10-22": {
+      "ai_attempts": 159
+    }
+  }
+}
