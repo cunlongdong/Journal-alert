@@ -412,50 +412,65 @@ def fetch_crossref(journal: dict, since: str, rows: int, log, timeout: int = 30,
 
 def _fetch_journal(journal: dict, since: str, limit: int, sources: dict, log,
                    timeouts: dict, retries: int) -> tuple[list[Item], list[dict]]:
-    """Fetch every enabled source for one journal. Never raises."""
+    """Fetch a journal's independent sources concurrently, capped at two.
+
+    Outer collect_items already parallelizes journals. With two API sources
+    per journal, this removes serialized API latency without creating an
+    unbounded number of workers; output order stays deterministic.
+    """
     name = journal["name"]
-    items: list[Item] = []
-    statuses: list[dict] = []
+    wanted = []
     for source in ("rss", "openalex", "crossref"):
         if not sources.get(source, True):
             continue
         if source != "rss" and not journal.get(source, True):
             continue
+        if source == "rss" and not journal.get("rss"):
+            log.info("%-44s %-9s skipped (no feed configured)", name, source)
+            continue
+        wanted.append(source)
+
+    def one_source(source: str) -> tuple[list[Item], dict]:
         started = time.time()
         try:
             if source == "rss":
-                url = journal.get("rss")
-                if not url:
-                    # Publisher has no usable feed (e.g. ACS): rely on the APIs silently.
-                    log.info("%-44s %-9s skipped (no feed configured)", name, source)
-                    continue
-                status, raw = http_request(url, timeout=timeouts["rss"], retries=retries)
-                if status != 200:
-                    raise FetchError(f"HTTP {status}")
+                code, raw = http_request(journal["rss"], timeout=timeouts["rss"], retries=retries)
+                if code != 200:
+                    raise FetchError(f"HTTP {code}")
                 fetched = parse_feed(raw, journal)
             elif source == "openalex":
-                fetched = fetch_openalex(journal, since, limit, log, timeout=timeouts["api"], retries=retries)
+                fetched = fetch_openalex(journal, since, limit, log,
+                                         timeout=timeouts["api"], retries=retries)
             else:
-                fetched = fetch_crossref(journal, since, limit, log, timeout=timeouts["api"], retries=retries)
-            items.extend(fetched)
-            limit_reached = source != "rss" and len(fetched) >= limit
-            note = (f"Source cap ({limit}) reached; there may be more records" if limit_reached else "")
-            if limit_reached:
+                fetched = fetch_crossref(journal, since, limit, log,
+                                         timeout=timeouts["api"], retries=retries)
+            capped = source != "rss" and len(fetched) >= limit
+            note = f"Source cap ({limit}) reached; there may be more records" if capped else ""
+            if capped:
                 log.warning("%s %s: %s", name, source, note)
-            statuses.append(
-                {"journal": name, "source": source, "ok": True, "items": len(fetched),
-                 "seconds": round(time.time() - started, 2),
-                 "limit_reached": limit_reached, "note": note}
-            )
-            log.info("%-44s %-9s %4d items  (%.1fs)", name, source, len(fetched), time.time() - started)
-        except Exception as exc:  # noqa: BLE001 - a dead source must not stop the run
-            statuses.append(
-                {"journal": name, "source": source, "ok": False, "items": 0,
-                 "seconds": round(time.time() - started, 2), "note": str(exc)[:220]}
-            )
-            log.warning("%-44s %-9s FAILED after %.1fs: %s", name, source, time.time() - started, str(exc)[:160])
-    return items, statuses
+            elapsed = round(time.time() - started, 2)
+            log.info("%-44s %-9s %4d items  (%.1fs)", name, source, len(fetched), elapsed)
+            return fetched, {"journal": name, "source": source, "ok": True,
+                             "items": len(fetched), "seconds": elapsed,
+                             "limit_reached": capped, "note": note}
+        except Exception as exc:  # noqa: BLE001 - one failed source must not abort the others
+            elapsed = round(time.time() - started, 2)
+            log.warning("%-44s %-9s FAILED after %.1fs: %s",
+                        name, source, elapsed, str(exc)[:160])
+            return [], {"journal": name, "source": source, "ok": False,
+                        "items": 0, "seconds": elapsed, "note": str(exc)[:220]}
 
+    if not wanted:
+        return [], []
+    if len(wanted) == 1:
+        records = [one_source(wanted[0])]
+    else:
+        # executor.map retains rss/openalex/crossref order in the report.
+        with ThreadPoolExecutor(max_workers=min(2, len(wanted))) as pool:
+            records = list(pool.map(one_source, wanted))
+    items = [item for group, _status in records for item in group]
+    statuses = [status for _group, status in records]
+    return items, statuses
 
 def collect_items(cfg: dict, log, since_days: int | None = None) -> tuple[list[Item], list[dict]]:
     """Fetch every enabled source for every enabled journal, concurrently.
