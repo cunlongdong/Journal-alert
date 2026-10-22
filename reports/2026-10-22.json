@@ -1,9 +1,9 @@
 {
   "date": "2026-10-22",
-  "updated": "2026-10-22T13:44:49",
-  "fetched": 1648,
-  "matched": 94,
-  "new_total": 95,
+  "updated": "2026-10-22T16:54:49",
+  "fetched": 1743,
+  "matched": 97,
+  "new_total": 98,
   "entries": [
     {
       "item": {
@@ -3514,6 +3514,112 @@
           }
         ]
       }
+    },
+    {
+      "item": {
+        "uid": "doi:10.1016/j.jmmm.2026.174697",
+        "title": "Magnetic tunnel junctions: the evolution, impact and perspective",
+        "url": "https://doi.org/10.1016/j.jmmm.2026.174697",
+        "doi": "10.1016/j.jmmm.2026.174697",
+        "journal": "Journal of Magnetism and Magnetic Materials",
+        "issn": "0304-8853",
+        "date": "2026-12-01",
+        "abstract": "",
+        "authors": [
+          "Guo-Xing Miao",
+          "Jagadeesh Moodera"
+        ],
+        "source": "crossref"
+      },
+      "scored": {
+        "score": 9,
+        "labels": [
+          "磁隧道结与磁电阻"
+        ],
+        "matches": [
+          {
+            "label": "磁隧道结与磁电阻",
+            "term": "magnetic tunnel junctions",
+            "field_name": "title",
+            "points": 9
+          }
+        ]
+      }
+    },
+    {
+      "item": {
+        "uid": "doi:10.1021/acs.nanolett.6c03208",
+        "title": "Ultrafast Mimic of Spin Hall Effect in Altermagnets",
+        "url": "https://doi.org/10.1021/acs.nanolett.6c03208",
+        "doi": "10.1021/acs.nanolett.6c03208",
+        "journal": "Nano Letters",
+        "issn": "1530-6992",
+        "date": "2026-10-22",
+        "abstract": "Abstract The spin Hall effect, a key effect in creating spin currents and controlling magnetic order at the nanoscale, presupposes a population of mobile carriers in a conducting state, in which a driving charge current generates a perpendicular spin-current. Here we show an ultrafast light-wave driven spin Hall analogue exists in altermagnetic semiconductors and insulators, in which a laser pulse generates both a charge current and a co-occurring perpendicular pure spin current. Employing the example of the theoretically predicted 2d altermagnetic Lieb-lattice semiconductor Cr2SO, we demonstrate that pulse design allows lightwave control over the postpulse spin/charge current ratio ξres, with values exceeding unity obtained in the multicycle regime. Our findings thus both considerably broaden the materials base for spin Hall/spin splitter physics, as well as establishing 2d altermagnets as a platform providing a new route for valleytronic lightwave control of spin- and charge currents at ultrafast times.",
+        "authors": [
+          "Ruikai Wu",
+          "Deepika Gill",
+          "Wenhan Chen",
+          "Peter Elliott",
+          "Sangeeta Sharma",
+          "Sam Shallcross"
+        ],
+        "source": "crossref"
+      },
+      "scored": {
+        "score": 12,
+        "labels": [
+          "自旋轨道力矩SOT",
+          "自旋流与自旋输运"
+        ],
+        "matches": [
+          {
+            "label": "自旋轨道力矩SOT",
+            "term": "spin Hall effect",
+            "field_name": "title",
+            "points": 9
+          },
+          {
+            "label": "自旋流与自旋输运",
+            "term": "spin current",
+            "field_name": "abstract",
+            "points": 3
+          }
+        ]
+      }
+    },
+    {
+      "item": {
+        "uid": "doi:10.1002/adma.75391",
+        "title": "Optically Tunable Chiral Magnetic States and Exchange Engineering via Charge‐Transfer Excitation in a van der Waals Antiferromagnet CrPS 4",
+        "url": "https://doi.org/10.1002/adma.75391",
+        "doi": "10.1002/adma.75391",
+        "journal": "Advanced Materials",
+        "issn": "1521-4095",
+        "date": "2026-10-22",
+        "abstract": "ABSTRACT Controlling magnetism with light in two‐dimensional van der Waals magnets could enable ultrafast, energy‐efficient spintronics. However, selectively writing distinct magnetic phases, such as chiral magnetic states (e.g., spin spirals and skyrmions) for memory and collinear states for logic, within a single material remains an outstanding challenge. Here, we demonstrate deterministic, photon‐energy‐selective writing of magnetic order in the air‐stable antiferromagnet chromium thiophosphate (). Its ligand‐to‐metal charge transfer gap serves as an intrinsic switching threshold: excitation below this gap drives – transitions to stabilize chiral magnetic states due to a spin–spiral phase, while excitation above activates a photo‐doping mechanism that renormalizes magnetic exchange and induces a collinear phase. These optically defined states are distinguished through polarization‐resolved magneto‐optical spectroscopy and probed via a proximal monolayer tungsten diselenide (). By establishing optical selectivity in a single material, our work provides a reconfigurable platform for opto‐spintronic circuits where memory and logic functions can be dynamically toggled with light.",
+        "authors": [
+          "Muhammad Hassan Shaikh",
+          "Kenji Watanabe",
+          "Takashi Taniguchi",
+          "Chitraleema Chakraborty"
+        ],
+        "source": "crossref"
+      },
+      "scored": {
+        "score": 12,
+        "labels": [
+          "反铁磁与补偿磁体"
+        ],
+        "matches": [
+          {
+            "label": "反铁磁与补偿磁体",
+            "term": "antiferromagnet",
+            "field_name": "title",
+            "points": 12
+          }
+        ]
+      }
     }
   ],
   "statuses": [
@@ -3522,7 +3628,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.36,
+      "seconds": 0.35,
       "limit_reached": false,
       "note": ""
     },
@@ -3531,7 +3637,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.59,
+      "seconds": 0.49,
       "limit_reached": false,
       "note": ""
     },
@@ -3540,7 +3646,7 @@
       "source": "openalex",
       "ok": true,
       "items": 23,
-      "seconds": 0.67,
+      "seconds": 0.51,
       "limit_reached": false,
       "note": ""
     },
@@ -3549,7 +3655,7 @@
       "source": "crossref",
       "ok": true,
       "items": 72,
-      "seconds": 0.89,
+      "seconds": 0.65,
       "limit_reached": false,
       "note": ""
     },
@@ -3558,7 +3664,7 @@
       "source": "openalex",
       "ok": true,
       "items": 45,
-      "seconds": 0.84,
+      "seconds": 0.63,
       "limit_reached": false,
       "note": ""
     },
@@ -3567,7 +3673,7 @@
       "source": "crossref",
       "ok": true,
       "items": 130,
-      "seconds": 1.24,
+      "seconds": 0.97,
       "limit_reached": false,
       "note": ""
     },
@@ -3585,7 +3691,7 @@
       "source": "crossref",
       "ok": true,
       "items": 23,
-      "seconds": 0.75,
+      "seconds": 0.78,
       "limit_reached": false,
       "note": ""
     },
@@ -3594,7 +3700,7 @@
       "source": "openalex",
       "ok": true,
       "items": 219,
-      "seconds": 2.57,
+      "seconds": 1.8,
       "limit_reached": false,
       "note": ""
     },
@@ -3602,8 +3708,8 @@
       "journal": "Scientific Reports",
       "source": "crossref",
       "ok": true,
-      "items": 402,
-      "seconds": 2.62,
+      "items": 427,
+      "seconds": 2.66,
       "limit_reached": false,
       "note": ""
     },
@@ -3612,7 +3718,7 @@
       "source": "openalex",
       "ok": true,
       "items": 59,
-      "seconds": 0.91,
+      "seconds": 0.68,
       "limit_reached": false,
       "note": ""
     },
@@ -3620,8 +3726,8 @@
       "journal": "Nature Communications",
       "source": "crossref",
       "ok": true,
-      "items": 103,
-      "seconds": 1.22,
+      "items": 106,
+      "seconds": 0.98,
       "limit_reached": false,
       "note": ""
     },
@@ -3630,7 +3736,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.14,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -3639,7 +3745,7 @@
       "source": "crossref",
       "ok": true,
       "items": 44,
-      "seconds": 0.61,
+      "seconds": 0.48,
       "limit_reached": false,
       "note": ""
     },
@@ -3656,7 +3762,7 @@
       "journal": "Advanced Materials",
       "source": "crossref",
       "ok": true,
-      "items": 22,
+      "items": 27,
       "seconds": 0.54,
       "limit_reached": false,
       "note": ""
@@ -3666,7 +3772,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.18,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -3675,7 +3781,7 @@
       "source": "crossref",
       "ok": true,
       "items": 20,
-      "seconds": 0.47,
+      "seconds": 0.36,
       "limit_reached": false,
       "note": ""
     },
@@ -3684,7 +3790,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.16,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -3702,7 +3808,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.13,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -3711,7 +3817,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.26,
+      "seconds": 0.44,
       "limit_reached": false,
       "note": ""
     },
@@ -3729,7 +3835,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.26,
+      "seconds": 0.42,
       "limit_reached": false,
       "note": ""
     },
@@ -3738,7 +3844,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.19,
+      "seconds": 0.18,
       "limit_reached": false,
       "note": ""
     },
@@ -3747,7 +3853,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.23,
+      "seconds": 0.31,
       "limit_reached": false,
       "note": ""
     },
@@ -3756,7 +3862,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.17,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -3765,7 +3871,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.27,
+      "seconds": 0.2,
       "limit_reached": false,
       "note": ""
     },
@@ -3774,7 +3880,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.11,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -3792,7 +3898,7 @@
       "source": "openalex",
       "ok": true,
       "items": 3,
-      "seconds": 0.28,
+      "seconds": 0.14,
       "limit_reached": false,
       "note": ""
     },
@@ -3801,7 +3907,7 @@
       "source": "crossref",
       "ok": true,
       "items": 13,
-      "seconds": 0.37,
+      "seconds": 0.44,
       "limit_reached": false,
       "note": ""
     },
@@ -3810,7 +3916,7 @@
       "source": "openalex",
       "ok": true,
       "items": 2,
-      "seconds": 0.44,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -3819,7 +3925,7 @@
       "source": "crossref",
       "ok": true,
       "items": 16,
-      "seconds": 0.54,
+      "seconds": 0.39,
       "limit_reached": false,
       "note": ""
     },
@@ -3828,7 +3934,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.15,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -3837,7 +3943,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.49,
+      "seconds": 0.24,
       "limit_reached": false,
       "note": ""
     },
@@ -3846,7 +3952,7 @@
       "source": "openalex",
       "ok": true,
       "items": 36,
-      "seconds": 0.64,
+      "seconds": 0.37,
       "limit_reached": false,
       "note": ""
     },
@@ -3854,8 +3960,8 @@
       "journal": "Sensors",
       "source": "crossref",
       "ok": true,
-      "items": 43,
-      "seconds": 0.6,
+      "items": 66,
+      "seconds": 1.23,
       "limit_reached": false,
       "note": ""
     },
@@ -3864,7 +3970,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.12,
+      "seconds": 0.11,
       "limit_reached": false,
       "note": ""
     },
@@ -3873,7 +3979,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.26,
+      "seconds": 0.31,
       "limit_reached": false,
       "note": ""
     },
@@ -3882,7 +3988,7 @@
       "source": "openalex",
       "ok": true,
       "items": 24,
-      "seconds": 0.51,
+      "seconds": 0.35,
       "limit_reached": false,
       "note": ""
     },
@@ -3891,7 +3997,7 @@
       "source": "crossref",
       "ok": true,
       "items": 60,
-      "seconds": 0.76,
+      "seconds": 0.61,
       "limit_reached": false,
       "note": ""
     },
@@ -3900,7 +4006,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.13,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -3909,7 +4015,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.26,
+      "seconds": 0.66,
       "limit_reached": false,
       "note": ""
     },
@@ -3918,7 +4024,7 @@
       "source": "openalex",
       "ok": true,
       "items": 2,
-      "seconds": 0.2,
+      "seconds": 0.14,
       "limit_reached": false,
       "note": ""
     },
@@ -3927,7 +4033,7 @@
       "source": "crossref",
       "ok": true,
       "items": 5,
-      "seconds": 0.31,
+      "seconds": 1.89,
       "limit_reached": false,
       "note": ""
     },
@@ -3936,7 +4042,7 @@
       "source": "openalex",
       "ok": true,
       "items": 12,
-      "seconds": 0.5,
+      "seconds": 0.31,
       "limit_reached": false,
       "note": ""
     },
@@ -3945,7 +4051,7 @@
       "source": "crossref",
       "ok": true,
       "items": 15,
-      "seconds": 0.37,
+      "seconds": 0.29,
       "limit_reached": false,
       "note": ""
     },
@@ -3954,7 +4060,7 @@
       "source": "openalex",
       "ok": true,
       "items": 15,
-      "seconds": 0.21,
+      "seconds": 0.19,
       "limit_reached": false,
       "note": ""
     },
@@ -3963,156 +4069,30 @@
       "source": "crossref",
       "ok": true,
       "items": 45,
-      "seconds": 0.53,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.28,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.35,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Electronics",
-      "source": "openalex",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.19,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Electronics",
-      "source": "crossref",
-      "ok": true,
-      "items": 1,
       "seconds": 0.36,
       "limit_reached": false,
       "note": ""
     },
     {
-      "journal": "Nature Nanotechnology",
+      "journal": "Nature Materials",
       "source": "openalex",
       "ok": true,
-      "items": 2,
-      "seconds": 0.31,
+      "items": 3,
+      "seconds": 0.14,
       "limit_reached": false,
       "note": ""
     },
     {
-      "journal": "Nature Nanotechnology",
+      "journal": "Nature Materials",
       "source": "crossref",
       "ok": true,
-      "items": 2,
-      "seconds": 0.57,
+      "items": 3,
+      "seconds": 0.23,
       "limit_reached": false,
       "note": ""
     },
     {
-      "journal": "Nature Physics",
-      "source": "openalex",
-      "ok": true,
-      "items": 4,
-      "seconds": 0.48,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Physics",
-      "source": "crossref",
-      "ok": true,
-      "items": 6,
-      "seconds": 0.4,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Europhysics Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.15,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Europhysics Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.34,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 29,
-      "seconds": 0.54,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 40,
-      "seconds": 0.64,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Reviews",
-      "source": "openalex",
-      "ok": true,
-      "items": 4,
-      "seconds": 0.16,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Reviews",
-      "source": "crossref",
-      "ok": true,
-      "items": 6,
-      "seconds": 0.7,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "APL Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.19,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "APL Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.25,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanoscale",
+      "journal": "Nature Electronics",
       "source": "openalex",
       "ok": true,
       "items": 1,
@@ -4121,11 +4101,137 @@
       "note": ""
     },
     {
+      "journal": "Nature Electronics",
+      "source": "crossref",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.15,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Nanotechnology",
+      "source": "openalex",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.14,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Nanotechnology",
+      "source": "crossref",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.24,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Physics",
+      "source": "openalex",
+      "ok": true,
+      "items": 4,
+      "seconds": 0.23,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Physics",
+      "source": "crossref",
+      "ok": true,
+      "items": 6,
+      "seconds": 0.26,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Europhysics Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.1,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Europhysics Letters",
+      "source": "crossref",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.2,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 29,
+      "seconds": 0.35,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Letters",
+      "source": "crossref",
+      "ok": true,
+      "items": 40,
+      "seconds": 0.33,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Reviews",
+      "source": "openalex",
+      "ok": true,
+      "items": 4,
+      "seconds": 0.23,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Reviews",
+      "source": "crossref",
+      "ok": true,
+      "items": 6,
+      "seconds": 0.25,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "APL Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.11,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "APL Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.22,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanoscale",
+      "source": "openalex",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.11,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
       "journal": "Nanoscale",
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.29,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -4134,7 +4240,7 @@
       "source": "openalex",
       "ok": true,
       "items": 12,
-      "seconds": 0.88,
+      "seconds": 0.31,
       "limit_reached": false,
       "note": ""
     },
@@ -4142,8 +4248,8 @@
       "journal": "Nanomaterials",
       "source": "crossref",
       "ok": true,
-      "items": 17,
-      "seconds": 0.44,
+      "items": 18,
+      "seconds": 0.27,
       "limit_reached": false,
       "note": ""
     },
@@ -4152,7 +4258,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.23,
+      "seconds": 0.19,
       "limit_reached": false,
       "note": ""
     },
@@ -4161,7 +4267,7 @@
       "source": "crossref",
       "ok": true,
       "items": 11,
-      "seconds": 0.44,
+      "seconds": 0.35,
       "limit_reached": false,
       "note": ""
     },
@@ -4170,7 +4276,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.27,
+      "seconds": 0.11,
       "limit_reached": false,
       "note": ""
     },
@@ -4179,7 +4285,7 @@
       "source": "crossref",
       "ok": true,
       "items": 1,
-      "seconds": 0.29,
+      "seconds": 0.23,
       "limit_reached": false,
       "note": ""
     },
@@ -4188,7 +4294,7 @@
       "source": "openalex",
       "ok": true,
       "items": 2,
-      "seconds": 0.19,
+      "seconds": 0.13,
       "limit_reached": false,
       "note": ""
     },
@@ -4197,7 +4303,7 @@
       "source": "crossref",
       "ok": true,
       "items": 2,
-      "seconds": 0.28,
+      "seconds": 0.18,
       "limit_reached": false,
       "note": ""
     },
@@ -4206,7 +4312,7 @@
       "source": "openalex",
       "ok": true,
       "items": 3,
-      "seconds": 0.2,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -4214,8 +4320,8 @@
       "journal": "Japanese Journal of Applied Physics",
       "source": "crossref",
       "ok": true,
-      "items": 9,
-      "seconds": 0.32,
+      "items": 11,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -4224,7 +4330,7 @@
       "source": "openalex",
       "ok": true,
       "items": 33,
-      "seconds": 1.26,
+      "seconds": 0.45,
       "limit_reached": false,
       "note": ""
     },
@@ -4232,7 +4338,7 @@
       "journal": "Journal of the American Chemical Society",
       "source": "crossref",
       "ok": true,
-      "items": 61,
+      "items": 66,
       "seconds": 0.76,
       "limit_reached": false,
       "note": ""
@@ -4242,7 +4348,7 @@
       "source": "openalex",
       "ok": true,
       "items": 3,
-      "seconds": 0.15,
+      "seconds": 0.13,
       "limit_reached": false,
       "note": ""
     },
@@ -4250,8 +4356,8 @@
       "journal": "Journal of Alloys and Compounds",
       "source": "crossref",
       "ok": true,
-      "items": 140,
-      "seconds": 1.41,
+      "items": 145,
+      "seconds": 1.17,
       "limit_reached": false,
       "note": ""
     },
@@ -4260,7 +4366,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.14,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -4268,8 +4374,8 @@
       "journal": "Journal of Magnetism and Magnetic Materials",
       "source": "crossref",
       "ok": true,
-      "items": 100,
-      "seconds": 1.17,
+      "items": 101,
+      "seconds": 0.89,
       "limit_reached": false,
       "note": ""
     },
@@ -4287,7 +4393,7 @@
       "source": "crossref",
       "ok": true,
       "items": 1,
-      "seconds": 0.35,
+      "seconds": 0.19,
       "limit_reached": false,
       "note": ""
     },
@@ -4296,7 +4402,7 @@
       "source": "openalex",
       "ok": true,
       "items": 22,
-      "seconds": 0.44,
+      "seconds": 0.34,
       "limit_reached": false,
       "note": ""
     },
@@ -4304,8 +4410,8 @@
       "journal": "Advanced Functional Materials",
       "source": "crossref",
       "ok": true,
-      "items": 49,
-      "seconds": 0.51,
+      "items": 67,
+      "seconds": 0.42,
       "limit_reached": false,
       "note": ""
     },
@@ -4314,7 +4420,7 @@
       "source": "openalex",
       "ok": true,
       "items": 14,
-      "seconds": 0.43,
+      "seconds": 0.28,
       "limit_reached": false,
       "note": ""
     },
@@ -4322,8 +4428,8 @@
       "journal": "Nano Letters",
       "source": "crossref",
       "ok": true,
-      "items": 25,
-      "seconds": 0.43,
+      "items": 29,
+      "seconds": 0.32,
       "limit_reached": false,
       "note": ""
     },
@@ -4332,7 +4438,7 @@
       "source": "openalex",
       "ok": true,
       "items": 15,
-      "seconds": 0.46,
+      "seconds": 0.33,
       "limit_reached": false,
       "note": ""
     },
@@ -4340,8 +4446,8 @@
       "journal": "ACS Nano",
       "source": "crossref",
       "ok": true,
-      "items": 28,
-      "seconds": 0.56,
+      "items": 29,
+      "seconds": 0.38,
       "limit_reached": false,
       "note": ""
     },
@@ -4350,7 +4456,7 @@
       "source": "openalex",
       "ok": true,
       "items": 53,
-      "seconds": 0.59,
+      "seconds": 0.65,
       "limit_reached": false,
       "note": ""
     },
@@ -4358,8 +4464,8 @@
       "journal": "ACS Applied Materials & Interfaces",
       "source": "crossref",
       "ok": true,
-      "items": 97,
-      "seconds": 0.87,
+      "items": 98,
+      "seconds": 0.79,
       "limit_reached": false,
       "note": ""
     },
@@ -4368,7 +4474,7 @@
       "source": "openalex",
       "ok": true,
       "items": 12,
-      "seconds": 0.4,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -4395,7 +4501,7 @@
       "source": "crossref",
       "ok": true,
       "items": 10,
-      "seconds": 0.41,
+      "seconds": 0.28,
       "limit_reached": false,
       "note": ""
     },
@@ -4404,7 +4510,7 @@
       "source": "openalex",
       "ok": true,
       "items": 5,
-      "seconds": 0.36,
+      "seconds": 0.13,
       "limit_reached": false,
       "note": ""
     },
@@ -4413,7 +4519,7 @@
       "source": "crossref",
       "ok": true,
       "items": 5,
-      "seconds": 0.36,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -4422,7 +4528,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.22,
+      "seconds": 0.15,
       "limit_reached": false,
       "note": ""
     },
@@ -4440,7 +4546,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.12,
+      "seconds": 0.1,
       "limit_reached": false,
       "note": ""
     },
@@ -4449,10 +4555,10 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.3,
+      "seconds": 0.22,
       "limit_reached": false,
       "note": ""
     }
   ],
-  "generated": "2026-10-22 13:44"
+  "generated": "2026-10-22 16:54"
 }

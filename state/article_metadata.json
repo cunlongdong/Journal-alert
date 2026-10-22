@@ -1798,6 +1798,60 @@
       "abstract": "Abstract This work proposes an all-two-dimensional magnetic tunnel junction consisting of Fe-intercalated MoS2 ferromagnetic electrodes and a pristine bilayer MoS2 tunneling barrier. We systematically investigate the modulation mechanism of out-of-plane tensile strain on the spin-transport properties of the device using quantum transport simulations. The results reveal that Fe intercalation induces a semiconductor-to-ferromagnetic-metal transition in MoS2 and the magnetic moment increases progressively under tensile strain. Under an applied tensile strain of 3%, the MTJ achieves an ultrahigh tunneling magnetoresistance of 1.67 × 105% accompanied by a spin injection efficiency of 90%. The enhancement of spin-dependent tunneling efficiency under tensile strain originates from a Fermi level shift of the electrodes and modulation of the spin asymmetry of the interfacial Schottky barrier. By integrating atomic intercalation with strain engineering, this work establishes a new paradigm for designing high-performance, low-power two-dimensional spintronic devices.",
       "abstract_source": "openalex",
       "updated_at": "2026-10-22T02:12:23+00:00"
+    },
+    "doi:10.1016/j.jmmm.2026.174697": {
+      "uid": "doi:10.1016/j.jmmm.2026.174697",
+      "doi": "10.1016/j.jmmm.2026.174697",
+      "title": "Magnetic tunnel junctions: the evolution, impact and perspective",
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "issn": "0304-8853",
+      "date": "2026-12-01",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174697",
+      "authors": [
+        "Guo-Xing Miao",
+        "Jagadeesh Moodera"
+      ],
+      "updated_at": "2026-10-22T08:54:49+00:00",
+      "abstract": "Magnetic tunnel junctions (MTJs) study in the past three decades, resulting in over 25,000 publications while adding 1000 more each year, has become among the most persuasive areas of research. MTJ devices lead the ubiquitous success of spintronics for technological advancement from most aspects of information technology to health sciences, with unprecedented, all-encompassing benefits to the society. We navigate through the evolution of the developing field of MTJs and the related technologies, with continued efforts for improving the tunnel magnetoresistance ratio. The MTJs' excellent ability to convert spin signals to charge signals secures their extensive commercial applications in magnetic data storage and field sensing. More advanced implementation and progress such as with neuromorphic and probabilistic computing entail from here.",
+      "abstract_source": "OpenAlex"
+    },
+    "doi:10.1021/acs.nanolett.6c03208": {
+      "uid": "doi:10.1021/acs.nanolett.6c03208",
+      "doi": "10.1021/acs.nanolett.6c03208",
+      "title": "Ultrafast Mimic of Spin Hall Effect in Altermagnets",
+      "journal": "Nano Letters",
+      "issn": "1530-6992",
+      "date": "2026-10-22",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c03208",
+      "authors": [
+        "Ruikai Wu",
+        "Deepika Gill",
+        "Wenhan Chen",
+        "Peter Elliott",
+        "Sangeeta Sharma",
+        "Sam Shallcross"
+      ],
+      "abstract": "Abstract The spin Hall effect, a key effect in creating spin currents and controlling magnetic order at the nanoscale, presupposes a population of mobile carriers in a conducting state, in which a driving charge current generates a perpendicular spin-current. Here we show an ultrafast light-wave driven spin Hall analogue exists in altermagnetic semiconductors and insulators, in which a laser pulse generates both a charge current and a co-occurring perpendicular pure spin current. Employing the example of the theoretically predicted 2d altermagnetic Lieb-lattice semiconductor Cr2SO, we demonstrate that pulse design allows lightwave control over the postpulse spin/charge current ratio ξres, with values exceeding unity obtained in the multicycle regime. Our findings thus both considerably broaden the materials base for spin Hall/spin splitter physics, as well as establishing 2d altermagnets as a platform providing a new route for valleytronic lightwave control of spin- and charge currents at ultrafast times.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-22T08:54:49+00:00"
+    },
+    "doi:10.1002/adma.75391": {
+      "uid": "doi:10.1002/adma.75391",
+      "doi": "10.1002/adma.75391",
+      "title": "Optically Tunable Chiral Magnetic States and Exchange Engineering via Charge‐Transfer Excitation in a van der Waals Antiferromagnet CrPS 4",
+      "journal": "Advanced Materials",
+      "issn": "1521-4095",
+      "date": "2026-10-22",
+      "url": "https://doi.org/10.1002/adma.75391",
+      "authors": [
+        "Muhammad Hassan Shaikh",
+        "Kenji Watanabe",
+        "Takashi Taniguchi",
+        "Chitraleema Chakraborty"
+      ],
+      "abstract": "ABSTRACT Controlling magnetism with light in two‐dimensional van der Waals magnets could enable ultrafast, energy‐efficient spintronics. However, selectively writing distinct magnetic phases, such as chiral magnetic states (e.g., spin spirals and skyrmions) for memory and collinear states for logic, within a single material remains an outstanding challenge. Here, we demonstrate deterministic, photon‐energy‐selective writing of magnetic order in the air‐stable antiferromagnet chromium thiophosphate (). Its ligand‐to‐metal charge transfer gap serves as an intrinsic switching threshold: excitation below this gap drives – transitions to stabilize chiral magnetic states due to a spin–spiral phase, while excitation above activates a photo‐doping mechanism that renormalizes magnetic exchange and induces a collinear phase. These optically defined states are distinguished through polarization‐resolved magneto‐optical spectroscopy and probed via a proximal monolayer tungsten diselenide (). By establishing optical selectivity in a single material, our work provides a reconfigurable platform for opto‐spintronic circuits where memory and logic functions can be dynamically toggled with light.",
+      "abstract_source": "crossref",
+      "updated_at": "2026-10-22T08:54:49+00:00"
     }
   }
 }

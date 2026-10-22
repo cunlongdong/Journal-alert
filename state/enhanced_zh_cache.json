@@ -1002,6 +1002,60 @@
       "doi": "10.35848/1882-0786/aeb69c",
       "title": "Group-IV semiconductor physics and technologies for next-generation electron-photon-spin integrated devices on silicon",
       "english_abstract": "Abstract This paper reviews group-IV semiconductor physics and technologies for realizing ultra-low-power electron-photon-spin semiconductor systems on a silicon platform. First, some technologies for high-speed CMOS and silicon photonics devices are introduced on the basis of heteroepitaxy of Ge, SiGe, and GeSn alloys on Si. Next, aiming to integrate logic and nonvolatile memory, electrical spin injection and detection technologies for spin transistors are explained using Ge on Si. Also, recent progress of the studies of spin-related physical properties such as spin relaxation time and spin diffusion length is introduced for Ge. Meanwhile, recent research progress on low-temperature-formed gate stack structures, Ge-on-Insulator (GOI) structures, and Ge/SiGe multi-heterostructures will be presented to combine CMOS technology with spintronic and/or spin-photonic devices on a Si platform. Finally, the possibilities of spin-tunnel FETs, vertical spin FETs, GeSn-based spin devices on the Si platform will be described for future applications."
+    },
+    "59b77653dd2571e03018aca54ee7ff8471ee75d69510675843d6991c3e71daa3": {
+      "summary": "摘要：在二维范德华磁体中用光控制磁性，有望实现超快、节能的自旋电子学。然而，在单一材料中可选择性地写入不同的磁相，例如用于存储的手性磁态（如自旋螺旋和斯格明子）与用于逻辑的共线态，仍然是一个突出的挑战。在此，我们展示了在空气稳定的反铁磁体硫代磷酸铬（）中实现确定性的、光子能量选择性的磁序写入。其配体到金属的电荷转移能隙充当本征开关阈值：低于该能隙的激发驱动-跃迁，由于自旋螺旋相而稳定手性磁态；而高于该能隙的激发则激活一种光掺杂机制，该机制重整磁交换并诱导共线相。这些光学定义的态通过偏振分辨磁光光谱加以区分，并通过邻近的单层二硒化钨（）进行探测。通过在单一材料中建立光学选择性，我们的工作为光自旋电子电路提供了一个可重构平台，其中存储和逻辑功能可以用光动态切换。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "8b0dd1021c7077bec79a5d9ce494a1522eaed2b6684c1cc0ba35bb69921f77fb": {
+      "summary": "摘要：在二维范德华磁体中用光控制磁性，有望实现超快、节能的自旋电子学。然而，在单一材料中可选择性地写入不同的磁相，例如用于存储的手性磁态（如自旋螺旋和斯格明子）与用于逻辑的共线态，仍然是一个突出的挑战。在此，我们展示了在空气稳定的反铁磁体硫代磷酸铬（）中实现确定性的、光子能量选择性的磁序写入。其配体到金属的电荷转移能隙充当本征开关阈值：低于该能隙的激发驱动-跃迁，由于自旋螺旋相而稳定手性磁态；而高于该能隙的激发则激活一种光掺杂机制，该机制重整磁交换并诱导共线相。这些光学定义的态通过偏振分辨磁光光谱加以区分，并通过邻近的单层二硒化钨（）进行探测。通过在单一材料中建立光学选择性，我们的工作为光自旋电子电路提供了一个可重构平台，其中存储和逻辑功能可以用光动态切换。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1002/adma.75391",
+      "doi": "10.1002/adma.75391",
+      "title": "Optically Tunable Chiral Magnetic States and Exchange Engineering via Charge‐Transfer Excitation in a van der Waals Antiferromagnet CrPS 4",
+      "english_abstract": "ABSTRACT Controlling magnetism with light in two‐dimensional van der Waals magnets could enable ultrafast, energy‐efficient spintronics. However, selectively writing distinct magnetic phases, such as chiral magnetic states (e.g., spin spirals and skyrmions) for memory and collinear states for logic, within a single material remains an outstanding challenge. Here, we demonstrate deterministic, photon‐energy‐selective writing of magnetic order in the air‐stable antiferromagnet chromium thiophosphate (). Its ligand‐to‐metal charge transfer gap serves as an intrinsic switching threshold: excitation below this gap drives – transitions to stabilize chiral magnetic states due to a spin–spiral phase, while excitation above activates a photo‐doping mechanism that renormalizes magnetic exchange and induces a collinear phase. These optically defined states are distinguished through polarization‐resolved magneto‐optical spectroscopy and probed via a proximal monolayer tungsten diselenide (). By establishing optical selectivity in a single material, our work provides a reconfigurable platform for opto‐spintronic circuits where memory and logic functions can be dynamically toggled with light."
+    },
+    "11fd202da469600f3f3db0bf43f470f92f5a90abb703a41c289a10d737312be2": {
+      "summary": "磁性隧道结（MTJ）在过去三十年的研究已产生超过25，000篇出版物，同时每年新增1000多篇，已成为最具说服力的研究领域之一。MTJ器件引领了自旋电子学的普遍成功，推动了从信息技术大多数方面到健康科学的技术进步，为社会带来了前所未有的、全方位的益处。我们梳理了MTJ这一发展中领域及相关技术的演进历程，以及为提高隧道磁阻比所持续开展的努力。MTJ将自旋信号转换为电荷信号的卓越能力，确保了其在磁数据存储和磁场传感中的广泛商业应用。更先进的实现与进展，例如神经形态计算和概率计算，由此展开。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "a64e46a0ae31988c9d6cea1c32b048a5e9a4f16ca0f7351a88c3092c6cc02068": {
+      "summary": "磁性隧道结（MTJ）在过去三十年的研究已产生超过25，000篇出版物，同时每年新增1000多篇，已成为最具说服力的研究领域之一。MTJ器件引领了自旋电子学的普遍成功，推动了从信息技术大多数方面到健康科学的技术进步，为社会带来了前所未有的、全方位的益处。我们梳理了MTJ这一发展中领域及相关技术的演进历程，以及为提高隧道磁阻比所持续开展的努力。MTJ将自旋信号转换为电荷信号的卓越能力，确保了其在磁数据存储和磁场传感中的广泛商业应用。更先进的实现与进展，例如神经形态计算和概率计算，由此展开。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1016/j.jmmm.2026.174697",
+      "doi": "10.1016/j.jmmm.2026.174697",
+      "title": "Magnetic tunnel junctions: the evolution, impact and perspective",
+      "english_abstract": "Magnetic tunnel junctions (MTJs) study in the past three decades, resulting in over 25,000 publications while adding 1000 more each year, has become among the most persuasive areas of research. MTJ devices lead the ubiquitous success of spintronics for technological advancement from most aspects of information technology to health sciences, with unprecedented, all-encompassing benefits to the society. We navigate through the evolution of the developing field of MTJs and the related technologies, with continued efforts for improving the tunnel magnetoresistance ratio. The MTJs' excellent ability to convert spin signals to charge signals secures their extensive commercial applications in magnetic data storage and field sensing. More advanced implementation and progress such as with neuromorphic and probabilistic computing entail from here."
+    },
+    "16cf15214e1473f64333afc4b1d4e2a045f1e8a33fd741c69c355040fa3b2a9e": {
+      "summary": "摘要 自旋霍尔效应是在纳米尺度上产生自旋流和控制磁序的关键效应，其前提是存在处于导电状态的可移动载流子群体，在其中驱动电荷流会产生垂直的自旋流。在此，我们表明，在交错磁半导体和绝缘体中存在一种超快光波驱动的自旋霍尔类比效应，其中激光脉冲同时产生电荷流和共现的垂直纯自旋流。以理论预测的二维交错磁Lieb晶格半导体Cr2SO为例，我们证明脉冲设计允许对脉冲后自旋/电荷流比ξres进行光波调控，在多周期区域可获得超过 unity 的值。因此，我们的发现既显著拓宽了自旋霍尔/自旋分束器物理的材料基础，也确立了二维交错磁体作为一个平台，为超快时间尺度下自旋流和电荷流的谷电子学光波调控提供了新途径。",
+      "provider": "custom",
+      "model": "deepseek-v4.1-flash",
+      "date": "2026-10-22",
+      "part": 1,
+      "part_count": 1
+    },
+    "7394d1cf9ce44c8273ec7899e70304abf58ffe7c841fedb1de8e9ca07f9ae1db": {
+      "summary": "摘要 自旋霍尔效应是在纳米尺度上产生自旋流和控制磁序的关键效应，其前提是存在处于导电状态的可移动载流子群体，在其中驱动电荷流会产生垂直的自旋流。在此，我们表明，在交错磁半导体和绝缘体中存在一种超快光波驱动的自旋霍尔类比效应，其中激光脉冲同时产生电荷流和共现的垂直纯自旋流。以理论预测的二维交错磁Lieb晶格半导体Cr2SO为例，我们证明脉冲设计允许对脉冲后自旋/电荷流比ξres进行光波调控，在多周期区域可获得超过 unity 的值。因此，我们的发现既显著拓宽了自旋霍尔/自旋分束器物理的材料基础，也确立了二维交错磁体作为一个平台，为超快时间尺度下自旋流和电荷流的谷电子学光波调控提供了新途径。",
+      "provider": "custom",
+      "date": "2026-10-22",
+      "mode": "literal-full-translation",
+      "uid": "doi:10.1021/acs.nanolett.6c03208",
+      "doi": "10.1021/acs.nanolett.6c03208",
+      "title": "Ultrafast Mimic of Spin Hall Effect in Altermagnets",
+      "english_abstract": "Abstract The spin Hall effect, a key effect in creating spin currents and controlling magnetic order at the nanoscale, presupposes a population of mobile carriers in a conducting state, in which a driving charge current generates a perpendicular spin-current. Here we show an ultrafast light-wave driven spin Hall analogue exists in altermagnetic semiconductors and insulators, in which a laser pulse generates both a charge current and a co-occurring perpendicular pure spin current. Employing the example of the theoretically predicted 2d altermagnetic Lieb-lattice semiconductor Cr2SO, we demonstrate that pulse design allows lightwave control over the postpulse spin/charge current ratio ξres, with values exceeding unity obtained in the multicycle regime. Our findings thus both considerably broaden the materials base for spin Hall/spin splitter physics, as well as establishing 2d altermagnets as a platform providing a new route for valleytronic lightwave control of spin- and charge currents at ultrafast times."
     }
   },
   "titles": {
@@ -1508,6 +1562,21 @@
     "ba721cfec73475e89eb6d8c9a73fada8b87737db714605e18cfb06392816c677": {
       "title": "Advances on jacutingaite (Pt 2 HgSe 3)-based materials: Natural mineral to tunable topological phases",
       "zh_title": "jacutingaite（Pt2HgSe3）基材料研究进展：从天然矿物到可调控拓扑相",
+      "created": "2026-10-22"
+    },
+    "a934bdf3642934496650f37e1b55567e142e3bff48706150be00ef6bb065e378": {
+      "title": "Optically Tunable Chiral Magnetic States and Exchange Engineering via Charge‐Transfer Excitation in a van der Waals Antiferromagnet CrPS 4",
+      "zh_title": "范德华反铁磁体CrPS₄中通过电荷转移激发实现的光学可调手性磁态与交换工程",
+      "created": "2026-10-22"
+    },
+    "2982d7ed1d963be7b3ef72bee967a188a276f59fff9f0450c05f18b425c61f41": {
+      "title": "Magnetic tunnel junctions: the evolution, impact and perspective",
+      "zh_title": "磁隧道结：演变、影响与展望",
+      "created": "2026-10-22"
+    },
+    "6cf754f92037be6f68962bf3ea733bfac2af4701558a7cda619a21aee58b8d32": {
+      "title": "Ultrafast Mimic of Spin Hall Effect in Altermagnets",
+      "zh_title": "交错磁体中自旋霍尔效应的超快模拟",
       "created": "2026-10-22"
     }
   }

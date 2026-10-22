@@ -2503,11 +2503,84 @@
       "attempts": 0,
       "notification_without_abstract": false,
       "bark_done": true
+    },
+    "doi:10.1016/j.jmmm.2026.174697": {
+      "uid": "doi:10.1016/j.jmmm.2026.174697",
+      "title": "Magnetic tunnel junctions: the evolution, impact and perspective",
+      "authors": [
+        "Guo-Xing Miao",
+        "Jagadeesh Moodera"
+      ],
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "date": "2026-12-01",
+      "doi": "10.1016/j.jmmm.2026.174697",
+      "url": "https://doi.org/10.1016/j.jmmm.2026.174697",
+      "topics": [
+        "磁隧道结与磁电阻"
+      ],
+      "score": 9,
+      "enqueued_at": "2026-10-22T16:54:49+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "abstract_last_checked": "2026-10-22",
+      "abstract_lookup_status": "recovered",
+      "abstract_provider": "OpenAlex",
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1021/acs.nanolett.6c03208": {
+      "uid": "doi:10.1021/acs.nanolett.6c03208",
+      "title": "Ultrafast Mimic of Spin Hall Effect in Altermagnets",
+      "authors": [
+        "Ruikai Wu",
+        "Deepika Gill",
+        "Wenhan Chen",
+        "Peter Elliott",
+        "Sangeeta Sharma",
+        "Sam Shallcross"
+      ],
+      "journal": "Nano Letters",
+      "date": "2026-10-22",
+      "doi": "10.1021/acs.nanolett.6c03208",
+      "url": "https://doi.org/10.1021/acs.nanolett.6c03208",
+      "topics": [
+        "自旋轨道力矩SOT",
+        "自旋流与自旋输运"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T16:54:49+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
+    },
+    "doi:10.1002/adma.75391": {
+      "uid": "doi:10.1002/adma.75391",
+      "title": "Optically Tunable Chiral Magnetic States and Exchange Engineering via Charge‐Transfer Excitation in a van der Waals Antiferromagnet CrPS 4",
+      "authors": [
+        "Muhammad Hassan Shaikh",
+        "Kenji Watanabe",
+        "Takashi Taniguchi",
+        "Chitraleema Chakraborty"
+      ],
+      "journal": "Advanced Materials",
+      "date": "2026-10-22",
+      "doi": "10.1002/adma.75391",
+      "url": "https://doi.org/10.1002/adma.75391",
+      "topics": [
+        "反铁磁与补偿磁体"
+      ],
+      "score": 12,
+      "enqueued_at": "2026-10-22T16:54:49+08:00",
+      "status": "sent",
+      "attempts": 0,
+      "notification_without_abstract": false,
+      "bark_done": true
     }
   },
   "usage": {
     "2026-10-22": {
-      "ai_attempts": 159
+      "ai_attempts": 166
     }
   }
 }
