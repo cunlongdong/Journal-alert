@@ -18,7 +18,12 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 
 ## 自动运行和推送
 
-- GitHub Actions 工作流 `journal-alert daily` 每天北京时间 07:30 运行，或在 Actions 页面手动运行。
+**定时运行排障（重要）**：代码里的 `on.schedule` 只是在 GitHub 注册触发时间，不能证明 GitHub 真正启动了任务。到 Actions → `journal-alert daily` 查看运行的 `event` 是否为 `schedule`；如果始终只有 `workflow_dispatch` 和 `push`，需要在 GitHub Actions 页面检查该工作流是否被禁用、是否出现 **Enable workflow**，以及仓库的 Actions 权限。重新启用后建议手动运行一次验证 API、Bark 与数据库写回。纯改 cron 不能强迫 GitHub 调度，因此不要把“离线测试成功”当成“每日通知成功”。
+
+**对照原项目**：本仓库 fork 自 `pkui1mpression-design/Journal-alert`，保留了 RSS/OpenAlex/Crossref 多源采集、按 DOI 去重、关键词分级和本地报告的核心设计。由于当前筛选 52 本期刊，OpenAlex 与 Crossref 对同一期刊同时抓取（每刊最多两个并发源），但保留了分页、独立错误记录及原顺序合并；原始 API 摘要与专业领域的中文逐篇 Bark、双语卡片、失败回补仍由 fork 提供。
+
+
+- GitHub Actions 工作流 `journal-alert daily` 设置为北京时间每天 09:00（UTC 01:00）运行，或在 Actions 页面手动运行。
 - Bark **大标题为英文原标题**；正文依次为**中文标题、作者、期刊、中文摘要**，不再显示“忠实翻译”字样。通知末尾保留 DOI 与双语网页链接。
 - 如缺英文摘要，会先按 DOI 尝试 OpenAlex、Crossref、Semantic Scholar 与出版社官网公开 Abstract；仍无法取得时，也发送**英文大标题＋中文标题＋作者＋中文“摘要暂缺”说明**，不伪造摘要。若标题翻译服务暂时不可用，该论文留在待推送队列等待翻译成功，避免发送缺少中文标题的通知。
 - 如有可信英文摘要，但翻译失败或当天 AI 额度耗尽，先保留待推送队列，下一次再尝试；不会把英文摘要伪装成已完成的中文翻译。
