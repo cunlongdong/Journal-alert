@@ -1,8 +1,8 @@
 {
   "date": "2026-10-22",
-  "updated": "2026-10-22T10:12:23",
-  "fetched": 1625,
-  "matched": 95,
+  "updated": "2026-10-22T13:44:49",
+  "fetched": 1648,
+  "matched": 94,
   "new_total": 95,
   "entries": [
     {
@@ -3522,7 +3522,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.49,
+      "seconds": 0.36,
       "limit_reached": false,
       "note": ""
     },
@@ -3531,7 +3531,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.38,
+      "seconds": 0.59,
       "limit_reached": false,
       "note": ""
     },
@@ -3540,7 +3540,7 @@
       "source": "openalex",
       "ok": true,
       "items": 23,
-      "seconds": 0.59,
+      "seconds": 0.67,
       "limit_reached": false,
       "note": ""
     },
@@ -3549,7 +3549,7 @@
       "source": "crossref",
       "ok": true,
       "items": 72,
-      "seconds": 1.12,
+      "seconds": 0.89,
       "limit_reached": false,
       "note": ""
     },
@@ -3558,7 +3558,7 @@
       "source": "openalex",
       "ok": true,
       "items": 45,
-      "seconds": 0.96,
+      "seconds": 0.84,
       "limit_reached": false,
       "note": ""
     },
@@ -3567,7 +3567,7 @@
       "source": "crossref",
       "ok": true,
       "items": 130,
-      "seconds": 1.41,
+      "seconds": 1.24,
       "limit_reached": false,
       "note": ""
     },
@@ -3576,7 +3576,7 @@
       "source": "openalex",
       "ok": true,
       "items": 5,
-      "seconds": 0.63,
+      "seconds": 0.39,
       "limit_reached": false,
       "note": ""
     },
@@ -3585,7 +3585,7 @@
       "source": "crossref",
       "ok": true,
       "items": 23,
-      "seconds": 0.48,
+      "seconds": 0.75,
       "limit_reached": false,
       "note": ""
     },
@@ -3594,7 +3594,7 @@
       "source": "openalex",
       "ok": true,
       "items": 219,
-      "seconds": 2.91,
+      "seconds": 2.57,
       "limit_reached": false,
       "note": ""
     },
@@ -3602,8 +3602,8 @@
       "journal": "Scientific Reports",
       "source": "crossref",
       "ok": true,
-      "items": 392,
-      "seconds": 2.78,
+      "items": 402,
+      "seconds": 2.62,
       "limit_reached": false,
       "note": ""
     },
@@ -3612,7 +3612,7 @@
       "source": "openalex",
       "ok": true,
       "items": 59,
-      "seconds": 0.75,
+      "seconds": 0.91,
       "limit_reached": false,
       "note": ""
     },
@@ -3620,7 +3620,7 @@
       "journal": "Nature Communications",
       "source": "crossref",
       "ok": true,
-      "items": 101,
+      "items": 103,
       "seconds": 1.22,
       "limit_reached": false,
       "note": ""
@@ -3630,7 +3630,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.12,
+      "seconds": 0.14,
       "limit_reached": false,
       "note": ""
     },
@@ -3639,7 +3639,7 @@
       "source": "crossref",
       "ok": true,
       "items": 44,
-      "seconds": 0.71,
+      "seconds": 0.61,
       "limit_reached": false,
       "note": ""
     },
@@ -3648,7 +3648,7 @@
       "source": "openalex",
       "ok": true,
       "items": 4,
-      "seconds": 0.21,
+      "seconds": 0.18,
       "limit_reached": false,
       "note": ""
     },
@@ -3656,8 +3656,8 @@
       "journal": "Advanced Materials",
       "source": "crossref",
       "ok": true,
-      "items": 19,
-      "seconds": 0.65,
+      "items": 22,
+      "seconds": 0.54,
       "limit_reached": false,
       "note": ""
     },
@@ -3666,7 +3666,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.24,
+      "seconds": 0.18,
       "limit_reached": false,
       "note": ""
     },
@@ -3675,7 +3675,7 @@
       "source": "crossref",
       "ok": true,
       "items": 20,
-      "seconds": 0.49,
+      "seconds": 0.47,
       "limit_reached": false,
       "note": ""
     },
@@ -3684,7 +3684,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.11,
+      "seconds": 0.16,
       "limit_reached": false,
       "note": ""
     },
@@ -3693,12 +3693,30 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.26,
+      "seconds": 0.31,
       "limit_reached": false,
       "note": ""
     },
     {
       "journal": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.13,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.26,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "IEEE Magnetics Letters",
       "source": "openalex",
       "ok": true,
       "items": 0,
@@ -3707,43 +3725,7 @@
       "note": ""
     },
     {
-      "journal": "IEEE Transactions on Very Large Scale Integration (VLSI) Systems",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.29,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
       "journal": "IEEE Magnetics Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.16,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "IEEE Magnetics Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.29,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "The Innovation",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.14,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "The Innovation",
       "source": "crossref",
       "ok": true,
       "items": 0,
@@ -3752,11 +3734,29 @@
       "note": ""
     },
     {
+      "journal": "The Innovation",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.19,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "The Innovation",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.23,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
       "journal": "Newton",
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.13,
+      "seconds": 0.17,
       "limit_reached": false,
       "note": ""
     },
@@ -3765,7 +3765,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.29,
+      "seconds": 0.27,
       "limit_reached": false,
       "note": ""
     },
@@ -3774,7 +3774,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.16,
+      "seconds": 0.11,
       "limit_reached": false,
       "note": ""
     },
@@ -3783,7 +3783,7 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.25,
+      "seconds": 0.26,
       "limit_reached": false,
       "note": ""
     },
@@ -3792,7 +3792,7 @@
       "source": "openalex",
       "ok": true,
       "items": 3,
-      "seconds": 0.27,
+      "seconds": 0.28,
       "limit_reached": false,
       "note": ""
     },
@@ -3801,7 +3801,7 @@
       "source": "crossref",
       "ok": true,
       "items": 13,
-      "seconds": 0.68,
+      "seconds": 0.37,
       "limit_reached": false,
       "note": ""
     },
@@ -3810,7 +3810,7 @@
       "source": "openalex",
       "ok": true,
       "items": 2,
-      "seconds": 0.18,
+      "seconds": 0.44,
       "limit_reached": false,
       "note": ""
     },
@@ -3819,462 +3819,12 @@
       "source": "crossref",
       "ok": true,
       "items": 16,
-      "seconds": 0.67,
+      "seconds": 0.54,
       "limit_reached": false,
       "note": ""
     },
     {
       "journal": "IEEE Transactions on Magnetics",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.23,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "IEEE Transactions on Magnetics",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.39,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Sensors",
-      "source": "openalex",
-      "ok": true,
-      "items": 36,
-      "seconds": 0.68,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Sensors",
-      "source": "crossref",
-      "ok": true,
-      "items": 43,
-      "seconds": 0.65,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "IEEE Sensors Journal",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.2,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "IEEE Sensors Journal",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.31,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 24,
-      "seconds": 0.66,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 60,
-      "seconds": 0.65,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Reviews of Modern Physics",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.16,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Reviews of Modern Physics",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.28,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review X",
-      "source": "openalex",
-      "ok": true,
-      "items": 2,
-      "seconds": 0.21,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review X",
-      "source": "crossref",
-      "ok": true,
-      "items": 5,
-      "seconds": 0.53,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 12,
-      "seconds": 0.2,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 15,
-      "seconds": 0.53,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Research",
-      "source": "openalex",
-      "ok": true,
-      "items": 15,
-      "seconds": 0.44,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Physical Review Research",
-      "source": "crossref",
-      "ok": true,
-      "items": 45,
-      "seconds": 0.61,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.39,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.38,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Electronics",
-      "source": "openalex",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.23,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Electronics",
-      "source": "crossref",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.3,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Nanotechnology",
-      "source": "openalex",
-      "ok": true,
-      "items": 2,
-      "seconds": 0.26,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Nanotechnology",
-      "source": "crossref",
-      "ok": true,
-      "items": 2,
-      "seconds": 0.32,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Physics",
-      "source": "openalex",
-      "ok": true,
-      "items": 4,
-      "seconds": 0.31,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nature Physics",
-      "source": "crossref",
-      "ok": true,
-      "items": 6,
-      "seconds": 0.42,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Europhysics Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.18,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Europhysics Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.29,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 29,
-      "seconds": 0.65,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 40,
-      "seconds": 0.58,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Reviews",
-      "source": "openalex",
-      "ok": true,
-      "items": 4,
-      "seconds": 0.29,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Reviews",
-      "source": "crossref",
-      "ok": true,
-      "items": 6,
-      "seconds": 0.5,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "APL Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.13,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "APL Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.41,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanoscale",
-      "source": "openalex",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.21,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanoscale",
-      "source": "crossref",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.36,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanomaterials",
-      "source": "openalex",
-      "ok": true,
-      "items": 12,
-      "seconds": 0.43,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanomaterials",
-      "source": "crossref",
-      "ok": true,
-      "items": 13,
-      "seconds": 0.47,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanotechnology",
-      "source": "openalex",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.37,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nanotechnology",
-      "source": "crossref",
-      "ok": true,
-      "items": 11,
-      "seconds": 0.46,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nano-Micro Letters",
-      "source": "openalex",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.22,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Nano-Micro Letters",
-      "source": "crossref",
-      "ok": true,
-      "items": 1,
-      "seconds": 0.38,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Express",
-      "source": "openalex",
-      "ok": true,
-      "items": 2,
-      "seconds": 0.22,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Applied Physics Express",
-      "source": "crossref",
-      "ok": true,
-      "items": 2,
-      "seconds": 0.28,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Japanese Journal of Applied Physics",
-      "source": "openalex",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.3,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Japanese Journal of Applied Physics",
-      "source": "crossref",
-      "ok": true,
-      "items": 9,
-      "seconds": 0.37,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of the American Chemical Society",
-      "source": "openalex",
-      "ok": true,
-      "items": 33,
-      "seconds": 0.63,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of the American Chemical Society",
-      "source": "crossref",
-      "ok": true,
-      "items": 59,
-      "seconds": 0.85,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of Alloys and Compounds",
-      "source": "openalex",
-      "ok": true,
-      "items": 3,
-      "seconds": 0.3,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of Alloys and Compounds",
-      "source": "crossref",
-      "ok": true,
-      "items": 139,
-      "seconds": 1.55,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of Magnetism and Magnetic Materials",
-      "source": "openalex",
-      "ok": true,
-      "items": 0,
-      "seconds": 0.39,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Journal of Magnetism and Magnetic Materials",
-      "source": "crossref",
-      "ok": true,
-      "items": 100,
-      "seconds": 1.2,
-      "limit_reached": false,
-      "note": ""
-    },
-    {
-      "journal": "Advanced Electronic Materials",
       "source": "openalex",
       "ok": true,
       "items": 0,
@@ -4283,7 +3833,349 @@
       "note": ""
     },
     {
-      "journal": "Advanced Electronic Materials",
+      "journal": "IEEE Transactions on Magnetics",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.49,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Sensors",
+      "source": "openalex",
+      "ok": true,
+      "items": 36,
+      "seconds": 0.64,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Sensors",
+      "source": "crossref",
+      "ok": true,
+      "items": 43,
+      "seconds": 0.6,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "IEEE Sensors Journal",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.12,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "IEEE Sensors Journal",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.26,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 24,
+      "seconds": 0.51,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Letters",
+      "source": "crossref",
+      "ok": true,
+      "items": 60,
+      "seconds": 0.76,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Reviews of Modern Physics",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.13,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Reviews of Modern Physics",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.26,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review X",
+      "source": "openalex",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.2,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review X",
+      "source": "crossref",
+      "ok": true,
+      "items": 5,
+      "seconds": 0.31,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 12,
+      "seconds": 0.5,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 15,
+      "seconds": 0.37,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Research",
+      "source": "openalex",
+      "ok": true,
+      "items": 15,
+      "seconds": 0.21,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Physical Review Research",
+      "source": "crossref",
+      "ok": true,
+      "items": 45,
+      "seconds": 0.53,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 3,
+      "seconds": 0.28,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 3,
+      "seconds": 0.35,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Electronics",
+      "source": "openalex",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.19,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Electronics",
+      "source": "crossref",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.36,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Nanotechnology",
+      "source": "openalex",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.31,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Nanotechnology",
+      "source": "crossref",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.57,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Physics",
+      "source": "openalex",
+      "ok": true,
+      "items": 4,
+      "seconds": 0.48,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nature Physics",
+      "source": "crossref",
+      "ok": true,
+      "items": 6,
+      "seconds": 0.4,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Europhysics Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.15,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Europhysics Letters",
+      "source": "crossref",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.34,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 29,
+      "seconds": 0.54,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Letters",
+      "source": "crossref",
+      "ok": true,
+      "items": 40,
+      "seconds": 0.64,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Reviews",
+      "source": "openalex",
+      "ok": true,
+      "items": 4,
+      "seconds": 0.16,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Reviews",
+      "source": "crossref",
+      "ok": true,
+      "items": 6,
+      "seconds": 0.7,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "APL Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.19,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "APL Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.25,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanoscale",
+      "source": "openalex",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.21,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanoscale",
+      "source": "crossref",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.29,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanomaterials",
+      "source": "openalex",
+      "ok": true,
+      "items": 12,
+      "seconds": 0.88,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanomaterials",
+      "source": "crossref",
+      "ok": true,
+      "items": 17,
+      "seconds": 0.44,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanotechnology",
+      "source": "openalex",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.23,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nanotechnology",
+      "source": "crossref",
+      "ok": true,
+      "items": 11,
+      "seconds": 0.44,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nano-Micro Letters",
+      "source": "openalex",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.27,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Nano-Micro Letters",
       "source": "crossref",
       "ok": true,
       "items": 1,
@@ -4292,11 +4184,119 @@
       "note": ""
     },
     {
+      "journal": "Applied Physics Express",
+      "source": "openalex",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.19,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Applied Physics Express",
+      "source": "crossref",
+      "ok": true,
+      "items": 2,
+      "seconds": 0.28,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Japanese Journal of Applied Physics",
+      "source": "openalex",
+      "ok": true,
+      "items": 3,
+      "seconds": 0.2,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Japanese Journal of Applied Physics",
+      "source": "crossref",
+      "ok": true,
+      "items": 9,
+      "seconds": 0.32,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of the American Chemical Society",
+      "source": "openalex",
+      "ok": true,
+      "items": 33,
+      "seconds": 1.26,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of the American Chemical Society",
+      "source": "crossref",
+      "ok": true,
+      "items": 61,
+      "seconds": 0.76,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of Alloys and Compounds",
+      "source": "openalex",
+      "ok": true,
+      "items": 3,
+      "seconds": 0.15,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of Alloys and Compounds",
+      "source": "crossref",
+      "ok": true,
+      "items": 140,
+      "seconds": 1.41,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.14,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Journal of Magnetism and Magnetic Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 100,
+      "seconds": 1.17,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Advanced Electronic Materials",
+      "source": "openalex",
+      "ok": true,
+      "items": 0,
+      "seconds": 0.12,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
+      "journal": "Advanced Electronic Materials",
+      "source": "crossref",
+      "ok": true,
+      "items": 1,
+      "seconds": 0.35,
+      "limit_reached": false,
+      "note": ""
+    },
+    {
       "journal": "Advanced Functional Materials",
       "source": "openalex",
       "ok": true,
       "items": 22,
-      "seconds": 0.69,
+      "seconds": 0.44,
       "limit_reached": false,
       "note": ""
     },
@@ -4304,8 +4304,8 @@
       "journal": "Advanced Functional Materials",
       "source": "crossref",
       "ok": true,
-      "items": 47,
-      "seconds": 0.65,
+      "items": 49,
+      "seconds": 0.51,
       "limit_reached": false,
       "note": ""
     },
@@ -4314,7 +4314,7 @@
       "source": "openalex",
       "ok": true,
       "items": 14,
-      "seconds": 0.47,
+      "seconds": 0.43,
       "limit_reached": false,
       "note": ""
     },
@@ -4323,7 +4323,7 @@
       "source": "crossref",
       "ok": true,
       "items": 25,
-      "seconds": 0.56,
+      "seconds": 0.43,
       "limit_reached": false,
       "note": ""
     },
@@ -4332,7 +4332,7 @@
       "source": "openalex",
       "ok": true,
       "items": 15,
-      "seconds": 0.44,
+      "seconds": 0.46,
       "limit_reached": false,
       "note": ""
     },
@@ -4340,8 +4340,8 @@
       "journal": "ACS Nano",
       "source": "crossref",
       "ok": true,
-      "items": 27,
-      "seconds": 0.54,
+      "items": 28,
+      "seconds": 0.56,
       "limit_reached": false,
       "note": ""
     },
@@ -4350,7 +4350,7 @@
       "source": "openalex",
       "ok": true,
       "items": 53,
-      "seconds": 0.86,
+      "seconds": 0.59,
       "limit_reached": false,
       "note": ""
     },
@@ -4359,7 +4359,7 @@
       "source": "crossref",
       "ok": true,
       "items": 97,
-      "seconds": 0.9,
+      "seconds": 0.87,
       "limit_reached": false,
       "note": ""
     },
@@ -4368,7 +4368,7 @@
       "source": "openalex",
       "ok": true,
       "items": 12,
-      "seconds": 0.37,
+      "seconds": 0.4,
       "limit_reached": false,
       "note": ""
     },
@@ -4377,7 +4377,7 @@
       "source": "crossref",
       "ok": true,
       "items": 20,
-      "seconds": 0.62,
+      "seconds": 0.45,
       "limit_reached": false,
       "note": ""
     },
@@ -4386,7 +4386,7 @@
       "source": "openalex",
       "ok": true,
       "items": 3,
-      "seconds": 0.45,
+      "seconds": 0.16,
       "limit_reached": false,
       "note": ""
     },
@@ -4395,7 +4395,7 @@
       "source": "crossref",
       "ok": true,
       "items": 10,
-      "seconds": 0.56,
+      "seconds": 0.41,
       "limit_reached": false,
       "note": ""
     },
@@ -4404,7 +4404,7 @@
       "source": "openalex",
       "ok": true,
       "items": 5,
-      "seconds": 0.2,
+      "seconds": 0.36,
       "limit_reached": false,
       "note": ""
     },
@@ -4413,7 +4413,7 @@
       "source": "crossref",
       "ok": true,
       "items": 5,
-      "seconds": 0.35,
+      "seconds": 0.36,
       "limit_reached": false,
       "note": ""
     },
@@ -4422,7 +4422,7 @@
       "source": "openalex",
       "ok": true,
       "items": 1,
-      "seconds": 0.21,
+      "seconds": 0.22,
       "limit_reached": false,
       "note": ""
     },
@@ -4440,7 +4440,7 @@
       "source": "openalex",
       "ok": true,
       "items": 0,
-      "seconds": 0.13,
+      "seconds": 0.12,
       "limit_reached": false,
       "note": ""
     },
@@ -4449,10 +4449,10 @@
       "source": "crossref",
       "ok": true,
       "items": 0,
-      "seconds": 0.28,
+      "seconds": 0.3,
       "limit_reached": false,
       "note": ""
     }
   ],
-  "generated": "2026-10-22 10:12"
+  "generated": "2026-10-22 13:44"
 }
