@@ -2,19 +2,30 @@
 
 Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集文献，按自旋电子学关键词筛选并去重，生成 Markdown 日报与 GitHub Pages 中英文卡片。**唯一通知渠道为 Bark**。
 
-## 2026-10-21 历史重建与安全须知
+## 历史与持久化
 
-按仓库所有者要求，**历史去重数据库、以前生成的日报、卡片墙、AI 翻译缓存、Bark 待发队列以及旧 Bark 确认记录将一并清空**，方便从头重建并检查结果。过往版本仍可从 Git 提交历史追溯，且独立的研究关键词和化学式标题修正词表保留。
+本仓库是 `pkui1mpression-design/Journal-alert` 的 fork，保留原项目 RSS / OpenAlex / Crossref 多源检索、关键词评分、SQLite DOI 去重、按日 Markdown 报告和状态入库，并在此基础上实现 Bark 逐篇中英双语推送、DOI 原始摘要保存、中文翻译和 GitHub Pages 卡片墙。
 
-现在按 DOI 查询获得的英文摘要先保存到永久元数据账本，再填充待发 Bark 队列，避免发送后队列压缩造成完整 Abstract 丢失。
+**不要为了排查无推送而反复删除历史库。** `state/seen.sqlite` 是跨天去重依据，`state/enhanced_wechat_outbox.json` 记录每篇论文的 Bark 确认状态；删掉任何一个都可能重发旧论文。`state/article_metadata.json` 与 `reports/YYYY-MM-DD.json` 持久化保留全文元数据，`state/enhanced_zh_cache.json` 保存中文译文；摘要质量待补齐时会继续重试。
 
-新版本在每次匹配文章时持续写入 `state/article_metadata.json`，以 DOI 为主键保存来源、作者、原始英文摘要并支持后续升级，不会把旧 DOI 再次推送。当天的 `reports/YYYY-MM-DD.json` 会提交到仓库，保存完整元数据，不再依赖有损 Markdown 抽取。
+历史库在此前按要求清空，当前代码没有再执行清库。只有确实需重新建库时，才使用显式的验收保护 `state/rebuild_review_hold.json`，在人工确认之前阻止 Bark 重发；`approve_rebuild` 模式只解锁、不推送。工作流正常运行时没有该保护文件。
 
-**本次重新清库会创建 `state/rebuild_review_hold.json` 推送保护标记。** 它不是旧文献记录，而是防止重建后的每日定时任务在你检查前自动发送大量重复 Bark 的安全开关。首次运行选择 `no_push`，可重新抓取论文、生成双语网页、保存待发队列，但不会向手机发消息。你检查卡片和队列后，在 Actions 的 `journal-alert daily` 手动选择 `approve_rebuild` **只解除保护、不发送**；随后 `flush_only` 才会真正向 Bark 发送。未经解锁的自动任务依然会更新文献库，但 Bark 会被安全暂停。
+## 每天 09:00 自动运行：GitHub fork 的必要设置
 
-**历史 Bark 确认也已清零**，因此下一次普通日报可能向手机再次推送以前收到的论文。请第一次仅运行 `no_push`，先验证文章与中文摘要，再决定何时主动执行 `flush_only`。注意：`no_push` 不发送，但会生成待发队列，后续 `flush_only` 可能发送队列里的全部新论文。
+**原作者的实现**：`.github/workflows/daily.yml` 使用 `on.schedule`，提交日报及去重库；上游 README 还记录过 GitHub 定时任务严重延迟（曾直到 11:16 才启动），因此原作者另外使用 Windows 计划任务进行多时段补跑。fork 继续保留 GitHub 云端运行，避免依赖电脑开机。
 
-后续若某次 Bark 发送后 Git 提交失败，工作流将上传可恢复状态的 artifacts；不要清空状态直接重试，以免重复通知。
+**本 fork 的关键问题**：仓库确实是公开原仓库的 fork，GitHub 对公开 fork 的 scheduled workflows 默认禁用。此前有多次手动 `workflow_dispatch` 成功，但没有任何 `schedule` 事件；证明的只是代码和人工运行可用，**不能证明每天自动执行已经启用**。
+
+**请务必人工执行一次**：在 [Actions → journal-alert daily](https://github.com/cunlongdong/Journal-alert/actions/workflows/daily.yml) 查看是否出现 **Enable workflow**；若有则点击。并在 [Settings → Actions → General](https://github.com/cunlongdong/Journal-alert/settings/actions) 确认 GitHub Actions 允许运行。无权查看/修改 fork 的启用状态时，改 cron、提交代码以及单元测试均无法代替这一 GitHub 平台操作。
+
+现在使用三个不在 UTC 整点重合的实际定时机会：
+- **主运行：北京时间每天 09:00**（UTC 01:00）。
+- **第一次补跑：09:23**（UTC 01:23）。
+- **第二次补跑：11:37**（UTC 03:37）。
+
+同一文献按 DOI 持久化去重，已被 Bark 接受的通知也保留逐篇确认；补跑可以补缺漏，但不会向同一个 DOI 重复推送。补跑会增加 API 查询量，AI 调用仍有每日上限。GitHub 自身不能保证精确启动时间：如果主任务或补跑都未触发，还是要确认 workflow 在 fork 上处于启用状态。
+
+每次真实启动时，GitHub Actions Summary 的**自动任务实际触发情况**都会记录 `schedule` 或 `workflow_dispatch`、实际起始时间及分支。没有新的运行记录说明问题在触发层，不能从 Bark 日志排查。
 
 ## 自动运行和推送
 
@@ -23,7 +34,7 @@ Journal-alert 检索 52 本已启用期刊，通过 OpenAlex 和 Crossref 采集
 **对照原项目**：本仓库 fork 自 `pkui1mpression-design/Journal-alert`，保留了 RSS/OpenAlex/Crossref 多源采集、按 DOI 去重、关键词分级和本地报告的核心设计。由于当前筛选 52 本期刊，OpenAlex 与 Crossref 对同一期刊同时抓取（每刊最多两个并发源），但保留了分页、独立错误记录及原顺序合并；原始 API 摘要与专业领域的中文逐篇 Bark、双语卡片、失败回补仍由 fork 提供。
 
 
-- GitHub Actions 工作流 `journal-alert daily` 设置为北京时间每天 09:00（UTC 01:00）运行，或在 Actions 页面手动运行。
+- GitHub Actions 的 **09:00 主任务 + 09:23 / 11:37 补跑** 均使用同一个已确认 Bark 的去重队列；首次必须在 fork 的 Actions 页面启用定时工作流。
 - Bark **大标题为英文原标题**；正文依次为**中文标题、作者、期刊、中文摘要**，不再显示“忠实翻译”字样。通知末尾保留 DOI 与双语网页链接。
 - 如缺英文摘要，会先按 DOI 尝试 OpenAlex、Crossref、Semantic Scholar 与出版社官网公开 Abstract；仍无法取得时，也发送**英文大标题＋中文标题＋作者＋中文“摘要暂缺”说明**，不伪造摘要。若标题翻译服务暂时不可用，该论文留在待推送队列等待翻译成功，避免发送缺少中文标题的通知。
 - 如有可信英文摘要，但翻译失败或当天 AI 额度耗尽，先保留待推送队列，下一次再尝试；不会把英文摘要伪装成已完成的中文翻译。

@@ -1,7 +1,12 @@
 name: journal-alert daily
 on:
   schedule:
-    - cron: "0 1 * * *" # UTC 01:00 = 北京时间 09:00 / 日本时间 10:00
+    # First attempt: Beijing 09:00. Fallbacks cope with GitHub cron delays.
+    # All attempts reuse the same SQLite/DOI and acknowledged Bark queue:
+    # an already delivered paper is never enqueued or sent a second time.
+    - cron: "0 1 * * *"  # Beijing 09:00, main delivery
+    - cron: "23 1 * * *" # Beijing 09:23, retry delayed or missed run
+    - cron: "37 3 * * *" # Beijing 11:37, last catch-up attempt
   workflow_dispatch:
     inputs:
       days:
@@ -147,6 +152,26 @@ jobs:
             echo "::error::This workflow uses a stale commit; cancel it and trigger main again."
             exit 1
           fi
+      - name: Show trigger and schedule diagnostics
+        if: always()
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          CRON_TRIGGER: ${{ github.event.schedule }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          {
+            echo "### 自动任务实际触发情况"
+            echo "- 本次事件：${EVENT_NAME}"
+            echo "- 调度表达式：${CRON_TRIGGER:-手动/提交触发}"
+            echo "- 分支：${REF_NAME}"
+            echo "- UTC 启动时间：$(date -u +'%F %T')"
+            echo "- 北京启动时间：$(TZ=Asia/Shanghai date +'%F %T')"
+            echo "- 主计划：09:00，北京时间；补偿计划：09:23、11:37。"
+            echo "- 注意：fork 需在 GitHub Actions 页面启用本 workflow 的 scheduled runs。"
+            echo "- 若从未出现 schedule 事件，请检查 Actions → journal-alert daily → Enable workflow。"
+          } >> "$GITHUB_STEP_SUMMARY"
       - name: Run offline tests
         run: python -m unittest discover -s tests -p 'test_*.py' -v
       - name: Run literature and Chinese Bark history tasks
