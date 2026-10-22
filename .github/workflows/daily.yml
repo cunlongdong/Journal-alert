@@ -1,7 +1,7 @@
 name: journal-alert daily
 on:
   schedule:
-    - cron: "30 0 * * *" # 每天 UTC 00:30 = 北京时间 08:30 / 日本时间 09:30
+    - cron: "0 1 * * *" # UTC 01:00 = 北京时间 09:00 / 日本时间 10:00
   workflow_dispatch:
     inputs:
       days:

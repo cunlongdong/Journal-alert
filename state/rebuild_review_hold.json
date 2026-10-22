@@ -1,8 +1,0 @@
-{
-  "version": 1,
-  "requires_review": true,
-  "created": "2026-10-22",
-  "reason": "Owner requested fresh reindex; prevent automatic Bark duplicates until reviewed",
-  "schedule": "08:30 Asia/Shanghai (00:30 UTC)",
-  "how_to_release": "Manually trigger approve_rebuild. This releases hold without sending Bark."
-}
